@@ -1,0 +1,49 @@
+version: '2'
+
+services:
+
+  php:
+    image: he8us/php-fpm-dev:7.0
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    ports:
+      - 80
+    environment:
+      VIRTUAL_HOST: sql.${MASTER_DOMAIN}
+      PMA_HOST: mysql
+      PMA_USER: ${MYSQL_USER}
+      PMA_PASSWORD: ${MYSQL_PASSWORD}
+    networks:
+      - backend
+      - frontend
+
+  fakesmtp:
+    image: djfarrelly/maildev
+    ports:
+      - 25
+      - 80
+    environment:
+        VIRTUAL_HOST: mail.${MASTER_DOMAIN}
+    networks:
+      - backend
+      - frontend
+
+  nodebuild:
+    image: he8us/nodebuild
+    volumes:
+      - ..:/var/www/
+    environment:
+      VIRTUAL_HOST: build.${MASTER_DOMAIN}
+      PORT: 80
+    ports:
+      - 80
+    command: npm run server
+    working_dir: /var/www/skeleton
+
+    networks:
+      backend:
+        aliases:
+          - build.${MASTER_DOMAIN}
+
+      frontend:

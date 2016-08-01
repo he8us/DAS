@@ -1,0 +1,6 @@
+--compilers js:babel-core/register
+--require ./tests/helpers/css-null-compiler.js
+--require ./tests/helpers/fakeBrowser.js
+--ui bdd
+./web/apps/*/tests/**/*@(.js|.jsx)
+./web/apps

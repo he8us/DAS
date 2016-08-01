@@ -1,0 +1,91 @@
+version: '2'
+
+services:
+  app:
+    image: debian:jessie
+    volumes:
+      - .:/var/www/skeleton
+
+  proxy:
+    image: jwilder/nginx-proxy:latest
+    ports:
+      - "80:80"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - ./devtools/nginx-vhost.d:/etc/nginx/vhost.d:ro
+    depends_on:
+      - php
+      - nginx
+    networks:
+      - frontend
+
+  php:
+    image: he8us/php-fpm-prod:7.0
+    expose:
+      - "9000"
+    environment:
+      APPLICATION_ENV: ${APPLICATION_ENV}
+      TIMEZONE: "Europe/Brussels"
+    volumes_from:
+      - app
+    networks:
+      - backend
+
+  php-cli:
+    image: he8us/php-cli:7.0
+    environment:
+      APPLICATION_ENV: ${APPLICATION_ENV}
+    volumes_from:
+      - app
+    working_dir: /var/www/skeleton
+    networks:
+      - backend
+
+  composer:
+    image: composer/composer:latest
+    working_dir: /var/www/skeleton
+    volumes_from:
+      - app
+    volumes:
+      - composer-data:/root/composer
+      - ~/.ssh:/root/.ssh:ro
+
+
+  nginx:
+    image: he8us/nginx-symfony
+    expose:
+      - "80"
+    environment:
+      VIRTUAL_HOST: www.${MASTER_DOMAIN}
+      DOCUMENT_ROOT: /var/www/skeleton/web
+      APPLICATION_ENV: ${APPLICATION_ENV}
+      LOG_FILE: skeleton
+    volumes_from:
+      - app
+    depends_on:
+      - php
+    networks:
+      - frontend
+      - backend
+
+  mysql:
+    image: mysql:5.6
+    ports:
+      - "3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    volumes:
+      - mysql-data:/var/lib/mysql
+    networks:
+      - backend
+
+volumes:
+  mysql-data:
+  composer-data:
+
+networks:
+  backend:
+  frontend:

@@ -1,0 +1,127 @@
+#!/usr/bin/env bash
+
+source "$(dirname "$0")/_helpers.sh"
+source "$(dirname "$0")/_load-env.sh"
+
+source "$(dirname "$0")/commands/assets.sh"
+source "$(dirname "$0")/commands/composer.sh"
+source "$(dirname "$0")/commands/console.sh"
+source "$(dirname "$0")/commands/down.sh"
+source "$(dirname "$0")/commands/logs.sh"
+source "$(dirname "$0")/commands/npm.sh"
+source "$(dirname "$0")/commands/run.sh"
+source "$(dirname "$0")/commands/show_help.sh"
+source "$(dirname "$0")/commands/start.sh"
+source "$(dirname "$0")/commands/stop.sh"
+source "$(dirname "$0")/commands/ps.sh"
+source "$(dirname "$0")/commands/composer.sh"
+
+
+
+hash docker-compose 2> /dev/null || { fail "I require docker-compose but it's not installed"; }
+
+cd $(dirname "$0")/..
+
+# Reset variables
+environment=
+verbosity=2
+maxverbosity=5
+
+# Parse options
+while :; do
+    case $1 in
+        -v)
+            ((verbosity=$verbosity+1))
+            ;;
+        -vv)
+            ((verbosity=$verbosity+2))
+            ;;
+        -vvv)
+            ((verbosity=$verbosity+3))
+            ;;
+        -h|-\?|--help)   # Call a "show_help" function to display a synopsis, then exit.
+            show_help
+            exit
+            ;;
+        -e|--environment|--env)       # Takes an option argument, ensuring it has been specified.
+            set_environment $2
+            shift
+            ;;
+        --)              # End of all options.
+            shift
+            break
+            ;;
+        -?*)
+            warn "Unknown option (ignored): $1"
+            ;;
+        *)               # Default case: If no more options then break out of the loop.
+            break
+    esac
+    shift
+done
+
+if [  -z "$environment" ]
+then
+    set_environment dev
+fi
+
+set_verbosity
+info "Current working directory: $(pwd)" 2
+
+command=$1
+shift
+case ${command} in
+    launch|start|up)
+        start
+        ;;
+
+    stop)
+        stop
+        ;;
+
+    down)
+        down
+        ;;
+
+    exec|run)
+        run $*
+        ;;
+    logs)
+        logs $*
+        ;;
+    ps)
+        ps
+        ;;
+
+    composer)
+        composer $*
+        ;;
+
+    assets)
+        assets
+        ;;
+
+    npm)
+        npm $*
+        ;;
+
+    console)
+        console $*
+        ;;
+
+    docker-compose)
+        docker-compose $COMPOSE_FILE $*
+        ;;
+
+    init)
+        start
+        composer install
+        assets
+        ;;
+
+    *)
+        printf 'Unknow command %s\n' "$command" >&2
+        show_help
+        ;;
+
+esac

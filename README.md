@@ -1,4 +1,4 @@
-remediation
+docker-symfony-react-redux-webpack-skeleton
 ===========
 
-A Symfony project created on August 1, 2016, 1:24 pm.
+Skeleton application with Symfony 3, React, Redux and webpack already configured

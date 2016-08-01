@@ -1,6 +1,25 @@
 {
-    "name": "he8us/remediation",
-    "license": "proprietary",
+    "name": "docker-symfony-react-redux-webpack-skeleton",
+    "description": "Skeleton application with Symfony 3, React, Redux and webpack already configured",
+    "version": "0.1.0",
+    "keywords": [
+        "docker",
+        "symfony",
+        "react",
+        "redux",
+        "webpack",
+        "babel",
+        "eslint"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Cedric Michaux"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/he8us/docker-symfony-react-redux-webpack-skeleton/issues"
+    },
     "type": "project",
     "autoload": {
         "psr-4": {
@@ -13,7 +32,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\": "tests/"
+            "Tests\\": "test/"
         }
     },
     "require": {
@@ -27,7 +46,8 @@
         "symfony/polyfill-apcu": "^1.0",
         "sensio/distribution-bundle": "^5.0",
         "sensio/framework-extra-bundle": "^3.0.2",
-        "incenteev/composer-parameter-handler": "^2.0"
+        "incenteev/composer-parameter-handler": "^2.0",
+        "phpunit/phpunit": "^5.4"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
@@ -56,7 +76,7 @@
         "symfony-bin-dir": "bin",
         "symfony-var-dir": "var",
         "symfony-web-dir": "web",
-        "symfony-tests-dir": "tests",
+        "symfony-tests-dir": "test",
         "symfony-assets-install": "relative",
         "incenteev-parameters": {
             "file": "app/config/parameters.yml"
