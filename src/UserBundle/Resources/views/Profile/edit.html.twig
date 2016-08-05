@@ -1,0 +1,43 @@
+{% extends ":templates:box-with-footer.html.twig" %}
+
+{% block box_title %}
+    {{ "layout.profile.edit" | trans }}
+{% endblock %}
+
+
+{% block box_start %}
+    {{ form_start(form, { 'action': path('user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
+{% endblock %}
+
+{% block box_body_content %}
+    <div class="row">
+
+        <div class="col-md-4">
+            {{form_row(form.profilePicture)}}
+        </div>
+
+        <div class="col-md-8">
+            {{ form_row(form.lastName) }}
+
+            {{ form_row(form.firstName) }}
+
+            {{ form_row(form.username) }}
+
+            {{ form_widget(form) }}
+        </div>
+
+    </div>
+{% endblock %}
+
+{% block box_footer %}
+    {% if has_feature('CanDeleteAccountFeature') %}
+        <a href="{{ path('user_delete_account') }}" class="btn btn-danger">{{ 'layout.profile.delete.button' | trans({}, 'messages') }}</a>
+    {% endif %}
+
+    <input type="submit" class="btn btn-info pull-right" value="{{ 'profile.edit.submit'|trans }}"/>
+{% endblock %}
+
+{% block box_end %}
+    {{ form_end(form) }}
+{% endblock %}
+

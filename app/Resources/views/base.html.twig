@@ -1,13 +1,113 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+    {# TODO: compress assets / use webpack #}
+    <link rel="stylesheet" href="{{ asset("apps/theme/bundle.css") }}"/>
+    <link rel="stylesheet" href="{{ asset("apps/core/bundle.css") }}"/>
+    <link rel="stylesheet" href="{{ asset("apps/datatables/bundle.css") }}"/>
+
+    {% block stylesheets %}{% endblock %}
+
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+
+    <header class="main-header">
+        <a class="logo" href="{{ path('homepage') }}">
+            <span class="logo-mini"><b>DAS</b></span>
+            <span class="logo-lg"><b>DAS</b> AR Ganshoren</span>
+        </a>
+
+        <nav class="navbar navbar-static-top" role="navigation">
+            <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                <span class="sr-only">Toggle navigation</span>
+            </a>
+
+            <div class="navbar-custom-menu">
+                <ul class="nav navbar-nav">
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                        {% include 'UserBundle:Partials:user-menu.html.twig' %}
+                    {% else %}
+                        <li><a id="_register"
+                               href="{{ path("user_security_register") }}">{{ "layout.register" | trans }}</a></li>
+                        <li><a id="_login"
+                               href="{{ path("student_security_login") }}">{{ "layout.login" | trans }}</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+
+        </nav>
+
+    </header>
+
+    <aside class="main-sidebar">
+        <section class="sidebar">
+
+            <ul class="sidebar-menu">
+                <li><a href="{{ path('homepage') }}"><i class="fa fa-home"></i>
+                        <span>{{ "layout.pages.homepage" | trans }}</span></a></li>
+
+                {% if is_granted("ROLE_COORDINATOR") %}
+                    <li class="header">{{ "user.roles.coordinator" | trans }}</li>
+                    <li>
+                        <a href="{{ path('user_management_list') }}">
+                            <i class="fa fa-users"></i>
+                            <span>{{ "layout.user.list" | trans }}</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('student_management_list') }}">
+                            <i class="fa fa-users"></i>
+                            <span>{{ "layout.student.list" | trans }}</span>
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
+        </section>
+    </aside>
+
+    <div class="content-wrapper">
+        <section class="content">
+            {% block body %}
+
+
+
+            {% endblock %}
+        </section>
+    </div>
+
+
+    <footer class="main-footer">
+        <strong>
+            Copyright &copy; 2016
+            {% trans with {"%creator1%": "Cédric Michaux", "%creator2%": "Christian Dooreman"} %}footer.copyright{% endtrans %}
+        </strong>
+        {{ "footer.all_rights_reserved" | trans }}
+    </footer>
+
+</div>
+
+<script src="{{ asset('http://build.das.dev/webpack-dev-server.js') }}"></script>
+<script src="{{ asset('http://build.das.dev/apps/shared.js') }}"></script>
+<script src="{{ asset('http://build.das.dev/apps/theme/bundle.js') }}"></script>
+<script src="{{ asset('http://build.das.dev/apps/core/bundle.js') }}"></script>
+<script src="{{ asset('http://build.das.dev/apps/datatables/bundle.js') }}"></script>
+<script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+<script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
+
+{% block javascripts %}{% endblock %}
+</body>
 </html>

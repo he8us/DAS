@@ -1,0 +1,70 @@
+{% extends ":templates:login.html.twig" %}
+
+
+{% block title %}
+    {{ "layout.login" | trans }}
+{% endblock %}
+
+{% block box_body %}
+    <form action="{{ path("user_security_login") }}" class="form-horizontal" method="post">
+
+        <p class="login-box-msg">
+            {{ "layout.login" | trans }}
+        </p>
+
+        {% if error %}
+            <div class="alert alert-danger" role="alert">
+                {{ error.messageKey | trans(error.messageData, 'security') }}
+            </div>
+        {% endif %}
+
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"/>
+
+        <div class="form-group">
+            <label class="sr-only" for="username">
+                {{ 'security.login.username' | trans }}
+            </label>
+            <input type="text" class="form-control" id="username" name="_username" value="{{ last_username }}"
+                   required="required" placeholder="{{ 'security.login.username' | trans }}"/>
+        </div>
+
+        <div class="form-group">
+            <label class="sr-only" for="password">
+                {{ 'security.login.password' | trans }}
+            </label>
+            <input type="password" class="form-control" id="password" name="_password" required="required"
+                   placeholder="{{ 'security.login.password' | trans }}"/>
+        </div>
+
+        <div class="form-group">
+            <input type="checkbox" id="remember_me" name="_remember_me" value="on"/>
+            <label for="remember_me">{{ 'security.login.remember_me' | trans }}</label>
+        </div>
+
+        <div class="form-group">
+            <div class="col-xs-6 col-xs-offset-6">
+                <input type="submit" class="btn btn-info pull-right" id="_submit" name="_submit"
+                       value="{{ 'security.login.submit' | trans }}"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-xs-6">
+                <a href="{{ path('user_security_resetting_request') }}" class="btn btn-default">
+                    {{ 'layout.lost_password' | trans }}
+                </a>
+            </div>
+
+            <div class="col-xs-6">
+                <a href="{{ path('student_security_login') }}" class="btn btn-default pull-right">
+                    {{ 'layout.iam_a_student' | trans }}
+                </a>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <a href="{{ path('user_security_register') }}">{{ "layout.security.register.create_account" | trans }}</a>
+        </div>
+
+    </form>
+{% endblock %}

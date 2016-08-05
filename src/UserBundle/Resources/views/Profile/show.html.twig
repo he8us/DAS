@@ -1,0 +1,50 @@
+{% extends ":templates:box-with-footer.html.twig" %}
+
+{% block title %}
+    {{ "layout.your_profile" | trans }}
+{% endblock %}
+
+{% block box_title %}
+    {{ "layout.your_profile" | trans }}
+{% endblock %}
+
+
+{% block box_body_content %}
+    <div class="row">
+        <div class="col-md-4 profile-picture">
+            <div class="picture">
+                {{ profile_picture(user) }}
+            </div>
+        </div>
+
+
+        <div class="col-md-8">
+            <dl class="dl-horizontal">
+                <dt>{{ 'profile.show.lastName' | trans }}</dt>
+                <dd>{{ user.lastName }}</dd>
+
+                <dt>{{ 'profile.show.firstName' | trans }}</dt>
+                <dd>{{ user.firstName }}</dd>
+
+                <dt>{{ 'profile.show.username' | trans }}</dt>
+                <dd>{{ user.username }}</dd>
+
+                <dt>{{ 'profile.show.email' | trans }}</dt>
+                <dd>{{ user.email }}</dd>
+            </dl>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block box_footer %}
+    {% if has_feature('CanRequestCardFeature') %}
+        <a href="{{ path('user_request_card') }}" class="btn btn-default">{{ 'layout.request_card' | trans }}</a>
+    {% endif %}
+
+    {% if has_feature('CanChangePasswordFeature') %}
+        <a href="{{ path('fos_user_change_password') }}" class="btn btn-default">{{ 'layout.change_password' | trans }}</a>
+    {% endif %}
+
+    <a href="{{ path('fos_user_profile_edit') }}" class="btn btn-info pull-right">{{ 'layout.profile_edit' | trans }}</a>
+{% endblock %}

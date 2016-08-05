@@ -1,0 +1,8 @@
+remove_trailing_slash:
+    path: /{url}
+    defaults:
+        _controller: CoreBundle:Redirect:removeTrailingSlash
+
+    requirements:
+        url: .*/$
+    methods: [GET]

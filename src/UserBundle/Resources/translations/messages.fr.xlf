@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
+  <file date="2016-10-03T23:48:01Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
+    <header>
+      <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
+      <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
+    </header>
+    <body>
+      <trans-unit id="a5eba05921c11add89e9b68570149da22499c604" resname="change_password.submit">
+        <source>change_password.submit</source>
+        <target>change_password.submit</target>
+      </trans-unit>
+      <trans-unit id="7e6b12a7deb5f7315f025b8c49121130cd7798ad" resname="form.email">
+        <source>form.email</source>
+        <target>Email</target>
+      </trans-unit>
+      <trans-unit id="db116776771da1cb379326d6d03fc8263c61d48d" resname="form.first_name">
+        <source>form.first_name</source>
+        <target>Prénom</target>
+      </trans-unit>
+      <trans-unit id="1e3f6104c1b3df0656cb0bde26a160abbf25e146" resname="form.i_already_have_an_account">
+        <source>form.i_already_have_an_account</source>
+        <target>J'ai déjà un compte</target>
+      </trans-unit>
+      <trans-unit id="ad2644b8e49a53ebc956786823470bf19bf5d146" resname="form.last_name">
+        <source>form.last_name</source>
+        <target>Nom</target>
+      </trans-unit>
+      <trans-unit id="6d384fb8ef3ca9318f0f9d983868842a211770f8" resname="form.password">
+        <source>form.password</source>
+        <target>Mot de passe</target>
+      </trans-unit>
+      <trans-unit id="37235e2e8981fa0045e4eae0c39e85c01b3a4e3f" resname="form.phone">
+        <source>form.phone</source>
+        <target>Téléphone</target>
+      </trans-unit>
+      <trans-unit id="6e252e02c6a124250d6f803979199c9aa2cce6a8" resname="form.profile.picture">
+        <source>form.profile.picture</source>
+        <target>Photo de profil</target>
+      </trans-unit>
+      <trans-unit id="dff086700fdd62e031af5de308be31fcada4d7c7" resname="form.username">
+        <source>form.username</source>
+        <target>Nom d'utilisateur</target>
+      </trans-unit>
+      <trans-unit id="cfa9b69a2c05b547327d60639cf2931218adc4a0" resname="layout.change_password">
+        <source>layout.change_password</source>
+        <target>Changez votre mot de passe</target>
+      </trans-unit>
+      <trans-unit id="c5a46982d53d9f6a7477d4b7ee6067d7854fca65" resname="layout.hello_user">
+        <source>layout.hello_user</source>
+        <target>Salut, %name%!</target>
+      </trans-unit>
+      <trans-unit id="46bb86809f0ead5c9bb1b37fde00b6b1cd76d17a" resname="layout.iam_a_student">
+        <source>layout.iam_a_student</source>
+        <target>Je suis un étudiant</target>
+      </trans-unit>
+      <trans-unit id="51ba4271e8ffec8a165c3de03afda72ec753021d" resname="layout.iam_not_a_student">
+        <source>layout.iam_not_a_student</source>
+        <target>Je ne suis pas un étudiant</target>
+      </trans-unit>
+      <trans-unit id="360d5f783c46f5e90f1b24010cb6bf03626ec35b" resname="layout.login">
+        <source>layout.login</source>
+        <target>Connection</target>
+      </trans-unit>
+      <trans-unit id="812e6e3c8af6158c435006b329aeeb87b55ad725" resname="layout.login.student">
+        <source>layout.login.student</source>
+        <target>Connection d'un étudiant</target>
+      </trans-unit>
+      <trans-unit id="80a0b95340202d0b8c88ba8bd10b315ecdd1feba" resname="layout.logout">
+        <source>layout.logout</source>
+        <target>Se déconnecter</target>
+      </trans-unit>
+      <trans-unit id="83318085ee1be70b76f521172391ecaa90d9f109" resname="layout.lost_card">
+        <source>layout.lost_card</source>
+        <target>J'ai perdu ma carte</target>
+      </trans-unit>
+      <trans-unit id="20b96d4960f77a73cfbde340579ce8e10ebd35da" resname="layout.lost_password">
+        <source>layout.lost_password</source>
+        <target>Mot de passe perdu</target>
+      </trans-unit>
+      <trans-unit id="fa2f4b52fa9f80fc64c9378a95a7fbb072d14ae2" resname="layout.profile">
+        <source>layout.profile</source>
+        <target>Profil</target>
+      </trans-unit>
+      <trans-unit id="2fcc52702286f303118582aee361b0a5bf0f87d7" resname="layout.profile.delete.button">
+        <source>layout.profile.delete.button</source>
+        <target>Effacer votre profil</target>
+      </trans-unit>
+      <trans-unit id="40360e69c97891103b075c9e5fcf38d195733ccb" resname="layout.profile.delete.confirm_warning">
+        <source>layout.profile.delete.confirm_warning</source>
+        <target>layout.profile.delete.confirm_warning</target>
+      </trans-unit>
+      <trans-unit id="0ccfea132e259376fcf8ca48b346a2f2fbbb8af0" resname="layout.profile.delete.no_take_me_safe_place">
+        <source>layout.profile.delete.no_take_me_safe_place</source>
+        <target>Non, emmenez moi dans un endroit sûr</target>
+      </trans-unit>
+      <trans-unit id="a4aab2baf9406b1f77f2c0158f67acb7cad073bf" resname="layout.profile.delete.title">
+        <source>layout.profile.delete.title</source>
+        <target>Suppression de votre profil</target>
+      </trans-unit>
+      <trans-unit id="833afc98ae2f6cfd0a02e567c6042b2ae15656a5" resname="layout.profile.delete.yes_sure">
+        <source>layout.profile.delete.yes_sure</source>
+        <target>Oui, j'en suis sûr</target>
+      </trans-unit>
+      <trans-unit id="e9278778e176b724baacef7c543f435867df8d5e" resname="layout.profile.edit">
+        <source>layout.profile.edit</source>
+        <target>Editez votre profil</target>
+      </trans-unit>
+      <trans-unit id="4a6390183d72374fbd869e741ab2680303b751aa" resname="layout.profile_edit">
+        <source>layout.profile_edit</source>
+        <target>Editez votre profil</target>
+      </trans-unit>
+      <trans-unit id="e90b1e4d378c1469e0d1ee1cf1c19cca7c73bc51" resname="layout.request_card">
+        <source>layout.request_card</source>
+        <target>Demander une nouvelle carte</target>
+      </trans-unit>
+      <trans-unit id="2b3f88a48f10e449aaf2f2b44152f7d754dcc43d" resname="layout.security.register.choose_role.class_titular">
+        <source>layout.security.register.choose_role.class_titular</source>
+        <target>Titulaire de classe</target>
+      </trans-unit>
+      <trans-unit id="53cd4fe98e3f531c2a90e52b2727113863eda062" resname="layout.security.register.choose_role.coordinator">
+        <source>layout.security.register.choose_role.coordinator</source>
+        <target>Coordinateur</target>
+      </trans-unit>
+      <trans-unit id="fb854f3eb846565468f7f25c001a5bb090bbd445" resname="layout.security.register.choose_role.course_titular">
+        <source>layout.security.register.choose_role.course_titular</source>
+        <target>Titulaire de cours</target>
+      </trans-unit>
+      <trans-unit id="cbcde55f2defb76f5bf769e08cac344b11c54326" resname="layout.security.register.choose_role.parent">
+        <source>layout.security.register.choose_role.parent</source>
+        <target>Parent</target>
+      </trans-unit>
+      <trans-unit id="da19c24ff7f72d049f30d2d55229914e4e86197d" resname="layout.security.register.choose_role.please_choose_an_account_type">
+        <source>layout.security.register.choose_role.please_choose_an_account_type</source>
+        <target>Veuillez choisir un type de compte</target>
+      </trans-unit>
+      <trans-unit id="f779e0b5cb2a6d4f826e1d47036488cb2b18f951" resname="layout.security.register.choose_role.teacher">
+        <source>layout.security.register.choose_role.teacher</source>
+        <target>Professeur</target>
+      </trans-unit>
+      <trans-unit id="fe91093abecf4aee41383a27ada7f700cdfc24ea" resname="layout.security.register.choose_role.title">
+        <source>layout.security.register.choose_role.title</source>
+        <target>Type de compte</target>
+      </trans-unit>
+      <trans-unit id="3b8c228e31b08688c62fdaf8f6a04160c02967e7" resname="layout.security.register.create_account">
+        <source>layout.security.register.create_account</source>
+        <target>Créer un compte</target>
+      </trans-unit>
+      <trans-unit id="772e8840d903d79ddf03d91a0336e1eeec75cfa3" resname="layout.security.register.title">
+        <source>layout.security.register.title</source>
+        <target>Inscription</target>
+      </trans-unit>
+      <trans-unit id="a9cd9cbec655bbff119c1d61067ba591b47cd9bc" resname="layout.student.add">
+        <source>layout.student.add</source>
+        <target>Ajouter un étudiant</target>
+      </trans-unit>
+      <trans-unit id="5aa6c7cf87ea5701ce4edcc9c267f03cebaac34c" resname="layout.student.import">
+        <source>layout.student.import</source>
+        <target>Importer des étudiants</target>
+      </trans-unit>
+      <trans-unit id="005faa29ad5aab8aa4e9333e2beec58cda0ba2ac" resname="layout.student.list">
+        <source>layout.student.list</source>
+        <target>Liste des étudiants</target>
+      </trans-unit>
+      <trans-unit id="7461f3a09255ee4d5eb852dbf7722cc30d046330" resname="layout.user.add">
+        <source>layout.user.add</source>
+        <target>Ajouter un utilisateur</target>
+      </trans-unit>
+      <trans-unit id="57d0c1bb23f771c35c2f58b54d46f8b17580d841" resname="layout.user.datatables.actions.edit">
+        <source>layout.user.datatables.actions.edit</source>
+        <target>Editer</target>
+      </trans-unit>
+      <trans-unit id="ae06ced4b38dba82a891467e44ba69e766ee2210" resname="layout.user.datatables.actions.show">
+        <source>layout.user.datatables.actions.show</source>
+        <target>Details</target>
+      </trans-unit>
+      <trans-unit id="2cad1161646e31d4d721775c8267ea8999ccf848" resname="layout.user.datatables.actions.title">
+        <source>layout.user.datatables.actions.title</source>
+        <target>Actions</target>
+      </trans-unit>
+      <trans-unit id="30b0985177d17a3e52db088139ffd4ec0b584818" resname="layout.user.datatables.first_name">
+        <source>layout.user.datatables.first_name</source>
+        <target>Prénom</target>
+      </trans-unit>
+      <trans-unit id="288d6ef96648a2690fd6c83d7e96bd5e33b793e5" resname="layout.user.datatables.id">
+        <source>layout.user.datatables.id</source>
+        <target>Id</target>
+      </trans-unit>
+      <trans-unit id="5c08337b2b8e9be63f22d9ad0a2a42caf0fe1e31" resname="layout.user.datatables.last_name">
+        <source>layout.user.datatables.last_name</source>
+        <target>Nom</target>
+      </trans-unit>
+      <trans-unit id="3e0e038123d4a00fcc68b5f8542efb1058e14463" resname="layout.user.datatables.roles">
+        <source>layout.user.datatables.roles</source>
+        <target>Role</target>
+      </trans-unit>
+      <trans-unit id="99feda1452cc1b516534566f65991095d71b1514" resname="layout.user.list">
+        <source>layout.user.list</source>
+        <target>Liste des utilisateurs</target>
+      </trans-unit>
+      <trans-unit id="d9fa37a30b207899265e44f1ceab2aa0e9c818e4" resname="layout.user.profile.picture">
+        <source>layout.user.profile.picture</source>
+        <target>Photo de profil de l'utilisateur</target>
+      </trans-unit>
+      <trans-unit id="afdf1e355f0f1570106301df4dd94013fa2eb608" resname="layout.user.role.coordinator">
+        <source>layout.user.role.coordinator</source>
+        <target>Coordinateur</target>
+      </trans-unit>
+      <trans-unit id="b96800e0fff371146c0a3cbdb3f42bed269df915" resname="layout.user.role.course_titular">
+        <source>layout.user.role.course_titular</source>
+        <target>Titulaire de cours</target>
+      </trans-unit>
+      <trans-unit id="e147fa4dbe64cd482f81a4ea1c5b49e9b1fffa45" resname="layout.user.role.parent">
+        <source>layout.user.role.parent</source>
+        <target>Parent</target>
+      </trans-unit>
+      <trans-unit id="29d31e4a1258a8f2197101d347a23209ca469407" resname="layout.user.role.super_admin">
+        <source>layout.user.role.super_admin</source>
+        <target>Super Admin</target>
+      </trans-unit>
+      <trans-unit id="81defac15b60ea6d51f3a359409dd401356b472f" resname="layout.user.role.teacher">
+        <source>layout.user.role.teacher</source>
+        <target>Professeur</target>
+      </trans-unit>
+      <trans-unit id="9d62d711f89eccecfbbfeff1ad499960bd9e3709" resname="layout.user.role.titular">
+        <source>layout.user.role.titular</source>
+        <target>Titulaire de classe</target>
+      </trans-unit>
+      <trans-unit id="96a366cdb9c79c5d56b890dcdb3b83015664a2fa" resname="layout.your_profile">
+        <source>layout.your_profile</source>
+        <target>Votre profil</target>
+      </trans-unit>
+      <trans-unit id="9741ffbcf8dbb31e1a2d32bd25cb0ccc5a6dea54" resname="profile.edit.submit">
+        <source>profile.edit.submit</source>
+        <target>Sauvegarder</target>
+      </trans-unit>
+      <trans-unit id="6f2b87ab0da336a9cb633f397ff7f86ab7ea522b" resname="profile.show.email">
+        <source>profile.show.email</source>
+        <target>profile.show.email</target>
+      </trans-unit>
+      <trans-unit id="ee159e70343d2b610711a7b02d64b3652ecc70f2" resname="profile.show.firstName">
+        <source>profile.show.firstName</source>
+        <target>Prénom</target>
+      </trans-unit>
+      <trans-unit id="8e86ef4f12e9a4b81b6491a8a3af5b45a404f12c" resname="profile.show.lastName">
+        <source>profile.show.lastName</source>
+        <target>Nom</target>
+      </trans-unit>
+      <trans-unit id="0d6307def2ec4ecb26978118bb2deca9d566945c" resname="profile.show.username">
+        <source>profile.show.username</source>
+        <target>profile.show.username</target>
+      </trans-unit>
+      <trans-unit id="4ef79d57e94b4b74349d6533a231e09dc5be0ce2" resname="registration.submit">
+        <source>registration.submit</source>
+        <target>S'inscrire</target>
+      </trans-unit>
+      <trans-unit id="40c1a483571045e24d606bf00361cfd4d021ba05" resname="resetting.check_email">
+        <source>resetting.check_email</source>
+        <target>resetting.check_email</target>
+      </trans-unit>
+      <trans-unit id="f0b3476bec045fac67c256d17a54e4f8a8d05335" resname="resetting.password_already_requested">
+        <source>resetting.password_already_requested</source>
+        <target>resetting.password_already_requested</target>
+      </trans-unit>
+      <trans-unit id="fada63a7aec6b86d60633890fb3572ebad37ad68" resname="security.login.barcode">
+        <source>security.login.barcode</source>
+        <target>Code barre</target>
+      </trans-unit>
+      <trans-unit id="62d5564c383b885ff0de25abd24a41080499970b" resname="security.login.password">
+        <source>security.login.password</source>
+        <target>Mot de passe</target>
+      </trans-unit>
+      <trans-unit id="d074ed9a0eb75b7f17ef2274c21d4c3d12d91634" resname="security.login.remember_me">
+        <source>security.login.remember_me</source>
+        <target>Se souvenir de moi</target>
+      </trans-unit>
+      <trans-unit id="79c180ac5e987e195d1dfeda857a114ed692d07f" resname="security.login.submit">
+        <source>security.login.submit</source>
+        <target>Se connecter</target>
+      </trans-unit>
+      <trans-unit id="64e1b2aaf6156a7e34a13fbc38801e89478efff8" resname="security.login.username">
+        <source>security.login.username</source>
+        <target>Nom d'utilisateur</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

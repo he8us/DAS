@@ -6,19 +6,23 @@ source "$(dirname "$0")/_load-env.sh"
 source "$(dirname "$0")/commands/assets.sh"
 source "$(dirname "$0")/commands/composer.sh"
 source "$(dirname "$0")/commands/console.sh"
+source "$(dirname "$0")/commands/db-reset.sh"
+source "$(dirname "$0")/commands/execute.sh"
 source "$(dirname "$0")/commands/down.sh"
 source "$(dirname "$0")/commands/logs.sh"
 source "$(dirname "$0")/commands/npm.sh"
+source "$(dirname "$0")/commands/ps.sh"
+source "$(dirname "$0")/commands/php-cli.sh"
 source "$(dirname "$0")/commands/run.sh"
 source "$(dirname "$0")/commands/show_help.sh"
 source "$(dirname "$0")/commands/start.sh"
 source "$(dirname "$0")/commands/stop.sh"
-source "$(dirname "$0")/commands/ps.sh"
-source "$(dirname "$0")/commands/composer.sh"
 
 
 
 hash docker-compose 2> /dev/null || { fail "I require docker-compose but it's not installed"; }
+
+eval $(docker-machine env default)
 
 cd $(dirname "$0")/..
 
@@ -83,7 +87,11 @@ case ${command} in
         down
         ;;
 
-    exec|run)
+    exec)
+        execute $*
+        ;;
+
+    run)
         run $*
         ;;
     logs)
@@ -105,6 +113,13 @@ case ${command} in
         npm $*
         ;;
 
+    php)
+        php-cli $*
+        ;;
+
+    behat)
+        php-cli $*
+        ;;
     console)
         console $*
         ;;
@@ -116,7 +131,15 @@ case ${command} in
     init)
         start
         composer install
+        console cache:clear --env=prod
+        db-reset
         assets
+        success "Init Done"
+        ;;
+
+
+    db:reset)
+        db-reset
         ;;
 
     *)

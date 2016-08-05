@@ -1,0 +1,10 @@
+include:
+  - User.yml
+
+UserBundle\Entity\Teacher:
+  teacher_1 (extends user):
+    username: teacher
+    password: 12345
+
+  teacher_{2..20} (extends user):
+

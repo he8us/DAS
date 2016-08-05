@@ -13,4 +13,34 @@
 !var/SymfonyRequirements.php
 /vendor/
 /web/bundles/
+/web/media/cache
 node_modules
+test-output
+.nyc_output
+assets.json
+**/bundle.*.js
+**/bundle.*.js.map
+**/bundle.*.css
+**/bundle.*.css.map
+**/shared.*.js
+**/shared.*.js.map
+**/bundle.js
+**/bundle.js.map
+**/bundle.css
+**/bundle.css.map
+**/shared.js
+**/shared.js.map
+
+# Fonts
+**/apps/**/*.ttf
+**/apps/**/*.woff2
+**/apps/**/*.woff
+**/apps/**/*.svg
+**/apps/**/*.eot
+**/apps/*.jpg
+**/apps/*.png
+web/images
+
+#Other projects related
+adsdaq.dev
+hins.dev

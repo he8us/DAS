@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+    {# TODO: compress assets / use webpack #}
+    <link rel="stylesheet" href="{{ asset("apps/theme/bundle.css") }}"/>
+    <link rel="stylesheet" href="{{ asset("apps/core/bundle.css") }}"/>
+    <link rel="stylesheet" href="{{ asset("apps/datatables/bundle.css") }}"/>
+
+    {% block stylesheets %}{% endblock %}
+
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body class="hold-transition skin-blue {% block body_classes %}{% endblock %}">
+
+{% block body %}{% endblock %}
+
+
+<script src="{{ asset('http://build.das.dev/webpack-dev-server.js') }}"></script>
+<script src="{{ asset('http://build.das.dev/apps/shared.js') }}"></script>
+<script src="{{ asset('http://build.das.dev/apps/theme/bundle.js') }}"></script>
+<script src="{{ asset('http://build.das.dev/apps/core/bundle.js') }}"></script>
+<script src="{{ asset('http://build.das.dev/apps/datatables/bundle.js') }}"></script>
+<script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+<script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
+
+{% block javascripts %}{% endblock %}
+</body>
+</html>

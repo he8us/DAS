@@ -30,10 +30,11 @@ user () {
 
 success () {
   printf "\r\033[2K  [ \033[00;32mOK\033[0m ] $1\n"
+  notify $*
 }
 
 warn () {
-    printf "\r\033[2K  [\033[00;33mWARN\033[0m] $1\n"
+  printf "\r\033[2K  [\033[00;33mWARN\033[0m] $1\n"
 }
 
 fail () {
@@ -41,6 +42,11 @@ fail () {
   exit 1
 }
 
+notify(){
+    if hash osascript 2> /dev/null; then
+        osascript -e "display notification \"$*\" with title \"$COMPOSE_PROJECT_NAME\" subtitle \"Devbox\""
+    fi
+}
 set_environment(){
     if [ -n "$1" ]; then
         case $1 in
@@ -49,7 +55,7 @@ set_environment(){
                 ;;
 
             test)
-                COMPOSE_FILE="-f ../docker-common.yml -f ../docker-compose.test.yml"
+                COMPOSE_FILE="-f ../docker-compose.yml -f ../docker-compose.dev.yml"
                 ;;
 
             *)
@@ -57,7 +63,7 @@ set_environment(){
                 ;;
         esac
         environment=$1
-        success "Environment: $environment"
+        success "Set Environment: $environment"
     else
         fail '"--environment" requires a non-empty option argument'
     fi

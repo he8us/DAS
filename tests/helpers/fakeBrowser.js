@@ -1,6 +1,5 @@
 import jsdom from 'jsdom';
 import chai from 'chai';
-import chaiImmutable from 'chai-immutable';
 import chaiEnzyme from 'chai-enzyme';
 import chaiAsPromised from 'chai-as-promised';
 
@@ -14,6 +13,5 @@ Object.keys(window).forEach((property) => {
 });
 
 
-chai.use(chaiImmutable);
 chai.use(chaiAsPromised);
 chai.use(chaiEnzyme());

@@ -1,0 +1,24 @@
+page_index:
+    path:     /
+    defaults: { _controller: "CMSBundle:Page:index" }
+    methods:  GET
+
+page_show:
+    path:     /{id}/show
+    defaults: { _controller: "CMSBundle:Page:show" }
+    methods:  GET
+
+page_new:
+    path:     /new
+    defaults: { _controller: "CMSBundle:Page:new" }
+    methods:  [GET, POST]
+
+page_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "CMSBundle:Page:edit" }
+    methods:  [GET, POST]
+
+page_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "CMSBundle:Page:delete" }
+    methods:  DELETE

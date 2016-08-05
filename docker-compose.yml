@@ -4,7 +4,7 @@ services:
   app:
     image: debian:jessie
     volumes:
-      - .:/var/www/skeleton
+      - .:/var/www/${COMPOSE_PROJECT_NAME}
 
   proxy:
     image: jwilder/nginx-proxy:latest
@@ -13,11 +13,9 @@ services:
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
       - ./devtools/nginx-vhost.d:/etc/nginx/vhost.d:ro
-    depends_on:
-      - php
-      - nginx
     networks:
       - frontend
+      - adsdaq_proxy-tier
 
   php:
     image: he8us/php-fpm-prod:7.0
@@ -35,21 +33,13 @@ services:
     image: he8us/php-cli:7.0
     environment:
       APPLICATION_ENV: ${APPLICATION_ENV}
+    volumes:
+      - ~/.ssh:/root/.ssh:ro
     volumes_from:
       - app
-    working_dir: /var/www/skeleton
+    working_dir: /var/www/${COMPOSE_PROJECT_NAME}
     networks:
       - backend
-
-  composer:
-    image: composer/composer:latest
-    working_dir: /var/www/skeleton
-    volumes_from:
-      - app
-    volumes:
-      - composer-data:/root/composer
-      - ~/.ssh:/root/.ssh:ro
-
 
   nginx:
     image: he8us/nginx-symfony
@@ -57,9 +47,9 @@ services:
       - "80"
     environment:
       VIRTUAL_HOST: www.${MASTER_DOMAIN}
-      DOCUMENT_ROOT: /var/www/skeleton/web
+      DOCUMENT_ROOT: /var/www/${COMPOSE_PROJECT_NAME}/web
       APPLICATION_ENV: ${APPLICATION_ENV}
-      LOG_FILE: skeleton
+      LOG_FILE: ${COMPOSE_PROJECT_NAME}
     volumes_from:
       - app
     depends_on:
@@ -87,5 +77,7 @@ volumes:
   composer-data:
 
 networks:
+  adsdaq_proxy-tier:
+    external: true
   backend:
   frontend:

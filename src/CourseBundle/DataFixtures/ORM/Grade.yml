@@ -1,0 +1,30 @@
+CourseBundle\Entity\Grade:
+    Grade-1:
+        grade: 1
+        createdAt: <dateTime()>
+        updatedAt: <dateTime()>
+
+    Grade-2:
+        grade: 2
+        createdAt: <dateTime()>
+        updatedAt: <dateTime()>
+
+    Grade-3:
+        grade: 3
+        createdAt: <dateTime()>
+        updatedAt: <dateTime()>
+
+    Grade-4:
+        grade: 4
+        createdAt: <dateTime()>
+        updatedAt: <dateTime()>
+
+    Grade-5:
+        grade: 5
+        createdAt: <dateTime()>
+        updatedAt: <dateTime()>
+
+    Grade-6:
+        grade: 6
+        createdAt: <dateTime()>
+        updatedAt: <dateTime()>

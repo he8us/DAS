@@ -1,0 +1,33 @@
+user_security_login:
+  path: /login
+  defaults:
+    _controller: UserBundle:Security:login
+
+student_security_login:
+  path: /student/login
+  defaults:
+    _controller: UserBundle:Security:loginStudent
+
+user_security_register:
+  path: /register/{role}
+  defaults:
+    _controller: UserBundle:Security:register
+    role: any
+  requirements:
+    role: coordinator|titular|teacher|parent|course_titular
+
+user_security_resetting_request:
+  path: /lost-password
+  defaults:
+    _controller: UserBundle:Security:resettingRequest
+
+user_security_request_card:
+  path: /student/request-card
+  defaults:
+    _controller: UserBundle:Security:requestCard
+
+user_logout:
+  path: /logout
+
+user_student_logout:
+  path: /student/logout

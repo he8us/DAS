@@ -1,0 +1,35 @@
+{% block profile_picture_row -%}
+    <div class="profile-picture">
+        {{ form_label(form) }}
+        {{ form_widget(form) }}
+        {{ form_errors(form) }}
+    </div>
+{%- endblock %}
+
+{% block profile_picture_label %}
+    {% spaceless %}
+        <div>
+            <label class="control-label" for="{{ form.vars.id }}">
+                {{ form.vars.label | trans({}, 'messages') }}
+            </label>
+        </div>
+    {% endspaceless %}
+{% endblock %}
+
+{% block profile_picture_widget %}
+    {% spaceless %}
+        <div>
+
+            {% if fileUrl is defined and fileUrl %}
+                <div class="picture">
+                    <img src="{{ fileUrl | imagine_filter('profile_picture') }}" class="img-circle"
+                         alt="{{ 'layout.user.profile.picture' | trans }}">
+                </div>
+            {% endif %}
+
+
+            {{ form_widget(form) }}
+
+        </div>
+    {% endspaceless %}
+{% endblock %}

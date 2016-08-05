@@ -1,0 +1,14 @@
+imports:
+    - { resource: config_test.yml }
+
+framework:
+    profiler:
+        only_exceptions: false
+        collect: true
+parameters:
+    locale: en
+
+doctrine:
+    dbal:
+        host:     "192.168.99.100"
+        port:     "32787"

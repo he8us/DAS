@@ -1,0 +1,17 @@
+{% extends "::empty.html.twig" %}
+{% block body_classes %}register-page{% endblock %}
+
+{% block body %}
+    <div class="register-box">
+        <div class="register-logo">
+            <a href="{{ path('homepage') }}"><b>DAS</b> AR Ganshoren</a>
+        </div>
+
+        <div class="register-box-body">
+            {% block box_body %}
+
+            {% endblock %}
+        </div>
+        <!-- /.form-box -->
+    </div>
+{% endblock %}

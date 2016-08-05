@@ -1,0 +1,20 @@
+label.required:after {
+    content: " *";
+}
+
+label[for="fos_user_registration_form_profilePicture_profilePictureFile"],
+label[for="fos_user_profile_form_profilePicture_profilePictureFile"]{
+    display: none;
+}
+
+.profile-picture{}
+.profile-picture .picture{
+    text-align: center;
+    padding: 10px 0;
+}
+
+
+.form-horizontal .form-group{
+    margin-right:0;
+    margin-left:0;
+}

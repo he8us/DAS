@@ -1,0 +1,74 @@
+services:
+    user.barcode_authenticator:
+        class: UserBundle\Security\BarcodeAuthenticator
+        arguments: ['@doctrine.orm.entity_manager', '@router', '@logger']
+
+    user.twig_extension:
+      class: UserBundle\Twig\UserExtension
+      public: false
+      tags:
+        - { name: twig.extension }
+
+    user.service.role_service:
+      class: UserBundle\Services\RoleService
+      arguments: ['@security.role_hierarchy']
+
+    user.form.type.profile_picture:
+      class: UserBundle\Form\ProfilePictureType
+      arguments:
+        - '@vich_uploader.storage'
+      tags:
+        - {name: form.type, alias: profile_picture }
+
+
+    user.form.registration:
+        class: UserBundle\Form\RegistrationType
+        tags:
+            - { name: form.type, alias: user_user_registration }
+
+    user.form.login:
+        class: UserBundle\Form\ProfileType
+        tags:
+            - { name: form.type, alias: user_user_profile }
+
+    user.feature_flags.condition.can_change_password:
+        class: UserBundle\FeatureFlags\Condition\CanChangePassword
+        arguments: ["@security.authorization_checker"]
+
+        calls:
+            - [setContext, ['@dz.feature_flags.context']]
+        tags:
+            -  { name: dz.feature_flags.toggle.condition, alias: can_change_password }
+
+    user.feature_flags.condition.can_request_card:
+        class: UserBundle\FeatureFlags\Condition\CanRequestCard
+        arguments: ["@security.authorization_checker"]
+
+        calls:
+            - [setContext, ['@dz.feature_flags.context']]
+        tags:
+            -  { name: dz.feature_flags.toggle.condition, alias: can_request_card }
+
+    user.feature_flags.condition.can_delete_account:
+        class: UserBundle\FeatureFlags\Condition\CanDeleteAccount
+        arguments: ["@security.authorization_checker"]
+
+        calls:
+            - [setContext, ['@dz.feature_flags.context']]
+        tags:
+            -  { name: dz.feature_flags.toggle.condition, alias: can_delete_account }
+
+    user.datatable.users:
+        class: UserBundle\Datatables\UserDatatable
+        parent: sg_datatables.datatable.abstract
+
+    user.datatable.students:
+        class: UserBundle\Datatables\StudentDatatable
+        parent: sg_datatables.datatable.abstract
+
+
+    user.event_listener.password_encoder:
+        class: UserBundle\EventListener\PasswordEncoder
+        arguments: ["@security.password_encoder"]
+        tags:
+            - {name: doctrine.event_listener, event: prePersist}

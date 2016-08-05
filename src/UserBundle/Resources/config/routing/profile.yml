@@ -1,0 +1,4 @@
+user_profile_view:
+  path: /
+  defaults:
+    _controller: "UserBundle:Profile:view"

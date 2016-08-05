@@ -1,0 +1,9 @@
+include:
+  - User.yml
+
+UserBundle\Entity\Coordinator:
+  coordinator_1 (extends user):
+    username: coordinator
+    password: 12345
+  coordinator_{2..10} (extends user):
+

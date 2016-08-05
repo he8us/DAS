@@ -1,0 +1,9 @@
+UserBundle\Entity\User:
+  user (template):
+      firstName: <firstName()>
+      lastName: <lastName()>
+      username (unique): <userName()>
+      email (unique): <safeEmail()>
+      plainPassword: 12345
+      phone: <phoneNumber()>
+      isActive: true

@@ -2,15 +2,21 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: services.yml }
+    - { resource: doctrine_extensions.yml }
+    - { resource: "@UserBundle/Resources/config/services.yml" }
+    - { resource: "@CoreBundle/Resources/config/services.yml" }
+    - { resource: "@CMSBundle/Resources/config/services.yml" }
+    - { resource: "@CourseBundle/Resources/config/services.yml" }
+    - { resource: "@StudentBundle/Resources/config/services.yml" }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
-    locale: en
+    locale: fr
 
 framework:
     #esi:             ~
-    #translator:      { fallbacks: ["%locale%"] }
+    translator:      { fallbacks: ["%locale%"] }
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -26,8 +32,7 @@ framework:
     trusted_proxies: ~
     session:
         # http://symfony.com/doc/current/reference/configuration/framework.html#handler-id
-        handler_id:  session.handler.native_file
-        save_path:   "%kernel.root_dir%/../var/sessions/%kernel.environment%"
+        handler_id:  ~
     fragments:       ~
     http_method_override: true
     assets: ~
@@ -36,6 +41,11 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    form_themes:
+      - "CoreBundle:form:form_das_layout.html.twig"
+      - 'VichUploaderBundle:Form:fields.html.twig'
+      - "UserBundle:Form:profile_picture.html.twig"
+
 
 # Doctrine Configuration
 doctrine:
@@ -59,6 +69,13 @@ doctrine:
         naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
 
+
+stof_doctrine_extensions:
+    default_locale: fr_FR
+    orm:
+        default:
+            timestampable: true
+
 # Swiftmailer Configuration
 swiftmailer:
     transport: "%mailer_transport%"
@@ -66,3 +83,86 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+jms_translation:
+    configs:
+        base:
+            dirs: [%kernel.root_dir%]
+            output_dir: %kernel.root_dir%/Resources/translations
+            excluded_dirs: [Features]
+
+        cms:
+            dirs: [%kernel.root_dir%/../src/CMSBundle]
+            output_dir: %kernel.root_dir%/../src/CMSBundle/Resources/translations
+            excluded_dirs: [Features]
+
+        users:
+            dirs: [%kernel.root_dir%/../src/UserBundle]
+            output_dir: %kernel.root_dir%/../src/UserBundle/Resources/translations
+            excluded_dirs: [Features]
+
+        courses:
+            dirs: [%kernel.root_dir%/../src/CourseBundle]
+            output_dir: %kernel.root_dir%/../src/CourseBundle/Resources/translations
+            excluded_dirs: [Features]
+
+
+services:
+    twig.text_extension:
+        class: Twig_Extensions_Extension_Text
+        tags:
+            - name: twig.extension
+
+doctrine_migrations:
+    dir_name: "%kernel.root_dir%/Resources/Migrations"
+    namespace: Application\Resources\Migrations
+    table_name: migration_versions
+    name: DAS Migrations
+
+d_zunke_feature_flags:
+    flags:
+        CanChangePasswordFeature:
+            conditions_config:
+              can_change_password:
+
+        CanRequestCardFeature:
+            conditions_config:
+              can_request_card:
+
+        CanDeleteAccountFeature:
+            conditions_config:
+              can_delete_account:
+
+oneup_flysystem:
+    adapters:
+        profile_picture_adapter:
+            local:
+                directory: "%kernel.root_dir%/../web/images/profile"
+
+    filesystems:
+        profile_picture:
+            adapter:    profile_picture_adapter
+            mount:      profile_picture
+
+liip_imagine:
+    loaders:
+        profile_picture:
+            flysystem:
+                filesystem_service: oneup_flysystem.profile_picture_filesystem
+    driver:   imagick
+    filter_sets:
+        profile_picture:
+            filters:
+                thumbnail: { size: [160, 160], mode: outbound }
+
+vich_uploader:
+    db_driver: orm # or mongodb or propel or phpcr
+    storage:   flysystem
+
+    mappings:
+        profile_picture:
+            uri_prefix:         /images/profile
+            upload_destination: profile_picture
+            namer:              vich_uploader.namer_uniqid
+            delete_on_update:   true
+            delete_on_remove:   true

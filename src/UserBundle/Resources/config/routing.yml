@@ -1,0 +1,17 @@
+user:
+  prefix: /
+  resource: "@UserBundle/Resources/config/routing/security.yml"
+
+
+user_profile:
+  prefix: /profile
+  resource: "@UserBundle/Resources/config/routing/profile.yml"
+
+
+user_management:
+  resource: "@UserBundle/Resources/config/routing/user_management.yml"
+  prefix: /users
+
+student_management:
+  resource: "@UserBundle/Resources/config/routing/student_management.yml"
+  prefix: /students

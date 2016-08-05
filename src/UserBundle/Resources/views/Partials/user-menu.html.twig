@@ -1,0 +1,31 @@
+<li class="dropdown user user-menu">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+        {{ profile_picture(app.user, 'user-image') }}
+
+        <span class="hidden-xs">{{ app.user.firstName }}</span>
+    </a>
+    <ul class="dropdown-menu">
+        <!-- User image -->
+        <li class="user-header">
+
+            {{ profile_picture(app.user) }}
+
+            <p class="welcome-user">
+                {{ "layout.hello_user" | trans({"%name%": app.user.firstName}) }}
+            </p>
+        </li>
+        <!-- Menu Footer-->
+        <li class="user-footer">
+            <div class="pull-left">
+                <a href="{{ path('user_profile_view') }}" class="btn btn-default btn-flat">{{ "layout.profile" | trans }}</a>
+            </div>
+            <div class="pull-right">
+                {% if is_granted("ROLE_STUDENT") %}
+                    <a href="{{ path('user_student_logout') }}" class="btn btn-default btn-flat" id="_logout">{{ "layout.logout" | trans }}</a>
+                {% else %}
+                    <a href="{{ path('user_logout') }}" class="btn btn-default btn-flat" id="_logout">{{ "layout.logout" | trans }}</a>
+                {% endif %}
+            </div>
+        </li>
+    </ul>
+</li>

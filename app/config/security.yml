@@ -2,23 +2,82 @@
 # http://symfony.com/doc/current/book/security.html
 security:
 
+    encoders:
+        UserBundle\Entity\User: bcrypt
+
+    role_hierarchy:
+        ROLE_STUDENT: ROLE_USER
+        ROLE_STUDENT_PARENT: ROLE_USER
+        ROLE_TEACHER: ROLE_USER
+        ROLE_TITULAR: ROLE_USER
+        ROLE_COURSE_TITULAR: ROLE_USER
+        ROLE_COORDINATOR: [ROLE_TEACHER, ROLE_TITULAR, ROLE_COURSE_TITULAR]
+        ROLE_SUPER_ADMIN: [ROLE_COORDINATOR, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+
     # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
     providers:
-        in_memory:
-            memory: ~
+      user_db:
+        entity:
+            class: UserBundle:User
+            property: username
+
+      student_db:
+        entity:
+            class: UserBundle:Student
+            property: username
+
+
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
         dev:
-            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            pattern: ^/(_(profiler|wdt|trans)|media|apps|bundles|images|js)/
             security: false
 
+        student:
+              context: user
+              pattern:  ^/student
+              switch_user: true
+              remember_me:
+                  secret:  '%secret%'
+
+              anonymous: ~
+              provider: student_db
+              guard:
+                  authenticators:
+                      - user.barcode_authenticator
+              form_login:
+                  csrf_token_generator: security.csrf.token_manager
+                  check_path: /student/login
+                  login_path: /student/login
+              logout:
+                  path:   /student/logout
+
         main:
-            anonymous: ~
-            # activate different ways to authenticate
+            context: user
+            pattern: ^/
+            switch_user: true
+            remember_me:
+                secret:  '%secret%'
+            form_login:
+                csrf_token_generator: security.csrf.token_manager
+            logout:       true
+            anonymous:    true
 
-            # http_basic: ~
-            # http://symfony.com/doc/current/book/security.html#a-configuring-how-your-users-will-authenticate
 
-            # form_login: ~
-            # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
+    access_control:
+        - { path: ^/$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/pages, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+
+        - { path: ^/student/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/student/request-card, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+
+        - { path: ^/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/lost-password, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+
+        # Protected pages
+        - { path: ^/, roles: IS_AUTHENTICATED_REMEMBERED } # all => user should be logged. A finer grain is used with the roles at the application level
+
+        - { path: ^/student/, roles: ROLE_STUDENT } # student => only the admin can access
+        - { path: ^/admin/, roles: ROLE_ADMIN } # admin => only the admin can access

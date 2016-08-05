@@ -1,3 +1,33 @@
-app:
-    resource: "@AppBundle/Controller/"
+student:
+    resource: "@StudentBundle/Resources/config/routing.yml"
+    prefix:   /student
+
+course:
+    resource: "@CourseBundle/Resources/config/routing.yml"
+    prefix:   /courses
+
+user:
+  resource: "@UserBundle/Resources/config/routing.yml"
+
+
+cms:
+    resource: "@CMSBundle/Resources/config/routing.yml"
+
+
+
+_liip_imagine:
+    resource: "@LiipImagineBundle/Resources/config/routing.xml"
+
+
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
+
+sg_datatables_bundle:
+    resource: "@SgDatatablesBundle/Controller/"
     type:     annotation
+
+
+
+#Be sure that core routing stays at the very end
+core_bundle:
+  resource: "@CoreBundle/Resources/config/routing.yml"
