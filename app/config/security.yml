@@ -61,6 +61,8 @@ security:
                 secret:  '%secret%'
             form_login:
                 csrf_token_generator: security.csrf.token_manager
+                check_path: /login
+                login_path: /login
             logout:       true
             anonymous:    true
 

@@ -117,11 +117,14 @@ class UserContext extends BaseContext
                 return new Titular();
                 break;
 
+            case "course titular":
             case "course_titular":
                 return new CourseTitular();
                 break;
 
             case "parent":
+            case "student parent":
+            case "student_parent":
                 return new StudentParent();
                 break;
 
