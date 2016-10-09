@@ -5,10 +5,10 @@
         {% block box_start %}{% endblock %}
 
         <div class="box-header with-border">
+            <div class="box-actions pull-right">
+                {% block box_actions %}{% endblock %}
+            </div>
             <h3 class="box-title">{% block box_title %}{% endblock %}</h3>
-            <div class="box-tools pull-right">
-                {% block box_action %}{% endblock %}
-            </div><!-- /.box-tools -->
         </div><!-- /.box-header -->
 
         {% block box_body %}
