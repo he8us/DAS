@@ -19,6 +19,7 @@ use Doctrine\ORM\EntityManager;
 use Exception;
 use Symfony\Bundle\FrameworkBundle\Routing\Router;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
+use Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
 use UserBundle\Entity\Coordinator;
 use UserBundle\Entity\CourseTitular;
 use UserBundle\Entity\Student;
@@ -147,12 +148,12 @@ class UserContext extends BaseContext
 
         $repo = $em->getRepository("UserBundle:" . ucfirst($role));
 
+        /** @var User $user */
         $user = $repo->findOneBy([]);
 
-        $providerKey = "main";
+        $this->login($user);
 
-        $token = new UsernamePasswordToken($user, null, $providerKey, $user->getRoles());
-        $container->get('security.token_storage')->setToken($token);
+        $this->getContainer()->get('logger')->info(sprintf("Logged in the user %s with role %s", $user->getUsername(), $user->getRoles()[0]));
     }
 
     /**
@@ -333,6 +334,24 @@ class UserContext extends BaseContext
             return $routeName;
         }
         return $routeName;
+    }
+
+    /**
+     * @param User $user
+     */
+    private function login(User $user)
+    {
+        $session = $this->getContainer()->get('session');
+
+        // the firewall context (defaults to the firewall name)
+        $firewall = 'user';
+
+        $token = new UsernamePasswordToken($user->getUsername(), $user->getPassword(), $firewall, $user->getRoles());
+        $this->getContainer()->get('security.token_storage')->setToken($token);
+        $session->set('_security_'.$firewall, serialize($token));
+        $session->save();
+
+        $this->getSession()->setCookie($session->getName(), $session->getId());
     }
 
 

@@ -6,5 +6,5 @@ UserBundle\Entity\Teacher:
     username: teacher
     password: 12345
 
-  teacher_{2..20} (extends user):
+  teacher_{2..10} (extends user):
 

@@ -1,21 +1,4 @@
 default:
-    suites:
-        user_suite:
-            type: symfony_bundle
-            bundle: UserBundle
-            contexts:
-                - UserBundle\Features\Context\UserContext
-                - Fidry\AliceBundleExtension\Context\Doctrine\AliceORMContext
-
-
-        cms_suite:
-            type: symfony_bundle
-            bundle: CMSBundle
-            contexts:
-                - CMSBundle\Features\Context\CMSContext
-                - Fidry\AliceBundleExtension\Context\Doctrine\AliceORMContext
-
-
     extensions:
         Fidry\AliceBundleExtension\Extension:
             fixtures_base_path: ~
@@ -33,3 +16,18 @@ default:
             # this is the syntax for MacOS and Chrome
             show_cmd: open -a "Google Chrome" %s
 
+    suites:
+        user_suite:
+            type: symfony_bundle
+            bundle: UserBundle
+            contexts:
+                - UserBundle\Features\Context\UserContext
+                - Fidry\AliceBundleExtension\Context\Doctrine\AliceORMContext
+
+
+        cms_suite:
+            type: symfony_bundle
+            bundle: CMSBundle
+            contexts:
+                - CMSBundle\Features\Context\CMSContext
+                - Fidry\AliceBundleExtension\Context\Doctrine\AliceORMContext
