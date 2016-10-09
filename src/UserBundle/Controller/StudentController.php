@@ -10,10 +10,9 @@
 namespace UserBundle\Controller;
 
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use UserBundle\Form\ImportStudentsType;
 
 /**
  * Class StudentController
@@ -28,7 +27,7 @@ class StudentController extends Controller
 
     /**
      *
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     public function listAction()
     {
@@ -41,12 +40,17 @@ class StudentController extends Controller
     }
 
 
-
+    /**
+     * @return Response
+     */
     public function newAction()
     {
         return $this->render('UserBundle:Student:new.html.twig');
     }
 
+    /**
+     * @return Response
+     */
     public function resultsAction()
     {
 
@@ -59,9 +63,18 @@ class StudentController extends Controller
 
     }
 
+
     public function importAction()
     {
-        
+        $form = $this->createForm(ImportStudentsType::class);
+
+
+        if($form->isSubmitted() && $form->isValid()){
+        }
+
+        return $this->render('UserBundle:Student:import.html.twig', [
+            "form" => $form->createView()
+        ]);
     }
 
 
