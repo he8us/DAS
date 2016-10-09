@@ -7,57 +7,21 @@ Feature: A user is able to log in the application
     Then I follow the "I am not a student" link
     Then I should be on the User login page
 
-  Scenario: I should be able to login as Student
-    Given there is a Student with credentials "he8us" and "12345" in the database
-    And I am on the Student login page
 
-    Then I fill the login form with "he8us" and "12345"
+  Scenario Outline: I should be able to login as any type of Users
+    Given there is a "<userType>" with credentials <username> and <password> in the database
+    And I am on the <loginPage> login page
+
+    Then I fill the login form with <username> and <password>
+
     And I submit the form
-
     Then I should be welcomed
 
-
-  Scenario: I should be able to login as Coordinator
-    Given there is a Coordinator with credentials "he8us" and "12345" in the database
-    And I am on the User login page
-
-    Then I fill the login form with "he8us" and "12345"
-    And I submit the form
-
-    Then I should be welcomed
-
-  Scenario: I should be able to login as Teacher
-    Given there is a Teacher with credentials "he8us" and "12345" in the database
-    And I am on the User login page
-
-    Then I fill the login form with "he8us" and "12345"
-    And I submit the form
-
-    Then I should be welcomed
-
-  Scenario: I should be able to login as Titular
-    Given there is a Titular with credentials "he8us" and "12345" in the database
-    And I am on the User login page
-
-    Then I fill the login form with "he8us" and "12345"
-    And I submit the form
-
-    Then I should be welcomed
-
-  Scenario: I should be able to login as Course_Titular
-    Given there is a "Course Titular" with credentials "he8us" and "12345" in the database
-    And I am on the User login page
-
-    Then I fill the login form with "he8us" and "12345"
-    And I submit the form
-
-    Then I should be welcomed
-
-  Scenario: I should be able to login as Parent
-    Given there is a Parent with credentials "he8us" and "12345" in the database
-    And I am on the User login page
-
-    Then I fill the login form with "he8us" and "12345"
-    And I submit the form
-
-    Then I should be welcomed
+    Examples:
+      | userType       | loginPage | username | password |
+      | Student        | Student   | he8us    | 12345    |
+      | Coordinator    | User      | he8us    | 12345    |
+      | Teacher        | User      | he8us    | 12345    |
+      | Titular        | User      | he8us    | 12345    |
+      | Course Titular | User      | he8us    | 12345    |
+      | Parent         | User      | he8us    | 12345    |

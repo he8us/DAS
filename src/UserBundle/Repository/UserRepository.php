@@ -2,9 +2,12 @@
 
 namespace UserBundle\Repository;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\QueryBuilder;
 use Symfony\Bridge\Doctrine\Security\User\UserLoaderInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use UserBundle\Entity\User;
 
 /**
  * UserRepository
@@ -22,13 +25,23 @@ class UserRepository extends EntityRepository implements UserLoaderInterface
      */
     public function findByRole($role)
     {
-        $qb = $this->_em->createQueryBuilder();
-        $qb->select('u')
-            ->from($this->_entityName, 'u')
-            ->where('u.roles LIKE :roles')
-            ->setParameter('roles', '%"'.$role.'"%');
+        $qb = $this->getQueryBuilderForFindByRole($role);
 
         return $qb->getQuery()->getResult();
+    }
+
+    /**
+     * @param string $role
+     *
+     * @return User
+     */
+    public function findOneByRole($role)
+    {
+        $qb = $this->getQueryBuilderForFindByRole($role);
+
+        $qb->setMaxResults(1);
+
+        return $qb->getQuery()->getSingleResult();
     }
 
     /**
@@ -61,5 +74,20 @@ class UserRepository extends EntityRepository implements UserLoaderInterface
     public function findByUniqueCriteria(array $criteria)
     {
         return $this->_em->getRepository('UserBundle:User')->findBy($criteria);
+    }
+
+    /**
+     * @param $role
+     *
+     * @return QueryBuilder
+     */
+    private function getQueryBuilderForFindByRole($role):QueryBuilder
+    {
+        $qb = $this->_em->createQueryBuilder();
+        $qb->select('u')
+            ->from($this->_entityName, 'u')
+            ->where('u.roles LIKE :roles')
+            ->setParameter('roles', '%"' . strtoupper($role) . '"%');
+        return $qb;
     }
 }
