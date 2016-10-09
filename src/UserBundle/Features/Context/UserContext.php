@@ -11,15 +11,15 @@ namespace UserBundle\Features\Context;
 
 
 use Behat\Behat\Definition\Call\Given;
-use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Gherkin\Node\TableNode;
 use Behat\Symfony2Extension\Context\KernelDictionary;
 use CoreBundle\Features\Context\BaseContext;
 use Doctrine\ORM\EntityManager;
 use Exception;
+use Monolog\Logger;
 use Symfony\Bundle\FrameworkBundle\Routing\Router;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
-use Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
 use UserBundle\Entity\Coordinator;
 use UserBundle\Entity\CourseTitular;
 use UserBundle\Entity\Student;
@@ -27,6 +27,7 @@ use UserBundle\Entity\StudentParent;
 use UserBundle\Entity\Teacher;
 use UserBundle\Entity\Titular;
 use UserBundle\Entity\User;
+use UserBundle\Repository\UserRepository;
 
 class UserContext extends BaseContext
 {
@@ -137,23 +138,55 @@ class UserContext extends BaseContext
     }
 
     /**
-     * @Given I am connected as :role
+     * @Given I am authenticated as :role
      *
      * @param string $role
      */
-    public function iAmConnectedAs(string $role)
+    public function iAmAuthenticatedAs(string $role)
     {
         $container = $this->getContainer();
         $em = $container->get('doctrine')->getManager();
 
-        $repo = $em->getRepository("UserBundle:" . ucfirst($role));
+        /** @var UserRepository $repo */
+        $repo = $em->getRepository(User::class);
 
-        /** @var User $user */
-        $user = $repo->findOneBy([]);
+        $user = $repo->findOneByRole('ROLE_' . $role);
 
         $this->login($user);
 
-        $this->getContainer()->get('logger')->info(sprintf("Logged in the user %s with role %s", $user->getUsername(), $user->getRoles()[0]));
+        $this->getLogger()
+            ->info(
+                sprintf(
+                    "Logged in the user %s with role %s",
+                    $user->getUsername(),
+                    $user->getRoles()[0]
+                )
+            );
+    }
+
+    /**
+     * @param User $user
+     */
+    private function login(User $user)
+    {
+        $session = $this->getContainer()->get('session');
+
+        // the firewall context (defaults to the firewall name)
+        $firewall = "main";
+
+        $token = new UsernamePasswordToken($user, null, $firewall, $user->getRoles());
+        $session->set('_security_' . $firewall, serialize($token));
+        $session->save();
+
+        $this->getSession()->setCookie($session->getName(), $session->getId());
+    }
+
+    /**
+     * @return Logger
+     */
+    private function getLogger(): Logger
+    {
+        return $this->getContainer()->get('logger');
     }
 
     /**
@@ -187,7 +220,7 @@ class UserContext extends BaseContext
     public function iFollowTheLink($page)
     {
         $page = str_replace(" ", "_", $page);
-        $this->clickLink("_".strtolower($page));
+        $this->clickLink("_" . strtolower($page));
     }
 
     /**
@@ -199,7 +232,16 @@ class UserContext extends BaseContext
     public function iShouldBeOnTheRegisterPage(string $userType = "any")
     {
         $userType = str_replace(" ", "_", $userType);
-        $this->assertPageAddress($this->getRouter()->generate('user_security_register', ['role' => strtolower($userType)]));
+        $this->assertPageAddress($this->getRouter()->generate('user_security_register',
+            ['role' => strtolower($userType)]));
+    }
+
+    /**
+     * @return Router
+     */
+    private function getRouter():Router
+    {
+        return $this->getContainer()->get('router');
     }
 
     /**
@@ -212,7 +254,6 @@ class UserContext extends BaseContext
         $userType = str_replace(" ", "_", $userType);
         $this->visit($this->getRouter()->generate('user_security_register', ['role' => strtolower($userType)]));
     }
-
 
     /**
      * @When I submit the form
@@ -228,14 +269,6 @@ class UserContext extends BaseContext
     public function iAmOnTheRegisterPage()
     {
         $this->visit($this->getRouter()->generate('user_security_register'));
-    }
-
-    /**
-     * @return Router
-     */
-    private function getRouter():Router
-    {
-        return $this->getContainer()->get('router');
     }
 
     /**
@@ -260,6 +293,21 @@ class UserContext extends BaseContext
     }
 
     /**
+     * @param string $pageType
+     *
+     * @return string
+     */
+    private function getLoginRouteForUserType(string $pageType):string
+    {
+        $routeName = "user_security_login";
+        if ("student" == strtolower($pageType)) {
+            $routeName = "student_security_login";
+            return $routeName;
+        }
+        return $routeName;
+    }
+
+    /**
      * @Given there is a :userType with credentials :username and :password in the database
      *
      * @param $userType
@@ -271,13 +319,12 @@ class UserContext extends BaseContext
     public function thereIsAWithCredentialsAndInTheDatabase($userType, $username, $password)
     {
         $user = $this->getUserTypeForRole($userType);
-        if($user == null){
+        if ($user == null) {
             throw new Exception("Unknown user type");
         }
-        if($user instanceof Student){
+        if ($user instanceof Student) {
             $user->setBarcode($password);
-        }
-        else{
+        } else {
             $user->setPlainPassword($password);
         }
 
@@ -313,46 +360,19 @@ class UserContext extends BaseContext
     public function iFillTheLoginFormWithAnd($username, $password)
     {
         $this->fillField("_username", $username);
-        try{
+        try {
             $this->fillField("_password", $password);
-        }
-        catch (Exception $e){
+        } catch (Exception $e) {
             $this->fillField("_barcode", $password);
         }
     }
 
     /**
-     * @param string $pageType
-     *
-     * @return string
+     * @Given I am on the user listing page
      */
-    private function getLoginRouteForUserType(string $pageType):string
+    public function iAmOnTheUserListingPage()
     {
-        $routeName = "user_security_login";
-        if ("student" == strtolower($pageType)) {
-            $routeName = "student_security_login";
-            return $routeName;
-        }
-        return $routeName;
+        $this->visit($this->getRouter()->generate('user_management_list'));
     }
-
-    /**
-     * @param User $user
-     */
-    private function login(User $user)
-    {
-        $session = $this->getContainer()->get('session');
-
-        // the firewall context (defaults to the firewall name)
-        $firewall = 'user';
-
-        $token = new UsernamePasswordToken($user->getUsername(), $user->getPassword(), $firewall, $user->getRoles());
-        $this->getContainer()->get('security.token_storage')->setToken($token);
-        $session->set('_security_'.$firewall, serialize($token));
-        $session->save();
-
-        $this->getSession()->setCookie($session->getName(), $session->getId());
-    }
-
 
 }

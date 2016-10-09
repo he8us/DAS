@@ -35,7 +35,6 @@ security:
             security: false
 
         student:
-              context: user
               pattern:  ^/student
               switch_user: true
               remember_me:
@@ -54,7 +53,6 @@ security:
                   path:   /student/logout
 
         main:
-            context: user
             pattern: ^/
             switch_user: true
             remember_me:
