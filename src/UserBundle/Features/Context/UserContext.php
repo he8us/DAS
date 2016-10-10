@@ -11,6 +11,7 @@ namespace UserBundle\Features\Context;
 
 
 use Behat\Behat\Definition\Call\Given;
+use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Gherkin\Node\TableNode;
 use Behat\Symfony2Extension\Context\KernelDictionary;
 use CoreBundle\Features\Context\BaseContext;
@@ -368,11 +369,25 @@ class UserContext extends BaseContext
     }
 
     /**
-     * @Given I am on the user listing page
+     * @Given I am on the :type list page
+     *
+     * @param $type
      */
-    public function iAmOnTheUserListingPage()
+    public function iAmOnTheListingPage($type)
     {
-        $this->visit($this->getRouter()->generate('user_management_list'));
+        $route = 'user_management_list';
+        if(strtolower($type) == "student"){
+            $route = 'student_management_list';
+        }
+
+        $this->visit($this->getRouter()->generate($route));
     }
 
+    /**
+     * @Then I should be on the Student Import page
+     */
+    public function iShouldBeOnTheStudentImportPage()
+    {
+        $this->assertPageAddress($this->getRouter()->generate('student_management_import'));
+    }
 }

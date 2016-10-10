@@ -11,7 +11,7 @@ student_management_new:
       _controller: UserBundle:Student:new
 
 student_management_import:
-    path: /new
+    path: /import
     defaults:
       _controller: UserBundle:Student:import
 

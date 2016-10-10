@@ -79,5 +79,7 @@ security:
         # Protected pages
         - { path: ^/, roles: IS_AUTHENTICATED_REMEMBERED } # all => user should be logged. A finer grain is used with the roles at the application level
 
-        - { path: ^/student/, roles: ROLE_STUDENT } # student => only the admin can access
+        - { path: ^/student/, roles: ROLE_STUDENT }
+        - { path: ^/management/, roles: ROLE_COORDINATOR }
+
         - { path: ^/admin/, roles: ROLE_ADMIN } # admin => only the admin can access
