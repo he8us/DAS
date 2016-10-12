@@ -6,3 +6,5 @@ filter:
         - 'tests/*'
         - 'var/*'
         - 'bin/*'
+        - 'app/AppCache.php'
+        - 'app/AppKernel.php'
