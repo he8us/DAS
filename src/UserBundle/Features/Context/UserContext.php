@@ -370,7 +370,7 @@ class UserContext extends BaseContext
     public function iAmOnTheListingPage($type)
     {
         $route = 'user_management_list';
-        if (strtolower($type) == "student") {
+        if (strtolower($type) === "student") {
             $route = 'student_management_list';
         }
 
