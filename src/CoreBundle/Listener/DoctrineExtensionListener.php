@@ -28,14 +28,12 @@ class DoctrineExtensionListener implements ContainerAwareInterface
 
     public function onLateKernelRequest(GetResponseEvent $event)
     {
-        $translatable = $this->container->get('gedmo.listener.translatable');
-        $translatable->setTranslatableLocale($event->getRequest()->getLocale());
+        $this->initializeTranslatable();
     }
 
     public function onConsoleCommand()
     {
-        $this->container->get('gedmo.listener.translatable')
-            ->setTranslatableLocale($this->container->get('translator')->getLocale());
+        $this->initializeTranslatable();
     }
 
     public function onKernelRequest()
@@ -75,5 +73,11 @@ class DoctrineExtensionListener implements ContainerAwareInterface
     {
         $blameable = $this->container->get('gedmo.listener.blameable');
         $blameable->setUserValue($token->getUser());
+    }
+
+    private function initializeTranslatable():void
+    {
+        $translatable = $this->container->get('gedmo.listener.translatable');
+        $translatable->setTranslatableLocale($this->container->get('translator')->getLocale());
     }
 }
