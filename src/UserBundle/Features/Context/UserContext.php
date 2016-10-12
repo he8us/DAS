@@ -29,6 +29,13 @@ use UserBundle\Entity\Titular;
 use UserBundle\Entity\User;
 use UserBundle\Repository\UserRepository;
 
+/**
+ * Class UserContext
+ *
+ * @package UserBundle\Features\Context
+ *
+ * @author Cedric Michaux <cedric@he8us.be>
+ */
 class UserContext extends BaseContext
 {
     use KernelDictionary;

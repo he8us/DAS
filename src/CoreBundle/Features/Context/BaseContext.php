@@ -18,6 +18,7 @@ use Behat\Symfony2Extension\Context\KernelDictionary;
  * Some tricks from: http://www.tentacode.net/10-tips-with-behat-and-mink
  *
  * @package CoreBundle\Features\Context
+ *
  * @author  Cedric Michaux <cedric@he8us.be>
  */
 class BaseContext extends MinkContext

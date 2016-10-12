@@ -13,6 +13,7 @@ namespace UserBundle\FeatureFlags\Condition;
  * Class CanDeleteAccount
  *
  * @package UserBundle\FeatureFlags\Condition
+ *
  * @author  Cedric Michaux <cedric@he8us.be>
  */
 class CanDeleteAccount extends CanChangePassword

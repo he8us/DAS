@@ -16,6 +16,7 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  * Class CMSBundle
  *
  * @package CMSBundle
+ *
  * @author  Cedric Michaux <cedric@he8us.be>
  */
 class CMSBundle extends Bundle
