@@ -37,7 +37,7 @@ class UserExtension extends \Twig_Extension
     }
 
     /**
-     * @return array
+     * @return \Twig_SimpleFunction[]
      */
     public function getFunctions()
     {
@@ -65,7 +65,11 @@ class UserExtension extends \Twig_Extension
         ]);
     }
 
-
+    /**
+     * @param UserInterface|null $user
+     *
+     * @return null|string
+     */
     public function prettyRoleFunction(UserInterface $user = null)
     {
         if (null === $user) {

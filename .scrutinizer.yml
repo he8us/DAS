@@ -8,3 +8,4 @@ filter:
         - 'bin/*'
         - 'app/AppCache.php'
         - 'app/AppKernel.php'
+        - 'web/config.php'

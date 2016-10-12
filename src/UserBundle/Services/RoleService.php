@@ -84,6 +84,8 @@ class RoleService
             case User::ROLE_SUPER_ADMIN:
                 return $this->translator->trans("layout.user.role.super_admin");
         }
+
+        return;
     }
 
 }

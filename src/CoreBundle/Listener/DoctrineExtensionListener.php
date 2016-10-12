@@ -61,7 +61,7 @@ class DoctrineExtensionListener implements ContainerAwareInterface
     }
 
     /**
-     * @param TokenInterface $token
+     * @param TokenInterface|null $token
      *
      * @return bool
      */
