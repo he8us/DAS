@@ -44,6 +44,13 @@ class User implements AdvancedUserInterface, \Serializable
 {
     use TimestampableEntity;
 
+    const ROLE_STUDENT_PARENT = 'ROLE_STUDENT_PARENT';
+    const ROLE_TEACHER = 'ROLE_TEACHER';
+    const ROLE_TITULAR = 'ROLE_TITULAR';
+    const ROLE_COURSE_TITULAR = 'ROLE_COURSE_TITULAR';
+    const ROLE_COORDINATOR = 'ROLE_COORDINATOR';
+    const ROLE_SUPER_ADMIN = 'ROLE_SUPER_ADMIN';
+
     /**
      * @var int
      *

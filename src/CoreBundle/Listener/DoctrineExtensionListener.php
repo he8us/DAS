@@ -65,8 +65,12 @@ class DoctrineExtensionListener implements ContainerAwareInterface
      *
      * @return bool
      */
-    private function isUserAuthenticated(TokenInterface $token):bool
+    private function isUserAuthenticated(TokenInterface $token = null):bool
     {
+        if(null === $token){
+            return false;
+        }
+
         $authorizationChecker = $this->container->get('security.authorization_checker');
         return null !== $token && $authorizationChecker->isGranted('IS_AUTHENTICATED_REMEMBERED');
     }

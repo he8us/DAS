@@ -6,12 +6,14 @@ services:
     user.twig_extension:
       class: UserBundle\Twig\UserExtension
       public: false
+      arguments:
+        - '@user.service.role_service'
       tags:
         - { name: twig.extension }
 
     user.service.role_service:
       class: UserBundle\Services\RoleService
-      arguments: ['@security.role_hierarchy']
+      arguments: ['@security.role_hierarchy', '@translator']
 
     user.form.type.profile_picture:
       class: UserBundle\Form\ProfilePictureType

@@ -16,6 +16,8 @@ use UserBundle\Repository\StudentRepository;
  */
 class Student implements AdvancedUserInterface, \Serializable
 {
+    const ROLE_STUDENT = 'ROLE_STUDENT';
+
     /**
      * @var int
      *
