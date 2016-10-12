@@ -1,0 +1,6 @@
+checks:
+    php: true
+# .scrutinizer.yml
+filter:
+    excluded_paths:
+        - tests/*
