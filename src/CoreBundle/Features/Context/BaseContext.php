@@ -19,7 +19,7 @@ use Behat\Symfony2Extension\Context\KernelDictionary;
  *
  * @package CoreBundle\Features\Context
  *
- * @author  Cedric Michaux <cedric@he8us.be>
+ * @author Cedric Michaux <cedric@he8us.be>
  */
 class BaseContext extends MinkContext
 {

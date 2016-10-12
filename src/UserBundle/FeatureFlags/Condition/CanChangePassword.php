@@ -19,7 +19,7 @@ use Symfony\Component\Security\Core\Exception\AuthenticationCredentialsNotFoundE
  *
  * @package UserBundle\FeatureFlags\Condition
  *
- * @author  Cedric Michaux <cedric@he8us.be>
+ * @author Cedric Michaux <cedric@he8us.be>
  */
 class CanChangePassword implements ConditionInterface
 {

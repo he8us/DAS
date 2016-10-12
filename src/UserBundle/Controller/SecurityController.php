@@ -27,7 +27,7 @@ use UserBundle\Form\UserType;
  *
  * @package UserBundle\Controller
  *
- * @author  Cedric Michaux <cedric@he8us.be>
+ * @author Cedric Michaux <cedric@he8us.be>
  */
 class SecurityController extends Controller
 {

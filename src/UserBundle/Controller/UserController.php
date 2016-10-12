@@ -18,7 +18,7 @@ use Symfony\Component\HttpFoundation\Response;
  *
  * @package UserBundle\Controller
  *
- * @author  Cedric Michaux <cedric@he8us.be>
+ * @author Cedric Michaux <cedric@he8us.be>
  */
 class UserController extends Controller
 {

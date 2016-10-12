@@ -19,7 +19,7 @@ use UserBundle\Form\ImportStudentsType;
  *
  * @package UserBundle\Controller
  *
- * @author  Cedric Michaux <cedric@he8us.be>
+ * @author Cedric Michaux <cedric@he8us.be>
  */
 class StudentController extends Controller
 {
