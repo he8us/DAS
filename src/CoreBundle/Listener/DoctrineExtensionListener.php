@@ -12,6 +12,7 @@ namespace CoreBundle\Listener;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
+use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 
 class DoctrineExtensionListener implements ContainerAwareInterface
 {
@@ -39,13 +40,40 @@ class DoctrineExtensionListener implements ContainerAwareInterface
 
     public function onKernelRequest()
     {
-        $tokenStorage = $this->container->get('security.token_storage')->getToken();
-        $authorizationChecker = $this->container->get('security.authorization_checker');
-        if (null !== $tokenStorage && $authorizationChecker->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
-            $loggable = $this->container->get('gedmo.listener.loggable');
-            $loggable->setUsername($tokenStorage->getUser());
-            $blameable = $this->container->get('gedmo.listener.blameable');
-            $blameable->setUserValue($tokenStorage->getUser());
+        $token = $this->container->get('security.token_storage')->getToken();
+
+        if ($this->isUserAuthenticated($token)) {
+            $this->initiaiizeLoggable($token);
+            $this->initializeBlameable($token);
         }
+    }
+
+    /**
+     * @param TokenInterface $token
+     *
+     * @return bool
+     */
+    private function isUserAuthenticated(TokenInterface $token):bool
+    {
+        $authorizationChecker = $this->container->get('security.authorization_checker');
+        return null !== $token && $authorizationChecker->isGranted('IS_AUTHENTICATED_REMEMBERED');
+    }
+
+    /**
+     * @param TokenInterface $token
+     */
+    private function initiaiizeLoggable(TokenInterface $token)
+    {
+        $loggable = $this->container->get('gedmo.listener.loggable');
+        $loggable->setUsername($token->getUser());
+    }
+
+    /**
+     * @param TokenInterface $token
+     */
+    private function initializeBlameable(TokenInterface $token)
+    {
+        $blameable = $this->container->get('gedmo.listener.blameable');
+        $blameable->setUserValue($token->getUser());
     }
 }
