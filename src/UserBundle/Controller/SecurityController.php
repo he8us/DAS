@@ -12,6 +12,7 @@ namespace UserBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use UserBundle\Entity\Coordinator;
 use UserBundle\Entity\CourseTitular;
@@ -33,7 +34,7 @@ class SecurityController extends Controller
 
 
     /**
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     public function loginAction()
     {
@@ -50,7 +51,7 @@ class SecurityController extends Controller
     }
 
     /**
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     public function loginStudentAction()
     {
@@ -72,7 +73,7 @@ class SecurityController extends Controller
      *
      * @param         $role
      *
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     public function registerAction(Request $request, $role)
     {
@@ -105,7 +106,7 @@ class SecurityController extends Controller
     }
 
     /**
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     private function displayRoleSelection()
     {
@@ -139,8 +140,6 @@ class SecurityController extends Controller
 
     /**
      * @param User $user
-     *
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     private function authenticateUser(User $user)
     {
@@ -153,7 +152,7 @@ class SecurityController extends Controller
     /**
      * @param Request $request
      *
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     public function resettingRequestAction(Request $request)
     {
@@ -163,7 +162,7 @@ class SecurityController extends Controller
     /**
      * @param Request $request
      *
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     public function requestCardAction(Request $request)
     {
