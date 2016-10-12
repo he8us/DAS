@@ -6,14 +6,19 @@
  * file that was distributed with this source code.
  */
 
-
 namespace CoreBundle\Listener;
 
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 
+/**
+ * Class DoctrineExtensionListener
+ *
+ * @package CoreBundle\Listener
+ *
+ * @author Cedric Michaux <cedric@he8us.be>
+ */
 class DoctrineExtensionListener implements ContainerAwareInterface
 {
     /**
@@ -21,14 +26,23 @@ class DoctrineExtensionListener implements ContainerAwareInterface
      */
     protected $container;
 
+    /**
+     * @param ContainerInterface|null $container
+     */
     public function setContainer(ContainerInterface $container = null)
     {
         $this->container = $container;
     }
 
-    public function onLateKernelRequest(GetResponseEvent $event)
+    public function onLateKernelRequest()
     {
         $this->initializeTranslatable();
+    }
+
+    private function initializeTranslatable()
+    {
+        $translatable = $this->container->get('gedmo.listener.translatable');
+        $translatable->setTranslatableLocale($this->container->get('translator')->getLocale());
     }
 
     public function onConsoleCommand()
@@ -73,11 +87,5 @@ class DoctrineExtensionListener implements ContainerAwareInterface
     {
         $blameable = $this->container->get('gedmo.listener.blameable');
         $blameable->setUserValue($token->getUser());
-    }
-
-    private function initializeTranslatable():void
-    {
-        $translatable = $this->container->get('gedmo.listener.translatable');
-        $translatable->setTranslatableLocale($this->container->get('translator')->getLocale());
     }
 }
