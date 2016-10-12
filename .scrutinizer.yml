@@ -6,8 +6,3 @@ filter:
         - 'tests/*'
         - 'var/*'
         - 'bin/*'
-
-build:
-    environment:
-        php:
-            version: "7.0"
