@@ -19,7 +19,6 @@ use UserBundle\Entity\StudentParent;
 use UserBundle\Entity\Teacher;
 use UserBundle\Entity\Titular;
 use UserBundle\Entity\User;
-use UserBundle\Form\LoginType;
 use UserBundle\Form\UserType;
 
 /**
