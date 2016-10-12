@@ -80,7 +80,7 @@ class PasswordEncoder
     {
         $entity = $args->getEntity();
 
-        if(!$this->validateEntity($entity)){
+        if(!$this->isEntityValid($entity)){
             return;
         }
 
@@ -107,19 +107,16 @@ class PasswordEncoder
      *
      * @return bool
      */
-    private function validateEntity($entity):bool
+    private function isEntityValid($entity):bool
     {
 
-        if (
+        return !(
             !$entity instanceof User &&
             !$entity instanceof Coordinator &&
             !$entity instanceof Teacher &&
             !$entity instanceof Titular &&
             !$entity instanceof CourseTitular &&
             !$entity instanceof StudentParent
-        ) {
-            return false;
-        }
-        return true;
+        );
     }
 }

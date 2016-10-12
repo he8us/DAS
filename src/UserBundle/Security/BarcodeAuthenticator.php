@@ -108,27 +108,22 @@ class BarcodeAuthenticator extends AbstractGuardAuthenticator
      */
     public function getCredentials(Request $request)
     {
-        if ($request->getPathInfo() != '/student/login' || !$request->isMethod('POST')) {
+        if(!$this->shouldReturnCredentials($request)){
             return;
         }
 
-        if (
-            $request->request->has('_username') &&
-            $request->request->has('_barcode')
-        ) {
-            $username = $request->request->get('_username');
-            $barcode = $request->request->get('_barcode');
-            $request->getSession()->set(Security::LAST_USERNAME, $username);
-            $this->logger->addDebug(sprintf("Found username (%s) and barcode (%s) in request", $username, $barcode));
-            return [
-                'username' => $username,
-                'barcode'  => $barcode,
-            ];
-        }
 
-        $this->logger->addDebug(sprintf("No credentials found in the request. %s", $request));
+        $username = $request->request->get('_username');
+        $barcode = $request->request->get('_barcode');
 
-        return;
+        $request->getSession()->set(Security::LAST_USERNAME, $username);
+
+        $this->logger->addDebug(sprintf("Found username (%s) and barcode (%s) in request", $username, $barcode));
+
+        return [
+            'username' => $username,
+            'barcode'  => $barcode,
+        ];
     }
 
     /**
@@ -247,6 +242,35 @@ class BarcodeAuthenticator extends AbstractGuardAuthenticator
      */
     public function supportsRememberMe()
     {
+        return true;
+    }
+
+    /**
+     * @param Request $request
+     *
+     * @return bool
+     */
+    private function hasRequestCredentials(Request $request):bool
+    {
+        return $request->request->has('_username') && $request->request->has('_barcode');
+    }
+
+    /**
+     * @param Request $request
+     *
+     * @return bool
+     */
+    private function shouldReturnCredentials(Request $request):bool
+    {
+        if ($request->getPathInfo() != '/student/login' || !$request->isMethod('POST')) {
+            return false;
+        }
+
+        if (!$this->hasRequestCredentials($request)) {
+            $this->logger->addDebug(sprintf("No credentials found in the request. %s", $request));
+            return false;
+        }
+
         return true;
     }
 }

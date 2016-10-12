@@ -88,11 +88,11 @@ class SecurityController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
+            $entityManager = $this->getDoctrine()->getManager();
             $user = $form->getData();
             $user->setActive(true);
-            $em->persist($user);
-            $em->flush();
+            $entityManager->persist($user);
+            $entityManager->flush();
 
             $this->authenticateUser($user);
 
@@ -120,23 +120,32 @@ class SecurityController extends Controller
      */
     private function getUserTypeForRole($role)
     {
-        switch ($role) {
-            case "coordinator":
-                return new Coordinator();
+        $className = $this->getClassFromString($role);
 
-            case "teacher":
-                return new Teacher();
-
-            case "titular":
-                return new Titular();
-
-            case "course_titular":
-                return new CourseTitular();
-
-            case "parent":
-                return new StudentParent();
+        if (!class_exists($className)) {
+            return null;
         }
+
+        return new $className();
     }
+
+    /**
+     * @param $role
+     *
+     * @return string
+     */
+    private function getClassFromString($role):string
+    {
+        $userType = str_replace(' ', '', ucwords(str_replace('_', ' ', strtolower($role))));
+
+        if ('Parent' === $userType) {
+            $userType = 'StudentParent';
+        }
+
+        $className = 'UserBundle\\Entity\\' . $userType;
+        return $className;
+    }
+
 
     /**
      * @param User $user
