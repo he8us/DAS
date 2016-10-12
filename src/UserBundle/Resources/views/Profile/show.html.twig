@@ -43,8 +43,10 @@
     {% endif %}
 
     {% if has_feature('CanChangePasswordFeature') %}
-        <a href="{{ path('fos_user_change_password') }}" class="btn btn-default">{{ 'layout.change_password' | trans }}</a>
+        <a href="{{ path('fos_user_change_password') }}"
+           class="btn btn-default">{{ 'layout.change_password' | trans }}</a>
     {% endif %}
 
-    <a href="{{ path('fos_user_profile_edit') }}" class="btn btn-info pull-right">{{ 'layout.profile_edit' | trans }}</a>
+    <a href="{{ path('fos_user_profile_edit') }}"
+       class="btn btn-info pull-right">{{ 'layout.profile_edit' | trans }}</a>
 {% endblock %}

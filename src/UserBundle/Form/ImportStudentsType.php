@@ -23,11 +23,10 @@ class ImportStudentsType extends AbstractType
             FileType::class,
             [
                 "required" => true,
-                'label' => 'form.user.import.student.file'
+                'label'    => 'form.user.import.student.file',
             ]
         );
     }
-
 
 
 }

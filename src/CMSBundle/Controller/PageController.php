@@ -23,9 +23,9 @@ class PageController extends Controller
 
         $pages = $em->getRepository('CMSBundle:Page')->findAll();
 
-        return $this->render('page/index.html.twig', array(
+        return $this->render('page/index.html.twig', [
             'pages' => $pages,
-        ));
+        ]);
     }
 
     /**
@@ -46,13 +46,13 @@ class PageController extends Controller
             $em->persist($page);
             $em->flush();
 
-            return $this->redirectToRoute('page_show', array('id' => $page->getId()));
+            return $this->redirectToRoute('page_show', ['id' => $page->getId()]);
         }
 
-        return $this->render('page/new.html.twig', array(
+        return $this->render('page/new.html.twig', [
             'page' => $page,
             'form' => $form->createView(),
-        ));
+        ]);
     }
 
     /**
@@ -66,10 +66,10 @@ class PageController extends Controller
     {
         $deleteForm = $this->createDeleteForm($page);
 
-        return $this->render('page/show.html.twig', array(
-            'page' => $page,
+        return $this->render('page/show.html.twig', [
+            'page'        => $page,
             'delete_form' => $deleteForm->createView(),
-        ));
+        ]);
     }
 
     /**
@@ -82,7 +82,7 @@ class PageController extends Controller
     private function createDeleteForm(Page $page)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('page_delete', array('id' => $page->getId())))
+            ->setAction($this->generateUrl('page_delete', ['id' => $page->getId()]))
             ->setMethod('DELETE')
             ->getForm();
     }
@@ -106,14 +106,14 @@ class PageController extends Controller
             $em->persist($page);
             $em->flush();
 
-            return $this->redirectToRoute('page_edit', array('id' => $page->getId()));
+            return $this->redirectToRoute('page_edit', ['id' => $page->getId()]);
         }
 
-        return $this->render('page/edit.html.twig', array(
-            'page' => $page,
-            'edit_form' => $editForm->createView(),
+        return $this->render('page/edit.html.twig', [
+            'page'        => $page,
+            'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-        ));
+        ]);
     }
 
     /**

@@ -36,8 +36,8 @@ class RoleService
         $role = new Role($role);
 
 
-        foreach ($user->getRoles() as $userRole){
-            if(in_array($role, $this->roleHierarchy->getReachableRoles([new Role($userRole)]))){
+        foreach ($user->getRoles() as $userRole) {
+            if (in_array($role, $this->roleHierarchy->getReachableRoles([new Role($userRole)]))) {
                 return true;
             }
         }

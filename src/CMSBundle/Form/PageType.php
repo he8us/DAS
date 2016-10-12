@@ -11,26 +11,26 @@ class PageType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
-     * @param array $options
+     * @param array                $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
             ->add('title', [
-                "label" => "form.cms.page.title"
+                "label" => "form.cms.page.title",
             ])
             ->add('body', [
-                "label" => "form.cms.page.body"
+                "label" => "form.cms.page.body",
             ]);
     }
-    
+
     /**
      * @param OptionsResolver $resolver
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
-            'data_class' => Page::class
-        ));
+        $resolver->setDefaults([
+            'data_class' => Page::class,
+        ]);
     }
 }

@@ -70,7 +70,7 @@ class BarcodeAuthenticator extends AbstractGuardAuthenticator
      *  B) For an API token authentication system, you return a 401 response
      *      return new Response('Auth header required', 401);
      *
-     * @param Request                 $request       The request that resulted in an AuthenticationException
+     * @param Request                 $request The request that resulted in an AuthenticationException
      * @param AuthenticationException $authException The exception that started the authentication process
      *
      * @return Response
@@ -122,7 +122,7 @@ class BarcodeAuthenticator extends AbstractGuardAuthenticator
             $this->logger->addDebug(sprintf("Found username (%s) and barcode (%s) in request", $username, $barcode));
             return [
                 'username' => $username,
-                'barcode' => $barcode
+                'barcode'  => $barcode,
             ];
         }
 

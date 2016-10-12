@@ -2,14 +2,15 @@
 
 namespace CourseBundle\Entity;
 
-use UserBundle\Entity\Titular;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
+use UserBundle\Entity\Titular;
 
 /**
  * Class
  *
- * @ORM\Table(name="grade_class", uniqueConstraints={@ORM\UniqueConstraint(name="grade_class_unique", columns={"grade_id", "section"})})
+ * @ORM\Table(name="grade_class", uniqueConstraints={@ORM\UniqueConstraint(name="grade_class_unique",
+ *                                columns={"grade_id", "section"})})
  * @ORM\Entity(repositoryClass="CourseBundle\Repository\GradeClassRepository")
  */
 class GradeClass
@@ -61,6 +62,7 @@ class GradeClass
 
     /**
      * Get grade
+     *
      * @return Grade
      */
     public function getGrade() : Grade

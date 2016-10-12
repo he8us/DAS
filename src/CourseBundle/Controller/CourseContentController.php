@@ -26,7 +26,7 @@ class CourseContentController extends Controller
         $datatable->buildDatatable();
 
         return $this->render('CourseBundle:coursecontent:index.html.twig', [
-            'datatable' => $datatable
+            'datatable' => $datatable,
         ]);
     }
 
@@ -48,13 +48,13 @@ class CourseContentController extends Controller
             $em->persist($courseContent);
             $em->flush();
 
-            return $this->redirectToRoute('course_content_show', array('id' => $courseContent->getId()));
+            return $this->redirectToRoute('course_content_show', ['id' => $courseContent->getId()]);
         }
 
-        return $this->render('CourseBundle:coursecontent:new.html.twig', array(
+        return $this->render('CourseBundle:coursecontent:new.html.twig', [
             'courseContent' => $courseContent,
-            'form' => $form->createView(),
-        ));
+            'form'          => $form->createView(),
+        ]);
     }
 
     /**
@@ -81,10 +81,10 @@ class CourseContentController extends Controller
     {
         $deleteForm = $this->createDeleteForm($courseContent);
 
-        return $this->render('CourseBundle:coursecontent:show.html.twig', array(
+        return $this->render('CourseBundle:coursecontent:show.html.twig', [
             'courseContent' => $courseContent,
-            'delete_form' => $deleteForm->createView(),
-        ));
+            'delete_form'   => $deleteForm->createView(),
+        ]);
     }
 
     /**
@@ -97,7 +97,7 @@ class CourseContentController extends Controller
     private function createDeleteForm(CourseContent $courseContent)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('course_content_delete', array('id' => $courseContent->getId())))
+            ->setAction($this->generateUrl('course_content_delete', ['id' => $courseContent->getId()]))
             ->setMethod('DELETE')
             ->getForm();
     }
@@ -121,14 +121,14 @@ class CourseContentController extends Controller
             $em->persist($courseContent);
             $em->flush();
 
-            return $this->redirectToRoute('course_content_edit', array('id' => $courseContent->getId()));
+            return $this->redirectToRoute('course_content_edit', ['id' => $courseContent->getId()]);
         }
 
-        return $this->render('CourseBundle:coursecontent:edit.html.twig', array(
+        return $this->render('CourseBundle:coursecontent:edit.html.twig', [
             'courseContent' => $courseContent,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
+            'edit_form'     => $editForm->createView(),
+            'delete_form'   => $deleteForm->createView(),
+        ]);
     }
 
     /**

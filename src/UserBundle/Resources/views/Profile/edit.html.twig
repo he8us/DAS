@@ -12,7 +12,7 @@
     <div class="row">
 
         <div class="col-md-4">
-            {{form_row(form.profilePicture)}}
+            {{ form_row(form.profilePicture) }}
         </div>
 
         <div class="col-md-8">
@@ -30,7 +30,8 @@
 
 {% block box_footer %}
     {% if has_feature('CanDeleteAccountFeature') %}
-        <a href="{{ path('user_delete_account') }}" class="btn btn-danger">{{ 'layout.profile.delete.button' | trans({}, 'messages') }}</a>
+        <a href="{{ path('user_delete_account') }}"
+           class="btn btn-danger">{{ 'layout.profile.delete.button' | trans({}, 'messages') }}</a>
     {% endif %}
 
     <input type="submit" class="btn btn-info pull-right" value="{{ 'profile.edit.submit'|trans }}"/>

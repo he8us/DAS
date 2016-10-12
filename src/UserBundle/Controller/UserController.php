@@ -15,6 +15,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class UserController
+ *
  * @package UserBundle\Controller
  * @author  Cedric Michaux <cedric@he8us.be>
  */
@@ -38,7 +39,7 @@ class UserController extends Controller
         $datatable->buildDatatable();
 
         return $this->render('UserBundle:User:list.html.twig', [
-            'datatable' => $datatable
+            'datatable' => $datatable,
         ]);
     }
 

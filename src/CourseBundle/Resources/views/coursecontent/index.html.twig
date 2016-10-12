@@ -5,18 +5,19 @@
 
     <table>
         <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Createdat</th>
-                <th>Updatedat</th>
-                <th>Actions</th>
-            </tr>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Createdat</th>
+            <th>Updatedat</th>
+            <th>Actions</th>
+        </tr>
         </thead>
         <tbody>
         {% for courseContent in courseContents %}
             <tr>
-                <td><a href="{{ path('course_content_show', { 'id': courseContent.id }) }}">{{ courseContent.id }}</a></td>
+                <td><a href="{{ path('course_content_show', { 'id': courseContent.id }) }}">{{ courseContent.id }}</a>
+                </td>
                 <td>{{ courseContent.name }}</td>
                 <td>{% if courseContent.createdAt %}{{ courseContent.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{% if courseContent.updatedAt %}{{ courseContent.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>

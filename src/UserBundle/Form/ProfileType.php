@@ -42,8 +42,8 @@ class ProfileType extends AbstractType
         $builder->add('profilePicture',
             ProfilePictureType::class,
             [
-                'label' => 'form.profile.picture',
-                'required' => false
+                'label'    => 'form.profile.picture',
+                'required' => false,
             ]
         );
 

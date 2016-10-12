@@ -8,6 +8,8 @@
 {% endblock %}
 
 {% block box_footer %}
-    <a href="{{ path('user_delete_account', {'confirmed': 'yes'}) }}" class="btn btn-danger pull-right">{{ "layout.profile.delete.yes_sure" | trans }}</a>
-    <a href="{{ path("page_homepage") }}" class="btn btn-info pull-right">{{ "layout.profile.delete.no_take_me_safe_place" | trans }}</a>
+    <a href="{{ path('user_delete_account', {'confirmed': 'yes'}) }}"
+       class="btn btn-danger pull-right">{{ "layout.profile.delete.yes_sure" | trans }}</a>
+    <a href="{{ path("page_homepage") }}"
+       class="btn btn-info pull-right">{{ "layout.profile.delete.no_take_me_safe_place" | trans }}</a>
 {% endblock %}

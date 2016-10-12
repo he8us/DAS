@@ -13,6 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 /**
  * Class ProfileController
+ *
  * @package UserBundle\Controller
  * @author  Cedric Michaux <cedric@he8us.be>
  */

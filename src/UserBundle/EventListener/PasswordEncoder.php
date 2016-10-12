@@ -10,8 +10,6 @@
 namespace UserBundle\EventListener;
 
 use Doctrine\ORM\Event\LifecycleEventArgs;
-use Symfony\Component\Security\Core\Encoder\PasswordEncoderInterface;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoder;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use UserBundle\Entity\Coordinator;
 use UserBundle\Entity\CourseTitular;
@@ -52,16 +50,6 @@ class PasswordEncoder
      *
      * @return object|void
      */
-    public function preUpdate(LifecycleEventArgs $args)
-    {
-        return $this->encodePassword($args);
-    }
-
-    /**
-     * @param LifecycleEventArgs $args
-     *
-     * @return object|void
-     */
     private function encodePassword(LifecycleEventArgs $args)
     {
         $entity = $args->getEntity();
@@ -78,7 +66,7 @@ class PasswordEncoder
         }
 
 
-        if(!$entity->getPlainPassword()){
+        if (!$entity->getPlainPassword()) {
             return;
         }
 
@@ -86,5 +74,15 @@ class PasswordEncoder
         $entity->setPassword($encodedPassword);
 
         return $entity;
+    }
+
+    /**
+     * @param LifecycleEventArgs $args
+     *
+     * @return object|void
+     */
+    public function preUpdate(LifecycleEventArgs $args)
+    {
+        return $this->encodePassword($args);
     }
 }

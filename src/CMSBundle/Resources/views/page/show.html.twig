@@ -5,30 +5,30 @@
 
     <table>
         <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ page.id }}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
-                <td>{{ page.title }}</td>
-            </tr>
-            <tr>
-                <th>Slug</th>
-                <td>{{ page.slug }}</td>
-            </tr>
-            <tr>
-                <th>Body</th>
-                <td>{{ page.body }}</td>
-            </tr>
-            <tr>
-                <th>Createdat</th>
-                <td>{% if page.createdAt %}{{ page.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Updatedat</th>
-                <td>{% if page.updatedAt %}{{ page.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
+        <tr>
+            <th>Id</th>
+            <td>{{ page.id }}</td>
+        </tr>
+        <tr>
+            <th>Title</th>
+            <td>{{ page.title }}</td>
+        </tr>
+        <tr>
+            <th>Slug</th>
+            <td>{{ page.slug }}</td>
+        </tr>
+        <tr>
+            <th>Body</th>
+            <td>{{ page.body }}</td>
+        </tr>
+        <tr>
+            <th>Createdat</th>
+            <td>{% if page.createdAt %}{{ page.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+        </tr>
+        <tr>
+            <th>Updatedat</th>
+            <td>{% if page.updatedAt %}{{ page.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+        </tr>
         </tbody>
     </table>
 
@@ -41,7 +41,7 @@
         </li>
         <li>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+            <input type="submit" value="Delete">
             {{ form_end(delete_form) }}
         </li>
     </ul>

@@ -16,6 +16,7 @@ use Symfony\Component\Security\Core\Exception\AuthenticationCredentialsNotFoundE
 
 /**
  * Class CanRequestCard
+ *
  * @package UserBundle\FeatureFlags\Condition
  * @author  Cedric Michaux <cedric@he8us.be>
  */

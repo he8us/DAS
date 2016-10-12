@@ -12,6 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 /**
  * Class DefaultController
+ *
  * @package CMSBundle\Controller
  * @author  Cedric Michaux <cedric@he8us.be>
  */

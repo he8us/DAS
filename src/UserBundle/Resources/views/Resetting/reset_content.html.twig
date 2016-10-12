@@ -1,10 +1,8 @@
-
-
 {{ form_start(form, { 'action': path('fos_user_resetting_reset', {'token': token}), 'attr': { 'class': 'fos_user_resetting_reset' } }) }}
-    <div class="box-body">
-        {{ form_widget(form) }}
-    </div>
-    <div class="box-footer">
-        <input type="submit" class="btn btn-info pull-right" value="{{ 'resetting.reset.submit'|trans }}" />
-    </div>
+<div class="box-body">
+    {{ form_widget(form) }}
+</div>
+<div class="box-footer">
+    <input type="submit" class="btn btn-info pull-right" value="{{ 'resetting.reset.submit'|trans }}"/>
+</div>
 {{ form_end(form) }}

@@ -16,6 +16,7 @@ use UserBundle\Form\ImportStudentsType;
 
 /**
  * Class StudentController
+ *
  * @package UserBundle\Controller
  * @author  Cedric Michaux <cedric@he8us.be>
  */
@@ -35,7 +36,7 @@ class StudentController extends Controller
         $datatable->buildDatatable();
 
         return $this->render('UserBundle:Student:list.html.twig', [
-            'datatable' => $datatable
+            'datatable' => $datatable,
         ]);
     }
 
@@ -69,11 +70,11 @@ class StudentController extends Controller
         $form = $this->createForm(ImportStudentsType::class);
 
 
-        if($form->isSubmitted() && $form->isValid()){
+        if ($form->isSubmitted() && $form->isValid()) {
         }
 
         return $this->render('UserBundle:Student:import.html.twig', [
-            "form" => $form->createView()
+            "form" => $form->createView(),
         ]);
     }
 

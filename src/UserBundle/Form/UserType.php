@@ -44,28 +44,27 @@ class UserType extends AbstractType
                 'username',
                 TextType::class,
                 [
-                    'label' => "form.user.username"
+                    'label' => "form.user.username",
                 ]
             )
             ->add(
                 'plainPassword',
                 RepeatedType::class,
                 [
-                    'type' => PasswordType::class,
+                    'type'            => PasswordType::class,
                     'invalid_message' => 'form.user.password.should_match',
-                    'first_options'  => ['label' => 'form.user.password'],
-                    'second_options' => ['label' => 'form.user.password.repeat'],
+                    'first_options'   => ['label' => 'form.user.password'],
+                    'second_options'  => ['label' => 'form.user.password.repeat'],
                 ]
             )
-
             ->add(
                 'email',
                 RepeatedType::class,
                 [
-                    'type' => EmailType::class,
+                    'type'            => EmailType::class,
                     'invalid_message' => 'form.user.email.should_match',
-                    'first_options'=> ['label' => 'form.user.email'],
-                    'second_options'=> ['label' => 'form.user.email.repeat']
+                    'first_options'   => ['label' => 'form.user.email'],
+                    'second_options'  => ['label' => 'form.user.email.repeat'],
 
                 ]
             )
@@ -73,16 +72,15 @@ class UserType extends AbstractType
                 'phone',
                 TextType::class,
                 [
-                    'label' => 'form.user.phone'
+                    'label' => 'form.user.phone',
                 ]
             )
-
             ->add(
                 'profilePicture',
                 ProfilePictureType::class,
                 [
-                    "label" => false,
-                    'required' => false
+                    "label"    => false,
+                    'required' => false,
                 ]
             );
     }
@@ -94,7 +92,7 @@ class UserType extends AbstractType
     public function setDefaultOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => User::class
+            'data_class' => User::class,
         ]);
     }
 }

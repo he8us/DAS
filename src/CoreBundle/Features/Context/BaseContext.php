@@ -31,13 +31,13 @@ class BaseContext extends MinkContext
         // we try to call the method on the Page first
         $page = $this->getSession()->getPage();
         if (method_exists($page, $method)) {
-            return call_user_func_array(array($page, $method), $parameters);
+            return call_user_func_array([$page, $method], $parameters);
         }
 
         // we try to call the method on the Session
         $session = $this->getSession();
         if (method_exists($session, $method)) {
-            return call_user_func_array(array($session, $method), $parameters);
+            return call_user_func_array([$session, $method], $parameters);
         }
 
         // could not find the method at all

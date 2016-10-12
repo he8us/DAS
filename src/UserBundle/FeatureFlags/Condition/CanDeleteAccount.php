@@ -9,13 +9,9 @@
 
 namespace UserBundle\FeatureFlags\Condition;
 
-use DZunke\FeatureFlagsBundle\Context;
-use DZunke\FeatureFlagsBundle\Toggle\Conditions\ConditionInterface;
-use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
-use Symfony\Component\Security\Core\Exception\AuthenticationCredentialsNotFoundException;
-
 /**
  * Class CanDeleteAccount
+ *
  * @package UserBundle\FeatureFlags\Condition
  * @author  Cedric Michaux <cedric@he8us.be>
  */

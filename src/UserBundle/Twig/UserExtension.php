@@ -19,18 +19,18 @@ class UserExtension extends \Twig_Extension
     public function getFunctions()
     {
         return [
-          new \Twig_SimpleFunction('profile_picture', [$this, 'profilePictureFunction'], [
-              'is_safe' => array('html'),
-              'needs_environment' => true
-          ])
+            new \Twig_SimpleFunction('profile_picture', [$this, 'profilePictureFunction'], [
+                'is_safe'           => ['html'],
+                'needs_environment' => true,
+            ]),
         ];
     }
 
     public function profilePictureFunction(\Twig_Environment $twig, UserInterface $user, $class = "img-circle")
     {
         return $twig->render('UserBundle:Twig:profile_picture.html.twig', [
-            'user' => $user,
-            'class' => $class
+            'user'  => $user,
+            'class' => $class,
         ]);
     }
 

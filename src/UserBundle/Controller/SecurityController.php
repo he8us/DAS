@@ -24,6 +24,7 @@ use UserBundle\Form\UserType;
 
 /**
  * Class SecurityController
+ *
  * @package UserBundle\Controller
  * @author  Cedric Michaux <cedric@he8us.be>
  */
@@ -42,8 +43,8 @@ class SecurityController extends Controller
 
         return $this->render("UserBundle:Security:login.html.twig",
             [
-                'error' => $error,
-                'last_username' => $lastUsername
+                'error'         => $error,
+                'last_username' => $lastUsername,
             ]
         );
     }
@@ -59,8 +60,8 @@ class SecurityController extends Controller
 
         return $this->render("UserBundle:Security:student-login.html.twig",
             [
-                'error' => $error,
-                'last_username' => $lastUsername
+                'error'         => $error,
+                'last_username' => $lastUsername,
             ]
         );
     }
@@ -99,7 +100,7 @@ class SecurityController extends Controller
 
         return $this->render('UserBundle:Registration:register.html.twig', [
             "form" => $form->createView(),
-            "role" => $role
+            "role" => $role,
         ]);
     }
 

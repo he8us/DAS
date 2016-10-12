@@ -17,13 +17,16 @@
         <!-- Menu Footer-->
         <li class="user-footer">
             <div class="pull-left">
-                <a href="{{ path('user_profile_view') }}" class="btn btn-default btn-flat">{{ "layout.profile" | trans }}</a>
+                <a href="{{ path('user_profile_view') }}"
+                   class="btn btn-default btn-flat">{{ "layout.profile" | trans }}</a>
             </div>
             <div class="pull-right">
                 {% if is_granted("ROLE_STUDENT") %}
-                    <a href="{{ path('user_student_logout') }}" class="btn btn-default btn-flat" id="_logout">{{ "layout.logout" | trans }}</a>
+                    <a href="{{ path('user_student_logout') }}" class="btn btn-default btn-flat"
+                       id="_logout">{{ "layout.logout" | trans }}</a>
                 {% else %}
-                    <a href="{{ path('user_logout') }}" class="btn btn-default btn-flat" id="_logout">{{ "layout.logout" | trans }}</a>
+                    <a href="{{ path('user_logout') }}" class="btn btn-default btn-flat"
+                       id="_logout">{{ "layout.logout" | trans }}</a>
                 {% endif %}
             </div>
         </li>

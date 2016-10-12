@@ -20,17 +20,17 @@ class CourseContentType extends AbstractType
             ->add('section',
                 TextType::class,
                 [
-                    'label' => 'form.courses.content.section'
+                    'label' => 'form.courses.content.section',
                 ]
             )
             ->add('parent', TextType::class, [
-                'label' => 'form.courses.content.parent'
+                'label' => 'form.courses.content.parent',
             ])
             ->add('teachers', TextType::class, [
-                'label' => 'form.courses.content.teachers'
+                'label' => 'form.courses.content.teachers',
             ])
             ->add('grades', TextType::class, [
-                'label' => 'form.courses.content.grades'
+                'label' => 'form.courses.content.grades',
             ]);
     }
 
@@ -39,8 +39,8 @@ class CourseContentType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
-            'data_class' => CourseContent::class
-        ));
+        $resolver->setDefaults([
+            'data_class' => CourseContent::class,
+        ]);
     }
 }

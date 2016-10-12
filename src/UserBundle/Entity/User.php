@@ -83,21 +83,11 @@ class User implements AdvancedUserInterface, \Serializable
      * @ORM\Column(type="string", length=64)
      */
     protected $password;
-
-    /**
-     * @var string
-     * @Assert\NotBlank(message="form.security.password.error.missing")
-     * @Assert\Length(max=4096)
-     */
-    private $plainPassword;
-
-
     /**
      * @var string
      * @ORM\Column(type="string", length=32)
      */
     protected $salt;
-
     /**
      * @var string
      *
@@ -128,6 +118,12 @@ class User implements AdvancedUserInterface, \Serializable
      * @ORM\Column(name="phone", type="string", length=50, nullable=true)
      */
     protected $phone;
+    /**
+     * @var string
+     * @Assert\NotBlank(message="form.security.password.error.missing")
+     * @Assert\Length(max=4096)
+     */
+    private $plainPassword;
 
     public function __construct()
     {
@@ -157,6 +153,7 @@ class User implements AdvancedUserInterface, \Serializable
 
     /**
      * String representation of object
+     *
      * @link  http://php.net/manual/en/serializable.serialize.php
      * @return string the string representation of the object or null
      * @since 5.1.0
@@ -171,12 +168,13 @@ class User implements AdvancedUserInterface, \Serializable
             $this->salt,
             $this->email,
             $this->roles,
-            $this->isActive
+            $this->isActive,
         ]);
     }
 
     /**
      * Constructs the object
+     *
      * @link  http://php.net/manual/en/serializable.unserialize.php
      *
      * @param string $serialized <p>
@@ -213,6 +211,7 @@ class User implements AdvancedUserInterface, \Serializable
      * Alternatively, the roles might be stored on a ``roles`` property,
      * and populated in any number of different ways when the user object
      * is created.
+     *
      * @return array (Role|string)[] The user roles
      */
     public function getRoles()
