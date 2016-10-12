@@ -84,6 +84,7 @@ class UserController extends Controller
     }
 
     /**
+     * TODO => Extract
      * @param string $role
      *
      * @return string|null

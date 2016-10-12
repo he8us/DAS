@@ -42,7 +42,7 @@ class PasswordEncoder
      */
     public function prePersist(LifecycleEventArgs $args)
     {
-        return $this->encodePassword($args);
+        return $this->handleEvent($args);
     }
 
     /**
@@ -50,7 +50,33 @@ class PasswordEncoder
      *
      * @return object|void
      */
-    private function encodePassword(LifecycleEventArgs $args)
+    private function handleEvent(LifecycleEventArgs $args)
+    {
+        $entity = $this->getEntity($args);
+
+        if(!$entity){
+            return;
+        }
+
+        return $this->encodePassword($entity);
+    }
+
+    /**
+     * @param LifecycleEventArgs $args
+     *
+     * @return object|void
+     */
+    public function preUpdate(LifecycleEventArgs $args)
+    {
+        return $this->handleEvent($args);
+    }
+
+    /**
+     * @param LifecycleEventArgs $args
+     *
+     * @return object
+     */
+    private function getEntity(LifecycleEventArgs $args):object
     {
         $entity = $args->getEntity();
 
@@ -65,7 +91,14 @@ class PasswordEncoder
             return;
         }
 
+        return $entity;
+    }
 
+    /**
+     * @param $entity
+     */
+    private function encodePassword($entity):void
+    {
         if (!$entity->getPlainPassword()) {
             return;
         }
@@ -74,15 +107,5 @@ class PasswordEncoder
         $entity->setPassword($encodedPassword);
 
         return $entity;
-    }
-
-    /**
-     * @param LifecycleEventArgs $args
-     *
-     * @return object|void
-     */
-    public function preUpdate(LifecycleEventArgs $args)
-    {
-        return $this->encodePassword($args);
     }
 }
