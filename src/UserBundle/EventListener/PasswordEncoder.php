@@ -76,18 +76,11 @@ class PasswordEncoder
      *
      * @return object
      */
-    private function getEntity(LifecycleEventArgs $args):object
+    private function getEntity(LifecycleEventArgs $args)
     {
         $entity = $args->getEntity();
 
-        if (
-            !$entity instanceof User &&
-            !$entity instanceof Coordinator &&
-            !$entity instanceof Teacher &&
-            !$entity instanceof Titular &&
-            !$entity instanceof CourseTitular &&
-            !$entity instanceof StudentParent
-        ) {
+        if(!$this->validateEntity($entity)){
             return;
         }
 
@@ -97,7 +90,7 @@ class PasswordEncoder
     /**
      * @param $entity
      */
-    private function encodePassword($entity):void
+    private function encodePassword($entity)
     {
         if (!$entity->getPlainPassword()) {
             return;
@@ -107,5 +100,26 @@ class PasswordEncoder
         $entity->setPassword($encodedPassword);
 
         return $entity;
+    }
+
+    /**
+     * @param $entity
+     *
+     * @return bool
+     */
+    private function validateEntity($entity):bool
+    {
+
+        if (
+            !$entity instanceof User &&
+            !$entity instanceof Coordinator &&
+            !$entity instanceof Teacher &&
+            !$entity instanceof Titular &&
+            !$entity instanceof CourseTitular &&
+            !$entity instanceof StudentParent
+        ) {
+            return false;
+        }
+        return true;
     }
 }
