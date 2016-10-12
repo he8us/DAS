@@ -18,7 +18,6 @@ use Doctrine\ORM\EntityManager;
 use Exception;
 use Monolog\Logger;
 use Symfony\Bundle\FrameworkBundle\Routing\Router;
-use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use UserBundle\Entity\Coordinator;
 use UserBundle\Entity\CourseTitular;
@@ -29,6 +28,13 @@ use UserBundle\Entity\Titular;
 use UserBundle\Entity\User;
 use UserBundle\Repository\UserRepository;
 
+/**
+ * Class UserContext
+ *
+ * @package UserBundle\Features\Context
+ *
+ * @author Cedric Michaux <cedric@he8us.be>
+ */
 class UserContext extends BaseContext
 {
     use KernelDictionary;
@@ -39,10 +45,10 @@ class UserContext extends BaseContext
     public function clearData()
     {
 
-        /** @var EntityManager $em */
-        $em = $this->getContainer()->get("doctrine")->getManager();
-        $em->createQuery("DELETE FROM UserBundle:Student")->execute();
-        $em->createQuery("DELETE FROM UserBundle:User")->execute();
+        /** @var EntityManager $entityManager */
+        $entityManager = $this->getContainer()->get("doctrine")->getManager();
+        $entityManager->createQuery("DELETE FROM UserBundle:Student")->execute();
+        $entityManager->createQuery("DELETE FROM UserBundle:User")->execute();
     }
 
 
@@ -53,7 +59,7 @@ class UserContext extends BaseContext
      */
     public function thereAreStudentsWithTheFollowingDetails(TableNode $users)
     {
-        $em = $this->getContainer()->get('doctrine')->getManager();
+        $entityManager = $this->getContainer()->get('doctrine')->getManager();
         foreach ($users->getColumnsHash() as $key => $val) {
             $student = new Student();
 
@@ -64,9 +70,9 @@ class UserContext extends BaseContext
             $student->setLastName($val['last_name']);
 
 
-            $em->persist($student);
+            $entityManager->persist($student);
         }
-        $em->flush();
+        $entityManager->flush();
     }
 
     /**
@@ -76,13 +82,10 @@ class UserContext extends BaseContext
      */
     public function thereIsUsersWithTheFollowingDetails(TableNode $users)
     {
-        $em = $this->getContainer()->get('doctrine')->getManager();
+        $entityManager = $this->getContainer()->get('doctrine')->getManager();
         foreach ($users->getColumnsHash() as $key => $val) {
 
-            $user = new User();
-            if (isset($val['role'])) {
-                $this->getUserTypeForRole($val['role']);
-            }
+            $user = isset($val['role']) ? $this->getUserTypeForRole($val['role']) : new User();
 
             $user->setActive(true);
             $user->setFirstName($val['first_name']);
@@ -92,11 +95,10 @@ class UserContext extends BaseContext
             $user->setEmail($val['email']);
             $user->setPhone($val['phone']);
 
-
-            $em->persist($user);
+            $entityManager->persist($user);
         }
 
-        $em->flush();
+        $entityManager->flush();
     }
 
     /**
@@ -140,10 +142,10 @@ class UserContext extends BaseContext
     public function iAmAuthenticatedAs(string $role)
     {
         $container = $this->getContainer();
-        $em = $container->get('doctrine')->getManager();
+        $entityManager = $container->get('doctrine')->getManager();
 
         /** @var UserRepository $repo */
-        $repo = $em->getRepository(User::class);
+        $repo = $entityManager->getRepository(User::class);
 
         $user = $repo->findOneByRole('ROLE_' . $role);
 
@@ -195,9 +197,9 @@ class UserContext extends BaseContext
      */
     public function theUserShouldNotHaveEqualTo($username, $field, $value)
     {
-        $em = $this->getContainer()->get("doctrine")->getManager();
+        $entityManager = $this->getContainer()->get("doctrine")->getManager();
 
-        $repo = $em->getRepository('UserBundle:User');
+        $repo = $entityManager->getRepository('UserBundle:User');
 
         $user = $repo->findOneBy(['username' => $username]);
 
@@ -329,10 +331,10 @@ class UserContext extends BaseContext
         $user->setEmail("test@example.org");
         $user->setActive(true);
 
-        $em = $this->getContainer()->get("doctrine")->getManager();
+        $entityManager = $this->getContainer()->get("doctrine")->getManager();
 
-        $em->persist($user);
-        $em->flush();
+        $entityManager->persist($user);
+        $entityManager->flush();
     }
 
     /**

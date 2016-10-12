@@ -87,23 +87,23 @@ swiftmailer:
 jms_translation:
     configs:
         base:
-            dirs: [%kernel.root_dir%]
-            output_dir: %kernel.root_dir%/Resources/translations
+            dirs: ["%kernel.root_dir%"]
+            output_dir: "%kernel.root_dir%/Resources/translations"
             excluded_dirs: [Features]
 
         cms:
-            dirs: [%kernel.root_dir%/../src/CMSBundle]
-            output_dir: %kernel.root_dir%/../src/CMSBundle/Resources/translations
+            dirs: ["%kernel.root_dir%/../src/CMSBundle"]
+            output_dir: "%kernel.root_dir%/../src/CMSBundle/Resources/translations"
             excluded_dirs: [Features]
 
         users:
-            dirs: [%kernel.root_dir%/../src/UserBundle]
-            output_dir: %kernel.root_dir%/../src/UserBundle/Resources/translations
+            dirs: ["%kernel.root_dir%/../src/UserBundle"]
+            output_dir: "%kernel.root_dir%/../src/UserBundle/Resources/translations"
             excluded_dirs: [Features]
 
         courses:
-            dirs: [%kernel.root_dir%/../src/CourseBundle]
-            output_dir: %kernel.root_dir%/../src/CourseBundle/Resources/translations
+            dirs: ["%kernel.root_dir%/../src/CourseBundle"]
+            output_dir: "%kernel.root_dir%/../src/CourseBundle/Resources/translations"
             excluded_dirs: [Features]
 
 

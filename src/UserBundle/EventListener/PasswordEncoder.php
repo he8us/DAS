@@ -42,7 +42,7 @@ class PasswordEncoder
      */
     public function prePersist(LifecycleEventArgs $args)
     {
-        return $this->encodePassword($args);
+        return $this->handleEvent($args);
     }
 
     /**
@@ -50,22 +50,48 @@ class PasswordEncoder
      *
      * @return object|void
      */
-    private function encodePassword(LifecycleEventArgs $args)
+    private function handleEvent(LifecycleEventArgs $args)
     {
-        $entity = $args->getEntity();
+        $entity = $this->getEntity($args);
 
-        if (
-            !$entity instanceof User &&
-            !$entity instanceof Coordinator &&
-            !$entity instanceof Teacher &&
-            !$entity instanceof Titular &&
-            !$entity instanceof CourseTitular &&
-            !$entity instanceof StudentParent
-        ) {
+        if(!$entity){
             return;
         }
 
+        return $this->encodePassword($entity);
+    }
 
+    /**
+     * @param LifecycleEventArgs $args
+     *
+     * @return object|void
+     */
+    public function preUpdate(LifecycleEventArgs $args)
+    {
+        return $this->handleEvent($args);
+    }
+
+    /**
+     * @param LifecycleEventArgs $args
+     *
+     * @return object
+     */
+    private function getEntity(LifecycleEventArgs $args)
+    {
+        $entity = $args->getEntity();
+
+        if(!$this->isEntityValid($entity)){
+            return;
+        }
+
+        return $entity;
+    }
+
+    /**
+     * @param $entity
+     */
+    private function encodePassword($entity)
+    {
         if (!$entity->getPlainPassword()) {
             return;
         }
@@ -77,12 +103,20 @@ class PasswordEncoder
     }
 
     /**
-     * @param LifecycleEventArgs $args
+     * @param $entity
      *
-     * @return object|void
+     * @return bool
      */
-    public function preUpdate(LifecycleEventArgs $args)
+    private function isEntityValid($entity):bool
     {
-        return $this->encodePassword($args);
+
+        return !(
+            !$entity instanceof User &&
+            !$entity instanceof Coordinator &&
+            !$entity instanceof Teacher &&
+            !$entity instanceof Titular &&
+            !$entity instanceof CourseTitular &&
+            !$entity instanceof StudentParent
+        );
     }
 }

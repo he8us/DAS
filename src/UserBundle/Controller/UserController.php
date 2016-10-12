@@ -17,7 +17,8 @@ use Symfony\Component\HttpFoundation\Response;
  * Class UserController
  *
  * @package UserBundle\Controller
- * @author  Cedric Michaux <cedric@he8us.be>
+ *
+ * @author Cedric Michaux <cedric@he8us.be>
  */
 class UserController extends Controller
 {
@@ -83,6 +84,7 @@ class UserController extends Controller
     }
 
     /**
+     * TODO => Extract
      * @param string $role
      *
      * @return string|null
