@@ -106,29 +106,30 @@ class UserContext extends BaseContext
      */
     private function getUserTypeForRole($role)
     {
-        switch (strtolower($role)) {
-            case "coordinator":
-                return new Coordinator();
+        $className = $this->getClassFromString($role);
 
-            case "teacher":
-                return new Teacher();
-
-            case "titular":
-                return new Titular();
-
-            case "course titular":
-            case "course_titular":
-                return new CourseTitular();
-
-            case "parent":
-            case "student parent":
-            case "student_parent":
-                return new StudentParent();
-
-            case "student":
-                return new Student();
+        if (!class_exists($className)) {
+            return null;
         }
-        return null;
+
+        return new $className();
+    }
+
+    /**
+     * @param $role
+     *
+     * @return string
+     */
+    private function getClassFromString($role):string
+    {
+        $userType = str_replace(' ', '', ucwords(str_replace('_', ' ', strtolower($role))));
+
+        if ('Parent' === $userType) {
+            $userType = 'StudentParent';
+        }
+
+        $className = 'UserBundle\\Entity\\' . $userType;
+        return $className;
     }
 
     /**

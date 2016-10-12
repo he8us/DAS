@@ -1,7 +1,13 @@
 checks:
     php: true
-# .scrutinizer.yml
+
 filter:
     excluded_paths:
-        - tests/*
-        - var/*
+        - 'tests/*'
+        - 'var/*'
+        - 'bin/*'
+
+build:
+    environment:
+        php:
+            version: "7.0"
