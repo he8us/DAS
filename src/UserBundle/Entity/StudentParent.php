@@ -35,7 +35,7 @@ class StudentParent extends User
     }
 
     /**
-     * @return ArrayCollection;
+     * @return ArrayCollection
      */
     public function getChildren(): ArrayCollection
     {

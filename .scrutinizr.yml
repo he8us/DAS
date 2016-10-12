@@ -4,3 +4,4 @@ checks:
 filter:
     excluded_paths:
         - tests/*
+        - var/*

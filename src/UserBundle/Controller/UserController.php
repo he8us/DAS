@@ -10,9 +10,7 @@
 namespace UserBundle\Controller;
 
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -45,7 +43,6 @@ class UserController extends Controller
     }
 
 
-
     public function newAction()
     {
         return $this->render('UserBundle:User:new.html.twig');
@@ -63,6 +60,26 @@ class UserController extends Controller
 
     }
 
+    /**
+     * @param string $confirmed
+     *
+     * @return Response
+     */
+    public function deleteAccountAction($confirmed = "")
+    {
+        if (empty($confirmed)) {
+            return $this->render("UserBundle:Profile:delete.html.twig");
+        }
+
+        $userManager = $this->container->get('fos_user.user_manager');
+        $userManager->deleteUser($this->getUser());
+        return $this->redirectToRoute('page_homepage');
+    }
+
+    public function profileShowAction()
+    {
+
+    }
 
     /**
      * @param string $role
@@ -72,7 +89,7 @@ class UserController extends Controller
     private function getPrettyRoleFromRoleString(string $role)
     {
         $translator = $this->container->get('translator');
-        switch ($role){
+        switch ($role) {
             case UserController::ROLE_STUDENT_PARENT:
                 return $translator->trans("layout.user.role.parent");
 
@@ -91,28 +108,5 @@ class UserController extends Controller
             case UserController::ROLE_SUPER_ADMIN:
                 return $translator->trans("layout.user.role.super_admin");
         }
-    }
-
-
-    /**
-     * @param string $confirmed
-     *
-     * @return Response
-     */
-    public function deleteAccountAction($confirmed = "")
-    {
-        if (empty($confirmed)) {
-            return $this->render("UserBundle:Profile:delete.html.twig");
-        }
-
-        $userManager = $this->container->get('fos_user.user_manager');
-        $userManager->deleteUser($this->getUser());
-        return $this->redirectToRoute('page_homepage');
-    }
-
-
-    public function profileShowAction()
-    {
-
     }
 }

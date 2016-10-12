@@ -13,7 +13,8 @@ namespace CoreBundle\Service;
 class RandomStringService
 {
 
-   public function generateRandomString($length = 13) {
+    public function generateRandomString($length = 13)
+    {
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $charactersLength = strlen($characters);
         $randomString = '';

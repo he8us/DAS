@@ -132,9 +132,9 @@ class Student implements AdvancedUserInterface, \Serializable
     /**
      * @param ProfilePicture|null $profilePicture
      *
-     * @return User
+     * @return Student
      */
-    public function setProfilePicture(ProfilePicture $profilePicture = null) : User
+    public function setProfilePicture(ProfilePicture $profilePicture = null): Student
     {
         $this->profilePicture = $profilePicture;
         return $this;
@@ -220,9 +220,14 @@ class Student implements AdvancedUserInterface, \Serializable
     }
 
 
+    /**
+     * @param StudentParent $parent
+     *
+     * @return Student
+     */
     public function removeParent(StudentParent $parent): Student
     {
-        $this->parents->remove($parent);
+        $this->parents->removeElement($parent);
         return $this;
     }
 

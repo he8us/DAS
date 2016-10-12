@@ -1,7 +1,7 @@
 services:
     user.barcode_authenticator:
         class: UserBundle\Security\BarcodeAuthenticator
-        arguments: ['@doctrine.orm.entity_manager', '@router', '@logger']
+        arguments: ['@doctrine', '@router', '@logger']
 
     user.twig_extension:
       class: UserBundle\Twig\UserExtension

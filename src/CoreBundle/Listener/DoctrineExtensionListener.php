@@ -38,7 +38,7 @@ class DoctrineExtensionListener implements ContainerAwareInterface
             ->setTranslatableLocale($this->container->get('translator')->getLocale());
     }
 
-    public function onKernelRequest(GetResponseEvent $event)
+    public function onKernelRequest()
     {
         if (Kernel::MAJOR_VERSION == 2 && Kernel::MINOR_VERSION < 6) {
             $securityContext = $this->container->get('security.context', ContainerInterface::NULL_ON_INVALID_REFERENCE);

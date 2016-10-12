@@ -62,7 +62,7 @@ class Titular extends User
      */
     public function removeGradeClass(GradeClass $gradeClass): Titular
     {
-        $this->gradeClasses->remove($gradeClass);
+        $this->gradeClasses->removeElement($gradeClass);
         return $this;
     }
 }

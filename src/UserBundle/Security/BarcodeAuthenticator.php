@@ -10,7 +10,7 @@
 namespace UserBundle\Security;
 
 
-use Doctrine\ORM\EntityManager;
+use Doctrine\Common\Persistence\ManagerRegistry;
 use Monolog\Logger;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,19 +18,19 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Router;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
-use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\Security\Guard\AbstractGuardAuthenticator;
+use UserBundle\Entity\Student;
 
 class BarcodeAuthenticator extends AbstractGuardAuthenticator
 {
 
     /**
-     * @var EntityManager
+     * @var ManagerRegistry
      */
-    private $em;
+    private $managerRegistry;
 
     /**
      * @var Router
@@ -45,13 +45,13 @@ class BarcodeAuthenticator extends AbstractGuardAuthenticator
     /**
      * BarcodeAuthenticator constructor.
      *
-     * @param EntityManager $em
-     * @param Router        $router
-     * @param Logger        $logger
+     * @param ManagerRegistry $managerRegistry
+     * @param Router          $router
+     * @param Logger          $logger
      */
-    public function __construct(EntityManager $em, Router $router, Logger $logger)
+    public function __construct(ManagerRegistry $managerRegistry, Router $router, Logger $logger)
     {
-        $this->em = $em;
+        $this->managerRegistry = $managerRegistry;
         $this->router = $router;
 
         $this->logger = $logger;
@@ -108,14 +108,14 @@ class BarcodeAuthenticator extends AbstractGuardAuthenticator
      */
     public function getCredentials(Request $request)
     {
-        if ($request->getPathInfo() != '/student/login'  || !$request->isMethod('POST')) {
+        if ($request->getPathInfo() != '/student/login' || !$request->isMethod('POST')) {
             return;
         }
 
-        if(
+        if (
             $request->request->has('_username') &&
             $request->request->has('_barcode')
-        ){
+        ) {
             $username = $request->request->get('_username');
             $barcode = $request->request->get('_barcode');
             $request->getSession()->set(Security::LAST_USERNAME, $username);
@@ -151,11 +151,13 @@ class BarcodeAuthenticator extends AbstractGuardAuthenticator
         $barcode = $credentials['barcode'];
         $username = $credentials['username'];
 
-        $user = $this->em->getRepository('UserBundle:Student')
+        $user = $this->managerRegistry->getManagerForClass(Student::class)
+            ->getRepository('UserBundle:Student')
             ->findOneBy(['username' => $username]);
 
-        if( null === $user)
+        if (null === $user) {
             return;
+        }
 
         $this->logger->addDebug(sprintf("Found user %s using username (%s)", $user->getId(), $username, $barcode));
 
@@ -174,16 +176,20 @@ class BarcodeAuthenticator extends AbstractGuardAuthenticator
      * @param mixed         $credentials
      * @param UserInterface $user
      *
-     * @return bool
+     * @return boolean|null
      *
      * @throws AuthenticationException
      */
     public function checkCredentials($credentials, UserInterface $user)
     {
-        if($credentials["barcode"] == $user->getBarcode())
-            return true;
+        if (!$user instanceof Student) {
+            return;
+        }
 
-        return;
+        if ($credentials["barcode"] !== $user->getBarcode()) {
+            return;
+        }
+        return true;
     }
 
     /**

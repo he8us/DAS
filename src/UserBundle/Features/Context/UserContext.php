@@ -11,7 +11,6 @@ namespace UserBundle\Features\Context;
 
 
 use Behat\Behat\Definition\Call\Given;
-use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Gherkin\Node\TableNode;
 use Behat\Symfony2Extension\Context\KernelDictionary;
 use CoreBundle\Features\Context\BaseContext;
@@ -110,32 +109,26 @@ class UserContext extends BaseContext
         switch (strtolower($role)) {
             case "coordinator":
                 return new Coordinator();
-                break;
 
             case "teacher":
                 return new Teacher();
-                break;
 
             case "titular":
                 return new Titular();
-                break;
 
             case "course titular":
             case "course_titular":
                 return new CourseTitular();
-                break;
 
             case "parent":
             case "student parent":
             case "student_parent":
                 return new StudentParent();
-                break;
 
             case "student":
                 return new Student();
-                break;
         }
-        return;
+        return null;
     }
 
     /**
@@ -376,7 +369,7 @@ class UserContext extends BaseContext
     public function iAmOnTheListingPage($type)
     {
         $route = 'user_management_list';
-        if(strtolower($type) == "student"){
+        if (strtolower($type) == "student") {
             $route = 'student_management_list';
         }
 

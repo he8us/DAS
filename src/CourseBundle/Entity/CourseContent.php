@@ -2,11 +2,12 @@
 
 namespace CourseBundle\Entity;
 
-use Doctrine\ORM\Mapping\UniqueConstraint;
-use UserBundle\Entity\Teacher;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\UniqueConstraint;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
+use UserBundle\Entity\Teacher;
+use UserBundle\Entity\Titular;
 
 
 /**
@@ -86,6 +87,7 @@ class CourseContent
         $this->grades = new ArrayCollection();
         $this->titulars = new ArrayCollection();
     }
+
     /**
      * Get id
      *
@@ -101,7 +103,7 @@ class CourseContent
      *
      * @return string
      */
-    public function getSection() : string
+    public function getSection()
     {
         return $this->section;
     }
@@ -121,9 +123,9 @@ class CourseContent
     }
 
     /**
-     * @return CourseContent
+     * @return CourseContent|null
      */
-    public function getParent(): CourseContent
+    public function getParent()
     {
         return $this->parent;
     }
@@ -148,11 +150,11 @@ class CourseContent
     }
 
     /**
-     * @param Teacher$teacher
+     * @param Teacher $teacher
      *
      * @return CourseContent
      */
-    public function addTeachers(Teacher $teacher): CourseContent
+    public function addTeacher(Teacher $teacher): CourseContent
     {
         $this->teachers->add($teacher);
         return $this;
@@ -179,11 +181,59 @@ class CourseContent
     }
 
     /**
-     * @param ArrayCollection $titulars
+     * @param Titular $teacher
+     *
+     * @return CourseContent
      */
-    public function setTitulars(ArrayCollection $titulars)
+    public function addTitular(Titular $teacher): CourseContent
     {
-        $this->titulars = $titulars;
+        $this->titulars->add($teacher);
+        return $this;
+    }
+
+
+    /**
+     *
+     * @param Titular $teacher
+     *
+     * @return CourseContent
+     */
+    public function removeTitular(Titular $teacher)
+    {
+        $this->titulars->removeElement($teacher);
+        return $this;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getGrades(): ArrayCollection
+    {
+        return $this->grades;
+    }
+
+    /**
+     *
+     * @param Grade $grade
+     *
+     * @return CourseContent
+     */
+    public function addGrade(Grade $grade): CourseContent
+    {
+        $this->grades->add($grade);
+        return $this;
+    }
+
+    /**
+     *
+     * @param Grade $grade
+     *
+     * @return CourseContent
+     */
+    public function removeGrade(Grade $grade): CourseContent
+    {
+        $this->grades->removeElement($grade);
+        return $this;
     }
 
 

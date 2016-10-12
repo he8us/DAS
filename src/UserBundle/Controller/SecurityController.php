@@ -10,8 +10,6 @@
 namespace UserBundle\Controller;
 
 
-use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
@@ -34,17 +32,13 @@ class SecurityController extends Controller
 
 
     /**
-     * @param Request $request
-     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function loginAction(Request $request)
+    public function loginAction()
     {
-
         $authenticationUtils = $this->get('security.authentication_utils');
         $error = $authenticationUtils->getLastAuthenticationError();
         $lastUsername = $authenticationUtils->getLastUsername();
-
 
         return $this->render("UserBundle:Security:login.html.twig",
             [
@@ -55,17 +49,13 @@ class SecurityController extends Controller
     }
 
     /**
-     * @param Request $request
-     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function loginStudentAction(Request $request)
+    public function loginStudentAction()
     {
-
         $authenticationUtils = $this->get('security.authentication_utils');
         $error = $authenticationUtils->getLastAuthenticationError();
         $lastUsername = $authenticationUtils->getLastUsername();
-
 
         return $this->render("UserBundle:Security:student-login.html.twig",
             [
@@ -85,18 +75,17 @@ class SecurityController extends Controller
      */
     public function registerAction(Request $request, $role)
     {
-
-        if($role == 'any'){
+        if ($role == 'any') {
             return $this->displayRoleSelection();
         }
 
-        $user  = $this->getUserTypeForRole($role);
+        $user = $this->getUserTypeForRole($role);
 
 
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid()){
+        if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $user = $form->getData();
             $user->setActive(true);
@@ -112,6 +101,52 @@ class SecurityController extends Controller
             "form" => $form->createView(),
             "role" => $role
         ]);
+    }
+
+    /**
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    private function displayRoleSelection()
+    {
+        return $this->render('UserBundle:Registration:choose-role.html.twig');
+    }
+
+    /**
+     * @param $role
+     *
+     * @return Coordinator|CourseTitular|StudentParent|Teacher|Titular
+     */
+    private function getUserTypeForRole($role)
+    {
+        switch ($role) {
+            case "coordinator":
+                return new Coordinator();
+
+            case "teacher":
+                return new Teacher();
+
+            case "titular":
+                return new Titular();
+
+            case "course_titular":
+                return new CourseTitular();
+
+            case "parent":
+                return new StudentParent();
+        }
+    }
+
+    /**
+     * @param User $user
+     *
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    private function authenticateUser(User $user)
+    {
+        $providerKey = "main";
+
+        $token = new UsernamePasswordToken($user, null, $providerKey, $user->getRoles());
+        $this->container->get('security.token_storage')->setToken($token);
     }
 
     /**
@@ -132,56 +167,5 @@ class SecurityController extends Controller
     public function requestCardAction(Request $request)
     {
 
-    }
-
-    /**
-     * @param User $user
-     *
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
-     */
-    private function authenticateUser(User $user)
-    {
-        $providerKey = "main";
-
-        $token = new UsernamePasswordToken($user, null, $providerKey, $user->getRoles());
-        $this->container->get('security.token_storage')->setToken($token);
-    }
-
-    /**
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    private function displayRoleSelection()
-    {
-        return $this->render('UserBundle:Registration:choose-role.html.twig');
-    }
-
-    /**
-     * @param $role
-     *
-     * @return Coordinator|CourseTitular|StudentParent|Teacher|Titular
-     */
-    private function getUserTypeForRole($role)
-    {
-        switch ($role){
-            case "coordinator":
-                return new Coordinator();
-                break;
-
-            case "teacher":
-                return new Teacher();
-                break;
-
-            case "titular":
-                return new Titular();
-                break;
-
-            case "course_titular":
-                return new CourseTitular();
-                break;
-
-            case "parent":
-                return new StudentParent();
-                break;
-        }
     }
 }

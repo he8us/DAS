@@ -56,7 +56,7 @@ class Teacher extends User
      */
     public function removeCourse(CourseContent $course): Teacher
     {
-        $this->courses->remove($course);
+        $this->courses->removeElement($course);
         return $this;
     }
 }

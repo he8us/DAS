@@ -2,11 +2,13 @@
 
 namespace CourseBundle\Controller;
 
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
 use CourseBundle\Entity\CourseContent;
 use CourseBundle\Form\CourseContentType;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Form;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * CourseContent controller.
@@ -20,13 +22,12 @@ class CourseContentController extends Controller
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager();
+        $datatable = $this->get("courses.datatable.content");
+        $datatable->buildDatatable();
 
-        $courseContents = $em->getRepository('CourseBundle:CourseContent')->findAll();
-
-        return $this->render('coursecontent/index.html.twig', array(
-            'courseContents' => $courseContents,
-        ));
+        return $this->render('CourseBundle:coursecontent:index.html.twig', [
+            'datatable' => $datatable
+        ]);
     }
 
     /**
@@ -34,7 +35,7 @@ class CourseContentController extends Controller
      *
      * @param Request $request
      *
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @return RedirectResponse|Response
      */
     public function newAction(Request $request)
     {
@@ -50,10 +51,23 @@ class CourseContentController extends Controller
             return $this->redirectToRoute('course_content_show', array('id' => $courseContent->getId()));
         }
 
-        return $this->render('coursecontent/new.html.twig', array(
+        return $this->render('CourseBundle:coursecontent:new.html.twig', array(
             'courseContent' => $courseContent,
             'form' => $form->createView(),
         ));
+    }
+
+    /**
+     *
+     */
+    public function resultsAction()
+    {
+        $datatable = $this->get('courses.datatable.content');
+        $datatable->buildDatatable();
+
+        $query = $this->get('sg_datatables.query')->getQueryFrom($datatable);
+
+        return $query->getResponse();
     }
 
     /**
@@ -61,16 +75,31 @@ class CourseContentController extends Controller
      *
      * @param CourseContent $courseContent
      *
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     public function showAction(CourseContent $courseContent)
     {
         $deleteForm = $this->createDeleteForm($courseContent);
 
-        return $this->render('coursecontent/show.html.twig', array(
+        return $this->render('CourseBundle:coursecontent:show.html.twig', array(
             'courseContent' => $courseContent,
             'delete_form' => $deleteForm->createView(),
         ));
+    }
+
+    /**
+     * Creates a form to delete a CourseContent entity.
+     *
+     * @param CourseContent $courseContent The CourseContent entity
+     *
+     * @return Form The form
+     */
+    private function createDeleteForm(CourseContent $courseContent)
+    {
+        return $this->createFormBuilder()
+            ->setAction($this->generateUrl('course_content_delete', array('id' => $courseContent->getId())))
+            ->setMethod('DELETE')
+            ->getForm();
     }
 
     /**
@@ -79,12 +108,12 @@ class CourseContentController extends Controller
      * @param Request       $request
      * @param CourseContent $courseContent
      *
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @return RedirectResponse|Response
      */
     public function editAction(Request $request, CourseContent $courseContent)
     {
         $deleteForm = $this->createDeleteForm($courseContent);
-        $editForm = $this->createForm('CourseBundle\Form\CourseContentType', $courseContent);
+        $editForm = $this->createForm(CourseContentType::class, $courseContent);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
@@ -95,7 +124,7 @@ class CourseContentController extends Controller
             return $this->redirectToRoute('course_content_edit', array('id' => $courseContent->getId()));
         }
 
-        return $this->render('coursecontent/edit.html.twig', array(
+        return $this->render('CourseBundle:coursecontent:edit.html.twig', array(
             'courseContent' => $courseContent,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
@@ -108,7 +137,7 @@ class CourseContentController extends Controller
      * @param Request       $request
      * @param CourseContent $courseContent
      *
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @return RedirectResponse
      */
     public function deleteAction(Request $request, CourseContent $courseContent)
     {
@@ -122,21 +151,5 @@ class CourseContentController extends Controller
         }
 
         return $this->redirectToRoute('course_content_index');
-    }
-
-    /**
-     * Creates a form to delete a CourseContent entity.
-     *
-     * @param CourseContent $courseContent The CourseContent entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createDeleteForm(CourseContent $courseContent)
-    {
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('course_content_delete', array('id' => $courseContent->getId())))
-            ->setMethod('DELETE')
-            ->getForm()
-        ;
     }
 }

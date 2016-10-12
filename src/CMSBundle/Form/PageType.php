@@ -2,6 +2,7 @@
 
 namespace CMSBundle\Form;
 
+use CMSBundle\Entity\Page;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -15,12 +16,12 @@ class PageType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title')
-            ->add('slug')
-            ->add('body')
-            ->add('createdAt', 'datetime')
-            ->add('updatedAt', 'datetime')
-        ;
+            ->add('title', [
+                "label" => "form.cms.page.title"
+            ])
+            ->add('body', [
+                "label" => "form.cms.page.body"
+            ]);
     }
     
     /**
@@ -29,7 +30,7 @@ class PageType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'CMSBundle\Entity\Page'
+            'data_class' => Page::class
         ));
     }
 }
