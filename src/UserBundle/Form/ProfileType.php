@@ -23,29 +23,28 @@ class ProfileType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
 
-        $builder->add(
-            'lastName',
-            TextType::class,
-            [
-                'label' => 'form.last_name',
-            ]
-        );
-
-        $builder->add(
-            'firstName',
-            TextType::class,
-            [
-                'label' => "form.first_name",
-            ]
-        );
-
-        $builder->add('profilePicture',
-            ProfilePictureType::class,
-            [
-                'label' => 'form.profile.picture',
-                'required' => false
-            ]
-        );
+        $builder
+            ->add(
+                'lastName',
+                TextType::class,
+                [
+                    'label' => 'form.last_name',
+                ]
+            )
+            ->add(
+                'firstName',
+                TextType::class,
+                [
+                    'label' => "form.first_name",
+                ]
+            )
+            ->add('profilePicture',
+                ProfilePictureType::class,
+                [
+                    'label'    => 'form.profile.picture',
+                    'required' => false,
+                ]
+            );
 
     }
 

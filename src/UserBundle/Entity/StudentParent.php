@@ -4,7 +4,6 @@ namespace UserBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use UserBundle\Entity\User;
 
 /**
  * StudentParent
@@ -23,7 +22,6 @@ class StudentParent extends User
     private $children;
 
 
-
     /**
      * StudentParent constructor.
      */
@@ -35,7 +33,7 @@ class StudentParent extends User
     }
 
     /**
-     * @return ArrayCollection;
+     * @return ArrayCollection
      */
     public function getChildren(): ArrayCollection
     {

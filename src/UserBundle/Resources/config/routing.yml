@@ -10,8 +10,8 @@ user_profile:
 
 user_management:
   resource: "@UserBundle/Resources/config/routing/user_management.yml"
-  prefix: /users
+  prefix: /management/users
 
 student_management:
   resource: "@UserBundle/Resources/config/routing/student_management.yml"
-  prefix: /students
+  prefix: /management/students

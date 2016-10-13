@@ -97,7 +97,7 @@ class ProfilePicture
     }
 
     /**
-     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $profilePictureFile
+     * @param File|null $profilePictureFile
      *
      * @return ProfilePicture
      */

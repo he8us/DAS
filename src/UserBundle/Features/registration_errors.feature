@@ -14,8 +14,8 @@ Feature: Handle registration errors
 
   Scenario: Register with an already existing email should show an duplicated email message
     Given there is users with the following details:
-      | uid | last_name | first_name | username | email           | phone      | plainPassword |
-      | 1   | Michaux   | Cédric     | he8us    | cedric@he8us.be | 0471711666 | 12345         |
+      | last_name | first_name | username | email           | phone      | plainPassword |
+      | Michaux   | Cédric     | he8us    | cedric@he8us.be | 0471711666 | 12345         |
 
 
     When I am on "/register/coordinator"

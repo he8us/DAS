@@ -2,7 +2,7 @@ UserBundle\Entity\Student:
   student (template):
     firstName: <firstName()>
     lastName: <lastName()>
-    is_active: true
+    isActive: true
     barcode (unique): <randomNumber()>
     #gradeClass: "@class_grade_3_a"
 
@@ -10,5 +10,5 @@ UserBundle\Entity\Student:
     username: student
     barcode: 12345
 
-  student_{2..100} (extends student):
+  student_{2..10} (extends student):
 

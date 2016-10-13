@@ -6,14 +6,19 @@
  * file that was distributed with this source code.
  */
 
-
 namespace CoreBundle\Listener;
 
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Symfony\Component\HttpKernel\Event\GetResponseEvent;
-use Symfony\Component\HttpKernel\Kernel;
+use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 
+/**
+ * Class DoctrineExtensionListener
+ *
+ * @package CoreBundle\Listener
+ *
+ * @author Cedric Michaux <cedric@he8us.be>
+ */
 class DoctrineExtensionListener implements ContainerAwareInterface
 {
     /**
@@ -21,40 +26,70 @@ class DoctrineExtensionListener implements ContainerAwareInterface
      */
     protected $container;
 
+    /**
+     * @param ContainerInterface|null $container
+     */
     public function setContainer(ContainerInterface $container = null)
     {
         $this->container = $container;
     }
 
-    public function onLateKernelRequest(GetResponseEvent $event)
+    public function onLateKernelRequest()
+    {
+        $this->initializeTranslatable();
+    }
+
+    private function initializeTranslatable()
     {
         $translatable = $this->container->get('gedmo.listener.translatable');
-        $translatable->setTranslatableLocale($event->getRequest()->getLocale());
+        $translatable->setTranslatableLocale($this->container->get('translator')->getLocale());
     }
 
     public function onConsoleCommand()
     {
-        $this->container->get('gedmo.listener.translatable')
-            ->setTranslatableLocale($this->container->get('translator')->getLocale());
+        $this->initializeTranslatable();
     }
 
-    public function onKernelRequest(GetResponseEvent $event)
+    public function onKernelRequest()
     {
-        if (Kernel::MAJOR_VERSION == 2 && Kernel::MINOR_VERSION < 6) {
-            $securityContext = $this->container->get('security.context', ContainerInterface::NULL_ON_INVALID_REFERENCE);
-            if (null !== $securityContext && null !== $securityContext->getToken() && $securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
-                $loggable = $this->container->get('gedmo.listener.loggable');
-                $loggable->setUsername($securityContext->getToken()->getUsername());
-            }
-        } else {
-            $tokenStorage = $this->container->get('security.token_storage')->getToken();
-            $authorizationChecker = $this->container->get('security.authorization_checker');
-            if (null !== $tokenStorage && $authorizationChecker->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
-                $loggable = $this->container->get('gedmo.listener.loggable');
-                $loggable->setUsername($tokenStorage->getUser());
-                $blameable = $this->container->get('gedmo.listener.blameable');
-                $blameable->setUserValue($tokenStorage->getUser());
-            }
+        $token = $this->container->get('security.token_storage')->getToken();
+
+        if ($this->isUserAuthenticated($token)) {
+            $this->initiaiizeLoggable($token);
+            $this->initializeBlameable($token);
         }
+    }
+
+    /**
+     * @param TokenInterface|null $token
+     *
+     * @return bool
+     */
+    private function isUserAuthenticated(TokenInterface $token = null):bool
+    {
+        if (null === $token) {
+            return false;
+        }
+
+        $authorizationChecker = $this->container->get('security.authorization_checker');
+        return null !== $token && $authorizationChecker->isGranted('IS_AUTHENTICATED_REMEMBERED');
+    }
+
+    /**
+     * @param TokenInterface $token
+     */
+    private function initiaiizeLoggable(TokenInterface $token)
+    {
+        $loggable = $this->container->get('gedmo.listener.loggable');
+        $loggable->setUsername($token->getUser());
+    }
+
+    /**
+     * @param TokenInterface $token
+     */
+    private function initializeBlameable(TokenInterface $token)
+    {
+        $blameable = $this->container->get('gedmo.listener.blameable');
+        $blameable->setUserValue($token->getUser());
     }
 }

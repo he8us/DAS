@@ -25,24 +25,6 @@ class MenuChain
     }
 
     /**
-     * @param MenuItem $menuItem
-     * @param          $position
-     *
-     * @return $this
-     */
-    protected function addMenuItem(MenuItem $menuItem, $position)
-    {
-
-        if(null === $this->menuItems->get($position)){
-            $this->menuItems->set($position, new MenuItemSequence());
-        }
-
-        $this->menuItems->get($position)->add($menuItem);
-
-        return $this;
-    }
-
-    /**
      * @param MenuItemSequence $menuItemSequence
      *
      * @param                  $position
@@ -51,9 +33,27 @@ class MenuChain
      */
     public function addMenuItems(MenuItemSequence $menuItemSequence, $position)
     {
-        foreach($menuItemSequence as $menuItem){
+        foreach ($menuItemSequence as $menuItem) {
             $this->addMenuItem($menuItem, $position);
         }
+        return $this;
+    }
+
+    /**
+     * @param AbstractMenuItem $menuItem
+     * @param                  $position
+     *
+     * @return $this
+     */
+    protected function addMenuItem(AbstractMenuItem $menuItem, $position)
+    {
+
+        if (null === $this->menuItems->get($position)) {
+            $this->menuItems->set($position, new MenuItemSequence());
+        }
+
+        $this->menuItems->get($position)->add($menuItem);
+
         return $this;
     }
 

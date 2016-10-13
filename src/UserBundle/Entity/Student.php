@@ -16,6 +16,8 @@ use UserBundle\Repository\StudentRepository;
  */
 class Student implements AdvancedUserInterface, \Serializable
 {
+    const ROLE_STUDENT = 'ROLE_STUDENT';
+
     /**
      * @var int
      *
@@ -132,9 +134,9 @@ class Student implements AdvancedUserInterface, \Serializable
     /**
      * @param ProfilePicture|null $profilePicture
      *
-     * @return User
+     * @return Student
      */
-    public function setProfilePicture(ProfilePicture $profilePicture = null) : User
+    public function setProfilePicture(ProfilePicture $profilePicture = null): Student
     {
         $this->profilePicture = $profilePicture;
         return $this;
@@ -220,9 +222,14 @@ class Student implements AdvancedUserInterface, \Serializable
     }
 
 
+    /**
+     * @param StudentParent $parent
+     *
+     * @return Student
+     */
     public function removeParent(StudentParent $parent): Student
     {
-        $this->parents->remove($parent);
+        $this->parents->removeElement($parent);
         return $this;
     }
 
@@ -305,6 +312,7 @@ class Student implements AdvancedUserInterface, \Serializable
 
     /**
      * String representation of object
+     *
      * @link  http://php.net/manual/en/serializable.serialize.php
      * @return string the string representation of the object or null
      * @since 5.1.0
@@ -319,12 +327,13 @@ class Student implements AdvancedUserInterface, \Serializable
             $this->email,
             $this->barcode,
             $this->roles,
-            $this->isActive
+            $this->isActive,
         ]);
     }
 
     /**
      * Constructs the object
+     *
      * @link  http://php.net/manual/en/serializable.unserialize.php
      *
      * @param string $serialized <p>
@@ -449,7 +458,7 @@ class Student implements AdvancedUserInterface, \Serializable
      */
     public function eraseCredentials()
     {
-        // TODO: Implement eraseCredentials() method.
+
     }
 
     /**
@@ -458,7 +467,7 @@ class Student implements AdvancedUserInterface, \Serializable
      * This should be the encoded password. On authentication, a plain-text
      * password will be salted, encoded, and then compared to this value.
      *
-     * @return string The password
+     * @return null The password
      */
     public function getPassword()
     {

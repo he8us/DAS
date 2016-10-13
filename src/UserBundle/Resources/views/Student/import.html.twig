@@ -1,0 +1,20 @@
+{% extends ':templates:box-with-footer.html.twig' %}
+
+{% block title %}{{ 'layout.student.import' | trans }}{% endblock %}
+{% block box_title %}{{ 'layout.student.import' | trans }}{% endblock %}
+
+{% block box_start %}
+    {{ form_start(form) }}
+{% endblock %}
+
+{% block box_body_content %}
+    {{ form_rest(form) }}
+{% endblock %}
+
+{% block box_footer %}
+    <input type="submit" class="btn btn-primary pull-right" value="{{ "form.user.import.student.submit" | trans }}"/>
+{% endblock %}
+
+{% block box_end %}
+    {{ form_end(form) }}
+{% endblock %}

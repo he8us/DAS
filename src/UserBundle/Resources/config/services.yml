@@ -1,17 +1,19 @@
 services:
     user.barcode_authenticator:
         class: UserBundle\Security\BarcodeAuthenticator
-        arguments: ['@doctrine.orm.entity_manager', '@router', '@logger']
+        arguments: ['@doctrine', '@router', '@logger']
 
     user.twig_extension:
       class: UserBundle\Twig\UserExtension
       public: false
+      arguments:
+        - '@user.service.role_service'
       tags:
         - { name: twig.extension }
 
     user.service.role_service:
       class: UserBundle\Services\RoleService
-      arguments: ['@security.role_hierarchy']
+      arguments: ['@security.role_hierarchy', '@translator']
 
     user.form.type.profile_picture:
       class: UserBundle\Form\ProfilePictureType

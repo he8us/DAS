@@ -11,12 +11,12 @@ namespace UserBundle\Features\Context;
 
 
 use Behat\Behat\Definition\Call\Given;
-use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Gherkin\Node\TableNode;
 use Behat\Symfony2Extension\Context\KernelDictionary;
 use CoreBundle\Features\Context\BaseContext;
 use Doctrine\ORM\EntityManager;
 use Exception;
+use Monolog\Logger;
 use Symfony\Bundle\FrameworkBundle\Routing\Router;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use UserBundle\Entity\Coordinator;
@@ -26,7 +26,15 @@ use UserBundle\Entity\StudentParent;
 use UserBundle\Entity\Teacher;
 use UserBundle\Entity\Titular;
 use UserBundle\Entity\User;
+use UserBundle\Repository\UserRepository;
 
+/**
+ * Class UserContext
+ *
+ * @package UserBundle\Features\Context
+ *
+ * @author Cedric Michaux <cedric@he8us.be>
+ */
 class UserContext extends BaseContext
 {
     use KernelDictionary;
@@ -37,10 +45,10 @@ class UserContext extends BaseContext
     public function clearData()
     {
 
-        /** @var EntityManager $em */
-        $em = $this->getContainer()->get("doctrine")->getManager();
-        $em->createQuery("DELETE FROM UserBundle:Student")->execute();
-        $em->createQuery("DELETE FROM UserBundle:User")->execute();
+        /** @var EntityManager $entityManager */
+        $entityManager = $this->getContainer()->get("doctrine")->getManager();
+        $entityManager->createQuery("DELETE FROM UserBundle:Student")->execute();
+        $entityManager->createQuery("DELETE FROM UserBundle:User")->execute();
     }
 
 
@@ -51,7 +59,7 @@ class UserContext extends BaseContext
      */
     public function thereAreStudentsWithTheFollowingDetails(TableNode $users)
     {
-        $em = $this->getContainer()->get('doctrine')->getManager();
+        $entityManager = $this->getContainer()->get('doctrine')->getManager();
         foreach ($users->getColumnsHash() as $key => $val) {
             $student = new Student();
 
@@ -61,10 +69,9 @@ class UserContext extends BaseContext
             $student->setFirstName($val['first_name']);
             $student->setLastName($val['last_name']);
 
-
-            $em->persist($student);
+            $entityManager->persist($student);
         }
-        $em->flush();
+        $entityManager->flush();
     }
 
     /**
@@ -74,13 +81,10 @@ class UserContext extends BaseContext
      */
     public function thereIsUsersWithTheFollowingDetails(TableNode $users)
     {
-        $em = $this->getContainer()->get('doctrine')->getManager();
+        $entityManager = $this->getContainer()->get('doctrine')->getManager();
         foreach ($users->getColumnsHash() as $key => $val) {
 
-            $user = new User();
-            if (isset($val['role'])) {
-                $this->getUserTypeForRole($val['role']);
-            }
+            $user = isset($val['role']) ? $this->getUserTypeForRole($val['role']) : new User();
 
             $user->setActive(true);
             $user->setFirstName($val['first_name']);
@@ -90,11 +94,10 @@ class UserContext extends BaseContext
             $user->setEmail($val['email']);
             $user->setPhone($val['phone']);
 
-
-            $em->persist($user);
+            $entityManager->persist($user);
         }
 
-        $em->flush();
+        $entityManager->flush();
     }
 
     /**
@@ -104,52 +107,82 @@ class UserContext extends BaseContext
      */
     private function getUserTypeForRole($role)
     {
-        switch (strtolower($role)) {
-            case "coordinator":
-                return new Coordinator();
-                break;
+        $className = $this->getClassFromString($role);
 
-            case "teacher":
-                return new Teacher();
-                break;
-
-            case "titular":
-                return new Titular();
-                break;
-
-            case "course_titular":
-                return new CourseTitular();
-                break;
-
-            case "parent":
-                return new StudentParent();
-                break;
-
-            case "student":
-                return new Student();
-                break;
+        if (!class_exists($className)) {
+            return null;
         }
-        return;
+
+        return new $className();
     }
 
     /**
-     * @Given I am connected as :role
+     * @param $role
+     *
+     * @return string
+     */
+    private function getClassFromString($role):string
+    {
+        $userType = str_replace(' ', '', ucwords(str_replace('_', ' ', strtolower($role))));
+
+        if ('Parent' === $userType) {
+            $userType = 'StudentParent';
+        }
+
+        $className = 'UserBundle\\Entity\\' . $userType;
+        return $className;
+    }
+
+    /**
+     * @Given I am authenticated as :role
      *
      * @param string $role
      */
-    public function iAmConnectedAs(string $role)
+    public function iAmAuthenticatedAs(string $role)
     {
         $container = $this->getContainer();
-        $em = $container->get('doctrine')->getManager();
+        $entityManager = $container->get('doctrine')->getManager();
 
-        $repo = $em->getRepository("UserBundle:" . ucfirst($role));
+        /** @var UserRepository $repo */
+        $repo = $entityManager->getRepository(User::class);
 
-        $user = $repo->findOneBy([]);
+        $user = $repo->findOneByRole('ROLE_' . $role);
 
-        $providerKey = "main";
+        $this->login($user);
 
-        $token = new UsernamePasswordToken($user, null, $providerKey, $user->getRoles());
-        $container->get('security.token_storage')->setToken($token);
+        $this->getLogger()
+            ->info(
+                sprintf(
+                    "Logged in the user %s with role %s",
+                    $user->getUsername(),
+                    $user->getRoles()[0]
+                )
+            );
+    }
+
+    /**
+     * @param User $user
+     */
+    private function login(User $user)
+    {
+        $session = $this->getContainer()->get('session');
+
+        // the firewall context (defaults to the firewall name)
+        $firewall = "main";
+
+        $token = new UsernamePasswordToken($user, null, $firewall, $user->getRoles());
+        $session->set('_security_' . $firewall, serialize($token));
+        $session->save();
+
+        $this->getSession()->setCookie($session->getName(), $session->getId());
+    }
+
+    /**
+     * @return Logger
+     */
+    private function getLogger(): Logger
+    {
+        return $this->getContainer()->get('logger');
     }
 
     /**
@@ -163,9 +196,9 @@ class UserContext extends BaseContext
      */
     public function theUserShouldNotHaveEqualTo($username, $field, $value)
     {
-        $em = $this->getContainer()->get("doctrine")->getManager();
+        $entityManager = $this->getContainer()->get("doctrine")->getManager();
 
-        $repo = $em->getRepository('UserBundle:User');
+        $repo = $entityManager->getRepository('UserBundle:User');
 
         $user = $repo->findOneBy(['username' => $username]);
 
@@ -183,7 +216,7 @@ class UserContext extends BaseContext
     public function iFollowTheLink($page)
     {
         $page = str_replace(" ", "_", $page);
-        $this->clickLink("_".strtolower($page));
+        $this->clickLink("_" . strtolower($page));
     }
 
     /**
@@ -195,7 +228,16 @@ class UserContext extends BaseContext
     public function iShouldBeOnTheRegisterPage(string $userType = "any")
     {
         $userType = str_replace(" ", "_", $userType);
-        $this->assertPageAddress($this->getRouter()->generate('user_security_register', ['role' => strtolower($userType)]));
+        $this->assertPageAddress($this->getRouter()->generate('user_security_register',
+            ['role' => strtolower($userType)]));
+    }
+
+    /**
+     * @return Router
+     */
+    private function getRouter():Router
+    {
+        return $this->getContainer()->get('router');
     }
 
     /**
@@ -208,7 +250,6 @@ class UserContext extends BaseContext
         $userType = str_replace(" ", "_", $userType);
         $this->visit($this->getRouter()->generate('user_security_register', ['role' => strtolower($userType)]));
     }
-
 
     /**
      * @When I submit the form
@@ -224,14 +265,6 @@ class UserContext extends BaseContext
     public function iAmOnTheRegisterPage()
     {
         $this->visit($this->getRouter()->generate('user_security_register'));
-    }
-
-    /**
-     * @return Router
-     */
-    private function getRouter():Router
-    {
-        return $this->getContainer()->get('router');
     }
 
     /**
@@ -256,6 +289,21 @@ class UserContext extends BaseContext
     }
 
     /**
+     * @param string $pageType
+     *
+     * @return string
+     */
+    private function getLoginRouteForUserType(string $pageType):string
+    {
+        $routeName = "user_security_login";
+        if ("student" == strtolower($pageType)) {
+            $routeName = "student_security_login";
+            return $routeName;
+        }
+        return $routeName;
+    }
+
+    /**
      * @Given there is a :userType with credentials :username and :password in the database
      *
      * @param $userType
@@ -267,13 +315,12 @@ class UserContext extends BaseContext
     public function thereIsAWithCredentialsAndInTheDatabase($userType, $username, $password)
     {
         $user = $this->getUserTypeForRole($userType);
-        if($user == null){
+        if ($user == null) {
             throw new Exception("Unknown user type");
         }
-        if($user instanceof Student){
+        if ($user instanceof Student) {
             $user->setBarcode($password);
-        }
-        else{
+        } else {
             $user->setPlainPassword($password);
         }
 
@@ -283,10 +330,10 @@ class UserContext extends BaseContext
         $user->setEmail("test@example.org");
         $user->setActive(true);
 
-        $em = $this->getContainer()->get("doctrine")->getManager();
+        $entityManager = $this->getContainer()->get("doctrine")->getManager();
 
-        $em->persist($user);
-        $em->flush();
+        $entityManager->persist($user);
+        $entityManager->flush();
     }
 
     /**
@@ -309,28 +356,33 @@ class UserContext extends BaseContext
     public function iFillTheLoginFormWithAnd($username, $password)
     {
         $this->fillField("_username", $username);
-        try{
+        try {
             $this->fillField("_password", $password);
-        }
-        catch (Exception $e){
+        } catch (Exception $e) {
             $this->fillField("_barcode", $password);
         }
     }
 
     /**
-     * @param string $pageType
+     * @Given I am on the :type list page
      *
-     * @return string
+     * @param $type
      */
-    private function getLoginRouteForUserType(string $pageType):string
+    public function iAmOnTheListingPage($type)
     {
-        $routeName = "user_security_login";
-        if ("student" == strtolower($pageType)) {
-            $routeName = "student_security_login";
-            return $routeName;
+        $route = 'user_management_list';
+        if (strtolower($type) === "student") {
+            $route = 'student_management_list';
         }
-        return $routeName;
+
+        $this->visit($this->getRouter()->generate($route));
     }
 
-
+    /**
+     * @Then I should be on the Student Import page
+     */
+    public function iShouldBeOnTheStudentImportPage()
+    {
+        $this->assertPageAddress($this->getRouter()->generate('student_management_import'));
+    }
 }

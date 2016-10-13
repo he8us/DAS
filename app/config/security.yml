@@ -35,7 +35,6 @@ security:
             security: false
 
         student:
-              context: user
               pattern:  ^/student
               switch_user: true
               remember_me:
@@ -54,13 +53,14 @@ security:
                   path:   /student/logout
 
         main:
-            context: user
             pattern: ^/
             switch_user: true
             remember_me:
                 secret:  '%secret%'
             form_login:
                 csrf_token_generator: security.csrf.token_manager
+                check_path: /login
+                login_path: /login
             logout:       true
             anonymous:    true
 
@@ -79,5 +79,7 @@ security:
         # Protected pages
         - { path: ^/, roles: IS_AUTHENTICATED_REMEMBERED } # all => user should be logged. A finer grain is used with the roles at the application level
 
-        - { path: ^/student/, roles: ROLE_STUDENT } # student => only the admin can access
+        - { path: ^/student/, roles: ROLE_STUDENT }
+        - { path: ^/management/, roles: ROLE_COORDINATOR }
+
         - { path: ^/admin/, roles: ROLE_ADMIN } # admin => only the admin can access

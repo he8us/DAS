@@ -60,12 +60,7 @@
         "friendsofsymfony/jsrouting-bundle": "^1.6",
         "sg/datatablesbundle": "^0.12.0",
         "doctrine/doctrine-fixtures-bundle": "^2.3",
-        "trappar/alice-generator-bundle": "^1.0",
-        "behat/behat": "^3.2",
-        "behat/symfony2-extension": "^2.1",
-        "behat/mink-browserkit-driver": "^1.3",
-        "behat/mink-extension": "^2.2",
-        "behat/mink-goutte-driver": "^1.2"
+        "trappar/alice-generator-bundle": "^1.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^5.4",
@@ -73,7 +68,12 @@
         "symfony/phpunit-bridge": "^3.0",
         "hautelook/alice-bundle": "^1.3",
         "doctrine/data-fixtures": "^1.2",
-        "theofidry/alice-bundle-extension": "^1.3"
+        "theofidry/alice-bundle-extension": "^1.3",
+        "behat/behat": "^3.2",
+        "behat/symfony2-extension": "^2.1",
+        "behat/mink": "^1.7",
+        "behat/mink-extension": "^2.2",
+        "behat/mink-browserkit-driver": "^1.3"
     },
     "scripts": {
         "post-install-cmd": [

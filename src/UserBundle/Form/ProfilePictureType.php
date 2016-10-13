@@ -17,8 +17,6 @@ use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use UserBundle\Entity\ProfilePicture;
-use Vich\UploaderBundle\Form\Type\VichFileType;
-use Vich\UploaderBundle\Form\Type\VichImageType;
 use Vich\UploaderBundle\Storage\StorageInterface;
 
 class ProfilePictureType extends AbstractType
@@ -44,7 +42,7 @@ class ProfilePictureType extends AbstractType
         $builder->add(
             'profilePictureFile', FileType::class, [
             'required' => false,
-            'label' => 'form.user.profile.picture'
+            'label'    => 'form.user.profile.picture',
         ]);
     }
 
@@ -55,7 +53,7 @@ class ProfilePictureType extends AbstractType
      */
     public function buildView(FormView $view, FormInterface $form, array $options)
     {
-        if($form->getData()){
+        if ($form->getData()) {
             $view->vars['fileUrl'] = $this->storage->resolveUri($form->getData(), 'profilePictureFile');
         }
     }
@@ -74,7 +72,7 @@ class ProfilePictureType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => ProfilePicture::class
+            'data_class' => ProfilePicture::class,
         ]);
     }
 

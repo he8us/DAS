@@ -68,6 +68,16 @@ class Page
     }
 
     /**
+     * Get title
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
      * Set title
      *
      * @param string $title
@@ -82,13 +92,13 @@ class Page
     }
 
     /**
-     * Get title
+     * Get slug
      *
      * @return string
      */
-    public function getTitle()
+    public function getSlug()
     {
-        return $this->title;
+        return $this->slug;
     }
 
     /**
@@ -106,13 +116,13 @@ class Page
     }
 
     /**
-     * Get slug
+     * Get body
      *
      * @return string
      */
-    public function getSlug()
+    public function getBody()
     {
-        return $this->slug;
+        return $this->body;
     }
 
     /**
@@ -127,16 +137,6 @@ class Page
         $this->body = $body;
 
         return $this;
-    }
-
-    /**
-     * Get body
-     *
-     * @return string
-     */
-    public function getBody()
-    {
-        return $this->body;
     }
 
     /**

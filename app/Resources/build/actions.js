@@ -20,13 +20,9 @@ export const lintJS = function (path) {
     }
 }
 
-export const extractCommons = function (deploy = false) {
+export const extractCommons = function () {
     let name = "shared.js"
-/*
-    if(deploy){
-        name = "shared.[hash].js";
-    }
-*/
+
     return {
         plugins: [
             new webpack.optimize.CommonsChunkPlugin("commons", name)

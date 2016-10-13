@@ -34,7 +34,7 @@ class MenuPass implements CompilerPassInterface
 
 
         foreach ($taggedServices as $id => $tags) {
-            $definition->addMethodCall('addMenuItems', array(new Reference($id)));
+            $definition->addMethodCall('addMenuItems', [new Reference($id)]);
         }
 
     }
