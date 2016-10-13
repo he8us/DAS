@@ -40,12 +40,12 @@ class MenuChain
     }
 
     /**
-     * @param MenuItem $menuItem
-     * @param          $position
+     * @param AbstractMenuItem $menuItem
+     * @param                  $position
      *
      * @return $this
      */
-    protected function addMenuItem(MenuItem $menuItem, $position)
+    protected function addMenuItem(AbstractMenuItem $menuItem, $position)
     {
 
         if (null === $this->menuItems->get($position)) {

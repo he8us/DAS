@@ -9,3 +9,4 @@ filter:
         - 'app/AppCache.php'
         - 'app/AppKernel.php'
         - 'web/config.php'
+        - 'web/app.php'

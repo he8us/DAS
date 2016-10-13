@@ -11,13 +11,7 @@ namespace UserBundle\EventListener;
 
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-use UserBundle\Entity\Coordinator;
-use UserBundle\Entity\CourseTitular;
-use UserBundle\Entity\StudentParent;
-use UserBundle\Entity\Teacher;
-use UserBundle\Entity\Titular;
-use UserBundle\Entity\User;
-use UserBundle\UserBundle;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 class PasswordEncoder
 {
@@ -55,7 +49,7 @@ class PasswordEncoder
     {
         $entity = $this->getEntity($args);
 
-        if(!$entity){
+        if (!$entity) {
             return;
         }
 
@@ -65,40 +59,15 @@ class PasswordEncoder
     /**
      * @param LifecycleEventArgs $args
      *
-     * @return object|void
-     */
-    public function preUpdate(LifecycleEventArgs $args)
-    {
-        return $this->handleEvent($args);
-    }
-
-    /**
-     * @param LifecycleEventArgs $args
-     *
-     * @return object
+     * @return UserInterface|null
      */
     private function getEntity(LifecycleEventArgs $args)
     {
         $entity = $args->getEntity();
 
-        if(!$this->isEntityValid($entity)){
+        if (!$this->isEntityValid($entity)) {
             return;
         }
-
-        return $entity;
-    }
-
-    /**
-     * @param $entity
-     */
-    private function encodePassword($entity)
-    {
-        if (!$entity->getPlainPassword()) {
-            return;
-        }
-
-        $encodedPassword = $this->passwordEncoder->encodePassword($entity, $entity->getPlainPassword());
-        $entity->setPassword($encodedPassword);
 
         return $entity;
     }
@@ -115,13 +84,40 @@ class PasswordEncoder
             in_array(
                 get_class($entity),
                 [
-                    $package.'User',
-                    $package.'Coordinator',
-                    $package.'Teacher',
-                    $package.'Titular',
-                    $package.'CourseTitular',
-                    $package.'StudentParent',
+                    $package . 'User',
+                    $package . 'Coordinator',
+                    $package . 'Teacher',
+                    $package . 'Titular',
+                    $package . 'CourseTitular',
+                    $package . 'StudentParent',
                 ]
             );
+    }
+
+    /**
+     * @param UserInterface $entity
+     *
+     * @return UserInterface|null
+     */
+    private function encodePassword(UserInterface $entity)
+    {
+        if (!$entity->getPlainPassword()) {
+            return null;
+        }
+
+        $encodedPassword = $this->passwordEncoder->encodePassword($entity, $entity->getPlainPassword());
+        $entity->setPassword($encodedPassword);
+
+        return $entity;
+    }
+
+    /**
+     * @param LifecycleEventArgs $args
+     *
+     * @return object|void
+     */
+    public function preUpdate(LifecycleEventArgs $args)
+    {
+        return $this->handleEvent($args);
     }
 }

@@ -458,7 +458,7 @@ class Student implements AdvancedUserInterface, \Serializable
      */
     public function eraseCredentials()
     {
-        // TODO: Implement eraseCredentials() method.
+
     }
 
     /**
@@ -467,7 +467,7 @@ class Student implements AdvancedUserInterface, \Serializable
      * This should be the encoded password. On authentication, a plain-text
      * password will be salted, encoded, and then compared to this value.
      *
-     * @return string The password
+     * @return null The password
      */
     public function getPassword()
     {

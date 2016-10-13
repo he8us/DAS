@@ -44,9 +44,9 @@ class CourseContentController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($courseContent);
-            $em->flush();
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($courseContent);
+            $entityManager->flush();
 
             return $this->redirectToRoute('course_content_show', ['id' => $courseContent->getId()]);
         }
@@ -58,7 +58,7 @@ class CourseContentController extends Controller
     }
 
     /**
-     *
+     * @return Response
      */
     public function resultsAction()
     {
@@ -117,9 +117,9 @@ class CourseContentController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($courseContent);
-            $em->flush();
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($courseContent);
+            $entityManager->flush();
 
             return $this->redirectToRoute('course_content_edit', ['id' => $courseContent->getId()]);
         }
@@ -145,9 +145,9 @@ class CourseContentController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($courseContent);
-            $em->flush();
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($courseContent);
+            $entityManager->flush();
         }
 
         return $this->redirectToRoute('course_content_index');

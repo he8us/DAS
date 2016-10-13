@@ -10,7 +10,7 @@
 namespace CMSBundle\Menu;
 
 
-abstract class MenuItem implements MenuItemInterface
+abstract class AbstractMenuItem implements MenuItemInterface
 {
 
     protected $path;
@@ -34,7 +34,7 @@ abstract class MenuItem implements MenuItemInterface
     /**
      * @param mixed $path
      *
-     * @return MenuItem
+     * @return AbstractMenuItem
      */
     public function setPath($path)
     {
@@ -53,7 +53,7 @@ abstract class MenuItem implements MenuItemInterface
     /**
      * @param mixed $label
      *
-     * @return MenuItem
+     * @return AbstractMenuItem
      */
     public function setLabel($label)
     {

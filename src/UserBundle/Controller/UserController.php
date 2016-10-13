@@ -12,7 +12,6 @@ namespace UserBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
-use UserBundle\Entity\User;
 
 /**
  * Class UserController
@@ -43,6 +42,9 @@ class UserController extends Controller
         return $this->render('UserBundle:User:new.html.twig');
     }
 
+    /**
+     * @return Response
+     */
     public function resultsAction()
     {
 

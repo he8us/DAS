@@ -67,7 +67,7 @@ class DoctrineExtensionListener implements ContainerAwareInterface
      */
     private function isUserAuthenticated(TokenInterface $token = null):bool
     {
-        if(null === $token){
+        if (null === $token) {
             return false;
         }
 

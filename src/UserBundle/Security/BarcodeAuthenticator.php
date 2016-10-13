@@ -70,10 +70,10 @@ class BarcodeAuthenticator extends AbstractGuardAuthenticator
      *  B) For an API token authentication system, you return a 401 response
      *      return new Response('Auth header required', 401);
      *
-     * @param Request                 $request The request that resulted in an AuthenticationException
-     * @param AuthenticationException $authException The exception that started the authentication process
+     * @param Request                      $request The request that resulted in an AuthenticationException
+     * @param AuthenticationException|null $authException The exception that started the authentication process
      *
-     * @return Response
+     * @return RedirectResponse
      */
     public function start(Request $request, AuthenticationException $authException = null)
     {
@@ -104,11 +104,11 @@ class BarcodeAuthenticator extends AbstractGuardAuthenticator
      *
      * @param Request $request
      *
-     * @return mixed|null
+     * @return array|null
      */
     public function getCredentials(Request $request)
     {
-        if(!$this->shouldReturnCredentials($request)){
+        if (!$this->shouldReturnCredentials($request)) {
             return;
         }
 
@@ -124,6 +124,35 @@ class BarcodeAuthenticator extends AbstractGuardAuthenticator
             'username' => $username,
             'barcode'  => $barcode,
         ];
+    }
+
+    /**
+     * @param Request $request
+     *
+     * @return bool
+     */
+    private function shouldReturnCredentials(Request $request):bool
+    {
+        if ($request->getPathInfo() != '/student/login' || !$request->isMethod('POST')) {
+            return false;
+        }
+
+        if (!$this->hasRequestCredentials($request)) {
+            $this->logger->addDebug(sprintf("No credentials found in the request. %s", $request));
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * @param Request $request
+     *
+     * @return bool
+     */
+    private function hasRequestCredentials(Request $request):bool
+    {
+        return $request->request->has('_username') && $request->request->has('_barcode');
     }
 
     /**
@@ -242,35 +271,6 @@ class BarcodeAuthenticator extends AbstractGuardAuthenticator
      */
     public function supportsRememberMe()
     {
-        return true;
-    }
-
-    /**
-     * @param Request $request
-     *
-     * @return bool
-     */
-    private function hasRequestCredentials(Request $request):bool
-    {
-        return $request->request->has('_username') && $request->request->has('_barcode');
-    }
-
-    /**
-     * @param Request $request
-     *
-     * @return bool
-     */
-    private function shouldReturnCredentials(Request $request):bool
-    {
-        if ($request->getPathInfo() != '/student/login' || !$request->isMethod('POST')) {
-            return false;
-        }
-
-        if (!$this->hasRequestCredentials($request)) {
-            $this->logger->addDebug(sprintf("No credentials found in the request. %s", $request));
-            return false;
-        }
-
         return true;
     }
 }

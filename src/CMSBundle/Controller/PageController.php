@@ -19,9 +19,9 @@ class PageController extends Controller
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager();
+        $entityManager = $this->getDoctrine()->getManager();
 
-        $pages = $em->getRepository('CMSBundle:Page')->findAll();
+        $pages = $entityManager->getRepository('CMSBundle:Page')->findAll();
 
         return $this->render('page/index.html.twig', [
             'pages' => $pages,
@@ -42,9 +42,9 @@ class PageController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($page);
-            $em->flush();
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($page);
+            $entityManager->flush();
 
             return $this->redirectToRoute('page_show', ['id' => $page->getId()]);
         }
@@ -102,9 +102,9 @@ class PageController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($page);
-            $em->flush();
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($page);
+            $entityManager->flush();
 
             return $this->redirectToRoute('page_edit', ['id' => $page->getId()]);
         }
@@ -130,9 +130,9 @@ class PageController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($page);
-            $em->flush();
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($page);
+            $entityManager->flush();
         }
 
         return $this->redirectToRoute('page_index');
