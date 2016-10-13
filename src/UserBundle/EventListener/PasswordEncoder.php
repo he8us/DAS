@@ -17,6 +17,7 @@ use UserBundle\Entity\StudentParent;
 use UserBundle\Entity\Teacher;
 use UserBundle\Entity\Titular;
 use UserBundle\Entity\User;
+use UserBundle\UserBundle;
 
 class PasswordEncoder
 {
@@ -109,14 +110,18 @@ class PasswordEncoder
      */
     private function isEntityValid($entity):bool
     {
-
-        return !(
-            !$entity instanceof User &&
-            !$entity instanceof Coordinator &&
-            !$entity instanceof Teacher &&
-            !$entity instanceof Titular &&
-            !$entity instanceof CourseTitular &&
-            !$entity instanceof StudentParent
-        );
+        $package = 'UserBundle\Entity\\';
+        return
+            in_array(
+                get_class($entity),
+                [
+                    $package.'User',
+                    $package.'Coordinator',
+                    $package.'Teacher',
+                    $package.'Titular',
+                    $package.'CourseTitular',
+                    $package.'StudentParent',
+                ]
+            );
     }
 }

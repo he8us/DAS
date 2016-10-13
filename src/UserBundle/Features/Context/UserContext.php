@@ -69,7 +69,6 @@ class UserContext extends BaseContext
             $student->setFirstName($val['first_name']);
             $student->setLastName($val['last_name']);
 
-
             $entityManager->persist($student);
         }
         $entityManager->flush();
