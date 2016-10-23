@@ -37,12 +37,18 @@ class UserController extends Controller
     }
 
 
+    /**
+     * @return Response
+     */
     public function newAction()
     {
         return $this->render('UserBundle:User:new.html.twig');
     }
 
 
+    /**
+     * @return Response
+     */
     public function resultsAction()
     {
 
@@ -74,36 +80,5 @@ class UserController extends Controller
     public function profileShowAction()
     {
 
-    }
-
-    /**
-     * TODO => Extract
-     *
-     * @param string $role
-     *
-     * @return string|null
-     */
-    private function translateRole(string $role)
-    {
-        $translator = $this->container->get('translator');
-        switch ($role) {
-            case User::ROLE_STUDENT_PARENT:
-                return $translator->trans("layout.user.role.parent");
-
-            case User::ROLE_TEACHER:
-                return $translator->trans("layout.user.role.teacher");
-
-            case User::ROLE_TITULAR:
-                return $translator->trans("layout.user.role.titular");
-
-            case User::ROLE_COURSE_TITULAR:
-                return $translator->trans("layout.user.role.course_titular");
-
-            case User::ROLE_COORDINATOR:
-                return $translator->trans("layout.user.role.coordinator");
-
-            case User::ROLE_SUPER_ADMIN:
-                return $translator->trans("layout.user.role.super_admin");
-        }
     }
 }

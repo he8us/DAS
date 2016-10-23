@@ -12,6 +12,7 @@ namespace UserBundle\EventListener;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use UserBundle\Entity\User;
 
 class PasswordEncoder
 {
@@ -33,7 +34,7 @@ class PasswordEncoder
     /**
      * @param LifecycleEventArgs $args
      *
-     * @return object|void
+     * @return null|UserInterface
      */
     public function prePersist(LifecycleEventArgs $args)
     {
@@ -43,7 +44,7 @@ class PasswordEncoder
     /**
      * @param LifecycleEventArgs $args
      *
-     * @return object|void
+     * @return null|UserInterface
      */
     private function handleEvent(LifecycleEventArgs $args)
     {
@@ -59,14 +60,14 @@ class PasswordEncoder
     /**
      * @param LifecycleEventArgs $args
      *
-     * @return UserInterface|null
+     * @return User|null
      */
     private function getEntity(LifecycleEventArgs $args)
     {
         $entity = $args->getEntity();
 
         if (!$this->isEntityValid($entity)) {
-            return;
+            return null;
         }
 
         return $entity;
@@ -96,11 +97,11 @@ class PasswordEncoder
     }
 
     /**
-     * @param UserInterface $entity
+     * @param User $entity
      *
-     * @return UserInterface|null
+     * @return null|User
      */
-    private function encodePassword(UserInterface $entity)
+    private function encodePassword(User $entity)
     {
         if (!$entity->getPlainPassword()) {
             return null;
@@ -115,7 +116,7 @@ class PasswordEncoder
     /**
      * @param LifecycleEventArgs $args
      *
-     * @return object|void
+     * @return null|UserInterface
      */
     public function preUpdate(LifecycleEventArgs $args)
     {
