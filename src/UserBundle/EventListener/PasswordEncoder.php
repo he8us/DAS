@@ -34,7 +34,7 @@ class PasswordEncoder
     /**
      * @param LifecycleEventArgs $args
      *
-     * @return null|UserInterface
+     * @return null|User
      */
     public function prePersist(LifecycleEventArgs $args)
     {
@@ -44,7 +44,7 @@ class PasswordEncoder
     /**
      * @param LifecycleEventArgs $args
      *
-     * @return null|UserInterface
+     * @return null|User
      */
     private function handleEvent(LifecycleEventArgs $args)
     {
@@ -116,7 +116,7 @@ class PasswordEncoder
     /**
      * @param LifecycleEventArgs $args
      *
-     * @return null|UserInterface
+     * @return null|User
      */
     public function preUpdate(LifecycleEventArgs $args)
     {
