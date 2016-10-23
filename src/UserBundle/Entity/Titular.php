@@ -9,7 +9,6 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Titular
  *
- * @ORM\Table(name="titular")
  * @ORM\Entity(repositoryClass="UserBundle\Repository\UserRepository")
  */
 class Titular extends User

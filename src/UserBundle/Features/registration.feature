@@ -13,14 +13,14 @@ Feature: Registration for user types
     Then I should be on the "Coordinator" registration page
 
     When I fill in the following:
-      | user_lastName             | Michaux         |
-      | user_firstName            | Cédric          |
-      | user_username             | he8us           |
-      | user_email_first          | cedric@he8us.be |
-      | user_email_second         | cedric@he8us.be |
-      | user_phone                | 0471711666      |
-      | user_plainPassword_first  | 12345           |
-      | user_plainPassword_second | 12345           |
+      | user_lastName             | Michaux            |
+      | user_firstName            | Cédric             |
+      | user_username             | he8us              |
+      | user_email_first          | cedric@example.com |
+      | user_email_second         | cedric@example.com |
+      | user_phone                | 0412345678         |
+      | user_plainPassword_first  | 12345              |
+      | user_plainPassword_second | 12345              |
 
     And I submit the form
     Then I should be on the homepage
@@ -35,14 +35,14 @@ Feature: Registration for user types
     Then I should be on the "Teacher" registration page
 
     When I fill in the following:
-      | user_lastName             | Michaux         |
-      | user_firstName            | Cédric          |
-      | user_username             | he8us           |
-      | user_email_first          | cedric@he8us.be |
-      | user_email_second         | cedric@he8us.be |
-      | user_phone                | 0471711666      |
-      | user_plainPassword_first  | 12345           |
-      | user_plainPassword_second | 12345           |
+      | user_lastName             | Michaux            |
+      | user_firstName            | Cédric             |
+      | user_username             | he8us              |
+      | user_email_first          | cedric@example.com |
+      | user_email_second         | cedric@example.com |
+      | user_phone                | 0412345678         |
+      | user_plainPassword_first  | 12345              |
+      | user_plainPassword_second | 12345              |
 
     And I submit the form
     Then I should be on the homepage
@@ -57,14 +57,14 @@ Feature: Registration for user types
     Then I should be on the Titular registration page
 
     When I fill in the following:
-      | user_lastName             | Michaux         |
-      | user_firstName            | Cédric          |
-      | user_username             | he8us           |
-      | user_email_first          | cedric@he8us.be |
-      | user_email_second         | cedric@he8us.be |
-      | user_phone                | 0471711666      |
-      | user_plainPassword_first  | 12345           |
-      | user_plainPassword_second | 12345           |
+      | user_lastName             | Michaux            |
+      | user_firstName            | Cédric             |
+      | user_username             | he8us              |
+      | user_email_first          | cedric@example.com |
+      | user_email_second         | cedric@example.com |
+      | user_phone                | 0412345678         |
+      | user_plainPassword_first  | 12345              |
+      | user_plainPassword_second | 12345              |
 
     And I submit the form
     Then I should be on the homepage
@@ -79,14 +79,14 @@ Feature: Registration for user types
     Then I should be on the "Course Titular" registration page
 
     When I fill in the following:
-      | user_lastName             | Michaux         |
-      | user_firstName            | Cédric          |
-      | user_username             | he8us           |
-      | user_email_first          | cedric@he8us.be |
-      | user_email_second         | cedric@he8us.be |
-      | user_phone                | 0471711666      |
-      | user_plainPassword_first  | 12345           |
-      | user_plainPassword_second | 12345           |
+      | user_lastName             | Michaux            |
+      | user_firstName            | Cédric             |
+      | user_username             | he8us              |
+      | user_email_first          | cedric@example.com |
+      | user_email_second         | cedric@example.com |
+      | user_phone                | 0412345678         |
+      | user_plainPassword_first  | 12345              |
+      | user_plainPassword_second | 12345              |
 
     And I submit the form
 
@@ -102,14 +102,14 @@ Feature: Registration for user types
     Then I should be on the Parent registration page
 
     When I fill in the following:
-      | user_lastName             | Michaux         |
-      | user_firstName            | Cédric          |
-      | user_username             | he8us           |
-      | user_email_first          | cedric@he8us.be |
-      | user_email_second         | cedric@he8us.be |
-      | user_phone                | 0471711666      |
-      | user_plainPassword_first  | 12345           |
-      | user_plainPassword_second | 12345           |
+      | user_lastName             | Michaux            |
+      | user_firstName            | Cédric             |
+      | user_username             | he8us              |
+      | user_email_first          | cedric@example.com |
+      | user_email_second         | cedric@example.com |
+      | user_phone                | 0412345678         |
+      | user_plainPassword_first  | 12345              |
+      | user_plainPassword_second | 12345              |
 
     And I submit the form
     Then I should be on the homepage
@@ -119,14 +119,14 @@ Feature: Registration for user types
   Scenario: The password should be encoded in the database
     Given I am on the Coordinator registration page
     Then I fill in the following:
-      | user_lastName             | Michaux         |
-      | user_firstName            | Cédric          |
-      | user_username             | he8us           |
-      | user_email_first          | cedric@he8us.be |
-      | user_email_second         | cedric@he8us.be |
-      | user_phone                | 0471711666      |
-      | user_plainPassword_first  | 12345           |
-      | user_plainPassword_second | 12345           |
+      | user_lastName             | Michaux            |
+      | user_firstName            | Cédric             |
+      | user_username             | he8us              |
+      | user_email_first          | cedric@example.com |
+      | user_email_second         | cedric@example.com |
+      | user_phone                | 0412345678         |
+      | user_plainPassword_first  | 12345              |
+      | user_plainPassword_second | 12345              |
 
     And I submit the form
 

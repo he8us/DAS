@@ -66,9 +66,13 @@ security:
 
 
     access_control:
+        - { path: ^/_trans, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/pages, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/generate-captcha, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/feedback/new$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/feedback, roles: ROLE_COORDINATOR }
 
         - { path: ^/student/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/student/request-card, roles: IS_AUTHENTICATED_ANONYMOUSLY }

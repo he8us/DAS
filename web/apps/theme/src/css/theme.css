@@ -18,3 +18,11 @@ label[for="fos_user_profile_form_profilePicture_profilePictureFile"]{
     margin-right:0;
     margin-left:0;
 }
+
+.wrapper{
+    z-index: 1;
+}
+#feedback_wrapper_div.left{
+    bottom: 45px;
+    z-index: 7;
+}

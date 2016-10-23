@@ -1,0 +1,8 @@
+{% extends ':templates:box.html.twig' %}
+
+{% block title %}{{ 'feedback.feedback.reply.title' | trans }}{% endblock %}
+{% block box_title %}{{ 'feedback.feedback.reply.title' | trans }}{% endblock %}
+
+{% block box_body_content -%}
+    {% include '@He8usFeedback/FeedbackAdmin/reply_content.html.twig' %}
+{% endblock %}

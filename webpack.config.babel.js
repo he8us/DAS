@@ -26,7 +26,7 @@ const common = {
     },
     entry: {
         // Add your entrypoint here
-        'theme': './apps/theme/index.js',
+        'theme': './apps/theme/src/index.js',
         'core': './apps/core/src/index.js',
         'datatables': './apps/datatables/src/index.js'
     },

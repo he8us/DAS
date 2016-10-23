@@ -1,0 +1,8 @@
+include:
+  - User.yml
+
+UserBundle\Entity\SuperAdmin:
+  superadmin_1 (extends user):
+    username: superadmin
+    password: 12345
+

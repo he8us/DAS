@@ -1,6 +1,6 @@
 {
-    "name": "das",
-    "description": "Skeleton application with Symfony 3, React, Redux and webpack already configured",
+    "name": "he8us/das",
+    "description": "Gestion des remédiations et donne la possibilité aux jeunes d'êtres proactifs dans leurs études",
     "version": "0.1.0",
     "keywords": [
         "docker",
@@ -11,6 +11,8 @@
         "babel",
         "eslint"
     ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "license": "MIT",
     "authors": [
         {
@@ -18,7 +20,7 @@
         }
     ],
     "support": {
-        "issues": "https://github.com/he8us/docker-symfony-react-redux-webpack-skeleton/issues"
+        "issues": "https://github.com/he8us/DAS/issues"
     },
     "type": "project",
     "autoload": {
@@ -36,7 +38,13 @@
         }
     },
     "require": {
-        "php": ">=5.5.9",
+        "php": ">=7.0.0",
+        "ext-mbstring": "*",
+        "ext-gd": "*",
+        "ext-mcrypt": "*",
+        "ext-bcmath": "*",
+        "ext-intl": "*",
+        "ext-exif": "*",
         "symfony/symfony": "3.1.*",
         "doctrine/orm": "^2.5",
         "doctrine/doctrine-bundle": "^1.6",
@@ -47,7 +55,7 @@
         "sensio/distribution-bundle": "^5.0",
         "sensio/framework-extra-bundle": "^3.0.2",
         "incenteev/composer-parameter-handler": "^2.0",
-        "jms/translation-bundle": "^1.3",
+        "jms/translation-bundle": "dev-master",
         "jms/di-extra-bundle": "^1.7",
         "twig/extensions": "^1.3",
         "doctrine/doctrine-migrations-bundle": "^1.1",
@@ -60,13 +68,15 @@
         "friendsofsymfony/jsrouting-bundle": "^1.6",
         "sg/datatablesbundle": "^0.12.0",
         "doctrine/doctrine-fixtures-bundle": "^2.3",
-        "trappar/alice-generator-bundle": "^1.0"
+        "trappar/alice-generator-bundle": "^1.0",
+        "hautelook/alice-bundle": "1.3.1",
+        "nelmio/alice": "2.2.2",
+        "he8us/feedback-bundle": "^1.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^5.4",
         "sensio/generator-bundle": "^3.0",
         "symfony/phpunit-bridge": "^3.0",
-        "hautelook/alice-bundle": "^1.3",
         "doctrine/data-fixtures": "^1.2",
         "theofidry/alice-bundle-extension": "^1.3",
         "behat/behat": "^3.2",

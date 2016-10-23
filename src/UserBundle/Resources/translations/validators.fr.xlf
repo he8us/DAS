@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2016-10-02T21:41:54Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
+  <file date="2016-10-23T19:54:28Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -33,6 +33,14 @@
       <trans-unit id="006468d04881cdbb0ee53a1e27cc21ea6db2d31c" resname="form.security.username.error.missing">
         <source>form.security.username.error.missing</source>
         <target>Veuillez remplir un nom d'utilisateur</target>
+      </trans-unit>
+      <trans-unit id="36f3415043458d8f72d4c1b0360d68249ef83bc5" resname="form.user.email.should_match">
+        <source>form.user.email.should_match</source>
+        <target>L'email et sa répétition ne correspondent pas</target>
+      </trans-unit>
+      <trans-unit id="4d5bd9ad64c828bc7ccd9691b0a76da968d1d779" resname="form.user.password.should_match">
+        <source>form.user.password.should_match</source>
+        <target>Le mot de passe et sa répétition ne correspondent pas</target>
       </trans-unit>
     </body>
   </file>

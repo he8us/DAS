@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2016-10-03T23:48:01Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
+  <file date="2016-10-23T19:53:45Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -8,11 +8,7 @@
     <body>
       <trans-unit id="a5eba05921c11add89e9b68570149da22499c604" resname="change_password.submit">
         <source>change_password.submit</source>
-        <target>change_password.submit</target>
-      </trans-unit>
-      <trans-unit id="7e6b12a7deb5f7315f025b8c49121130cd7798ad" resname="form.email">
-        <source>form.email</source>
-        <target>Email</target>
+        <target>Changer de mot de passe</target>
       </trans-unit>
       <trans-unit id="db116776771da1cb379326d6d03fc8263c61d48d" resname="form.first_name">
         <source>form.first_name</source>
@@ -26,20 +22,52 @@
         <source>form.last_name</source>
         <target>Nom</target>
       </trans-unit>
-      <trans-unit id="6d384fb8ef3ca9318f0f9d983868842a211770f8" resname="form.password">
-        <source>form.password</source>
-        <target>Mot de passe</target>
-      </trans-unit>
-      <trans-unit id="37235e2e8981fa0045e4eae0c39e85c01b3a4e3f" resname="form.phone">
-        <source>form.phone</source>
-        <target>Téléphone</target>
-      </trans-unit>
       <trans-unit id="6e252e02c6a124250d6f803979199c9aa2cce6a8" resname="form.profile.picture">
         <source>form.profile.picture</source>
         <target>Photo de profil</target>
       </trans-unit>
-      <trans-unit id="dff086700fdd62e031af5de308be31fcada4d7c7" resname="form.username">
-        <source>form.username</source>
+      <trans-unit id="5bbad741fe8166df8f96758bac68e00f4d5fbca1" resname="form.user.email">
+        <source>form.user.email</source>
+        <target>Email</target>
+      </trans-unit>
+      <trans-unit id="668c671a88db694a1489be89eb020cf381a25e92" resname="form.user.email.repeat">
+        <source>form.user.email.repeat</source>
+        <target>Répéter l'email</target>
+      </trans-unit>
+      <trans-unit id="ae11b812bf4bcad48349a871e85135eab39d7ba6" resname="form.user.first_name">
+        <source>form.user.first_name</source>
+        <target>Prénom</target>
+      </trans-unit>
+      <trans-unit id="56f2e033e120fc4e3f9d3a70bedb973dab46c431" resname="form.user.import.student.file">
+        <source>form.user.import.student.file</source>
+        <target>Fichier d'import</target>
+      </trans-unit>
+      <trans-unit id="dbbc0e1f2556706a3875813374d35102bb2f29ab" resname="form.user.import.student.submit">
+        <source>form.user.import.student.submit</source>
+        <target>Importer les étudiants</target>
+      </trans-unit>
+      <trans-unit id="bdee700ca1f92fc98ece74bc492d515d983c8978" resname="form.user.last_name">
+        <source>form.user.last_name</source>
+        <target>Nom</target>
+      </trans-unit>
+      <trans-unit id="98f0f5b502f7bf1b6e5cbad7b134ff4a318d23f8" resname="form.user.password">
+        <source>form.user.password</source>
+        <target>Mot de passe</target>
+      </trans-unit>
+      <trans-unit id="d5ce8a95c38754624ea8fe6aa114c8f290f9888d" resname="form.user.password.repeat">
+        <source>form.user.password.repeat</source>
+        <target>Répéter le mot de passe</target>
+      </trans-unit>
+      <trans-unit id="148005ed10f2b75bbdb99c10f5b4d409245a2bf0" resname="form.user.phone">
+        <source>form.user.phone</source>
+        <target>Téléphone</target>
+      </trans-unit>
+      <trans-unit id="985c07485e48e40126059d4ff4a2c1f945152898" resname="form.user.profile.picture">
+        <source>form.user.profile.picture</source>
+        <target>Photo de profil</target>
+      </trans-unit>
+      <trans-unit id="8c0fee4e1b35af15eaaebb4797108233fa12594a" resname="form.user.username">
+        <source>form.user.username</source>
         <target>Nom d'utilisateur</target>
       </trans-unit>
       <trans-unit id="cfa9b69a2c05b547327d60639cf2931218adc4a0" resname="layout.change_password">
@@ -214,6 +242,10 @@
         <source>layout.user.role.parent</source>
         <target>Parent</target>
       </trans-unit>
+      <trans-unit id="7ed6c4fae416670e97ab095c5da36ca797aafa98" resname="layout.user.role.student">
+        <source>layout.user.role.student</source>
+        <target>layout.user.role.student</target>
+      </trans-unit>
       <trans-unit id="29d31e4a1258a8f2197101d347a23209ca469407" resname="layout.user.role.super_admin">
         <source>layout.user.role.super_admin</source>
         <target>Super Admin</target>
@@ -248,7 +280,7 @@
       </trans-unit>
       <trans-unit id="0d6307def2ec4ecb26978118bb2deca9d566945c" resname="profile.show.username">
         <source>profile.show.username</source>
-        <target>profile.show.username</target>
+        <target>Nom d'utilisateur</target>
       </trans-unit>
       <trans-unit id="4ef79d57e94b4b74349d6533a231e09dc5be0ce2" resname="registration.submit">
         <source>registration.submit</source>
@@ -261,6 +293,10 @@
       <trans-unit id="f0b3476bec045fac67c256d17a54e4f8a8d05335" resname="resetting.password_already_requested">
         <source>resetting.password_already_requested</source>
         <target>resetting.password_already_requested</target>
+      </trans-unit>
+      <trans-unit id="921fd7a5cc7f9e46eab31822855a22d9808b0477" resname="resetting.reset.submit">
+        <source>resetting.reset.submit</source>
+        <target>resetting.reset.submit</target>
       </trans-unit>
       <trans-unit id="fada63a7aec6b86d60633890fb3572ebad37ad68" resname="security.login.barcode">
         <source>security.login.barcode</source>

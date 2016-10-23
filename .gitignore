@@ -40,6 +40,7 @@ assets.json
 **/apps/*.jpg
 **/apps/*.png
 web/images
+src/He8us
 
 #Other projects related
 adsdaq.dev

@@ -10,20 +10,12 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Entity(repositoryClass="UserBundle\Repository\UserRepository")
  */
-class Coordinator extends User
+class SuperAdmin extends User
 {
-
-    /**
-     * @var ArrayCollection
-     */
-    private $pages;
-
-
     public function __construct()
     {
         parent::__construct();
-        $this->pages = new ArrayCollection();
-        $this->roles = ['ROLE_COORDINATOR'];
+        $this->roles = ['ROLE_SUPER_ADMIN'];
     }
 
 

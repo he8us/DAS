@@ -13,8 +13,6 @@ user:
 cms:
     resource: "@CMSBundle/Resources/config/routing.yml"
 
-
-
 _liip_imagine:
     resource: "@LiipImagineBundle/Resources/config/routing.xml"
 
@@ -26,8 +24,14 @@ sg_datatables_bundle:
     resource: "@SgDatatablesBundle/Controller/"
     type:     annotation
 
+feedback:
+    resource: "@He8usFeedbackBundle/Resources/config/routing.yml"
+    prefix:   /
 
+captcha:
+    resource: "@GregwarCaptchaBundle/Resources/config/routing/routing.yml"
+    prefix: /
 
 #Be sure that core routing stays at the very end
-core_bundle:
-  resource: "@CoreBundle/Resources/config/routing.yml"
+#core_bundle:
+#  resource: "@CoreBundle/Resources/config/routing.yml"

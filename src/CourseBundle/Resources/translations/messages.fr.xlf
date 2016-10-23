@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
+  <file date="2016-10-23T19:55:12Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
+    <header>
+      <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
+      <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
+    </header>
+    <body>
+      <trans-unit id="e62604c58dbaef5a797a7d1c660e0634ac7f23dd" resname="form.courses.content.grades">
+        <source>form.courses.content.grades</source>
+        <target>Années</target>
+      </trans-unit>
+      <trans-unit id="a4de517483f90f937c22df842a53d0db62ba486d" resname="form.courses.content.parent">
+        <source>form.courses.content.parent</source>
+        <target>Cours Parent</target>
+      </trans-unit>
+      <trans-unit id="900dd05122235936594c379f4f45242795ff95e0" resname="form.courses.content.section">
+        <source>form.courses.content.section</source>
+        <target>Section</target>
+      </trans-unit>
+      <trans-unit id="e0615fd990855ceaa3dddf0ef1513dd23be7232b" resname="form.courses.content.teachers">
+        <source>form.courses.content.teachers</source>
+        <target>Professeurs</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

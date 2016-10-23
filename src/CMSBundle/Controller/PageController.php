@@ -3,7 +3,6 @@
 namespace CMSBundle\Controller;
 
 use CMSBundle\Entity\Page;
-use CMSBundle\Form\PageType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 

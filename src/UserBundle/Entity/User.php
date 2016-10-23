@@ -28,6 +28,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *     "course_titular" = "UserBundle\Entity\CourseTitular",
  *     "teacher" = "UserBundle\Entity\Teacher",
  *     "coordinator" = "UserBundle\Entity\Coordinator",
+ *     "super_admin" = "UserBundle\Entity\SuperAdmin",
  * });
  * @UniqueEntity(
  *     fields={"username"},

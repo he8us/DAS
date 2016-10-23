@@ -90,6 +90,7 @@ class PasswordEncoder
                     $package . 'Titular',
                     $package . 'CourseTitular',
                     $package . 'StudentParent',
+                    $package . 'SuperAdmin',
                 ]
             );
     }
