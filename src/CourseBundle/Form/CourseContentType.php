@@ -11,8 +11,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class CourseContentType extends AbstractType
 {
     /**
-     * @param FormBuilderInterface $builder
-     * @param array                $options
+     * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -20,22 +19,22 @@ class CourseContentType extends AbstractType
             ->add('section',
                 TextType::class,
                 [
-                    'label' => 'form.courses.content.section',
+                    'label' => 'course.content.section',
                 ]
             )
             ->add('parent', TextType::class, [
-                'label' => 'form.courses.content.parent',
+                'label' => 'course.content.parent',
             ])
             ->add('teachers', TextType::class, [
-                'label' => 'form.courses.content.teachers',
+                'label' => 'course.content.teachers',
             ])
             ->add('grades', TextType::class, [
-                'label' => 'form.courses.content.grades',
+                'label' => 'course.content.grades',
             ]);
     }
 
     /**
-     * @param OptionsResolver $resolver
+     * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {
@@ -43,4 +42,13 @@ class CourseContentType extends AbstractType
             'data_class' => CourseContent::class,
         ]);
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getBlockPrefix()
+    {
+        return 'coursebundle_coursecontent';
+    }
+
 }

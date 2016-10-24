@@ -20,7 +20,7 @@ use UserBundle\Entity\StudentParent;
 use UserBundle\Entity\Teacher;
 use UserBundle\Entity\Titular;
 use UserBundle\Entity\User;
-use UserBundle\Form\UserType;
+use UserBundle\Form\UserRegisterType;
 
 /**
  * Class SecurityController
@@ -84,7 +84,7 @@ class SecurityController extends Controller
         $user = $this->getUserTypeForRole($role);
 
 
-        $form = $this->createForm(UserType::class, $user);
+        $form = $this->createForm(UserRegisterType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

@@ -1,0 +1,35 @@
+course_grade_index:
+    path:     /
+    defaults: { _controller: "CourseBundle:Grade:index" }
+    methods:  GET
+
+course_grade_show:
+    path:     /{id}/show
+    defaults: { _controller: "CourseBundle:Grade:show" }
+    methods:  GET
+    options:
+        expose: true
+
+course_grade_new:
+    path:     /new
+    defaults: { _controller: "CourseBundle:Grade:new" }
+    methods:  [GET, POST]
+
+course_grade_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "CourseBundle:Grade:edit" }
+    methods:  [GET, POST]
+    options:
+        expose: true
+
+course_grade_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "CourseBundle:Grade:delete" }
+    methods:  DELETE
+
+course_grade_results:
+    path:     /result
+    defaults: { _controller: "CourseBundle:Grade:results" }
+    methods:  GET
+    options:
+        expose: true

@@ -3,7 +3,9 @@
 namespace CourseBundle\Entity;
 
 use DateTime;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 
 /**
@@ -14,8 +16,9 @@ use Gedmo\Timestampable\Traits\TimestampableEntity;
  */
 class Lesson
 {
-
     use TimestampableEntity;
+    use SoftDeleteableEntity;
+
     /**
      * @var int
      *
@@ -46,6 +49,20 @@ class Lesson
      */
     private $remarks;
 
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\ManyToMany(targetEntity="CourseBundle\Entity\Grade", mappedBy="lessons")
+     * @ORM\JoinColumn(name="grade_id", referencedColumnName="id", onDelete="SET NULL")
+    )
+     */
+    private $grades;
+
+
+    public function __construct()
+    {
+        $this->grades = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -62,7 +79,7 @@ class Lesson
      *
      * @return DateTime
      */
-    public function getDate() : DateTime
+    public function getDate()
     {
         return $this->date;
     }
@@ -74,7 +91,7 @@ class Lesson
      *
      * @return Lesson
      */
-    public function setDate(DateTime $date) : Lesson
+    public function setDate(DateTime $date)
     {
         $this->date = $date;
 
@@ -86,7 +103,7 @@ class Lesson
      *
      * @return string
      */
-    public function getRoom() : string
+    public function getRoom()
     {
         return $this->room;
     }
@@ -98,7 +115,7 @@ class Lesson
      *
      * @return Lesson
      */
-    public function setRoom(string $room) : Lesson
+    public function setRoom(string $room)
     {
         $this->room = $room;
 
@@ -110,7 +127,7 @@ class Lesson
      *
      * @return string
      */
-    public function getRemarks() : string
+    public function getRemarks()
     {
         return $this->remarks;
     }
@@ -122,7 +139,7 @@ class Lesson
      *
      * @return Lesson
      */
-    public function setRemarks(string $remarks) : Lesson
+    public function setRemarks(string $remarks)
     {
         $this->remarks = $remarks;
 

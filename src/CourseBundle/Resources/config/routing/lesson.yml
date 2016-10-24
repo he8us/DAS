@@ -1,0 +1,35 @@
+course_lesson_index:
+    path:     /
+    defaults: { _controller: "CourseBundle:Lesson:index" }
+    methods:  GET
+
+course_lesson_show:
+    path:     /{id}/show
+    defaults: { _controller: "CourseBundle:Lesson:show" }
+    methods:  GET
+    options:
+        expose: true
+
+course_lesson_new:
+    path:     /new
+    defaults: { _controller: "CourseBundle:Lesson:new" }
+    methods:  [GET, POST]
+
+course_lesson_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "CourseBundle:Lesson:edit" }
+    methods:  [GET, POST]
+    options:
+        expose: true
+
+course_lesson_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "CourseBundle:Lesson:delete" }
+    methods:  DELETE
+
+course_lesson_results:
+    path:     /result
+    defaults: { _controller: "CourseBundle:Lesson:results" }
+    methods:  GET
+    options:
+        expose: true

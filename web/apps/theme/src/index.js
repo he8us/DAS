@@ -9,5 +9,3 @@ import 'admin-lte/dist/css/AdminLTE.css';
 import 'admin-lte/dist/css/skins/skin-blue.min.css'
 
 import "./css/theme.css"
-
-

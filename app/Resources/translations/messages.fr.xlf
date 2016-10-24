@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2016-10-23T19:51:20Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
+  <file date="2016-10-30T23:36:57Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -12,27 +12,35 @@
       </trans-unit>
       <trans-unit id="521307ddb67a4abc14248801dae5e5989aca76c1" resname="copyright">
         <source>copyright</source>
-        <target>%s et %s</target>
+        <target>%creator1% et %creator2%</target>
       </trans-unit>
-      <trans-unit id="c7077d5687a8b99ff5cd5ba79ebf294e54bd6cb4" resname="courses.content.list.title">
-        <source>courses.content.list.title</source>
-        <target>Liste des contenus de cours</target>
+      <trans-unit id="fd89046d8089a1854b07c364fdd4a308dfe08357" resname="course.content.list.title">
+        <source>course.content.list.title</source>
+        <target>Contenus de cours</target>
+      </trans-unit>
+      <trans-unit id="4b0ee09887df8eb55b881ee6c2ee519d902979c0" resname="course.grade.list.title">
+        <source>course.grade.list.title</source>
+        <target>Années</target>
+      </trans-unit>
+      <trans-unit id="71982b5492f8e27c8cc0c8eac452c749bfd0028b" resname="course.gradeclass.list.title">
+        <source>course.gradeclass.list.title</source>
+        <target>Classes</target>
+      </trans-unit>
+      <trans-unit id="1942a61a976512f7512ab84f37400aac9aeb4be8" resname="course.lesson.list.title">
+        <source>course.lesson.list.title</source>
+        <target>Cours</target>
       </trans-unit>
       <trans-unit id="c83dc793a3460b1161226b098ce9649f621316a5" resname="feedback.categories.list">
         <source>feedback.categories.list</source>
-        <target>Liste des catégories</target>
+        <target>Catégories</target>
       </trans-unit>
       <trans-unit id="406e2e2938faa979771a16efbc7f8601c84c5351" resname="feedback.feedback.list">
         <source>feedback.feedback.list</source>
-        <target>Liste des Feedbacks</target>
+        <target>Feedbacks</target>
       </trans-unit>
       <trans-unit id="7b91db598a0fdb271701d00c7c79dc4db9a1566c" resname="feedback.menu_header">
         <source>feedback.menu_header</source>
         <target>Feedbacks</target>
-      </trans-unit>
-      <trans-unit id="2736fab291f04e69b62d490c3c09361f5b82461a" resname="login">
-        <source>login</source>
-        <target>Connection</target>
       </trans-unit>
       <trans-unit id="6eb7269e2ff9f7d06893acebf169957f8fc79832" resname="page_title">
         <source>page_title</source>
@@ -42,25 +50,29 @@
         <source>pages.homepage</source>
         <target>Page d'accueil</target>
       </trans-unit>
-      <trans-unit id="13a2828b3adecc1c32ea3888d08afa51e147b3f3" resname="register">
-        <source>register</source>
-        <target>Inscription</target>
-      </trans-unit>
-      <trans-unit id="cb4393e49b9750ab453ff0cd03ed1b791338e533" resname="student.list">
-        <source>student.list</source>
-        <target>student.list</target>
-      </trans-unit>
       <trans-unit id="1041af26a994241504648b37585c695bfb3d43ae" resname="toggle_navigation">
         <source>toggle_navigation</source>
         <target>Basculer la navigation</target>
       </trans-unit>
-      <trans-unit id="66da11cf39671a23ef1f26d4b8fe89f94786fec2" resname="user.list">
-        <source>user.list</source>
-        <target>user.list</target>
+      <trans-unit id="10eb410ab2de028acaf6e9c86570e42741622248" resname="user.list.title">
+        <source>user.list.title</source>
+        <target>Utilisateurs</target>
       </trans-unit>
-      <trans-unit id="0dde149c1cd65bc582957b54d76b7d5162eb72ae" resname="user.roles.coordinator">
-        <source>user.roles.coordinator</source>
+      <trans-unit id="d9682f1f9b8b03363021242d480813e3fdb10102" resname="user.login.title">
+        <source>user.login.title</source>
+        <target>Connection</target>
+      </trans-unit>
+      <trans-unit id="306758f849f02a655017c93d84f5afd0c3547dd7" resname="user.register.title">
+        <source>user.register.title</source>
+        <target>Inscription</target>
+      </trans-unit>
+      <trans-unit id="e7966eea57e6a444fbdd61be28c9ce377cada967" resname="user.role.coordinator">
+        <source>user.role.coordinator</source>
         <target>Coordinateur</target>
+      </trans-unit>
+      <trans-unit id="04dd26a10391bb8528158b0e269f70bf33eb0ebd" resname="user.student.list.title">
+        <source>user.student.list.title</source>
+        <target>Etudiants</target>
       </trans-unit>
     </body>
   </file>

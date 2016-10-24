@@ -1,12 +1,10 @@
 {% extends ":templates:box.html.twig" %}
 
-{% block box_title %}{{ "layout.user.list" | trans }}{% endblock %}
+{% block title %}{{ "user.list.title" | trans }}{% endblock %}
+{% block box_title %}{{ "user.list.title" | trans }}{% endblock %}
 
 {% block box_actions %}
-    <a href="{{ path('user_management_new') }}" id="_add" class="btn btn-primary">
-        <i class="glyphicon glyphicon-plus"></i>
-        {{ "layout.user.add" | trans }}
-    </a>
+    {{ action.new("user.action.add" | trans, 'user_user_new') }}
 {% endblock %}
 
 {% block box_body_content %}

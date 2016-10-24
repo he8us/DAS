@@ -34,13 +34,13 @@ class PageType extends AbstractType
                 'title',
                 TextType::class,
                 [
-                    "label" => "form.cms.page.title",
+                    "label" => "cms.page.title",
                 ]
             )
             ->add(
                 'body',
                 TextType::class, [
-                    "label" => "form.cms.page.body",
+                    "label" => "cms.page.body",
                 ]
             );
     }

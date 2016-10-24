@@ -2,9 +2,11 @@
 
 namespace CourseBundle\Entity;
 
+use CoreBundle\Entity\Traits\SoftDeletable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\UniqueConstraint;
+use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 use UserBundle\Entity\Teacher;
 use UserBundle\Entity\Titular;
@@ -22,6 +24,7 @@ use UserBundle\Entity\Titular;
 class CourseContent
 {
     use TimestampableEntity;
+    use SoftDeleteableEntity;
 
 
     /**
@@ -93,7 +96,7 @@ class CourseContent
      *
      * @return int
      */
-    public function getId() : int
+    public function getId()
     {
         return $this->id;
     }
@@ -115,7 +118,7 @@ class CourseContent
      *
      * @return CourseContent
      */
-    public function setSection(string $section): CourseContent
+    public function setSection(string $section)
     {
         $this->section = $section;
 
@@ -135,7 +138,7 @@ class CourseContent
      *
      * @return CourseContent
      */
-    public function setParent(CourseContent $parent): CourseContent
+    public function setParent(CourseContent $parent)
     {
         $this->parent = $parent;
         return $this;
@@ -144,7 +147,7 @@ class CourseContent
     /**
      * @return ArrayCollection
      */
-    public function getTeachers(): ArrayCollection
+    public function getTeachers()
     {
         return $this->teachers;
     }
@@ -154,7 +157,7 @@ class CourseContent
      *
      * @return CourseContent
      */
-    public function addTeacher(Teacher $teacher): CourseContent
+    public function addTeacher(Teacher $teacher)
     {
         $this->teachers->add($teacher);
         return $this;
@@ -175,7 +178,7 @@ class CourseContent
     /**
      * @return ArrayCollection
      */
-    public function getTitulars(): ArrayCollection
+    public function getTitulars()
     {
         return $this->titulars;
     }
@@ -185,7 +188,7 @@ class CourseContent
      *
      * @return CourseContent
      */
-    public function addTitular(Titular $teacher): CourseContent
+    public function addTitular(Titular $teacher)
     {
         $this->titulars->add($teacher);
         return $this;
@@ -207,7 +210,7 @@ class CourseContent
     /**
      * @return ArrayCollection
      */
-    public function getGrades(): ArrayCollection
+    public function getGrades()
     {
         return $this->grades;
     }
@@ -218,7 +221,7 @@ class CourseContent
      *
      * @return CourseContent
      */
-    public function addGrade(Grade $grade): CourseContent
+    public function addGrade(Grade $grade)
     {
         $this->grades->add($grade);
         return $this;
@@ -230,7 +233,7 @@ class CourseContent
      *
      * @return CourseContent
      */
-    public function removeGrade(Grade $grade): CourseContent
+    public function removeGrade(Grade $grade)
     {
         $this->grades->removeElement($grade);
         return $this;

@@ -1,0 +1,41 @@
+user_user_index:
+    path:     /
+    defaults:
+      _controller: UserBundle:User:index
+
+user_user_new:
+    path: /new
+    defaults:
+      _controller: UserBundle:User:new
+
+user_user_edit:
+    path: /{id}/edit
+    defaults:
+      _controller: UserBundle:User:edit
+    requirements:
+      id: \d+
+    options:
+        expose: true
+
+user_user_results:
+    path: /result
+    defaults:
+      _controller: UserBundle:User:results
+    options:
+        expose: true
+
+user_user_details:
+    path: /{id}/show
+    defaults:
+      _controller: UserBundle:User:show
+    requirements:
+      id: \d+
+    options:
+      expose: true
+
+user_user_delete:
+    path:     /{id}/delete
+    defaults:
+        _controller: UserBundle:User:delete
+
+    methods:  DELETE

@@ -4,6 +4,7 @@ namespace CourseBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 
 /**
@@ -14,8 +15,8 @@ use Gedmo\Timestampable\Traits\TimestampableEntity;
  */
 class Grade
 {
-
     use TimestampableEntity;
+    use SoftDeleteableEntity;
 
     /**
      * @var int
@@ -53,10 +54,10 @@ class Grade
     /**
      * @var ArrayCollection
      *
-     * @ORM\ManyToMany(targetEntity="UserBundle\Entity\CourseTitular", inversedBy="grades")
-     * @ORM\JoinColumn(name="course_titular_id", referencedColumnName="id", onDelete="SET NULL")
+     * @ORM\ManyToMany(targetEntity="CourseBundle\Entity\Lesson", inversedBy="grades")
+     * @ORM\JoinColumn(name="lessoné_id", referencedColumnName="id", onDelete="SET NULL")
      */
-    private $courseTitulars;
+    private $lessons;
 
     /**
      * Grade constructor.
@@ -65,7 +66,7 @@ class Grade
     {
         $this->sections = new ArrayCollection();
         $this->courses = new ArrayCollection();
-        $this->courseTitulars = new ArrayCollection();
+        $this->lessons = new ArrayCollection();
     }
 
     /**
@@ -73,7 +74,7 @@ class Grade
      *
      * @return int
      */
-    public function getId(): int
+    public function getId()
     {
         return $this->id;
     }
@@ -83,7 +84,7 @@ class Grade
      *
      * @return int
      */
-    public function getGrade() : int
+    public function getGrade()
     {
         return $this->grade;
     }
@@ -95,7 +96,7 @@ class Grade
      *
      * @return Grade
      */
-    public function setGrade($grade) : Grade
+    public function setGrade($grade)
     {
         $this->grade = $grade;
 
@@ -105,7 +106,7 @@ class Grade
     /**
      * @return GradeClass
      */
-    public function getSections(): GradeClass
+    public function getSections()
     {
         return $this->sections;
     }
@@ -115,7 +116,7 @@ class Grade
      *
      * @return Grade
      */
-    public function addSection(GradeClass $class): Grade
+    public function addSection(GradeClass $class)
     {
         $this->sections->add($class);
         return $this;
@@ -126,7 +127,7 @@ class Grade
      *
      * @return Grade
      */
-    public function removeSection(GradeClass $class): Grade
+    public function removeSection(GradeClass $class)
     {
         $this->sections->removeElement($class);
         return $this;
@@ -135,7 +136,7 @@ class Grade
     /**
      * @return CourseContent
      */
-    public function getCourses(): CourseContent
+    public function getCourses()
     {
         return $this->courses;
     }
@@ -145,7 +146,7 @@ class Grade
      *
      * @return Grade
      */
-    public function addCourse(CourseContent $class): Grade
+    public function addCourse(CourseContent $class)
     {
         $this->sections->add($class);
         return $this;
@@ -156,7 +157,7 @@ class Grade
      *
      * @return Grade
      */
-    public function removeCourse(CourseContent $class): Grade
+    public function removeCourse(CourseContent $class)
     {
         $this->sections->removeElement($class);
         return $this;

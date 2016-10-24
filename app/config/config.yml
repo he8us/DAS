@@ -119,11 +119,6 @@ jms_translation:
             output_dir: "%kernel.root_dir%/../src/FeedbackBundle/Resources/translations"
             excluded_dirs: [Features]
 
-        vendors:
-            dirs: ["%kernel.root_dir%/../vendor"]
-            output_dir: "%kernel.root_dir%/Resources/translations"
-            excluded_dirs: [Behat]
-
 
 services:
     twig.text_extension:

@@ -22,15 +22,6 @@ class CourseTitular extends User
     private $courses;
 
     /**
-     * @var ArrayCollection
-     *
-     * @ORM\ManyToMany(targetEntity="CourseBundle\Entity\Grade", mappedBy="courseTitulars")
-     * @ORM\JoinColumn(name="grade_id", referencedColumnName="id", onDelete="SET NULL")
-     */
-    private $grades;
-
-
-    /**
      * CourseTitular constructor.
      */
     public function __construct()

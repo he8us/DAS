@@ -1,11 +1,11 @@
 {% extends ":templates:box-with-footer.html.twig" %}
 
 {% block title %}
-    {{ "layout.your_profile" | trans }}
+    {{ "user.profile.your_profile" | trans }}
 {% endblock %}
 
 {% block box_title %}
-    {{ "layout.your_profile" | trans }}
+    {{ "user.profile.your_profile" | trans }}
 {% endblock %}
 
 
@@ -20,16 +20,16 @@
 
         <div class="col-md-8">
             <dl class="dl-horizontal">
-                <dt>{{ 'profile.show.lastName' | trans }}</dt>
+                <dt>{{ 'user.last_name' | trans }}</dt>
                 <dd>{{ user.lastName }}</dd>
 
-                <dt>{{ 'profile.show.firstName' | trans }}</dt>
+                <dt>{{ 'user.first_name' | trans }}</dt>
                 <dd>{{ user.firstName }}</dd>
 
-                <dt>{{ 'profile.show.username' | trans }}</dt>
+                <dt>{{ 'user.username' | trans }}</dt>
                 <dd>{{ user.username }}</dd>
 
-                <dt>{{ 'profile.show.email' | trans }}</dt>
+                <dt>{{ 'user.email' | trans }}</dt>
                 <dd>{{ user.email }}</dd>
             </dl>
         </div>
@@ -39,14 +39,14 @@
 
 {% block box_footer %}
     {% if has_feature('CanRequestCardFeature') %}
-        <a href="{{ path('user_request_card') }}" class="btn btn-default">{{ 'layout.request_card' | trans }}</a>
+        <a href="{{ path('user_request_card') }}" class="btn btn-default">{{ 'user.profile.request_card' | trans }}</a>
     {% endif %}
 
     {% if has_feature('CanChangePasswordFeature') %}
         <a href="{{ path('fos_user_change_password') }}"
-           class="btn btn-default">{{ 'layout.change_password' | trans }}</a>
+           class="btn btn-default">{{ 'user.profile.change_password' | trans }}</a>
     {% endif %}
 
     <a href="{{ path('fos_user_profile_edit') }}"
-       class="btn btn-info pull-right">{{ 'layout.profile_edit' | trans }}</a>
+       class="btn btn-info pull-right">{{ 'user.profile.edit' | trans }}</a>
 {% endblock %}

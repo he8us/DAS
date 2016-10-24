@@ -1,28 +1,28 @@
 {% extends ':templates:register.html.twig' %}
 {% form_theme form "bootstrap_3_layout.html.twig" %}
 
-{% block title %}{{ "layout.security.register.title" | trans }}{% endblock %}
+{% block title %}{{ "user.register.title" | trans }}{% endblock %}
 
 {% block box_body %}
     {{ form_start(form, {'method': 'post', 'action': path('user_security_register', {role: role}), 'attr': {'class': 'user_security_register', 'novalidate':'novalidate'}}) }}
 
-    <p class="login-box-msg">{{ "layout.security.register.title" | trans }}</p>
+    <p class="login-box-msg">{{ "user.register.title" | trans }}</p>
 
 
 
-    {{ form_row(form.lastName, {'label': false, 'attr': {'placeholder': 'form.last_name'}}) }}
+    {{ form_row(form.lastName, {'label': false, 'attr': {'placeholder': 'user.last_name'}}) }}
 
-    {{ form_row(form.firstName, {'label': false, 'attr': {'placeholder': 'form.first_name'}}) }}
+    {{ form_row(form.firstName, {'label': false, 'attr': {'placeholder': 'user.first_name'}}) }}
 
-    {{ form_row(form.username, {'label': false, 'attr': {'placeholder': 'form.username'}}) }}
+    {{ form_row(form.username, {'label': false, 'attr': {'placeholder': 'user.username'}}) }}
 
-    {{ form_row(form.plainPassword.first, {'label': false, 'attr': {'placeholder': 'form.password'}}) }}
-    {{ form_row(form.plainPassword.second, {'label': false, 'attr': {'placeholder': 'form.password.repeat'}}) }}
+    {{ form_row(form.plainPassword.first, {'label': false, 'attr': {'placeholder': 'user.password'}}) }}
+    {{ form_row(form.plainPassword.second, {'label': false, 'attr': {'placeholder': 'user.password.repeat'}}) }}
 
-    {{ form_row(form.email.first, {'label': false, 'attr': {'placeholder': 'form.email'}}) }}
-    {{ form_row(form.email.second, {'label': false, 'attr': {'placeholder': 'form.email.repeat'}}) }}
+    {{ form_row(form.email.first, {'label': false, 'attr': {'placeholder': 'user.email'}}) }}
+    {{ form_row(form.email.second, {'label': false, 'attr': {'placeholder': 'user.email.repeat'}}) }}
 
-    {{ form_row(form.phone, {'label': false, 'attr': {'placeholder': 'form.phone'}}) }}
+    {{ form_row(form.phone, {'label': false, 'attr': {'placeholder': 'user.phone'}}) }}
 
 
 
@@ -31,10 +31,15 @@
     {{ form_widget(form) }}
 
     <div class="row">
-        <div class="col-xs-7"><a
-                    href="{{ path('user_security_login') }}">{{ "form.i_already_have_an_account" | trans }}</a></div>
-        <div class="col-xs-5"><input type="submit" name="_submit" class="btn btn-primary btn-block btn-flat"
-                                     value="{{ 'registration.submit'|trans }}"/></div>
+        <div class="col-xs-7">
+            <a href="{{ path('user_security_login') }}">
+                {{ "user.i_already_have_an_account" | trans }}
+            </a>
+        </div>
+        <div class="col-xs-5">
+            <input type="submit" name="_submit" class="btn btn-primary btn-block btn-flat"
+                   value="{{ 'user.register.submit'|trans }}"/>
+        </div>
     </div>
 
     {{ form_end(form) }}

@@ -6,10 +6,10 @@ import AssetsPlugin from 'assets-webpack-plugin';
 import * as actions from './app/Resources/build/actions.js';
 
 
-const TARGET =  process.env.NODE_ENV || process.env.npm_lifecycle_event;
+const TARGET = process.env.NODE_ENV || process.env.npm_lifecycle_event;
 process.env.BABEL_ENV = TARGET
 
-console.log("BUILD TARGET:", TARGET);
+console.log("BUILDING FOR TARGET:", TARGET);
 
 const PATHS = {
     'public': path.join(__dirname, './web'),
@@ -22,7 +22,10 @@ const common = {
     resolve: {
         root: PATHS.public,
         extensions: ['', '.js', '.jsx', '.css'],
-        modulesDirectories: ['node_modules']
+        modulesDirectories: ['node_modules', 'web/bundles'],
+        alias: {
+            jquery: 'jquery/src/jquery'
+        }
     },
     entry: {
         // Add your entrypoint here
@@ -53,7 +56,7 @@ const common = {
             { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?(\-[\.a-z0-9]+)?$/, loader: "url-loader?limit=10000&mimetype=application/font-woff" },
             { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?(\-[\.a-z0-9]+)?$/, loader: "file-loader" },
 
-            { test: require.resolve("jquery"), loader: "expose?$!expose?jQuery" },
+
             { test: require.resolve("moment"), loader: "expose?$!expose?moment" }
         ]
     },
@@ -64,6 +67,9 @@ const common = {
         new Webpack.ProvidePlugin({
             $: "jquery",
             jQuery: "jquery"
+        }),
+        new Webpack.DefinePlugin({
+            'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
         })
     ]
 };

@@ -1,0 +1,27 @@
+{% extends ':templates:box.html.twig' %}
+
+
+{% block title %}{{ "course.gradeclass.show.title" | trans }}{% endblock %}
+{% block box_title %}{{ "course.gradeclass.show.title" | trans }}{% endblock %}
+
+{% block box_actions %}
+    {{ action.back('course.gradeclass.back_to_list' | trans, 'course_gradeclass_index') }}
+    {{ action.edit('course.gradeclass.edit', 'course_gradeclass_edit', gradeClass.id) }}
+    {{ action.delete('course.gradeclass.delete', delete_form) }}
+{% endblock %}
+
+{% block box_body_content %}
+    <table>
+        <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ gradeClass.id }}</td>
+        </tr>
+        <tr>
+            <th>Section</th>
+            <td>{{ gradeClass.section }}</td>
+        </tr>
+
+        </tbody>
+    </table>
+{% endblock %}

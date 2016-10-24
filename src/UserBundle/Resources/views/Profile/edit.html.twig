@@ -1,7 +1,7 @@
 {% extends ":templates:box-with-footer.html.twig" %}
 
-{% block title %}{{ "layout.profile.edit" | trans }}{% endblock %}
-{% block box_title %}{{ "layout.profile.edit" | trans }}{% endblock %}
+{% block title %}{{ "user.profile.edit.title" | trans }}{% endblock %}
+{% block box_title %}{{ "user.profile.edit.title" | trans }}{% endblock %}
 
 
 {% block box_start %}
@@ -31,10 +31,10 @@
 {% block box_footer %}
     {% if has_feature('CanDeleteAccountFeature') %}
         <a href="{{ path('user_delete_account') }}"
-           class="btn btn-danger">{{ 'layout.profile.delete.button' | trans({}, 'messages') }}</a>
+           class="btn btn-danger">{{ 'user.profile.delete.button' | trans({}, 'messages') }}</a>
     {% endif %}
 
-    <input type="submit" class="btn btn-info pull-right" value="{{ 'profile.edit.submit'|trans }}"/>
+    <input type="submit" class="btn btn-info pull-right" value="{{ 'user.profile.edit.submit'|trans }}"/>
 {% endblock %}
 
 {% block box_end %}

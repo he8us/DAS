@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{ app.request.locale|split('_')[0] }}">
 <head>
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -42,9 +42,9 @@
                         {% include 'UserBundle:Partials:user-menu.html.twig' %}
                     {% else %}
                         <li><a id="_register"
-                               href="{{ path("user_security_register") }}">{{ "register" | trans }}</a></li>
+                               href="{{ path("user_security_register") }}">{{ "user.register.title" | trans }}</a></li>
                         <li><a id="_login"
-                               href="{{ path("student_security_login") }}">{{ "login" | trans }}</a></li>
+                               href="{{ path("student_security_login") }}">{{ "user.login.title" | trans }}</a></li>
                     {% endif %}
                 </ul>
             </div>
@@ -87,16 +87,16 @@
 
 </div>
 
+<script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+<script src="{{ asset('bundles/bazingajstranslation/js/translator.min.js') }}"></script>
 <script src="{{ asset('http://build.das.dev/webpack-dev-server.js') }}"></script>
 <script src="{{ asset('http://build.das.dev/apps/shared.js') }}"></script>
-<script src="{{ asset('http://build.das.dev/apps/theme/bundle.js') }}"></script>
 <script src="{{ asset('http://build.das.dev/apps/core/bundle.js') }}"></script>
+<script src="{{ asset('http://build.das.dev/apps/theme/bundle.js') }}"></script>
 <script src="{{ asset('http://build.das.dev/apps/datatables/bundle.js') }}"></script>
-<script src="{{ asset('bundles/he8usfeedback/js/feedback.js') }}"></script>
-<script src="{{ asset('bundles/he8usfeedback/js/admin.js') }}"></script>
-<script src="{{ asset('bundles/he8usfeedback/js/html2canvas.min.js') }}"></script>
-<script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+<script src="{{ asset('bundles/user/js/misc.js') }}"></script>
 <script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
+<script src="{{ url('bazinga_jstranslation_js') }}"></script>
 
 {% block javascripts %}{% endblock %}
 {{ feedback_widget()|raw }}

@@ -1,46 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2016-10-23T19:54:28Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
+  <file date="2016-10-30T23:16:11Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
     </header>
     <body>
-      <trans-unit id="8f2b8422d3860a2fd33de54141cfd54c98f1511c" resname="form.security.email.error.duplicate">
-        <source>form.security.email.error.duplicate</source>
+      <trans-unit id="06a2c316deb71c6c3922588887fa555585bddfc6" resname="user.email.error.duplicate">
+        <source>user.email.error.duplicate</source>
         <target>Il existe déjà un compte avec cette adresse email</target>
       </trans-unit>
-      <trans-unit id="6bce4450b1ed4d0b9f59099daab083dc0f079677" resname="form.security.email.error.missing">
-        <source>form.security.email.error.missing</source>
+      <trans-unit id="ae49355fce425924a5eca2f5ac06325c7f197435" resname="user.email.error.missing">
+        <source>user.email.error.missing</source>
         <target>Veuillez remplir une adresse email</target>
       </trans-unit>
-      <trans-unit id="60c736473f121883482c4fd6815939f360703d4d" resname="form.security.first_name.error.missing">
-        <source>form.security.first_name.error.missing</source>
+      <trans-unit id="c91a58fbd0f31db5cb1c5ae61d0077c73f7784d8" resname="user.email.should_match">
+        <source>user.email.should_match</source>
+        <target>L'email et sa répétition ne correspondent pas</target>
+        <jms:reference-file line="51">/../src/UserBundle/Form/UserRegisterType.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="77f8d1ef2e86f6748f9998373ba61b3adf9a30a2" resname="user.first_name.error.missing">
+        <source>user.first_name.error.missing</source>
         <target>Veuillez remplir votre prénom</target>
       </trans-unit>
-      <trans-unit id="c30db4c3956107620a55e0a425bc89be920150b0" resname="form.security.last_name.error.missing">
-        <source>form.security.last_name.error.missing</source>
+      <trans-unit id="f55df4f4f5352415dc206de84753da0384bc04d0" resname="user.last_name.error.missing">
+        <source>user.last_name.error.missing</source>
         <target>Veuillez remplir votre nom</target>
       </trans-unit>
-      <trans-unit id="6d1c285795052c1a04304034a59639455811c51d" resname="form.security.password.error.missing">
-        <source>form.security.password.error.missing</source>
+      <trans-unit id="69fa1061e6872687b3fceaca2a11ceb782494b3e" resname="user.password.error.missing">
+        <source>user.password.error.missing</source>
         <target>Veuillez remplir un mot de passe</target>
       </trans-unit>
-      <trans-unit id="07eabeda08003f4726a1ebe947168bcc1c01c82b" resname="form.security.username.error.duplicate">
-        <source>form.security.username.error.duplicate</source>
+      <trans-unit id="3d0379aefc5023a4718337c843d2367cdecfa431" resname="user.password.should_match">
+        <source>user.password.should_match</source>
+        <target>Le mot de passe et sa répétition ne correspondent pas</target>
+        <jms:reference-file line="41">/../src/UserBundle/Form/UserRegisterType.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="8cab2fbbed44471e8d0d00484064a4ef15c9d89a" resname="user.username.error.duplicate">
+        <source>user.username.error.duplicate</source>
         <target>Il existe déjà un compte avec ce nom d'utilisateur</target>
       </trans-unit>
-      <trans-unit id="006468d04881cdbb0ee53a1e27cc21ea6db2d31c" resname="form.security.username.error.missing">
-        <source>form.security.username.error.missing</source>
+      <trans-unit id="5395f838c2566e415ff594619ae53108bf8191b5" resname="user.username.error.missing">
+        <source>user.username.error.missing</source>
         <target>Veuillez remplir un nom d'utilisateur</target>
-      </trans-unit>
-      <trans-unit id="36f3415043458d8f72d4c1b0360d68249ef83bc5" resname="form.user.email.should_match">
-        <source>form.user.email.should_match</source>
-        <target>L'email et sa répétition ne correspondent pas</target>
-      </trans-unit>
-      <trans-unit id="4d5bd9ad64c828bc7ccd9691b0a76da968d1d779" resname="form.user.password.should_match">
-        <source>form.user.password.should_match</source>
-        <target>Le mot de passe et sa répétition ne correspondent pas</target>
       </trans-unit>
     </body>
   </file>

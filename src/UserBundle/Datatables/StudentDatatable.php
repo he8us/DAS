@@ -38,7 +38,7 @@ class StudentDatatable extends AbstractDatatableView
         ]);
 
         $this->ajax->set([
-            'url'      => $this->router->generate('student_management_results'),
+            'url'      => $this->router->generate('user_student_results'),
             'type'     => 'GET',
             'pipeline' => 0,
         ]);
@@ -68,41 +68,41 @@ class StudentDatatable extends AbstractDatatableView
 
         $this->columnBuilder
             ->add('id', 'column', [
-                'title' => $this->translator->trans('layout.user.datatables.id'),
+                'title' => $this->translator->trans('user.id'),
             ])
             ->add('firstName', 'column', [
-                'title' => $this->translator->trans('layout.user.datatables.first_name'),
+                'title' => $this->translator->trans('user.first_name'),
             ])
             ->add('lastName', 'column', [
-                'title' => $this->translator->trans('layout.user.datatables.last_name'),
+                'title' => $this->translator->trans('user.last_name'),
             ])
             ->add(null, 'action', [
-                'title'   => $this->translator->trans('layout.user.datatables.actions.title'),
+                'title'   => $this->translator->trans('user.action.title'),
                 'actions' => [
                     [
-                        'route'            => 'student_management_details',
+                        'route'            => 'user_student_show',
                         'route_parameters' => [
                             'id' => 'id',
                         ],
-                        'label'            => $this->translator->trans('layout.user.datatables.actions.show'),
+                        'label'            => $this->translator->trans('user.action.show'),
                         'icon'             => 'glyphicon glyphicon-eye-open',
                         'attributes'       => [
                             'rel'   => 'tooltip',
-                            'title' => $this->translator->trans('layout.user.datatables.actions.show'),
+                            'title' => $this->translator->trans('user.action.show'),
                             'class' => 'btn btn-primary btn-xs',
                             'role'  => 'button',
                         ],
                     ],
                     [
-                        'route'            => 'student_management_edit',
+                        'route'            => 'user_student_edit',
                         'route_parameters' => [
                             'id' => 'id',
                         ],
-                        'label'            => $this->translator->trans('layout.user.datatables.actions.edit'),
+                        'label'            => $this->translator->trans('user.action.edit'),
                         'icon'             => 'glyphicon glyphicon-edit',
                         'attributes'       => [
                             'rel'   => 'tooltip',
-                            'title' => $this->translator->trans('layout.user.datatables.actions.edit'),
+                            'title' => $this->translator->trans('user.action.edit'),
                             'class' => 'btn btn-primary btn-xs',
                             'role'  => 'button',
                         ],

@@ -1,0 +1,9 @@
+{% extends 'CourseBundle:Grade:edit.html.twig' %}
+
+{% block title %}{{ "course.grade.new.title" | trans }}{% endblock %}
+{% block box_title %}{{ "course.grade.new.title" | trans }}{% endblock %}
+
+
+{% block box_footer %}
+    {{ action.save('course.grade.create' | trans) }}
+{% endblock %}

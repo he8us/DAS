@@ -1,41 +1,41 @@
 {% extends ":templates:register.html.twig" %}
 
 {% block title %}
-    {{ "layout.security.register.choose_role.title" | trans }}
+    {{ "user.register.choose_role.title" | trans }}
 {% endblock %}
 
 
 {% block box_body %}
-    <p class="login-box-msg">{{ "layout.security.register.choose_role.title" | trans }}</p>
+    <p class="login-box-msg">{{ "user.register.choose_role.title" | trans }}</p>
 
-    <p>{{ "layout.security.register.choose_role.please_choose_an_account_type" | trans }}</p>
+    <p>{{ "user.register.please_choose_an_account_type" | trans }}</p>
 
     <ul class="list-unstyled">
         <li>
             <a href="{{ path("user_security_register", {role: "coordinator"}) }}" id="_coordinator"
                class="btn btn-default">
-                {{ "layout.security.register.choose_role.coordinator" | trans }}
+                {{ "user.role.coordinator" | trans }}
             </a>
         </li>
         <li>
             <a href="{{ path("user_security_register", {role: "teacher"}) }}" id="_teacher" class="btn btn-default">
-                {{ "layout.security.register.choose_role.teacher" | trans }}
+                {{ "user.role.teacher" | trans }}
             </a>
         </li>
         <li>
             <a href="{{ path("user_security_register", {role: "titular"}) }}" id="_titular" class="btn btn-default">
-                {{ "layout.security.register.choose_role.class_titular" | trans }}
+                {{ "user.role.titular" | trans }}
             </a>
         </li>
         <li>
             <a href="{{ path("user_security_register", {role: "course_titular"}) }}" id="_course_titular"
                class="btn btn-default">
-                {{ "layout.security.register.choose_role.course_titular" | trans }}
+                {{ "user.role.course_titular" | trans }}
             </a>
         </li>
         <li>
             <a href="{{ path("user_security_register", {role: "parent"}) }}" id="_parent" class="btn btn-default">
-                {{ "layout.security.register.choose_role.parent" | trans }}
+                {{ "user.role.parent" | trans }}
             </a>
         </li>
     </ul>

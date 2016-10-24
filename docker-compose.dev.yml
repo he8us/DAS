@@ -33,6 +33,7 @@ services:
     image: he8us/nodebuild
     volumes:
       - .:/var/www/${COMPOSE_PROJECT_NAME}
+      - yarn-cache:/root/.npm
       - yarn-cache:/root/.yarn
       - yarn-cache:/root/.yarn-cache
     environment:
@@ -48,7 +49,6 @@ services:
       backend:
         aliases:
           - build.${MASTER_DOMAIN}
-
 
 volumes:
   yarn-cache:

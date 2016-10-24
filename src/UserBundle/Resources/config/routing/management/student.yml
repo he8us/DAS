@@ -1,37 +1,41 @@
-student_management_list:
-    path:     /list
+user_student_index:
+    path:     /
     defaults:
-      _controller: UserBundle:Student:list
-    requirements:
-      page: \d+
+      _controller: UserBundle:Student:index
 
-student_management_new:
+user_student_new:
     path: /new
     defaults:
       _controller: UserBundle:Student:new
 
-student_management_import:
+user_student_import:
     path: /import
     defaults:
       _controller: UserBundle:Student:import
 
-student_management_results:
+user_student_results:
     path: /result
     defaults:
       _controller: UserBundle:Student:results
     options:
         expose: true
 
-student_management_details:
-    path: /details/{id}
+user_student_show:
+    path: /{id}/show
     defaults:
-      _controller: UserBundle:Student:details
+      _controller: UserBundle:Student:show
     options:
       expose: true
 
-student_management_edit:
-    path: /edit/{id}
+user_student_edit:
+    path: /{id}/edit
     defaults:
       _controller: UserBundle:Student:edit
     options:
         expose: true
+
+user_student_delete:
+    path:     /{id}/delete
+    defaults:
+        _controller: UserBundle:Student:delete
+    methods:  DELETE

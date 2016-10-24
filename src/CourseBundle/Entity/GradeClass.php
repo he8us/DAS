@@ -3,6 +3,7 @@
 namespace CourseBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 use UserBundle\Entity\Titular;
 
@@ -16,6 +17,7 @@ use UserBundle\Entity\Titular;
 class GradeClass
 {
     use TimestampableEntity;
+    use SoftDeleteableEntity;
 
     /**
      * @var int
@@ -55,7 +57,7 @@ class GradeClass
      *
      * @return int
      */
-    public function getId() : int
+    public function getId()
     {
         return $this->id;
     }
@@ -65,7 +67,7 @@ class GradeClass
      *
      * @return Grade
      */
-    public function getGrade() : Grade
+    public function getGrade()
     {
         return $this->grade;
     }
@@ -77,7 +79,7 @@ class GradeClass
      *
      * @return GradeClass
      */
-    public function setGrade(Grade $grade) : GradeClass
+    public function setGrade(Grade $grade)
     {
         $this->grade = $grade;
 
@@ -87,7 +89,7 @@ class GradeClass
     /**
      * @return string
      */
-    public function getSection(): string
+    public function getSection()
     {
         return $this->section;
     }
@@ -97,7 +99,7 @@ class GradeClass
      *
      * @return GradeClass
      */
-    public function setSection(string $section) : GradeClass
+    public function setSection(string $section)
     {
         $this->section = $section;
         return $this;
@@ -106,7 +108,7 @@ class GradeClass
     /**
      * @return Titular
      */
-    public function getTitular(): Titular
+    public function getTitular()
     {
         return $this->titular;
     }
@@ -116,7 +118,7 @@ class GradeClass
      *
      * @return GradeClass
      */
-    public function setTitular(Titular $titular): GradeClass
+    public function setTitular(Titular $titular)
     {
         $this->titular = $titular;
         return $this;

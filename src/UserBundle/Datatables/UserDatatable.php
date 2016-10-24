@@ -4,6 +4,8 @@ namespace UserBundle\Datatables;
 
 use Sg\DatatablesBundle\Datatable\View\AbstractDatatableView;
 use Sg\DatatablesBundle\Datatable\View\Style;
+use UserBundle\Datatables\Columns\RoleColumn;
+use UserBundle\Entity\User;
 
 /**
  * Class UserDatatable
@@ -38,7 +40,7 @@ class UserDatatable extends AbstractDatatableView
         ]);
 
         $this->ajax->set([
-            'url'      => $this->router->generate('user_management_results'),
+            'url'      => $this->router->generate('user_user_results'),
             'type'     => 'GET',
             'pipeline' => 0,
         ]);
@@ -68,44 +70,44 @@ class UserDatatable extends AbstractDatatableView
 
         $this->columnBuilder
             ->add('id', 'column', [
-                'title' => $this->translator->trans('layout.user.datatables.id'),
+                'title' => $this->translator->trans('user.id'),
             ])
             ->add('firstName', 'column', [
-                'title' => $this->translator->trans('layout.user.datatables.first_name'),
+                'title' => $this->translator->trans('user.first_name'),
             ])
             ->add('lastName', 'column', [
-                'title' => $this->translator->trans('layout.user.datatables.last_name'),
+                'title' => $this->translator->trans('user.last_name'),
             ])
-            ->add('roles', 'column', [
-                'title' => $this->translator->trans('layout.user.datatables.roles'),
+            ->add('roles', new RoleColumn(), [
+                'title' => $this->translator->trans('user.role'),
             ])
             ->add(null, 'action', [
-                'title'   => $this->translator->trans('layout.user.datatables.actions.title'),
+                'title'   => $this->translator->trans('user.action.title'),
                 'actions' => [
                     [
-                        'route'            => 'user_management_details',
+                        'route'            => 'user_user_details',
                         'route_parameters' => [
                             'id' => 'id',
                         ],
-                        'label'            => $this->translator->trans('layout.user.datatables.actions.show'),
+                        'label'            => $this->translator->trans('user.action.show'),
                         'icon'             => 'glyphicon glyphicon-eye-open',
                         'attributes'       => [
                             'rel'   => 'tooltip',
-                            'title' => $this->translator->trans('layout.user.datatables.actions.show'),
+                            'title' => $this->translator->trans('user.action.show'),
                             'class' => 'btn btn-primary btn-xs',
                             'role'  => 'button',
                         ],
                     ],
                     [
-                        'route'            => 'user_management_edit',
+                        'route'            => 'user_user_edit',
                         'route_parameters' => [
                             'id' => 'id',
                         ],
-                        'label'            => $this->translator->trans('layout.user.datatables.actions.edit'),
+                        'label'            => $this->translator->trans('user.action.edit'),
                         'icon'             => 'glyphicon glyphicon-edit',
                         'attributes'       => [
                             'rel'   => 'tooltip',
-                            'title' => $this->translator->trans('layout.user.datatables.actions.edit'),
+                            'title' => $this->translator->trans('user.action.edit'),
                             'class' => 'btn btn-primary btn-xs',
                             'role'  => 'button',
                         ],
@@ -119,7 +121,7 @@ class UserDatatable extends AbstractDatatableView
      */
     public function getEntity()
     {
-        return 'UserBundle\Entity\User';
+        return User::class;
     }
 
     /**

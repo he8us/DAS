@@ -72,18 +72,20 @@ security:
         - { path: ^/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/generate-captcha, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/feedback/new$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/feedback, roles: ROLE_COORDINATOR }
-
         - { path: ^/student/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/student/request-card, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-
         - { path: ^/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/lost-password, roles: IS_AUTHENTICATED_ANONYMOUSLY }
 
-        # Protected pages
-        - { path: ^/, roles: IS_AUTHENTICATED_REMEMBERED } # all => user should be logged. A finer grain is used with the roles at the application level
-
+        # Student Role
         - { path: ^/student/, roles: ROLE_STUDENT }
-        - { path: ^/management/, roles: ROLE_COORDINATOR }
+
+        # Coordinator Role
+        - { path: ^/manage/, roles: ROLE_COORDINATOR }
+        - { path: ^/course/, roles: ROLE_COORDINATOR }
 
         - { path: ^/admin/, roles: ROLE_ADMIN } # admin => only the admin can access
+
+
+        # Other protected pages
+        - { path: ^/, roles: IS_AUTHENTICATED_REMEMBERED } # all => user should be logged. A finer grain is used with the roles at the application level

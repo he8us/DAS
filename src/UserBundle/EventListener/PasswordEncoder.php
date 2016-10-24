@@ -11,7 +11,6 @@ namespace UserBundle\EventListener;
 
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-use Symfony\Component\Security\Core\User\UserInterface;
 use UserBundle\Entity\User;
 
 class PasswordEncoder

@@ -33,7 +33,7 @@
     ]
   },
   "scripts": {
-    "build": "cross-env NODE_ENV=production webpack",
+    "build": "cross-env NODE_ENV=production webpack --progress -p",
     "start": "npm run build",
     "server": "cross-env NODE_ENV=development webpack-dev-server",
     "lint": "eslint ./web/apps",
@@ -96,10 +96,12 @@
     "datatables.net-bs": "^1.10.12",
     "expose-loader": "^0.7.1",
     "featherlight": "^1.4.1",
-    "font-awesome": "^4.6.3",
+    "font-awesome": "^4.7",
+    "imports-loader": "^0.6.5",
     "ionicons": "^3.0.0",
-    "jquery": "^2.X.X",
+    "jquery": "^2.2.0",
     "jquery-highlight": "^3.3.0",
+    "moment": "^2.15.2",
     "react": "^15.3.1",
     "select2": "^4.0.3"
   }

@@ -11,22 +11,22 @@
             {{ profile_picture(app.user) }}
 
             <p class="welcome-user">
-                {{ "layout.hello_user" | trans({"%name%": app.user.firstName}) }}
+                {{ "user.hello" | trans({"%name%": app.user.firstName}) }}
             </p>
         </li>
         <!-- Menu Footer-->
         <li class="user-footer">
             <div class="pull-left">
                 <a href="{{ path('user_profile_view') }}"
-                   class="btn btn-default btn-flat">{{ "layout.profile" | trans }}</a>
+                   class="btn btn-default btn-flat">{{ "user.profile.your_profile" | trans }}</a>
             </div>
             <div class="pull-right">
                 {% if is_granted("ROLE_STUDENT") %}
                     <a href="{{ path('user_student_logout') }}" class="btn btn-default btn-flat"
-                       id="_logout">{{ "layout.logout" | trans }}</a>
+                       id="_logout">{{ "user.logout" | trans }}</a>
                 {% else %}
                     <a href="{{ path('user_logout') }}" class="btn btn-default btn-flat"
-                       id="_logout">{{ "layout.logout" | trans }}</a>
+                       id="_logout">{{ "user.logout" | trans }}</a>
                 {% endif %}
             </div>
         </li>

@@ -2,33 +2,34 @@
 
 namespace CourseBundle\Controller;
 
+use CoreBundle\Controller\AbstractCrudController;
 use CourseBundle\Entity\CourseContent;
 use CourseBundle\Form\CourseContentType;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * CourseContent controller.
+ * Class CourseContentController
  *
+ * @package CourseBundle\Controller
+ *
+ * @author Cedric Michaux <cedric@he8us.be>
  */
-class CourseContentController extends Controller
+class CourseContentController extends AbstractCrudController
 {
-    /**
-     * Lists all CourseContent entities.
-     *
-     */
-    public function indexAction()
-    {
-        $datatable = $this->get("courses.datatable.content");
-        $datatable->buildDatatable();
 
-        return $this->render('CourseBundle:coursecontent:index.html.twig', [
-            'datatable' => $datatable,
-        ]);
-    }
+    /**
+     * @var string
+     */
+    protected $datatable = 'courses.datatable.content';
+
+    /**
+     * @var string
+     */
+    protected $templateNamespace = 'CourseBundle:CourseContent:';
+
 
     /**
      * Creates a new CourseContent entity.
@@ -40,34 +41,24 @@ class CourseContentController extends Controller
     public function newAction(Request $request)
     {
         $courseContent = new CourseContent();
-        $form = $this->createForm('CourseBundle\Form\CourseContentType', $courseContent);
+        $form = $this->createForm(CourseContentType::class, $courseContent);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($courseContent);
-            $entityManager->flush();
+            $this->getCourseContentService()->save($courseContent);
 
             return $this->redirectToRoute('course_content_show', ['id' => $courseContent->getId()]);
         }
 
-        return $this->render('CourseBundle:coursecontent:new.html.twig', [
+        return $this->render('CourseBundle:CourseContent:new.html.twig', [
             'courseContent' => $courseContent,
             'form'          => $form->createView(),
         ]);
     }
 
-    /**
-     * @return Response
-     */
-    public function resultsAction()
+    private function getCourseContentService()
     {
-        $datatable = $this->get('courses.datatable.content');
-        $datatable->buildDatatable();
-
-        $query = $this->get('sg_datatables.query')->getQueryFrom($datatable);
-
-        return $query->getResponse();
+        return $this->get('course.services.coursecontent');
     }
 
     /**
@@ -81,7 +72,7 @@ class CourseContentController extends Controller
     {
         $deleteForm = $this->createDeleteForm($courseContent);
 
-        return $this->render('CourseBundle:coursecontent:show.html.twig', [
+        return $this->render('CourseBundle:CourseContent:show.html.twig', [
             'courseContent' => $courseContent,
             'delete_form'   => $deleteForm->createView(),
         ]);
@@ -124,7 +115,7 @@ class CourseContentController extends Controller
             return $this->redirectToRoute('course_content_edit', ['id' => $courseContent->getId()]);
         }
 
-        return $this->render('CourseBundle:coursecontent:edit.html.twig', [
+        return $this->render('CourseBundle:CourseContent:edit.html.twig', [
             'courseContent' => $courseContent,
             'edit_form'     => $editForm->createView(),
             'delete_form'   => $deleteForm->createView(),
@@ -145,9 +136,7 @@ class CourseContentController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($courseContent);
-            $entityManager->flush();
+            $this->getCourseContentService()->delete($courseContent);
         }
 
         return $this->redirectToRoute('course_content_index');

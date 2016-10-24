@@ -7,4 +7,4 @@ Feature: List the users in the application
 
   Scenario: List Users
     Given I am on the User list page
-    Then I should see "layout.user.list"
+    Then I should see "user.list"

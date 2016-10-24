@@ -22,3 +22,8 @@ course_content_delete:
     path:     /{id}/delete
     defaults: { _controller: "CourseBundle:CourseContent:delete" }
     methods:  DELETE
+
+course_content_results:
+    path:     /result
+    defaults: { _controller: "CourseBundle:CourseContent:results" }
+    methods:  GET

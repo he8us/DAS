@@ -1,16 +1,18 @@
 {% extends '::base.html.twig' %}
 
+{% import ':macro:action_buttons.html.twig' as action %}
+
 {% block body %}
     <div class="box box-info">
         {% block box_start %}{% endblock %}
 
         <div class="box-header with-border">
             <h3 class="box-title">{% block box_title %}{% endblock %}</h3>
-            <div class="box-tools pull-right">
+            <div class="box-actions pull-right">
                 {% block box_action %}{% endblock %}
             </div><!-- /.box-tools -->
         </div><!-- /.box-header -->
-
+        {% block box_form_start %}{% endblock %}
         {% block box_body %}
             {% block box_body_header %}{% endblock %}
             <div class="box-body">
@@ -22,6 +24,8 @@
             </div>
 
         {% endblock %}
+
+        {% block box_form_end %}{% endblock %}
 
         {% block box_end %}{% endblock %}
     </div><!-- /.box -->

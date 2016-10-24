@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2016-10-23T20:30:19Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
+  <file date="2016-10-26T11:31:12Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -9,26 +9,38 @@
       <trans-unit id="bcd2467bf26c5931585acbf39b71ac4fb28d23c9" resname="feedback.category.edit.title">
         <source>feedback.category.edit.title</source>
         <target>Editer une catégorie</target>
+        <jms:reference-file line="3">/../src/FeedbackBundle/Resources/views/Category/edit.html.twig</jms:reference-file>
+        <jms:reference-file line="4">/../src/FeedbackBundle/Resources/views/Category/edit.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="ed677d9853469b720d85f65de8585cff29956146" resname="feedback.category.list.title">
         <source>feedback.category.list.title</source>
         <target>Liste des catégories</target>
+        <jms:reference-file line="3">/../src/FeedbackBundle/Resources/views/Category/index.html.twig</jms:reference-file>
+        <jms:reference-file line="4">/../src/FeedbackBundle/Resources/views/Category/index.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="8f938a17df78d75eddc1d6a98d1751917c6d4740" resname="feedback.category.new.title">
         <source>feedback.category.new.title</source>
         <target>Nouvelle catégorie</target>
+        <jms:reference-file line="3">/../src/FeedbackBundle/Resources/views/Category/new.html.twig</jms:reference-file>
+        <jms:reference-file line="4">/../src/FeedbackBundle/Resources/views/Category/new.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="8571dce40a5de594f0cc98b33c9c3a8424799683" resname="feedback.category.show.title">
         <source>feedback.category.show.title</source>
         <target>Voir une catégorie</target>
+        <jms:reference-file line="3">/../src/FeedbackBundle/Resources/views/Category/show.html.twig</jms:reference-file>
+        <jms:reference-file line="4">/../src/FeedbackBundle/Resources/views/Category/show.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="c86994a0216b41825a17b2f3123968bc31594daf" resname="feedback.feedback.list.title">
         <source>feedback.feedback.list.title</source>
         <target>Liste des feedbacks</target>
+        <jms:reference-file line="3">/../src/FeedbackBundle/Resources/views/FeedbackAdmin/index.html.twig</jms:reference-file>
+        <jms:reference-file line="4">/../src/FeedbackBundle/Resources/views/FeedbackAdmin/index.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="0a750cdd55252da59b41326dc50fc77cdc9df3e6" resname="feedback.feedback.reply.title">
         <source>feedback.feedback.reply.title</source>
         <target>Répondre au feedback</target>
+        <jms:reference-file line="3">/../src/FeedbackBundle/Resources/views/FeedbackAdmin/reply.html.twig</jms:reference-file>
+        <jms:reference-file line="4">/../src/FeedbackBundle/Resources/views/FeedbackAdmin/reply.html.twig</jms:reference-file>
       </trans-unit>
     </body>
   </file>

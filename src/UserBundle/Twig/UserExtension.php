@@ -46,7 +46,17 @@ class UserExtension extends \Twig_Extension
                 'is_safe'           => ['html'],
                 'needs_environment' => true,
             ]),
-            new \Twig_SimpleFunction('pretty_role', [$this, 'prettyRoleFunction']),
+
+        ];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getFilters()
+    {
+        return [
+            new \Twig_SimpleFilter('pretty_role', [$this, 'prettyRoleFilter']),
         ];
     }
 
@@ -65,17 +75,18 @@ class UserExtension extends \Twig_Extension
         ]);
     }
 
+
     /**
-     * @param UserInterface|null $user
+     * @param array $roles
      *
      * @return null|string
      */
-    public function prettyRoleFunction(UserInterface $user = null)
+    public function prettyRoleFilter(array $roles)
     {
-        if (null === $user) {
+        if (null === $roles) {
             return null;
         }
-        return $this->roleService->translate($user->getRoles()[0]);
+        return $this->roleService->translate($roles[0]);
     }
 
     /**

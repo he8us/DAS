@@ -1,16 +1,10 @@
-{% extends "FOSUserBundle::layout.html.twig" %}
+{% extends ":templates:box.html.twig" %}
+{% block title %}{{ "user.profile.lost_password.title" | trans }}{% endblock %}
+{% block box_title %}{{ "user.profile.lost_password.title" | trans }}{% endblock %}
+{% block box_body_content %}
 
-{% block fos_user_content %}
+    TODO: Implement
 
-    <div class="box box-info">
-        <div class="box-header with-border">
-            <h3 class="box-title">{{ "layout.lost_password" | trans }}</h3>
-            <div class="box-tools pull-right">
+    {# include "FOSUserBundle:Resetting:reset_content.html.twig" #}
 
-            </div><!-- /.box-tools -->
-        </div><!-- /.box-header -->
-
-        {% include "FOSUserBundle:Resetting:reset_content.html.twig" %}
-    </div><!-- /.box -->
-
-{% endblock fos_user_content %}
+{% endblock %}

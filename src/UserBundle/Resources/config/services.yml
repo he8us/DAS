@@ -15,6 +15,14 @@ services:
       class: UserBundle\Services\RoleService
       arguments: ['@security.role_hierarchy', '@translator']
 
+    user.service.user:
+      class: UserBundle\Services\UserService
+      arguments: ["@doctrine"]
+
+    user.service.student:
+      class: UserBundle\Services\StudentService
+      arguments: ["@doctrine"]
+
     user.form.type.profile_picture:
       class: UserBundle\Form\ProfilePictureType
       arguments:

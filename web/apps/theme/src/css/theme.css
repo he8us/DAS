@@ -26,3 +26,20 @@ label[for="fos_user_profile_form_profilePicture_profilePictureFile"]{
     bottom: 45px;
     z-index: 7;
 }
+
+
+.dataTable .btn{
+    margin-left: 10px;
+}
+
+.dataTable .btn:first-child{
+    margin-left: 0;
+}
+
+.form-group{
+    clear: both;
+}
+
+.box-actions form{
+    display: inline-block;
+}

@@ -370,9 +370,9 @@ class UserContext extends BaseContext
      */
     public function iAmOnTheListingPage($type)
     {
-        $route = 'user_management_list';
+        $route = 'user_user_index';
         if (strtolower($type) === "student") {
-            $route = 'student_management_list';
+            $route = 'user_student_index';
         }
 
         $this->visit($this->getRouter()->generate($route));
@@ -383,6 +383,6 @@ class UserContext extends BaseContext
      */
     public function iShouldBeOnTheStudentImportPage()
     {
-        $this->assertPageAddress($this->getRouter()->generate('student_management_import'));
+        $this->assertPageAddress($this->getRouter()->generate('user_student_import'));
     }
 }

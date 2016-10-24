@@ -6,3 +6,14 @@ course_course_content:
     resource: "@CourseBundle/Resources/config/routing/coursecontent.yml"
     prefix:   /content
 
+course_grade:
+    resource: "@CourseBundle/Resources/config/routing/grade.yml"
+    prefix:   /grade
+
+course_gradeclass:
+        resource: "@CourseBundle/Resources/config/routing/gradeclass.yml"
+        prefix:   /gradeclass
+
+course_lesson:
+        resource: "@CourseBundle/Resources/config/routing/lesson.yml"
+        prefix:   /lesson
