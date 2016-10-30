@@ -35,6 +35,7 @@ services:
       APPLICATION_ENV: ${APPLICATION_ENV}
     volumes:
       - ~/.ssh:/root/.ssh:ro
+      - composer-cache:/root/.composer
     volumes_from:
       - app
     working_dir: /var/www/${COMPOSE_PROJECT_NAME}
@@ -74,7 +75,7 @@ services:
 
 volumes:
   mysql-data:
-  composer-data:
+  composer-cache:
 
 networks:
   adsdaq_proxy-tier:

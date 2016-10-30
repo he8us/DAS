@@ -32,7 +32,9 @@ services:
   nodebuild:
     image: he8us/nodebuild
     volumes:
-      - ..:/var/www/
+      - .:/var/www/${COMPOSE_PROJECT_NAME}
+      - yarn-cache:/root/.yarn
+      - yarn-cache:/root/.yarn-cache
     environment:
       VIRTUAL_HOST: build.${MASTER_DOMAIN}
       PORT: 80
@@ -46,3 +48,7 @@ services:
       backend:
         aliases:
           - build.${MASTER_DOMAIN}
+
+
+volumes:
+  yarn-cache:
