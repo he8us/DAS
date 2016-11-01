@@ -8,14 +8,14 @@
     {{ action.delete('course.content.delete', delete_form) }}
 {% endblock %}
 
-{% block box_form_start %} {{ form_start(edit_form) }}{% endblock %}
+{% block box_form_start %} {{ form_start(form) }}{% endblock %}
 
 {% block box_body_content %}
-    {{ form_widget(edit_form) }}
+    {{ form_widget(form) }}
 {% endblock %}
 {% block box_footer %}
     {{ action.save('course.content.edit' | trans) }}
 {% endblock %}
 {% block box_form_end %}
-    {{ form_end(edit_form) }}
+    {{ form_end(form) }}
 {% endblock %}

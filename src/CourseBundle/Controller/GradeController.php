@@ -104,7 +104,7 @@ class GradeController extends AbstractCrudController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            $this->getGradeService()->save($grade);
 
             return $this->redirectToRoute('course_grade_edit', ['id' => $grade->getId()]);
         }

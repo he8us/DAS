@@ -104,20 +104,17 @@ class CourseContentController extends AbstractCrudController
     public function editAction(Request $request, CourseContent $courseContent)
     {
         $deleteForm = $this->createDeleteForm($courseContent);
-        $editForm = $this->createForm(CourseContentType::class, $courseContent);
-        $editForm->handleRequest($request);
+        $form = $this->createForm(CourseContentType::class, $courseContent);
+        $form->handleRequest($request);
 
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($courseContent);
-            $entityManager->flush();
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getCourseContentService()->save($courseContent);
 
-            return $this->redirectToRoute('course_content_show', ['id' => $courseContent->getId()]);
+            return $this->redirectToRoute('course_content_edit', ['id' => $courseContent->getId()]);
         }
 
         return $this->render('CourseBundle:CourseContent:edit.html.twig', [
-            'courseContent' => $courseContent,
-            'edit_form'     => $editForm->createView(),
+            'form'     => $form->createView(),
             'delete_form'   => $deleteForm->createView(),
         ]);
     }
