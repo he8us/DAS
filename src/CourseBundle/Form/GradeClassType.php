@@ -2,11 +2,17 @@
 
 namespace CourseBundle\Form;
 
+use CourseBundle\Entity\Grade;
 use CourseBundle\Entity\GradeClass;
-use Doctrine\DBAL\Types\TextType;
+use CourseBundle\Repository\GradeRepository;
+use Doctrine\DBAL\Query\QueryBuilder;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use UserBundle\Entity\Titular;
+use UserBundle\Repository\UserRepository;
 
 class GradeClassType extends AbstractType
 {
@@ -17,20 +23,34 @@ class GradeClassType extends AbstractType
     {
         $builder
             ->add('section', TextType::class, [
-                'label' => 'course.gradeclass.section'
+                'label' => 'course.gradeclass.section',
             ])
-            ->add('grade')
-            ->add('titular');
+            ->add('grade', EntityType::class, [
+                'class' => Grade::class,
+                'choice_label' => 'grade',
+                'query_builder' => function(GradeRepository $repository){
+                    return $repository->findAllNotDeleted();
+                }
+            ])
+            ->add('titular', EntityType::class, [
+                'class' => Titular::class,
+                'choice_label' => function(Titular $titular){
+                    return $titular->getFirstName().' '.$titular->getLastName();
+                },
+                'query_builder' => function(UserRepository $repository){
+                    return $repository->findAllNotDeleted();
+                }
+            ]);
     }
-    
+
     /**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
-            'data_class' => GradeClass::class
-        ));
+        $resolver->setDefaults([
+            'data_class' => GradeClass::class,
+        ]);
     }
 
     /**

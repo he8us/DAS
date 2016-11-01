@@ -10,11 +10,12 @@
 namespace UserBundle\Repository;
 
 
+use CoreBundle\Repository\AbstractRepository;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Security\User\UserLoaderInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-abstract class AbstractUserRepository extends EntityRepository implements UserLoaderInterface
+abstract class AbstractUserRepository extends AbstractRepository implements UserLoaderInterface
 {
     /**
      * Used for Unique fields validation

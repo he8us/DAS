@@ -14,11 +14,15 @@
     <table>
         <tbody>
         <tr>
-            <th>Id</th>
+            <th>{{ 'course.gradeclass.id' | trans }}</th>
             <td>{{ gradeClass.id }}</td>
         </tr>
         <tr>
-            <th>Section</th>
+            <th>{{ 'course.gradeclass.grade' | trans }}</th>
+            <td>{{ gradeClass.grade.grade }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'course.gradeclass.section' | trans }}</th>
             <td>{{ gradeClass.section }}</td>
         </tr>
 

@@ -15,6 +15,8 @@ use UserBundle\Entity\User;
 class UserRepository extends AbstractUserRepository
 {
 
+    protected $alias = 'u';
+
     /**
      * @param string $role
      *

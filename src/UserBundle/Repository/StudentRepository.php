@@ -13,6 +13,8 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 class StudentRepository extends AbstractUserRepository
 {
+    protected $alias = 's';
+
     /**
      * Loads the user for the given username.
      *

@@ -4,12 +4,15 @@ namespace CourseBundle\Form;
 
 use CourseBundle\Entity\CourseContent;
 use CourseBundle\Entity\Grade;
+use CourseBundle\Repository\CourseContentRepository;
+use CourseBundle\Repository\GradeRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use UserBundle\Entity\Teacher;
+use UserBundle\Repository\UserRepository;
 
 class CourseContentType extends AbstractType
 {
@@ -29,6 +32,9 @@ class CourseContentType extends AbstractType
                     'choice_label' => 'grade',
                     'multiple'     => true,
                     'expanded'     => true,
+                    'query_builder' => function(GradeRepository $repository){
+                        return $repository->findAllNotDeleted();
+                    }
                 ]
             )
             ->add('parent', EntityType::class, [
@@ -36,6 +42,9 @@ class CourseContentType extends AbstractType
                 'class'        => CourseContent::class,
                 'choice_label' => 'name',
                 'required'     => false,
+                'query_builder' => function(CourseContentRepository $repository){
+                    return $repository->findAllNotDeleted();
+                }
             ])
             ->add('teachers', EntityType::class, [
                 'label'        => 'course.content.teachers',
@@ -45,6 +54,9 @@ class CourseContentType extends AbstractType
                 },
                 'multiple'     => true,
                 'expanded'     => true,
+                'query_builder' => function(UserRepository $repository){
+                    return $repository->findAllNotDeleted();
+                }
             ]);
     }
 

@@ -102,18 +102,17 @@ class GradeClassController extends AbstractCrudController
     public function editAction(Request $request, GradeClass $gradeClass)
     {
         $deleteForm = $this->createDeleteForm($gradeClass);
-        $editForm = $this->createForm(GradeClassType::class, $gradeClass);
-        $editForm->handleRequest($request);
+        $form = $this->createForm(GradeClassType::class, $gradeClass);
+        $form->handleRequest($request);
 
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getGradeClassService()->save($gradeClass);
 
             return $this->redirectToRoute('course_gradeclass_edit', ['id' => $gradeClass->getId()]);
         }
 
         return $this->render('CourseBundle:GradeClass:edit.html.twig', [
-            'gradeClass'  => $gradeClass,
-            'edit_form'   => $editForm->createView(),
+            'form'   => $form->createView(),
             'delete_form' => $deleteForm->createView(),
         ]);
     }
