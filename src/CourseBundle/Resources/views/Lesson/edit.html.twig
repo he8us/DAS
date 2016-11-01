@@ -6,14 +6,14 @@
 
 {% block box_actions %}
     {{ action.back('course.lesson.back_to_list' | trans, 'course_lesson_index') }}
-    {{ action.delete('course.lesson.delete', delete_form) }}
+    {{ action.delete('course.lesson.delete' | trans, delete_form) }}
 {% endblock %}
 
 
-{% block box_form_start %} {{ form_start(edit_form) }}{% endblock %}
+{% block box_form_start %} {{ form_start(form) }}{% endblock %}
 
 {% block box_body_content %}
-    {{ form_widget(edit_form) }}
+    {{ form_widget(form) }}
 {% endblock %}
 
 {% block box_footer %}
@@ -21,5 +21,5 @@
 {% endblock %}
 
 {% block box_form_end %}
-    {{ form_end(edit_form) }}
+    {{ form_end(form) }}
 {% endblock %}

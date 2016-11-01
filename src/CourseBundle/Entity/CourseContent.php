@@ -82,6 +82,12 @@ class CourseContent
 
 
     /**
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="CourseBundle\Entity\Lesson", mappedBy="content")
+     */
+    private $lessons;
+
+    /**
      * CourseContent constructor.
      */
     public function __construct()
@@ -89,6 +95,7 @@ class CourseContent
         $this->teachers = new ArrayCollection();
         $this->grades = new ArrayCollection();
         $this->titulars = new ArrayCollection();
+        $this->lessons = new ArrayCollection();
     }
 
     /**

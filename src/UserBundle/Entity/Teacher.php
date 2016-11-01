@@ -27,11 +27,19 @@ class Teacher extends User
      */
     private $courses;
 
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="CourseBundle\Entity\Lesson", mappedBy="teacher")
+     */
+    private $lessons;
+
     public function __construct()
     {
         parent::__construct();
         $this->courses = new ArrayCollection();
         $this->roles = ['ROLE_TEACHER'];
+        $this->lessons = new ArrayCollection();
     }
 
     /**
@@ -62,6 +70,25 @@ class Teacher extends User
     public function removeCourse(CourseContent $course): Teacher
     {
         $this->courses->removeElement($course);
+        return $this;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getLessons()
+    {
+        return $this->lessons;
+    }
+
+    /**
+     * @param ArrayCollection $lessons
+     *
+     * @return $this
+     */
+    public function setLessons(ArrayCollection $lessons)
+    {
+        $this->lessons = $lessons;
         return $this;
     }
 }

@@ -102,18 +102,18 @@ class LessonController extends AbstractCrudController
     public function editAction(Request $request, Lesson $lesson)
     {
         $deleteForm = $this->createDeleteForm($lesson);
-        $editForm = $this->createForm('CourseBundle\Form\LessonType', $lesson);
-        $editForm->handleRequest($request);
+        $form = $this->createForm('CourseBundle\Form\LessonType', $lesson);
+        $form->handleRequest($request);
 
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getLessonService()->save($lesson);
 
             return $this->redirectToRoute('course_lesson_edit', ['id' => $lesson->getId()]);
         }
 
         return $this->render('CourseBundle:Lesson:edit.html.twig', [
             'lesson'      => $lesson,
-            'edit_form'   => $editForm->createView(),
+            'form'        => $form->createView(),
             'delete_form' => $deleteForm->createView(),
         ]);
     }

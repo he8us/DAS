@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
+use UserBundle\Entity\Teacher;
 
 /**
  * Lesson
@@ -59,9 +60,26 @@ class Lesson
     private $grades;
 
 
+    /**
+     * @var Teacher
+     *
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\Teacher")
+     * @ORM\JoinColumn(name="teacher_id", referencedColumnName="id", nullable=false, onDelete="CASCADE"))
+     */
+    private $teacher;
+
+    /**
+     * @var CourseContent
+     * @ORM\ManyToOne(targetEntity="CourseBundle\Entity\CourseContent")
+     * @ORM\JoinColumn(name="course_content_id", referencedColumnName="id", nullable=false, onDelete="CASCADE"))
+     */
+    private $content;
+
+
     public function __construct()
     {
         $this->grades = new ArrayCollection();
+        $this->date = new \DateTime();
     }
 
     /**
@@ -143,6 +161,44 @@ class Lesson
     {
         $this->remarks = $remarks;
 
+        return $this;
+    }
+
+    /**
+     * @return Teacher
+     */
+    public function getTeacher()
+    {
+        return $this->teacher;
+    }
+
+    /**
+     * @param Teacher $teacher
+     *
+     * @return $this
+     */
+    public function setTeacher(Teacher $teacher)
+    {
+        $this->teacher = $teacher;
+        return $this;
+    }
+
+    /**
+     * @return CourseContent
+     */
+    public function getContent()
+    {
+        return $this->content;
+    }
+
+    /**
+     * @param CourseContent $content
+     *
+     * @return $this
+     */
+    public function setContent(CourseContent $content)
+    {
+        $this->content = $content;
         return $this;
     }
 }
