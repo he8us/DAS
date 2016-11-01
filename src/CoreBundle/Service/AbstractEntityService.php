@@ -9,6 +9,7 @@
 namespace CoreBundle\Service;
 
 use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\Common\Persistence\ObjectManager;
 
 abstract class AbstractEntityService
 {

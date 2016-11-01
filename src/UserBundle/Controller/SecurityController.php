@@ -166,6 +166,8 @@ class SecurityController extends Controller
     public function resettingRequestAction(Request $request)
     {
 
+
+
     }
 
     /**
