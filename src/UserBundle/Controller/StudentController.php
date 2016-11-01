@@ -46,6 +46,9 @@ class StudentController extends AbstractCrudController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $student->setBarcode($this->getRandomString());
+
             $this->getStudentService()->save($student);
 
             return $this->redirectToRoute("user_student_index");
@@ -53,6 +56,11 @@ class StudentController extends AbstractCrudController
         return $this->render('UserBundle:Student:new.html.twig', [
             'form' => $form->createView(),
         ]);
+    }
+
+    private function getRandomString()
+    {
+        return $this->get("core.service.random_string_service")->generateRandomString();
     }
 
     /**
@@ -130,7 +138,7 @@ class StudentController extends AbstractCrudController
         }
 
         return $this->render('UserBundle:Student:edit.html.twig', [
-            'form'   => $editForm->createView(),
+            'form'        => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ]);
     }
@@ -154,6 +162,6 @@ class StudentController extends AbstractCrudController
             $em->flush($student);
         }
 
-        return $this->redirectToRoute('student_index');
+        return $this->redirectToRoute('user_student_index');
     }
 }

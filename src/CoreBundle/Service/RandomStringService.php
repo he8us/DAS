@@ -9,10 +9,21 @@
 
 namespace CoreBundle\Service;
 
-
+/**
+ * Class RandomStringService
+ *
+ * @package CoreBundle\Service
+ *
+ * @author Cedric Michaux <cedric@he8us.be>
+ */
 class RandomStringService
 {
 
+    /**
+     * @param int $length
+     *
+     * @return string
+     */
     public function generateRandomString($length = 13)
     {
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
