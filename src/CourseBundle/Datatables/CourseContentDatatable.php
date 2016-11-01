@@ -2,6 +2,7 @@
 
 namespace CourseBundle\Datatables;
 
+use CoreBundle\Datatables\AbstractDatatable;
 use Sg\DatatablesBundle\Datatable\View\AbstractDatatableView;
 use Sg\DatatablesBundle\Datatable\View\Style;
 
@@ -17,6 +18,7 @@ class CourseContentDatatable extends AbstractDatatableView
      */
     public function buildDatatable(array $options = [])
     {
+
         $this->features->set([
             'auto_width'      => true,
             'defer_render'    => false,
@@ -69,8 +71,8 @@ class CourseContentDatatable extends AbstractDatatableView
             ->add('id', 'column', [
                 'title' => $this->translator->trans('course.content.id'),
             ])
-            ->add('section', 'column', [
-                'title' => $this->translator->trans('course.content.section'),
+            ->add('name', 'column', [
+                'title' => $this->translator->trans('course.content.name'),
             ])
             ->add(null, 'action', [
                 'title'   => $this->translator->trans('course.datatable.actions.title'),
@@ -122,4 +124,5 @@ class CourseContentDatatable extends AbstractDatatableView
     {
         return 'coursecontent_datatable';
     }
+
 }

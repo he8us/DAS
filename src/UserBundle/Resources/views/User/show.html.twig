@@ -8,7 +8,7 @@
     {{ "user.user.show.title" | trans }}
 {% endblock %}
 
-{% block box_action %}
+{% block box_actions %}
     {{ action.back('user.user.back_to_list' | trans, 'user_user_index') }}
     {{ action.edit('user.user.edit' | trans, 'user_user_edit', user.id) }}
     {{ action.delete('user.user.delete' | trans, delete_form) }}

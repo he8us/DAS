@@ -112,7 +112,7 @@ class CourseContentController extends AbstractCrudController
             $entityManager->persist($courseContent);
             $entityManager->flush();
 
-            return $this->redirectToRoute('course_content_edit', ['id' => $courseContent->getId()]);
+            return $this->redirectToRoute('course_content_show', ['id' => $courseContent->getId()]);
         }
 
         return $this->render('CourseBundle:CourseContent:edit.html.twig', [

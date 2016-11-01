@@ -21,8 +21,6 @@ user_user_results:
     path: /result
     defaults:
       _controller: UserBundle:User:results
-    options:
-        expose: true
 
 user_user_details:
     path: /{id}/show

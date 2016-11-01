@@ -8,7 +8,7 @@
     {{ "user.student.show.title" | trans }}
 {% endblock %}
 
-{% block box_action %}
+{% block box_actions %}
     {{ action.back('user.student.back_to_list' | trans, 'user_student_index') }}
     {{ action.edit('user.student.edit' | trans, 'user_student_edit', student.id) }}
     {{ action.delete('user.student.delete' | trans, delete_form) }}

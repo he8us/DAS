@@ -17,8 +17,6 @@ user_student_results:
     path: /result
     defaults:
       _controller: UserBundle:Student:results
-    options:
-        expose: true
 
 user_student_show:
     path: /{id}/show

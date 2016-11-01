@@ -31,5 +31,3 @@ course_grade_results:
     path:     /result
     defaults: { _controller: "CourseBundle:Grade:results" }
     methods:  GET
-    options:
-        expose: true

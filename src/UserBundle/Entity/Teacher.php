@@ -22,7 +22,7 @@ class Teacher extends User
     /**
      * @var ArrayCollection
      *
-     * @ORM\ManyToMany(targetEntity="CourseBundle\Entity\CourseContent", inversedBy="teachers")
+     * @ORM\ManyToMany(targetEntity="CourseBundle\Entity\CourseContent", mappedBy="teachers")
      * @ORM\JoinColumn(name="course_id", referencedColumnName="id", onDelete="SET NULL")
      */
     private $courses;

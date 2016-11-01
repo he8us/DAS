@@ -42,7 +42,7 @@ class CourseContent
      *
      * @ORM\Column(name="name", type="string", length=100)
      */
-    private $section;
+    private $name;
 
 
     /**
@@ -57,7 +57,7 @@ class CourseContent
     /**
      * @var ArrayCollection
      *
-     * @ORM\ManyToMany(targetEntity="UserBundle\Entity\Teacher", mappedBy="courses")
+     * @ORM\ManyToMany(targetEntity="UserBundle\Entity\Teacher", inversedBy="courses")
      * @ORM\JoinColumn(name="teacher_id", referencedColumnName="id", onDelete="SET NULL")
      */
     private $teachers;
@@ -106,21 +106,21 @@ class CourseContent
      *
      * @return string
      */
-    public function getSection()
+    public function getName()
     {
-        return $this->section;
+        return $this->name;
     }
 
     /**
      * Set name
      *
-     * @param string $section
+     * @param string $name
      *
      * @return CourseContent
      */
-    public function setSection(string $section)
+    public function setName(string $name)
     {
-        $this->section = $section;
+        $this->name = $name;
 
         return $this;
     }

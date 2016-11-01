@@ -31,5 +31,3 @@ course_lesson_results:
     path:     /result
     defaults: { _controller: "CourseBundle:Lesson:results" }
     methods:  GET
-    options:
-        expose: true

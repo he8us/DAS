@@ -43,3 +43,9 @@ label[for="fos_user_profile_form_profilePicture_profilePictureFile"]{
 .box-actions form{
     display: inline-block;
 }
+
+
+.form-group .checkbox{
+    display: inline-block;
+    margin-right: 10px;
+}

@@ -10,6 +10,9 @@
 namespace CoreBundle\Controller;
 
 
+use Doctrine\ORM\QueryBuilder;
+use Sg\DatatablesBundle\Datatable\Data\DatatableQuery;
+use Sg\DatatablesBundle\Datatable\View\DatatableViewInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -47,9 +50,23 @@ abstract class AbstractCrudController extends Controller
         $datatable = $this->get($this->datatable);
         $datatable->buildDatatable();
 
-        $query = $this->get('sg_datatables.query')->getQueryFrom($datatable);
+        $query = $this->getQueryFromDatatable($datatable);
 
         return $query->getResponse();
     }
+
+
+    public function getQueryFromDatatable(DatatableViewInterface $datatable)
+    {
+        $query = $this->get('sg_datatables.query')->getQueryFrom($datatable);
+
+        $query->addWhereAll(function(QueryBuilder $qb){
+            $rootAliases = $qb->getRootAliases();
+            $qb->andWhere($rootAliases[0].'.deletedAt IS NULL');
+        });
+
+        return $query;
+    }
+
 
 }

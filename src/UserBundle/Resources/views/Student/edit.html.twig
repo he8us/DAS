@@ -3,7 +3,7 @@
 {% block title %}{{ 'user.student.edit.title' | trans }}{% endblock %}
 {% block box_title %}{{ 'user.student.edit.title' | trans }}{% endblock %}
 
-{% block box_action %}
+{% block box_actions %}
     {{ action.back('user.student.back_to_list' | trans, 'user_student_index') }}
     {% if delete_form is defined %}
         {{ action.delete('user.student.delete' | trans, delete_form) }}

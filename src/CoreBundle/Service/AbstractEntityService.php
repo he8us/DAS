@@ -33,7 +33,7 @@ abstract class AbstractEntityService
 
     public function delete($entity)
     {
-        $entity->setDeletedAt();
+        $entity->setDeletedAt(new \DateTime());
         $this->save($entity);
     }
 
