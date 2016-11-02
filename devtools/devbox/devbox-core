@@ -24,8 +24,6 @@ source "$(dirname "$0")/commands/yarn.sh"
 
 hash docker-compose 2> /dev/null || { fail "I require docker-compose but it's not installed"; }
 
-eval $(docker-machine env default)
-
 cd $(dirname "$0")/..
 
 # Reset variables
