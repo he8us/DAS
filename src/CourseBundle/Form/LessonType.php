@@ -40,7 +40,7 @@ class LessonType extends AbstractType
                 'class'         => CourseContent::class,
                 'choice_label'  => 'name',
                 'query_builder' => function (CourseContentRepository $repository) {
-                    return $repository->findAllNotDeleted();
+                    return $repository->findAllNotDeletedQueryBuilder();
                 },
             ])
             ->add('teacher', EntityType::class, [
@@ -50,7 +50,7 @@ class LessonType extends AbstractType
                     return $teacher->getFirstName() . ' ' . $teacher->getLastName();
                 },
                 'query_builder' => function (UserRepository $repository) {
-                    return $repository->findAllNotDeleted();
+                    return $repository->findAllNotDeletedQueryBuilder();
                 },
             ])
             ->add('remarks', TextareaType::class, [

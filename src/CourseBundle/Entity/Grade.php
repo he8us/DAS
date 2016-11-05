@@ -40,7 +40,7 @@ class Grade
      *
      * @ORM\OneToMany(targetEntity="CourseBundle\Entity\GradeClass", mappedBy="grade")
      */
-    private $sections;
+    private $gradeClasses;
 
 
     /**
@@ -64,7 +64,7 @@ class Grade
      */
     public function __construct()
     {
-        $this->sections = new ArrayCollection();
+        $this->gradeClasses = new ArrayCollection();
         $this->courses = new ArrayCollection();
         $this->lessons = new ArrayCollection();
     }
@@ -104,11 +104,22 @@ class Grade
     }
 
     /**
-     * @return GradeClass
+     * @return ArrayCollection
      */
-    public function getSections()
+    public function getGradeClasses()
     {
-        return $this->sections;
+        return $this->gradeClasses;
+    }
+
+    /**
+     * @param ArrayCollection $gradeClasses
+     *
+     * @return Grade
+     */
+    public function setGradeClasses(ArrayCollection $gradeClasses): Grade
+    {
+        $this->gradeClasses = $gradeClasses;
+        return $this;
     }
 
     /**
@@ -118,7 +129,7 @@ class Grade
      */
     public function addSection(GradeClass $class)
     {
-        $this->sections->add($class);
+        $this->gradeClasses->add($class);
         return $this;
     }
 
@@ -129,12 +140,12 @@ class Grade
      */
     public function removeSection(GradeClass $class)
     {
-        $this->sections->removeElement($class);
+        $this->gradeClasses->removeElement($class);
         return $this;
     }
 
     /**
-     * @return CourseContent
+     * @return ArrayCollection
      */
     public function getCourses()
     {
@@ -148,7 +159,7 @@ class Grade
      */
     public function addCourse(CourseContent $class)
     {
-        $this->sections->add($class);
+        $this->gradeClasses->add($class);
         return $this;
     }
 
@@ -159,7 +170,7 @@ class Grade
      */
     public function removeCourse(CourseContent $class)
     {
-        $this->sections->removeElement($class);
+        $this->gradeClasses->removeElement($class);
         return $this;
     }
 }

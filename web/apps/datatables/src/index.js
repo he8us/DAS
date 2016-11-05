@@ -1,3 +1,6 @@
+import 'jquery';
+
+
 import "bootstrap-daterangepicker/daterangepicker.css";
 import "imports?define=>false,this=>window!bootstrap-daterangepicker/daterangepicker";
 

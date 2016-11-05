@@ -31,7 +31,7 @@ class GradeClass
     /**
      * @var Grade
      *
-     * @ORM\ManyToOne(targetEntity="CourseBundle\Entity\Grade", inversedBy="sections")
+     * @ORM\ManyToOne(targetEntity="CourseBundle\Entity\Grade", inversedBy="gradeClasses")
      * @ORM\JoinColumn(name="grade_id", referencedColumnName="id", nullable=false, onDelete="CASCADE")
      */
     private $grade;

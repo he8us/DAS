@@ -5,6 +5,7 @@
 
 {% block box_actions %}
     {{ action.new("user.student.action.add" | trans, 'user_student_new') }}
+    {{ action.getCards("user.student.action.getcards" | trans, 'user_student_generateCards') }}
     {{ action.import("user.student.action.import" | trans, 'user_student_import') }}
 {% endblock %}
 

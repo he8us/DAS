@@ -12,7 +12,7 @@ use UserBundle\Entity\Teacher;
 /**
  * Lesson
  *
- * @ORM\Table(name="lesson")
+ * @ORM\Table(name="lesson", )
  * @ORM\Entity(repositoryClass="CourseBundle\Repository\LessonRepository")
  */
 class Lesson
@@ -63,7 +63,7 @@ class Lesson
     /**
      * @var Teacher
      *
-     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\Teacher")
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\Teacher", inversedBy="lessons")
      * @ORM\JoinColumn(name="teacher_id", referencedColumnName="id", nullable=false, onDelete="CASCADE"))
      */
     private $teacher;

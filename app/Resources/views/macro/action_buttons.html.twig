@@ -12,6 +12,13 @@
     </a>
 {% endmacro %}
 
+{% macro getCards(label, route) %}
+    <a class="btn btn-success" id="_getCards" href="{{ path(route) }}">
+        <i class="fa fa-download"></i>
+        {{ label }}
+    </a>
+{% endmacro %}
+
 {% macro import(label, route) %}
     <a class="btn btn-primary" id="_import" href="{{ path(route) }}">
         <i class="fa fa-upload"></i>

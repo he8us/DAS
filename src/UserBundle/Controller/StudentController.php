@@ -58,6 +58,9 @@ class StudentController extends AbstractCrudController
         ]);
     }
 
+    /**
+     * @return string
+     */
     private function getRandomString()
     {
         return $this->get("core.service.random_string_service")->generateRandomString();
@@ -80,6 +83,7 @@ class StudentController extends AbstractCrudController
 
 
         if ($form->isSubmitted() && $form->isValid()) {
+            //TODO: implement
         }
 
         return $this->render('UserBundle:Student:import.html.twig', [
@@ -163,5 +167,17 @@ class StudentController extends AbstractCrudController
         }
 
         return $this->redirectToRoute('user_student_index');
+    }
+
+
+    /**
+     * @return Response
+     */
+    public function generateCardAction()
+    {
+        $this->container->get('profiler')->disable();
+        return $this->render('UserBundle:Student:cards.html.twig', [
+            'students' => $this->getStudentService()->findAll()
+        ]);
     }
 }

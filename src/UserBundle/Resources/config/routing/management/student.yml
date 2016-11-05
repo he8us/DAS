@@ -37,3 +37,8 @@ user_student_delete:
     defaults:
         _controller: UserBundle:Student:delete
     methods:  DELETE
+
+user_student_generateCards:
+    path: /cards
+    defaults:
+      _controller: UserBundle:Student:generateCard

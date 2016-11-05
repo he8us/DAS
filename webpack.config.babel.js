@@ -31,7 +31,8 @@ const common = {
         // Add your entrypoint here
         'theme': './apps/theme/src/index.js',
         'core': './apps/core/src/index.js',
-        'datatables': './apps/datatables/src/index.js'
+        'datatables': './apps/datatables/src/index.js',
+        'user': './apps/user/src/index.js'
     },
     output: {
         path: PATHS.build,

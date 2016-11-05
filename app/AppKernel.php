@@ -35,6 +35,7 @@ class AppKernel extends Kernel
             new Gregwar\CaptchaBundle\GregwarCaptchaBundle(),
             new He8us\FeedbackBundle\He8usFeedbackBundle(),
             new Bazinga\Bundle\JsTranslationBundle\BazingaJsTranslationBundle(),
+            new Endroid\Bundle\QrCodeBundle\EndroidQrCodeBundle(),
 
             new CoreBundle\CoreBundle(),
             new UserBundle\UserBundle(),

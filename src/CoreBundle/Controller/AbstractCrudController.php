@@ -56,6 +56,11 @@ abstract class AbstractCrudController extends Controller
     }
 
 
+    /**
+     * @param DatatableViewInterface $datatable
+     *
+     * @return DatatableQuery
+     */
     public function getQueryFromDatatable(DatatableViewInterface $datatable)
     {
         $query = $this->get('sg_datatables.query')->getQueryFrom($datatable);
