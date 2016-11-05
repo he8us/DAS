@@ -64,10 +64,14 @@ body {
 .card header .name {
     color: white !important;
     text-transform: capitalize;
-    font-size: 21pt;
+    font-size: 18pt;
     line-height: 21pt;
     width: 7.960cm;
     height: 0.7cm;
+    overflow: hidden;
+    white-space: normal;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
 }
 
 .barcode {
