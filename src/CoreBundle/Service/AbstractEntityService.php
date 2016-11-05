@@ -8,8 +8,10 @@
 
 namespace CoreBundle\Service;
 
+use CoreBundle\Repository\AbstractRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\ORM\QueryBuilder;
 
 abstract class AbstractEntityService
 {
@@ -61,10 +63,17 @@ abstract class AbstractEntityService
     }
 
     /**
-     * @return EntityRepository
+     * @return AbstractRepository
      */
-    protected function getRepository():EntityRepository
+    protected function getRepository()
     {
         return $this->getManager()->getRepository($this->entityClass);
+    }
+
+    /**
+     * @return array
+     */
+    public function findAll(){
+        return $this->getRepository()->findAllNotDeletedQueryBuilder()->getQuery()->getResult();
     }
 }

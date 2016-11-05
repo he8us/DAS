@@ -1,0 +1,104 @@
+/**
+ *  Cards page code
+ */
+
+@page {
+    margin: 1cm;
+    size: A4;
+    marks: crop cross;
+}
+
+body {
+    -webkit-print-color-adjust: exact;
+}
+
+.description span {
+    font-weight: bold;
+}
+
+.description .not-loaded {
+    color: red;
+}
+
+.description .loaded {
+    color: green;
+    display: none;
+}
+
+.loaded .description .not-loaded {
+    display: none;
+}
+
+.loaded .description .loaded {
+    display: inline;
+}
+
+.card_list {
+    width: 21cm;
+    margin: 0 auto;
+    list-style: none outside;
+    overflow: hidden;
+}
+
+.card {
+    font-family: 'Source Sans Pro', sans-serif;
+    width: 8.560cm;
+    height: 5.398cm;
+    float: left;
+    page-break-inside: avoid;
+    border: 1pt solid black;
+    margin-bottom: .5cm;
+}
+
+.card:nth-child(odd) {
+    margin-right: 1cm;
+}
+
+.card header {
+    background: #367fa9 !important;
+    color: white !important;
+    padding: 0.3cm;
+    margin-bottom: .4cm;
+}
+
+.card header .name {
+    color: white !important;
+    text-transform: capitalize;
+    font-size: 21pt;
+    line-height: 21pt;
+    width: 7.960cm;
+    height: 0.7cm;
+}
+
+.barcode {
+    text-align: center;
+}
+
+.barcode img {
+
+    width: 96%;
+}
+
+.details {
+    width: 5cm;
+    margin-left: 0.06cm;
+}
+
+.img-circle {
+    border-radius: 50%;
+    width: 80%;
+}
+
+dl {
+    max-width: 100%
+}
+
+@media print {
+    .description {
+        display: none;
+    }
+
+    .card_list {
+        padding: 0;
+    }
+}

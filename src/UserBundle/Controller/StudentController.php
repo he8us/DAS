@@ -168,4 +168,16 @@ class StudentController extends AbstractCrudController
 
         return $this->redirectToRoute('user_student_index');
     }
+
+
+    /**
+     * @return Response
+     */
+    public function generateCardAction()
+    {
+        $this->container->get('profiler')->disable();
+        return $this->render('UserBundle:Student:cards.html.twig', [
+            'students' => $this->getStudentService()->findAll()
+        ]);
+    }
 }

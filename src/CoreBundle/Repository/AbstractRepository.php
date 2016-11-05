@@ -11,6 +11,7 @@ namespace CoreBundle\Repository;
 
 
 use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\QueryBuilder;
 
 class AbstractRepository extends EntityRepository
 {
@@ -19,9 +20,17 @@ class AbstractRepository extends EntityRepository
      */
     protected $alias;
 
-    public function findAllNotDeleted()
+    /**
+     * @return QueryBuilder
+     */
+    public function findAllNotDeletedQueryBuilder()
     {
         return $this->createQueryBuilder($this->alias)
             ->where($this->alias.'.deletedAt IS NULL');
+    }
+
+    public function findAllNotDeleted()
+    {
+        return $this->findAllNotDeletedQueryBuilder()->getQuery()->getResult();
     }
 }

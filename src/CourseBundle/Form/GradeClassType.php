@@ -29,7 +29,7 @@ class GradeClassType extends AbstractType
                 'class' => Grade::class,
                 'choice_label' => 'grade',
                 'query_builder' => function(GradeRepository $repository){
-                    return $repository->findAllNotDeleted();
+                    return $repository->findAllNotDeletedQueryBuilder();
                 }
             ])
             ->add('titular', EntityType::class, [
@@ -38,7 +38,7 @@ class GradeClassType extends AbstractType
                     return $titular->getFirstName().' '.$titular->getLastName();
                 },
                 'query_builder' => function(UserRepository $repository){
-                    return $repository->findAllNotDeleted();
+                    return $repository->findAllNotDeletedQueryBuilder();
                 }
             ]);
     }

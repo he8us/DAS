@@ -33,7 +33,7 @@ class CourseContentType extends AbstractType
                     'multiple'     => true,
                     'expanded'     => true,
                     'query_builder' => function(GradeRepository $repository){
-                        return $repository->findAllNotDeleted();
+                        return $repository->findAllNotDeletedQueryBuilder();
                     }
                 ]
             )
@@ -43,7 +43,7 @@ class CourseContentType extends AbstractType
                 'choice_label' => 'name',
                 'required'     => false,
                 'query_builder' => function(CourseContentRepository $repository){
-                    return $repository->findAllNotDeleted();
+                    return $repository->findAllNotDeletedQueryBuilder();
                 }
             ])
             ->add('teachers', EntityType::class, [
@@ -55,7 +55,7 @@ class CourseContentType extends AbstractType
                 'multiple'     => true,
                 'expanded'     => true,
                 'query_builder' => function(UserRepository $repository){
-                    return $repository->findAllNotDeleted();
+                    return $repository->findAllNotDeletedQueryBuilder();
                 }
             ]);
     }

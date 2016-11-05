@@ -8,7 +8,6 @@
 
     {# TODO: compress assets / use webpack #}
     <link rel="stylesheet" href="{{ asset("apps/theme/bundle.css") }}"/>
-    <link rel="stylesheet" href="{{ asset("apps/core/bundle.css") }}"/>
     <link rel="stylesheet" href="{{ asset("apps/datatables/bundle.css") }}"/>
     <link rel="stylesheet" href="{{ asset("bundles/he8usfeedback/css/feedback.css") }}"/>
 
@@ -95,6 +94,7 @@
 <script src="{{ asset('http://build.das.dev/apps/theme/bundle.js') }}"></script>
 <script src="{{ asset('http://build.das.dev/apps/datatables/bundle.js') }}"></script>
 <script src="{{ asset('bundles/user/js/misc.js') }}"></script>
+<script src="{{ asset('http://build.das.dev/apps/user/bundle.js') }}"></script>
 <script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
 <script src="{{ url('bazinga_jstranslation_js') }}"></script>
 

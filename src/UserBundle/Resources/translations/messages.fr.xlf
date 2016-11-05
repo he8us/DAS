@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2016-10-30T23:24:47Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
+  <file date="2016-11-05T17:23:10Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -254,6 +254,10 @@
         <source>user.student.action.add</source>
         <target>Ajouter un étudiant</target>
       </trans-unit>
+      <trans-unit id="15c9e1b220d80bd41783b24d26c96febc81a924c" resname="user.student.action.getcards">
+        <source>user.student.action.getcards</source>
+        <target>Générer les cartes</target>
+      </trans-unit>
       <trans-unit id="13c3bcf8737f8c5a69bddcb05a94318fd0deb30f" resname="user.student.action.import">
         <source>user.student.action.import</source>
         <target>Importer des étudiants</target>
@@ -261,6 +265,33 @@
       <trans-unit id="2bfbfc67f18ed819c65c78640196a8723605257f" resname="user.student.back_to_list">
         <source>user.student.back_to_list</source>
         <target>Retour à la liste des étudiants</target>
+      </trans-unit>
+      <trans-unit id="32fb0f0ed410364049a716f480445e8f5b7c3fc3" resname="user.student.barcode">
+        <source>user.student.barcode</source>
+        <target>Code Barre</target>
+      </trans-unit>
+      <trans-unit id="d93d1a6e381c56feaa803a9ee87bf6c2339db7b2" resname="user.student.card.print.page.description">
+        <source>user.student.card.print.page.description</source>
+        <target><![CDATA[<strong>Cette page est prévue pour fonctionner dans Chrome!!</strong><br />
+Imprimez cette page, vous aurez des cartes d'étudiants en format "carte de visite" prêtes à être découpées. Utilisez des feuilles A4 lors de l'impression.<br />
+
+<strong>Veuillez attendre que le statut de chargement soit terminé avant d'imprimer, sans quoi tous les QR codes ne seront pas disponibles</strong>]]></target>
+      </trans-unit>
+      <trans-unit id="dabebf409562e69382871818f9c270d72178fa71" resname="user.student.card.print.page.load_status">
+        <source>user.student.card.print.page.load_status</source>
+        <target>Statut du chargement</target>
+      </trans-unit>
+      <trans-unit id="da2cc4c0390f807f9af6646880a0f4faee32faa3" resname="user.student.card.print.page.load_status.nok">
+        <source>user.student.card.print.page.load_status.nok</source>
+        <target>Pas encore chargé</target>
+      </trans-unit>
+      <trans-unit id="8562382ffa749b31ee760f465a395e1cf05c7aed" resname="user.student.card.print.page.load_status.ok">
+        <source>user.student.card.print.page.load_status.ok</source>
+        <target>Chargement terminé</target>
+      </trans-unit>
+      <trans-unit id="4b513b1b6ec2a67fd50407a336f22eb76d223df9" resname="user.student.card.print.page.title">
+        <source>user.student.card.print.page.title</source>
+        <target>Impression des cartes étudiants</target>
       </trans-unit>
       <trans-unit id="9e9be5f73154217c7f77763365702458cf5c8ed0" resname="user.student.create">
         <source>user.student.create</source>

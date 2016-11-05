@@ -10,10 +10,12 @@ _errors:
     resource: "@TwigBundle/Resources/config/routing/errors.xml"
     prefix:   /_error
 
-_main:
-    resource: routing.yml
-
 JMSTranslationBundle_ui:
     resource: '@JMSTranslationBundle/Controller/'
     type:     annotation
     prefix:   /_trans
+
+#Always at the bottom!
+_main:
+    resource: routing.yml
+
