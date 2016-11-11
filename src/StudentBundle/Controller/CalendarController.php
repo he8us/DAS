@@ -7,18 +7,11 @@
  */
 
 
-namespace TeacherBundle\Controller;
+namespace StudentBundle\Controller;
 
 
-use Carbon\Carbon;
 use CoreBundle\Controller\AbstractCalendarController;
-use CourseBundle\Entity\Lesson;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\User\UserInterface;
-use TeacherBundle\Service\TeacherService;
-use UserBundle\Entity\Teacher;
 
 class CalendarController extends AbstractCalendarController
 {
@@ -27,7 +20,7 @@ class CalendarController extends AbstractCalendarController
      */
     protected function getLessonsForInterval(UserInterface $user, \DateTime $start, \DateTime $end)
     {
-        return $this->getTeacherService()->getCoursesForInterval($user, $start, $end);
+        $this->getStudentService()->getCoursesForInterval($user, $start, $end);
     }
 
 }

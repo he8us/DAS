@@ -1,0 +1,4 @@
+student_dashboard_home:
+  path: /
+  defaults:
+    _controller: StudentBundle:Dashboard:index

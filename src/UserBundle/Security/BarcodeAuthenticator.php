@@ -253,7 +253,7 @@ class BarcodeAuthenticator extends AbstractGuardAuthenticator
      */
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey)
     {
-        return new RedirectResponse($this->router->generate("student_dashboard"));
+        return new RedirectResponse($this->router->generate("student_dashboard_home"));
     }
 
     /**

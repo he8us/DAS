@@ -51,4 +51,8 @@ class LessonRepository extends AbstractRepository
 
         return $query->getQuery()->getResult();
     }
+
+    public function getLessonForStudentForInterval($user, $start, $end)
+    {
+    }
 }

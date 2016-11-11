@@ -9,9 +9,13 @@
 namespace CoreBundle\Service;
 
 use CoreBundle\Repository\AbstractRepository;
+use CourseBundle\Entity\Lesson;
+use CourseBundle\Repository\LessonRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\Common\Persistence\ObjectManager;
-use Doctrine\ORM\QueryBuilder;
+use Symfony\Component\Security\Core\User\UserInterface;
+use UserBundle\Entity\Student;
+use UserBundle\Repository\StudentRepository;
 
 abstract class AbstractEntityService
 {
@@ -33,6 +37,15 @@ abstract class AbstractEntityService
     {
         $this->managerRegistry = $managerRegistry;
     }
+
+    /**
+     * @param UserInterface $user
+     * @param \DateTime     $start
+     * @param \DateTime     $end
+     *
+     * @return array
+     */
+    abstract public function getCoursesForInterval(UserInterface $user, \DateTime $start, \DateTime $end);
 
     public function delete($entity)
     {
@@ -67,6 +80,14 @@ abstract class AbstractEntityService
     }
 
     /**
+     * @return array
+     */
+    public function findAll()
+    {
+        return $this->getRepository()->findAllNotDeletedQueryBuilder()->getQuery()->getResult();
+    }
+
+    /**
      * @return AbstractRepository
      */
     protected function getRepository()
@@ -75,9 +96,19 @@ abstract class AbstractEntityService
     }
 
     /**
-     * @return array
+     * @return StudentRepository
      */
-    public function findAll(){
-        return $this->getRepository()->findAllNotDeletedQueryBuilder()->getQuery()->getResult();
+    protected function getStudentRepository()
+    {
+        return $this->getManager(Student::class)->getRepository(Student::class);
     }
+
+    /**
+     * @return LessonRepository
+     */
+    protected function getLessonRepository()
+    {
+        return $this->getManager(Lesson::class)->getRepository(Lesson::class);
+    }
+
 }

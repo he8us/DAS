@@ -1,18 +1,1 @@
-{% extends '::base.html.twig' %}
-
-{% block body %}
-
-    <div class="box box-primary">
-        <div class="box-body no-padding">
-
-            <div class="js-calendar"
-                 data-trans-button-today="{{ "calendar.today" | trans }}"
-                 data-trans-button-month="{{ "calendar.month" | trans }}"
-                 data-trans-button-week="{{ "calendar.week" | trans }}"
-                 data-trans-button-day="{{ "calendar.day" | trans }}"
-                 data-events-ajax-endpoint="{{ path('teacher_calendar_events', {"id": teacher.id}) }}"
-            ></div>
-
-        </div>
-    </div>
-{% endblock %}
+{% extends 'StudentBundle:Dashboard:index.html.twig' %}

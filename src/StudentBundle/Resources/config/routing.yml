@@ -1,4 +1,8 @@
+student_calendar:
+    prefix: /calendar
+    resource: "@StudentBundle/Resources/config/routing/calendar.yml"
+
+
 student_dashboard:
-  path: /dashboard
-  defaults:
-    _controller: StudentBundle:Dashboard:index
+  prefix: /dashboard
+  resource: "@StudentBundle/Resources/config/routing/dashboard.yml"
