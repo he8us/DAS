@@ -1,0 +1,17 @@
+CourseBundle\Entity\CourseContent:
+    coursecontent-1:
+        name: "Mathématiques"
+        grades: "3x @grade-*"
+
+    coursecontent-2:
+        name: "Français"
+        grades: "3x @grade-*"
+
+    coursecontent-3:
+        name: "Physique"
+        grades: "3x @grade-*"
+
+    coursecontent-4:
+        name: "Chimie"
+        grades: "3x @grade-*"
+

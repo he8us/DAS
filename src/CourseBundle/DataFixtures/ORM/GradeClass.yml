@@ -1,126 +1,126 @@
 CourseBundle\Entity\GradeClass:
-    GradeClass-1:
-        grade: '@Grade-1'
+    gradeclass-1:
+        grade: '@grade-1'
         section: a
         createdAt: <dateTime()>
         updatedAt: <dateTime()>
 
-    GradeClass-2:
-        grade: '@Grade-1'
+    gradeclass-2:
+        grade: '@grade-1'
         section: b
         createdAt: <dateTime()>
         updatedAt: <dateTime()>
 
-    GradeClass-3:
-        grade: '@Grade-1'
+    gradeclass-3:
+        grade: '@grade-1'
         section: c
         createdAt: <dateTime()>
         updatedAt: <dateTime()>
 
-    GradeClass-4:
-        grade: '@Grade-1'
+    gradeclass-4:
+        grade: '@grade-1'
         section: d
         createdAt: <dateTime()>
         updatedAt: <dateTime()>
 
-    GradeClass-5:
-        grade: '@Grade-2'
+    gradeclass-5:
+        grade: '@grade-2'
         section: a
         createdAt: <dateTime()>
         updatedAt: <dateTime()>
 
-    GradeClass-6:
-        grade: '@Grade-2'
+    gradeclass-6:
+        grade: '@grade-2'
         section: b
         createdAt: <dateTime()>
         updatedAt: <dateTime()>
 
-    GradeClass-7:
-        grade: '@Grade-2'
+    gradeclass-7:
+        grade: '@grade-2'
         section: c
         createdAt: <dateTime()>
         updatedAt: <dateTime()>
 
-    GradeClass-8:
-        grade: '@Grade-2'
+    gradeclass-8:
+        grade: '@grade-2'
         section: d
         createdAt: <dateTime()>
         updatedAt: <dateTime()>
 
-    GradeClass-9:
-        grade: '@Grade-2'
+    gradeclass-9:
+        grade: '@grade-2'
         section: e
         createdAt: <dateTime()>
         updatedAt: <dateTime()>
 
-    GradeClass-10:
-        grade: '@Grade-3'
+    gradeclass-10:
+        grade: '@grade-3'
         section: a
         createdAt: <dateTime()>
         updatedAt: <dateTime()>
 
-    GradeClass-11:
-        grade: '@Grade-3'
+    gradeclass-11:
+        grade: '@grade-3'
         section: b
         createdAt: <dateTime()>
         updatedAt: <dateTime()>
 
-    GradeClass-12:
-        grade: '@Grade-3'
+    gradeclass-12:
+        grade: '@grade-3'
         section: c
         createdAt: <dateTime()>
         updatedAt: <dateTime()>
 
-    GradeClass-13:
-        grade: '@Grade-4'
+    gradeclass-13:
+        grade: '@grade-4'
         section: a
         createdAt: <dateTime()>
         updatedAt: <dateTime()>
 
-    GradeClass-14:
-        grade: '@Grade-4'
+    gradeclass-14:
+        grade: '@grade-4'
         section: b
         createdAt: <dateTime()>
         updatedAt: <dateTime()>
 
-    GradeClass-15:
-        grade: '@Grade-4'
+    gradeclass-15:
+        grade: '@grade-4'
         section: c
         createdAt: <dateTime()>
         updatedAt: <dateTime()>
 
-    GradeClass-16:
-        grade: '@Grade-5'
+    gradeclass-16:
+        grade: '@grade-5'
         section: a
         createdAt: <dateTime()>
         updatedAt: <dateTime()>
 
-    GradeClass-17:
-        grade: '@Grade-5'
+    gradeclass-17:
+        grade: '@grade-5'
         section: b
         createdAt: <dateTime()>
         updatedAt: <dateTime()>
 
-    GradeClass-18:
-        grade: '@Grade-5'
+    gradeclass-18:
+        grade: '@grade-5'
         section: c
         createdAt: <dateTime()>
         updatedAt: <dateTime()>
 
-    GradeClass-19:
-        grade: '@Grade-6'
+    gradeclass-19:
+        grade: '@grade-6'
         section: a
         createdAt: <dateTime()>
         updatedAt: <dateTime()>
 
-    GradeClass-20:
-        grade: '@Grade-6'
+    gradeclass-20:
+        grade: '@grade-6'
         section: b
         createdAt: <dateTime()>
         updatedAt: <dateTime()>
 
-    GradeClass-21:
-        grade: '@Grade-6'
+    gradeclass-21:
+        grade: '@grade-6'
         section: c
         createdAt: <dateTime()>
         updatedAt: <dateTime()>

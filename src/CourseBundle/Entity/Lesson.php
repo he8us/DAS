@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
+use UserBundle\Entity\Student;
 use UserBundle\Entity\Teacher;
 
 /**
@@ -70,16 +71,23 @@ class Lesson
 
     /**
      * @var CourseContent
-     * @ORM\ManyToOne(targetEntity="CourseBundle\Entity\CourseContent")
+     * @ORM\ManyToOne(targetEntity="CourseBundle\Entity\CourseContent", inversedBy="lessons")
      * @ORM\JoinColumn(name="course_content_id", referencedColumnName="id", nullable=false, onDelete="CASCADE"))
      */
     private $content;
+
+    /**
+     * @var ArrayCollection
+     * @ORM\ManyToMany(targetEntity="UserBundle\Entity\Student", inversedBy="lessons")
+     */
+    private $students;
 
 
     public function __construct()
     {
         $this->grades = new ArrayCollection();
         $this->date = new \DateTime();
+        $this->students = new ArrayCollection();
     }
 
     /**
@@ -200,6 +208,36 @@ class Lesson
     {
         $this->content = $content;
         return $this;
+    }
+
+    /**
+     * @param Student $student
+     *
+     * @return Lesson
+     */
+    public function addStudent(Student $student)
+    {
+        $this->students->add($student);
+        return $this;
+    }
+
+    /**
+     * @param Student $student
+     *
+     * @return $this
+     */
+    public function removeStudent(Student $student)
+    {
+        $this->students->removeElement($student);
+        return $this;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getStudents()
+    {
+        return $this->students;
     }
 }
 

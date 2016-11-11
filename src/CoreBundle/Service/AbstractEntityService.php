@@ -55,11 +55,15 @@ abstract class AbstractEntityService
     }
 
     /**
+     * @param null $entity
+     *
      * @return ObjectManager|null
      */
-    protected function getManager()
+    protected function getManager($entity = null)
     {
-        return $this->managerRegistry->getManagerForClass($this->entityClass);
+        $entity = isset($entity) ? $entity : $this->entityClass;
+
+        return $this->managerRegistry->getManagerForClass($entity);
     }
 
     /**

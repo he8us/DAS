@@ -43,6 +43,7 @@ class AppKernel extends Kernel
             new CourseBundle\CourseBundle(),
             new StudentBundle\StudentBundle(),
             new FeedbackBundle\FeedbackBundle(),
+            new TeacherBundle\TeacherBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test', 'acceptance'], true)) {

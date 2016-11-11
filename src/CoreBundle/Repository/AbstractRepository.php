@@ -29,6 +29,9 @@ class AbstractRepository extends EntityRepository
             ->where($this->alias.'.deletedAt IS NULL');
     }
 
+    /**
+     * @return object[]
+     */
     public function findAllNotDeleted()
     {
         return $this->findAllNotDeletedQueryBuilder()->getQuery()->getResult();

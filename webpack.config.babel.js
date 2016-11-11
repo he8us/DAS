@@ -1,9 +1,9 @@
-import Webpack from 'webpack';
-import path from 'path';
-import validate from 'webpack-validator';
-import merge from 'webpack-merge';
-import AssetsPlugin from 'assets-webpack-plugin';
-import * as actions from './app/Resources/build/actions.js';
+import Webpack from "webpack";
+import path from "path";
+import validate from "webpack-validator";
+import merge from "webpack-merge";
+import AssetsPlugin from "assets-webpack-plugin";
+import * as actions from "./app/Resources/build/actions.js";
 
 
 const TARGET = process.env.NODE_ENV || process.env.npm_lifecycle_event;
@@ -39,6 +39,9 @@ const common = {
         filename: '[name]/bundle.js',
         publicPath: '/apps/'
     },
+    externals: {
+        "translator": "Translator"
+    },
     module: {
         loaders: [
             {
@@ -51,14 +54,20 @@ const common = {
                 loaders: ['json']
             },
             {
-                test:   /\.(png|jpg|jpeg|gif)?$/,
+                test: /\.(png|jpg|jpeg|gif)?$/,
                 loader: 'file'
             },
-            { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?(\-[\.a-z0-9]+)?$/, loader: "url-loader?limit=10000&mimetype=application/font-woff" },
-            { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?(\-[\.a-z0-9]+)?$/, loader: "file-loader" },
+            {
+                test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?(\-[\.a-z0-9]+)?(\?[\.a-z0-9]+)?$/,
+                loader: "url-loader?limit=10000&mimetype=application/font-woff"
+            },
+            {
+                test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?(\-[\.a-z0-9]+)?(\?[\.a-z0-9]+)?$/,
+                loader: "file-loader"
+            },
 
 
-            { test: require.resolve("moment"), loader: "expose?$!expose?moment" }
+            {test: require.resolve("moment"), loader: "expose?$!expose?moment"}
         ]
     },
     plugins: [
@@ -70,7 +79,8 @@ const common = {
             jQuery: "jquery"
         }),
         new Webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
+            'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
+            //'require.specified': 'require.resolve'
         })
     ]
 };

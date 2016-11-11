@@ -1,3 +1,7 @@
+teacher:
+    resource: "@TeacherBundle/Resources/config/routing.yml"
+    prefix:   /teacher
+
 student:
     resource: "@StudentBundle/Resources/config/routing.yml"
     prefix:   /student

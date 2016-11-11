@@ -2,9 +2,9 @@ include:
   - User.yml
 
 UserBundle\Entity\StudentParent:
-  student_parent_1 (extends user):
+  studentparent-1 (extends user):
     username: student_parent
     password: 12345
 
-  student_parent_{2..10} (extends user):
+  studentparent-{2..10} (extends user):
 

@@ -2,9 +2,9 @@ include:
   - User.yml
 
 UserBundle\Entity\CourseTitular:
-  course_titular_1 (extends user):
+  coursetitular-1 (extends user):
     username: course_titular
     password: 12345
 
-  course_titular_{2..10} (extends user):
+  coursetitular-{2..10} (extends user):
 

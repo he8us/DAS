@@ -1,0 +1,5 @@
+teacher_calendar_events:
+    path:     /{id}/lessons
+    defaults: { _controller: TeacherBundle:Calendar:ajaxGetLessons }
+    requirements:
+      id: \d+

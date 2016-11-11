@@ -1,0 +1,64 @@
+{% extends '::base.html.twig' %}
+
+{% form_theme form "bootstrap_3_layout.html.twig" %}
+
+{% block body %}
+    <section class="content-header">
+        <h1>{{ lesson.content.name }}</h1>
+    </section>
+    <div class="content">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="box box-primary">
+                    {% if editable %}
+                        {{ form_start(form) }}
+
+                    {% endif %}
+                    <div class="box-header with-border">
+                        <div class="box-title">
+                            {{ "teacher.lesson.remarks" | trans }}
+                        </div>
+                    </div>
+
+                    <div class="box-body">
+                        {% if editable %}
+                            {{ form_widget(form) }}
+                        {% else %}
+                            {{ lesson.remarks | raw }}
+                        {% endif %}
+                    </div>
+
+
+                    {% if editable %}
+                        <div class="box-footer">
+                            <button class="btn btn-primary pull-right"
+                                    type="submit">{{ "teacher.lesson.remarks.save" | trans }}</button>
+                        </div>
+                        {{ form_end(form) }}
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box box-info">
+                    <div class="box-header">
+                        <div class="box-title">
+                            {{ "teacher.lesson.registered_students" | trans }}
+                        </div>
+                    </div>
+
+                    <div class="box-body">
+                        {% if lesson.students %}
+                            <ol class="student_list list">
+                                {% for student in lesson.students %}
+                                    <li>{{ student.firstName }} {{ student.lastName }}</li>
+                                {% endfor %}
+                            </ol>
+                        {% else %}
+                            {{ "teacher.lesson.no_students" | trans }}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

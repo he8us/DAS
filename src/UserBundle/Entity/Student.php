@@ -119,6 +119,12 @@ class Student implements AdvancedUserInterface, \Serializable
     private $roles;
 
     /**
+     * @var ArrayCollection
+     * @ORM\ManyToMany(targetEntity="CourseBundle\Entity\Lesson", mappedBy="students")
+     */
+    private $lessons;
+
+    /**
      * Student constructor.
      */
     public function __construct()
@@ -126,6 +132,7 @@ class Student implements AdvancedUserInterface, \Serializable
         $this->parents = new ArrayCollection();
         $this->roles = ['ROLE_STUDENT'];
         $this->isActive = true;
+        $this->lessons = new ArrayCollection();
     }
 
     /**

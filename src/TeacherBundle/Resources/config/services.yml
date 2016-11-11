@@ -1,0 +1,4 @@
+services:
+   teacher.service.teacher:
+        class: TeacherBundle\Service\TeacherService
+        arguments: ["@doctrine"]

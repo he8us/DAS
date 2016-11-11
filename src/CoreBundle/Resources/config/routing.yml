@@ -1,13 +1,3 @@
-core_generate_barcode:
-  path: /barcode/generate/{value}.{extension}
-  defaults:
-      _controller: CoreBundle:Barcode:generate
-      barcodeType: C128
-
-  requirements:
-    extension: svg|jpg|png
-
-
 
 # This route should be the last one defined
 remove_trailing_slash:

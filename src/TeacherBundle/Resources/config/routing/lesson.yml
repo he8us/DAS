@@ -1,0 +1,5 @@
+teacher_lesson_details:
+    path:     /{id}/show
+    defaults: { _controller: TeacherBundle:Lesson:index }
+    requirements:
+      id: \d+
