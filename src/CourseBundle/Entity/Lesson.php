@@ -54,9 +54,8 @@ class Lesson
     /**
      * @var ArrayCollection
      *
-     * @ORM\ManyToMany(targetEntity="CourseBundle\Entity\Grade", mappedBy="lessons")
+     * @ORM\ManyToMany(targetEntity="CourseBundle\Entity\Grade", inversedBy="lessons")
      * @ORM\JoinColumn(name="grade_id", referencedColumnName="id", onDelete="SET NULL")
-    )
      */
     private $grades;
 
