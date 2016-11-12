@@ -55,7 +55,7 @@ class Grade
      * @var ArrayCollection
      *
      * @ORM\ManyToMany(targetEntity="CourseBundle\Entity\Lesson", mappedBy="grades")
-     * @ORM\JoinColumn(name="lessoné_id", referencedColumnName="id", onDelete="SET NULL")
+     * @ORM\JoinColumn(name="lesson_id", referencedColumnName="id", onDelete="SET NULL")
      */
     private $lessons;
 

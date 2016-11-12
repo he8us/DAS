@@ -62,7 +62,7 @@ class LessonRepository extends AbstractRepository
      */
     public function getLessonForStudentForInterval(Student $student, \DateTime $start, \DateTime $end)
     {
-        $qb = $this->createQueryBuilder('l')
+        $query = $this->createQueryBuilder('l')
             ->leftJoin('l.grades', 'g')
             ->leftJoin('g.gradeClasses', 'c')
             ->leftJoin('c.students', 's')
@@ -73,14 +73,6 @@ class LessonRepository extends AbstractRepository
             ->andWhere('l.date < :end')
             ->setParameter('end', $end);
 
-        $query = $qb->getQuery();
-
-        $sql = $query->getSQL();
-
-        $results = $query->getResult();
-
-        return $results;
-
-        //return $query->getQuery()->getResult();
+        return $query->getQuery()->getResult();
     }
 }

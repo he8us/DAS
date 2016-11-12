@@ -20,7 +20,7 @@ class CalendarController extends AbstractCalendarController
      */
     protected function getLessonsForInterval(UserInterface $user, \DateTime $start, \DateTime $end)
     {
-        $this->getStudentService()->getCoursesForInterval($user, $start, $end);
+        return $this->getStudentService()->getCoursesForInterval($user, $start, $end);
     }
 
 }
