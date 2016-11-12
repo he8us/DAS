@@ -6,3 +6,7 @@ student_calendar:
 student_dashboard:
   prefix: /dashboard
   resource: "@StudentBundle/Resources/config/routing/dashboard.yml"
+
+teacher_lesson:
+  prefix: /lesson
+  resource: "@StudentBundle/Resources/config/routing/lesson.yml"

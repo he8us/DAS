@@ -1,0 +1,11 @@
+student_lesson_details:
+    path:     /{id}/show
+    defaults: { _controller: StudentBundle:Lesson:index }
+    requirements:
+        id: \d+
+
+student_lesson_register:
+    path: /{id}/register
+    defaults: {_controller: StudentBundle:Lesson:register}
+    requirements:
+        id: \d+

@@ -148,7 +148,7 @@ abstract class AbstractCalendarController extends Controller
                 'title' => $lesson->getContent()->getName(),
                 'start' => $lesson->getStartDate()->format(Carbon::ISO8601),
                 'end'   => $lesson->getEndDate()->format(Carbon::ISO8601),
-                'url'   => $router->generate('teacher_lesson_details', [
+                'url'   => $router->generate($this->getAjaxRoute(), [
                     'id' => $lesson->getId(),
                 ]),
                 'type'  => $this->getEventType($lesson),
@@ -191,6 +191,19 @@ abstract class AbstractCalendarController extends Controller
 
         throw new \Exception('T\'as merdé ton event type');
 
+    }
+
+    private function getAjaxRoute()
+    {
+        switch (static::class){
+            case StudentCalendarController::class:
+                return 'student_lesson_details';
+
+            case TeacherCalendarController::class:
+                return 'teacher_lesson_details';
+        }
+
+        throw new \Exception('T\'as merdé ton ajax route');
     }
 
 }
