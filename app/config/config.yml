@@ -125,6 +125,11 @@ jms_translation:
             output_dir: "%kernel.root_dir%/../src/TeacherBundle/Resources/translations"
             excluded_dirs: [Features]
 
+        student:
+            dirs: ["%kernel.root_dir%/../src/StudentBundle"]
+            output_dir: "%kernel.root_dir%/../src/StudentBundle/Resources/translations"
+            excluded_dirs: [Features]
+
 services:
     twig.text_extension:
         class: Twig_Extensions_Extension_Text

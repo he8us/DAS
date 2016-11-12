@@ -13,7 +13,6 @@ use CourseBundle\Entity\Lesson;
 use CourseBundle\Repository\LessonRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\Common\Persistence\ObjectManager;
-use Symfony\Component\Security\Core\User\UserInterface;
 use UserBundle\Entity\Student;
 use UserBundle\Repository\StudentRepository;
 
@@ -39,14 +38,8 @@ abstract class AbstractEntityService
     }
 
     /**
-     * @param UserInterface $user
-     * @param \DateTime     $start
-     * @param \DateTime     $end
-     *
-     * @return array
+     * @param object $entity
      */
-    abstract public function getCoursesForInterval(UserInterface $user, \DateTime $start, \DateTime $end);
-
     public function delete($entity)
     {
         $entity->setDeletedAt(new \DateTime());
@@ -111,4 +104,13 @@ abstract class AbstractEntityService
         return $this->getManager(Lesson::class)->getRepository(Lesson::class);
     }
 
+    /**
+     * @param int $id
+     *
+     * @return Lesson
+     */
+    public function findById(int $id)
+    {
+        return $this->getRepository()->find($id);
+    }
 }
