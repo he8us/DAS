@@ -115,8 +115,14 @@ abstract class AbstractCalendarController extends Controller
      *
      * @return array
      */
-    protected function prepareLessonsForAjax(array $lessons)
+    protected function prepareLessonsForAjax(array $lessons = null)
     {
+
+        if($lessons == null){
+            return [];
+        }
+
+        $tmp = [];
         $router = $this->getRouter();
 
         foreach ($lessons as $lesson) {

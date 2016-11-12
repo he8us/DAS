@@ -2,9 +2,11 @@
 
 namespace CourseBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
+use UserBundle\Entity\Student;
 use UserBundle\Entity\Titular;
 
 /**
@@ -53,6 +55,18 @@ class GradeClass
     private $titular;
 
     /**
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="UserBundle\Entity\Student", mappedBy="gradeClass")
+     */
+    private $students;
+
+    public function __construct()
+    {
+        $this->students = new ArrayCollection();
+    }
+
+    /**
      * Get id
      *
      * @return int
@@ -77,7 +91,7 @@ class GradeClass
      *
      * @param Grade $grade
      *
-     * @return GradeClass
+     * @return $this
      */
     public function setGrade(Grade $grade)
     {
@@ -97,7 +111,7 @@ class GradeClass
     /**
      * @param string $section
      *
-     * @return GradeClass
+     * @return $this
      */
     public function setSection(string $section)
     {
@@ -116,12 +130,43 @@ class GradeClass
     /**
      * @param Titular $titular
      *
-     * @return GradeClass
+     * @return $this
      */
     public function setTitular(Titular $titular)
     {
         $this->titular = $titular;
         return $this;
+    }
+
+    /**
+     * @param Student $student
+     *
+     * @return $this
+     *
+     */
+    public function addStudents(Student $student)
+    {
+        $this->students->add($student);
+        return $this;
+    }
+
+    /**
+     * @param Student $student
+     *
+     * @return $this
+     */
+    public function deleteStudent(Student $student)
+    {
+        $this->students->removeElement($student);
+        return $this;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getStudents()
+    {
+        return $this->students;
     }
 }
 

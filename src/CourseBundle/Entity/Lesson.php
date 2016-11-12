@@ -239,5 +239,34 @@ class Lesson
     {
         return $this->students;
     }
+
+    /**
+     * @param Grade $grade
+     *
+     * @return Lesson
+     */
+    public function addGrades(Grade $grade)
+    {
+        $this->grades->add($grade);
+        return $this;
+    }
+
+    /**
+     * @param Grade $grade
+     *
+     * @return $this
+     */
+    public function deleteGrade(Grade $grade){
+        $this->grades->removeElement($grade);
+        return $this;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getGrades()
+    {
+        return $this->grades;
+    }
 }
 

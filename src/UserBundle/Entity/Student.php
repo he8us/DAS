@@ -94,7 +94,7 @@ class Student implements AdvancedUserInterface, \Serializable
 
     /**
      * @var GradeClass
-     * @ORM\ManyToOne(targetEntity="CourseBundle\Entity\GradeClass")
+     * @ORM\ManyToOne(targetEntity="CourseBundle\Entity\GradeClass", inversedBy="students")
      * @ORM\JoinColumn(name="grade_class_id", referencedColumnName="id", onDelete="SET NULL")
      */
     private $gradeClass;

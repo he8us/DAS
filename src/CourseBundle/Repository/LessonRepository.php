@@ -4,6 +4,7 @@ namespace CourseBundle\Repository;
 
 use Carbon\Carbon;
 use CoreBundle\Repository\AbstractRepository;
+use UserBundle\Entity\Student;
 use UserBundle\Entity\Teacher;
 
 /**
@@ -52,7 +53,34 @@ class LessonRepository extends AbstractRepository
         return $query->getQuery()->getResult();
     }
 
-    public function getLessonForStudentForInterval($user, $start, $end)
+    /**
+     * @param Student   $student
+     * @param \DateTime $start
+     * @param \DateTime $end
+     *
+     * @return array
+     */
+    public function getLessonForStudentForInterval(Student $student, \DateTime $start, \DateTime $end)
     {
+        $qb = $this->createQueryBuilder('l')
+            ->leftJoin('l.grades', 'g')
+            ->leftJoin('g.gradeClasses', 'c')
+            ->leftJoin('c.students', 's')
+            ->where('s.id = :sId')
+            ->setParameter('sId', $student->getId())
+            ->andWhere('l.date > :start')
+            ->setParameter('start', $start)
+            ->andWhere('l.date < :end')
+            ->setParameter('end', $end);
+
+        $query = $qb->getQuery();
+
+        $sql = $query->getSQL();
+
+        $results = $query->getResult();
+
+        return $results;
+
+        //return $query->getQuery()->getResult();
     }
 }
