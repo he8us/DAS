@@ -25,9 +25,18 @@ class LessonType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('date', DateTimeType::class, [
+            ->add('startDate', DateTimeType::class, [
                 'html5'  => true,
-                'label'  => 'course.lesson.date',
+                'label'  => 'course.lesson.start_date',
+                'widget' => 'single_text',
+                'format' => 'dd-MM-yyyy HH:mm',
+                'attr'   => [
+                    'class' => 'datetimepicker',
+                ],
+            ])
+            ->add('endDate', DateTimeType::class, [
+                'html5'  => true,
+                'label'  => 'course.lesson.end_date',
                 'widget' => 'single_text',
                 'format' => 'dd-MM-yyyy HH:mm',
                 'attr'   => [

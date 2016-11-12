@@ -11,6 +11,7 @@ namespace CoreBundle\Controller;
 
 
 use Carbon\Carbon;
+use CourseBundle\Entity\Lesson;
 use StudentBundle\Controller\CalendarController as StudentCalendarController;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Bundle\FrameworkBundle\Routing\Router;
@@ -70,6 +71,14 @@ abstract class AbstractCalendarController extends Controller
     }
 
     /**
+     * @return StudentService
+     */
+    protected function getStudentService()
+    {
+        return $this->get('user.service.student');
+    }
+
+    /**
      * @param int $id
      *
      * @return Teacher
@@ -77,6 +86,14 @@ abstract class AbstractCalendarController extends Controller
     private function getTeacherById(int $id)
     {
         return $this->getTeacherService()->findById($id);
+    }
+
+    /**
+     * @return TeacherService
+     */
+    protected function getTeacherService()
+    {
+        return $this->get('teacher.service.teacher');
     }
 
     /**
@@ -118,7 +135,7 @@ abstract class AbstractCalendarController extends Controller
     protected function prepareLessonsForAjax(array $lessons = null)
     {
 
-        if($lessons == null){
+        if ($lessons == null) {
             return [];
         }
 
@@ -126,15 +143,15 @@ abstract class AbstractCalendarController extends Controller
         $router = $this->getRouter();
 
         foreach ($lessons as $lesson) {
-            $end = Carbon::createFromTimestamp($lesson->getDate()->getTimestamp());
             $tmp[] = [
                 'id'    => $lesson->getId(),
                 'title' => $lesson->getContent()->getName(),
-                'start' => $lesson->getDate()->format(Carbon::ISO8601),
-                'end'   => $end->addHour()->format(Carbon::ISO8601),
+                'start' => $lesson->getStartDate()->format(Carbon::ISO8601),
+                'end'   => $lesson->getEndDate()->format(Carbon::ISO8601),
                 'url'   => $router->generate('teacher_lesson_details', [
                     'id' => $lesson->getId(),
                 ]),
+                'type'  => $this->getEventType($lesson),
             ];
         }
         return $tmp;
@@ -149,20 +166,31 @@ abstract class AbstractCalendarController extends Controller
         return $router;
     }
 
-    /**
-     * @return TeacherService
-     */
-    protected function getTeacherService()
+    private function getEventType(Lesson $lesson)
     {
-        return $this->get('teacher.service.teacher');
-    }
 
-    /**
-     * @return StudentService
-     */
-    protected function getStudentService()
-    {
-        return $this->get('user.service.student');
+        $now = Carbon::now();
+
+        if ($lesson->getStartDate() < $now && $lesson->getEndDate() > $now) {
+            return 'present';
+        }
+
+        if ($lesson->getStartDate()->format('Ymd') == $now->format('Ymd')
+            || $lesson->getEndDate()->format('Ymd') == $now->format('Ymd')
+        ) {
+            return 'today';
+        }
+
+        if ($lesson->getStartDate() > $now) {
+            return 'future';
+        }
+
+        if ($lesson->getEndDate() < $now) {
+            return 'past';
+        }
+
+        throw new \Exception('T\'as merdé ton event type');
+
     }
 
 }

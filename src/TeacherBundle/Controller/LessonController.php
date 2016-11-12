@@ -37,7 +37,7 @@ class LessonController extends Controller
 
         return $this->render('TeacherBundle:Lesson:index.html.twig', [
             'lesson' => $lesson,
-            'editable' => $lesson->getDate() > new \DateTime(),
+            'editable' => $lesson->getStartDate() > new \DateTime(),
             'form' => $form->createView()
         ]);
     }

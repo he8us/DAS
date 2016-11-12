@@ -77,8 +77,14 @@ services:
         parent: sg_datatables.datatable.abstract
 
 
-    user.event_listener.password_encoder:
+    user.event_listener.password_encoder.pre_persist:
         class: UserBundle\EventListener\PasswordEncoder
         arguments: ["@security.password_encoder"]
         tags:
             - {name: doctrine.event_listener, event: prePersist}
+
+    user.event_listener.password_encoder.pre_update:
+        class: UserBundle\EventListener\PasswordEncoder
+        arguments: ["@security.password_encoder"]
+        tags:
+            - {name: doctrine.event_listener, event: preUpdate}

@@ -45,9 +45,9 @@ class LessonRepository extends AbstractRepository
         $query = $this->createQueryBuilder('l')
             ->where('l.teacher = :tId')
             ->setParameter('tId', $teacher->getId())
-            ->andWhere('l.date > :start')
+            ->andWhere('l.startDate > :start')
             ->setParameter('start', $start)
-            ->andWhere('l.date < :end')
+            ->andWhere('l.endDate < :end')
             ->setParameter('end', $end);
 
         return $query->getQuery()->getResult();
@@ -68,9 +68,9 @@ class LessonRepository extends AbstractRepository
             ->leftJoin('c.students', 's')
             ->where('s.id = :sId')
             ->setParameter('sId', $student->getId())
-            ->andWhere('l.date > :start')
+            ->andWhere('l.startDate > :start')
             ->setParameter('start', $start)
-            ->andWhere('l.date < :end')
+            ->andWhere('l.endDate < :end')
             ->setParameter('end', $end);
 
         return $query->getQuery()->getResult();

@@ -30,3 +30,13 @@ services:
     course.services.lesson:
         class: CourseBundle\Service\LessonService
         arguments: ['@doctrine']
+
+    course.event_listener.lesson_end_date.pre_persist:
+        class: CourseBundle\EventListener\LessonEndDate
+        tags:
+            - {name: doctrine.event_listener, event: prePersist}
+
+    course.event_listener.lesson_end_date.pre_update:
+        class: CourseBundle\EventListener\LessonEndDate
+        tags:
+            - {name: doctrine.event_listener, event: preUpdate}
