@@ -84,7 +84,7 @@
                         </div>
 
                         <div class="box-body">
-                            {% if lesson.students %}
+                            {% if lesson.students is not empty %}
                                 <ol class="student_list list">
                                     {% for student in lesson.students %}
                                         <li>{{ student.firstName }} {{ student.lastName }}</li>
