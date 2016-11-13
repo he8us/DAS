@@ -12,8 +12,9 @@ use UserBundle\Entity\Titular;
 /**
  * Class
  *
- * @ORM\Table(name="grade_class", uniqueConstraints={@ORM\UniqueConstraint(name="grade_class_unique",
- *                                columns={"grade_id", "section"})})
+ * @ORM\Table(name="grade_class", uniqueConstraints={
+ *     @ORM\UniqueConstraint(name="UNIQ_GRADE_CLASS", columns={"grade_id", "section"})
+ * })
  * @ORM\Entity(repositoryClass="CourseBundle\Repository\GradeClassRepository")
  */
 class GradeClass

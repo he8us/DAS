@@ -15,6 +15,8 @@ class Coordinator extends User
 
     /**
      * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="CMSBundle\Entity\Page", mappedBy="author")
      */
     private $pages;
 

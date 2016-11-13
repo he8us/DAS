@@ -2,10 +2,8 @@
 
 namespace CourseBundle\Entity;
 
-use CoreBundle\Entity\Traits\SoftDeletable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\ORM\Mapping\UniqueConstraint;
 use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 use UserBundle\Entity\Teacher;
@@ -15,10 +13,9 @@ use UserBundle\Entity\Titular;
 /**
  * CourseContent
  *
- * @ORM\Table(name="course_content",uniqueConstraints={
- *          @UniqueConstraint(name="IDX_PARENT", columns={"parent_id"})
- *     }
- * )
+ * @ORM\Table(name="course_content", indexes={
+*       @ORM\Index(name="IDX_PARENT", columns={"parent_id"})
+ * })
  * @ORM\Entity(repositoryClass="CourseBundle\Repository\CourseContentRepository")
  */
 class CourseContent

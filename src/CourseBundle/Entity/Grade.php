@@ -10,7 +10,9 @@ use Gedmo\Timestampable\Traits\TimestampableEntity;
 /**
  * Grade
  *
- * @ORM\Table(name="grade")
+ * @ORM\Table(name="grade", uniqueConstraints={
+ *      @ORM\UniqueConstraint(name="UNIQ_GRADE", columns={"grade"})
+ * })
  * @ORM\Entity(repositoryClass="CourseBundle\Repository\GradeRepository")
  */
 class Grade
