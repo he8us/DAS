@@ -7,7 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
-use UserBundle\Entity\Student;
+use StudentBundle\Entity\StudentRegistration;
 use UserBundle\Entity\Teacher;
 
 /**
@@ -66,7 +66,6 @@ class Lesson
      */
     private $grades;
 
-
     /**
      * @var Teacher
      *
@@ -84,9 +83,10 @@ class Lesson
 
     /**
      * @var ArrayCollection
-     * @ORM\ManyToMany(targetEntity="UserBundle\Entity\Student", inversedBy="lessons")
+     *
+     * @ORM\OneToMany(targetEntity="StudentBundle\Entity\StudentRegistration", mappedBy="lesson")
      */
-    private $students;
+    private $studentRegistrations;
 
     /**
      * Lesson constructor.
@@ -95,7 +95,7 @@ class Lesson
     {
         $this->grades = new ArrayCollection();
         $this->startDate = new \DateTime();
-        $this->students = new ArrayCollection();
+        $this->studentRegistrations = new ArrayCollection();
     }
 
     /**
@@ -219,41 +219,11 @@ class Lesson
     }
 
     /**
-     * @param Student $student
-     *
-     * @return Lesson
-     */
-    public function addStudent(Student $student)
-    {
-        $this->students->add($student);
-        return $this;
-    }
-
-    /**
-     * @param Student $student
-     *
-     * @return $this
-     */
-    public function removeStudent(Student $student)
-    {
-        $this->students->removeElement($student);
-        return $this;
-    }
-
-    /**
-     * @return ArrayCollection
-     */
-    public function getStudents()
-    {
-        return $this->students;
-    }
-
-    /**
      * @param Grade $grade
      *
      * @return Lesson
      */
-    public function addGrades(Grade $grade)
+    public function addGrade(Grade $grade)
     {
         $this->grades->add($grade);
         return $this;
@@ -264,7 +234,8 @@ class Lesson
      *
      * @return $this
      */
-    public function deleteGrade(Grade $grade){
+    public function deleteGrade(Grade $grade)
+    {
         $this->grades->removeElement($grade);
         return $this;
     }
@@ -294,6 +265,36 @@ class Lesson
     {
         $this->endDate = $endDate;
         return $this;
+    }
+
+    /**
+     * @param StudentRegistration $studentRegistration
+     *
+     * @return $this
+     */
+    public function addStudentRegistration(StudentRegistration $studentRegistration)
+    {
+        $this->studentRegistrations->add($studentRegistration);
+        return $this;
+    }
+
+    /**
+     * @param StudentRegistration $studentRegistration
+     *
+     * @return $this
+     */
+    public function deleteStudentRegistration(StudentRegistration $studentRegistration)
+    {
+        $this->studentRegistrations->removeElement($studentRegistration);
+        return $this;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getStudentRegistrations()
+    {
+        return $this->studentRegistrations;
     }
 }
 

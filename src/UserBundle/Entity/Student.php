@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping\UniqueConstraint;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
+use StudentBundle\Entity\StudentRegistration;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 use UserBundle\Repository\StudentRepository;
@@ -120,9 +121,9 @@ class Student implements AdvancedUserInterface, \Serializable
 
     /**
      * @var ArrayCollection
-     * @ORM\ManyToMany(targetEntity="CourseBundle\Entity\Lesson", mappedBy="students")
+     * @ORM\OneToMany(targetEntity="StudentBundle\Entity\StudentRegistration", mappedBy="student")
      */
-    private $lessons;
+    private $registeredLessons;
 
     /**
      * Student constructor.
@@ -132,7 +133,7 @@ class Student implements AdvancedUserInterface, \Serializable
         $this->parents = new ArrayCollection();
         $this->roles = ['ROLE_STUDENT'];
         $this->isActive = true;
-        $this->lessons = new ArrayCollection();
+        $this->registeredLessons = new ArrayCollection();
     }
 
     /**
@@ -504,5 +505,37 @@ class Student implements AdvancedUserInterface, \Serializable
     {
         return null;
     }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getRegisteredLessons()
+    {
+        return $this->registeredLessons;
+    }
+
+    /**
+     * @param StudentRegistration $studentRegistration
+     *
+     * @return $this
+     */
+    public function addRegisteredLesson(StudentRegistration $studentRegistration)
+    {
+        $this->registeredLessons->add($studentRegistration);
+        return $this;
+    }
+
+    /**
+     * @param StudentRegistration $studentRegistration
+     *
+     * @return $this
+     */
+    public function deleteRegisteredLesson(StudentRegistration $studentRegistration)
+    {
+        $this->registeredLessons->removeElement($studentRegistration);
+        return $this;
+    }
+
+
 }
 
