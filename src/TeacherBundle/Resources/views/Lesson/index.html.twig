@@ -1,6 +1,8 @@
 {% extends '::base.html.twig' %}
 
-{% form_theme form "bootstrap_3_layout.html.twig" %}
+{% if form %}
+    {% form_theme form "bootstrap_3_layout.html.twig" %}
+{% endif %}
 
 {% block body %}
     <section class="content-header">
@@ -10,18 +12,27 @@
         <div class="row">
             <div class="col-md-8">
                 <div class="box box-primary">
-                    {% if editable %}
-                        {{ form_start(form) }}
 
+                    {% if editable and is_granted('ROLE_TEACHER') %}
+                        {{ form_start(form) }}
                     {% endif %}
+
                     <div class="box-header with-border">
                         <div class="box-title">
                             {{ "teacher.lesson.remarks" | trans }}
                         </div>
+
+                        <div class="box-tools pull-right">
+                            {% if is_granted('ROLE_TEACHER') %}
+                                {{ action.back('teacher.lesson.back_to_list', 'teacher_dashboard_index') }}
+                            {% elseif is_granted('ROLE_STUDENTS') %}
+                                {{ action.back('student.lesson.back_to_list', 'student_dashboard_home') }}
+                            {% endif %}
+                        </div>
                     </div>
 
                     <div class="box-body">
-                        {% if editable %}
+                        {% if editable and is_granted('ROLE_TEACHER') %}
                             {{ form_widget(form) }}
                         {% else %}
                             {{ lesson.remarks | raw }}
@@ -29,7 +40,7 @@
                     </div>
 
 
-                    {% if editable %}
+                    {% if editable and is_granted('ROLE_TEACHER') %}
                         <div class="box-footer">
                             <button class="btn btn-primary pull-right"
                                     type="submit">{{ "teacher.lesson.remarks.save" | trans }}</button>
@@ -39,25 +50,52 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="box box-info">
+                <div class="box box-default">
                     <div class="box-header">
                         <div class="box-title">
-                            {{ "teacher.lesson.registered_students" | trans }}
+                            {{ "teacher.lesson.informations" | trans }}
                         </div>
                     </div>
 
                     <div class="box-body">
-                        {% if lesson.students %}
-                            <ol class="student_list list">
-                                {% for student in lesson.students %}
-                                    <li>{{ student.firstName }} {{ student.lastName }}</li>
+                        <dl>
+                            <dt>{{ 'course.lesson.start_date' | trans }}</dt>
+                            <dd>{{ lesson.startDate | date() }}</dd>
+                            <dt>{{ 'course.lesson.end_date' | trans }}</dt>
+                            <dd>{{ lesson.endDate | date() }}</dd>
+                            <dt>{{ 'course.lesson.room' | trans }}</dt>
+                            <dd>{{ lesson.room }}</dd>
+                            <dt>{{ 'course.lesson.grades' | trans }}</dt>
+                            <dd>
+                                {% for grade in lesson.grades %}
+                                    {{ grade.grade }}
                                 {% endfor %}
-                            </ol>
-                        {% else %}
-                            {{ "teacher.lesson.no_students" | trans }}
-                        {% endif %}
+                            </dd>
+                        </dl>
                     </div>
                 </div>
+
+                {% if is_granted('ROLE_TEACHER') %}
+                    <div class="box box-default">
+                        <div class="box-header">
+                            <div class="box-title">
+                                {{ "teacher.lesson.registered_students" | trans }}
+                            </div>
+                        </div>
+
+                        <div class="box-body">
+                            {% if lesson.students %}
+                                <ol class="student_list list">
+                                    {% for student in lesson.students %}
+                                        <li>{{ student.firstName }} {{ student.lastName }}</li>
+                                    {% endfor %}
+                                </ol>
+                            {% else %}
+                                {{ "teacher.lesson.no_students" | trans }}
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endif %}
             </div>
         </div>
     </div>

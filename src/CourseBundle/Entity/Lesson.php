@@ -13,7 +13,7 @@ use UserBundle\Entity\Teacher;
 /**
  * Lesson
  *
- * @ORM\Table(name="lesson", )
+ * @ORM\Table(name="lesson")
  * @ORM\Entity(repositoryClass="CourseBundle\Repository\LessonRepository")
  */
 class Lesson
@@ -88,7 +88,9 @@ class Lesson
      */
     private $students;
 
-
+    /**
+     * Lesson constructor.
+     */
     public function __construct()
     {
         $this->grades = new ArrayCollection();

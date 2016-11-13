@@ -24,8 +24,11 @@ class LessonController extends Controller
      */
     public function indexAction(Lesson $lesson)
     {
+
         return $this->render('@Student/Lesson/index.html.twig', [
-            'lesson' => $lesson
+            'lesson' => $lesson,
+            'editable' => false,
+            'form' => false
         ]);
     }
 

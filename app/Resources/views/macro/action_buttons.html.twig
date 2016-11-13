@@ -1,47 +1,47 @@
 {% macro back(label, route) %}
-    <a class="btn btn-default" id="_back" href="{{ path(route) }}">
+    <a class="btn btn-default btn-sm" id="_back" href="{{ path(route) }}">
         <i class="fa fa-arrow-left"></i>
         {{ label }}
     </a>
 {% endmacro %}
 
 {% macro new(label, route) %}
-    <a class="btn btn-primary" id="_add" href="{{ path(route) }}">
+    <a class="btn btn-primary btn-sm" id="_add" href="{{ path(route) }}">
         <i class="fa fa-plus"></i>
         {{ label }}
     </a>
 {% endmacro %}
 
 {% macro getCards(label, route) %}
-    <a class="btn btn-success" id="_getCards" href="{{ path(route) }}">
+    <a class="btn btn-success btn-sm" id="_getCards" href="{{ path(route) }}">
         <i class="fa fa-download"></i>
         {{ label }}
     </a>
 {% endmacro %}
 
 {% macro import(label, route) %}
-    <a class="btn btn-primary" id="_import" href="{{ path(route) }}">
+    <a class="btn btn-primary btn-sm" id="_import" href="{{ path(route) }}">
         <i class="fa fa-upload"></i>
         {{ label }}
     </a>
 {% endmacro %}
 
 {% macro save(label) %}
-    <button type="submit" id="_save" class="btn btn-primary pull-right">
+    <button type="submit" id="_save" class="btn btn-primary pull-right btn-sm">
         <i class="fa fa-save"></i>
         {{ label }}
     </button>
 {% endmacro %}
 
 {% macro import_save(label) %}
-    <button type="submit" id="_import" class="btn btn-primary">
+    <button type="submit" id="_import" class="btn btn-primary btn-sm">
         <i class="fa fa-upload"></i>
         {{ label }}
     </button>
 {% endmacro %}
 
 {% macro edit(label, route, id) %}
-    <a class="btn btn-primary" id="_edit" href="{{ path(route, {"id": id}) }}">
+    <a class="btn btn-primary btn-sm" id="_edit" href="{{ path(route, {"id": id}) }}">
         <i class="fa fa-edit"></i>
         {{ label }}
     </a>
@@ -49,7 +49,7 @@
 
 {% macro delete(label, delete_form) %}
     {{ form_start(delete_form) }}
-    <button type="submit" id="_delete" class="btn btn-danger">
+    <button type="submit" id="_delete" class="btn btn-danger btn-sm">
         <i class="fa fa-trash"></i>
         {{ label }}
     </button>

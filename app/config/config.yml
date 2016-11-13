@@ -45,6 +45,14 @@ framework:
 
 # Twig Configuration
 twig:
+    date:
+        format: d.m.Y, H:i:s
+
+    number_format:
+        decimals: 2
+        decimal_point: ','
+        thousands_separator: '.'
+
     globals:
         admin_base_view: '::base.html.twig'
 

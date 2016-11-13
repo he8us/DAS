@@ -1,12 +1,5 @@
-{% extends ':templates:box-with-footer.html.twig' %}
+{% extends 'TeacherBundle:Lesson:index.html.twig' %}
 
-
-{% block box_title %}{{ lesson.content.name }}{% endblock %}
-{% block box_actions %}{{ action.back('student.lesson.back_to_list', 'student_dashboard_home') }}{% endblock %}
-
-{% block box_body_content %}
-    {{ lesson.remarks | raw }}
-{% endblock %}
 
 {% block box_footer %}
     <a href="{{ path('student_lesson_register', {'id': lesson.id}) }}" class="pull-right btn btn-primary">
