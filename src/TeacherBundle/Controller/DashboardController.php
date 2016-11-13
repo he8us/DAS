@@ -22,8 +22,8 @@ class DashboardController extends Controller
     public function indexAction()
     {
         return $this->render('TeacherBundle:Dashboard:index.html.twig', [
-            'user' => $this->getUser(),
-            'eventsEndpoints' => 'teacher_calendar_events'
+            'user'            => $this->getUser(),
+            'eventsEndpoints' => 'teacher_calendar_events',
         ]);
     }
 

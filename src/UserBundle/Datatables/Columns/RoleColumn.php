@@ -26,10 +26,10 @@ class RoleColumn extends Column
 
         $resolver->remove('default_content');
 
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'render' => 'render_role',
 
-        ));
+        ]);
 
         return $this;
     }

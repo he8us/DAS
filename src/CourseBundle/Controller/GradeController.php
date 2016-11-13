@@ -27,8 +27,9 @@ class GradeController extends AbstractCrudController
     protected $templateNamespace = 'CourseBundle:Grade:';
 
     /**
-     * Creates a new grade entity.
+     * @param Request $request
      *
+     * @return RedirectResponse|Response
      */
     public function newAction(Request $request)
     {

@@ -14,7 +14,7 @@ use UserBundle\Entity\Titular;
  * CourseContent
  *
  * @ORM\Table(name="course_content", indexes={
-*       @ORM\Index(name="IDX_PARENT", columns={"parent_id"})
+ *       @ORM\Index(name="IDX_PARENT", columns={"parent_id"})
  * })
  * @ORM\Entity(repositoryClass="CourseBundle\Repository\CourseContentRepository")
  */

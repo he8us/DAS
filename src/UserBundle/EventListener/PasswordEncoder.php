@@ -58,29 +58,6 @@ class PasswordEncoder extends AbstractEventListener
     }
 
     /**
-     * @param $entity
-     *
-     * @return bool
-     */
-    protected function isEntityValid($entity):bool
-    {
-        $package = 'UserBundle\Entity\\';
-        return
-            in_array(
-                get_class($entity),
-                [
-                    $package . 'User',
-                    $package . 'Coordinator',
-                    $package . 'Teacher',
-                    $package . 'Titular',
-                    $package . 'CourseTitular',
-                    $package . 'StudentParent',
-                    $package . 'SuperAdmin',
-                ]
-            );
-    }
-
-    /**
      * @param User $entity
      *
      * @return null|User
@@ -105,5 +82,28 @@ class PasswordEncoder extends AbstractEventListener
     public function preUpdate(LifecycleEventArgs $args)
     {
         return $this->handleEvent($args);
+    }
+
+    /**
+     * @param $entity
+     *
+     * @return bool
+     */
+    protected function isEntityValid($entity):bool
+    {
+        $package = 'UserBundle\Entity\\';
+        return
+            in_array(
+                get_class($entity),
+                [
+                    $package . 'User',
+                    $package . 'Coordinator',
+                    $package . 'Teacher',
+                    $package . 'Titular',
+                    $package . 'CourseTitular',
+                    $package . 'StudentParent',
+                    $package . 'SuperAdmin',
+                ]
+            );
     }
 }

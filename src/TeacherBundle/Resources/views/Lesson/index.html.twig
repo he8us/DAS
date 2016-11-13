@@ -60,9 +60,9 @@
                     <div class="box-body">
                         <dl>
                             <dt>{{ 'course.lesson.start_date' | trans }}</dt>
-                            <dd>{{ lesson.startDate | date() }}</dd>
+                            <dd>{{ lesson.startDate | date }}</dd>
                             <dt>{{ 'course.lesson.end_date' | trans }}</dt>
-                            <dd>{{ lesson.endDate | date() }}</dd>
+                            <dd>{{ lesson.endDate | date }}</dd>
                             <dt>{{ 'course.lesson.room' | trans }}</dt>
                             <dd>{{ lesson.room }}</dd>
                             <dt>{{ 'course.lesson.grades' | trans }}</dt>
@@ -84,10 +84,10 @@
                         </div>
 
                         <div class="box-body">
-                            {% if lesson.students is not empty %}
+                            {% if lesson.studentRegistrations is not empty %}
                                 <ol class="student_list list">
-                                    {% for student in lesson.students %}
-                                        <li>{{ student.firstName }} {{ student.lastName }}</li>
+                                    {% for registration in lesson.studentRegistrations %}
+                                        <li>{{ registration.student.firstName }} {{ registration.student.lastName }}</li>
                                     {% endfor %}
                                 </ol>
                             {% else %}

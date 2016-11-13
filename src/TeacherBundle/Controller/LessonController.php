@@ -31,14 +31,14 @@ class LessonController extends Controller
 
         $form->handleRequest($request);
 
-        if($form->isSubmitted()  && $form->isValid() ){
+        if ($form->isSubmitted() && $form->isValid()) {
             $this->getLessonService()->save($lesson);
         }
 
         return $this->render('TeacherBundle:Lesson:index.html.twig', [
-            'lesson' => $lesson,
+            'lesson'   => $lesson,
             'editable' => $lesson->getStartDate() > new \DateTime(),
-            'form' => $form->createView()
+            'form'     => $form->createView(),
         ]);
     }
 

@@ -177,7 +177,7 @@ class StudentController extends AbstractCrudController
     {
         $this->container->get('profiler')->disable();
         return $this->render('UserBundle:Student:cards.html.twig', [
-            'students' => $this->getStudentService()->findAll()
+            'students' => $this->getStudentService()->findAll(),
         ]);
     }
 }

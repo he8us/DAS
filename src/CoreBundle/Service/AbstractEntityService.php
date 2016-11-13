@@ -89,6 +89,16 @@ abstract class AbstractEntityService
     }
 
     /**
+     * @param int $id
+     *
+     * @return Lesson
+     */
+    public function findById(int $id)
+    {
+        return $this->getRepository()->find($id);
+    }
+
+    /**
      * @return StudentRepository
      */
     protected function getStudentRepository()
@@ -102,15 +112,5 @@ abstract class AbstractEntityService
     protected function getLessonRepository()
     {
         return $this->getManager(Lesson::class)->getRepository(Lesson::class);
-    }
-
-    /**
-     * @param int $id
-     *
-     * @return Lesson
-     */
-    public function findById(int $id)
-    {
-        return $this->getRepository()->find($id);
     }
 }

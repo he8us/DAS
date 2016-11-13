@@ -26,16 +26,16 @@ class LessonController extends Controller
     {
 
         return $this->render('@Student/Lesson/index.html.twig', [
-            'lesson' => $lesson,
+            'lesson'   => $lesson,
             'editable' => false,
-            'form' => false
+            'form'     => false,
         ]);
     }
 
     public function registerAction(Lesson $lesson)
     {
-        return $this->render('@Student/Lesson/register.html.twig',[
-            'lesson' => $lesson
+        return $this->render('@Student/Lesson/register.html.twig', [
+            'lesson' => $lesson,
         ]);
     }
 }

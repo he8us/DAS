@@ -166,6 +166,19 @@ abstract class AbstractCalendarController extends Controller
         return $router;
     }
 
+    private function getAjaxRoute()
+    {
+        switch (static::class) {
+            case StudentCalendarController::class:
+                return 'student_lesson_details';
+
+            case TeacherCalendarController::class:
+                return 'teacher_lesson_details';
+        }
+
+        throw new \Exception('T\'as merdé ton ajax route');
+    }
+
     private function getEventType(Lesson $lesson)
     {
 
@@ -191,19 +204,6 @@ abstract class AbstractCalendarController extends Controller
 
         throw new \Exception('T\'as merdé ton event type');
 
-    }
-
-    private function getAjaxRoute()
-    {
-        switch (static::class){
-            case StudentCalendarController::class:
-                return 'student_lesson_details';
-
-            case TeacherCalendarController::class:
-                return 'teacher_lesson_details';
-        }
-
-        throw new \Exception('T\'as merdé ton ajax route');
     }
 
 }

@@ -21,19 +21,19 @@ class AbstractRepository extends EntityRepository
     protected $alias;
 
     /**
-     * @return QueryBuilder
-     */
-    public function findAllNotDeletedQueryBuilder()
-    {
-        return $this->createQueryBuilder($this->alias)
-            ->where($this->alias.'.deletedAt IS NULL');
-    }
-
-    /**
      * @return object[]
      */
     public function findAllNotDeleted()
     {
         return $this->findAllNotDeletedQueryBuilder()->getQuery()->getResult();
+    }
+
+    /**
+     * @return QueryBuilder
+     */
+    public function findAllNotDeletedQueryBuilder()
+    {
+        return $this->createQueryBuilder($this->alias)
+            ->where($this->alias . '.deletedAt IS NULL');
     }
 }

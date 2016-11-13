@@ -26,9 +26,9 @@ class LessonRemarkType extends AbstractType
     {
         $builder->add('remarks', TextareaType::class, [
             'label' => false,
-            'attr' => [
-                'class' => 'js-wysiwyg'
-            ]
+            'attr'  => [
+                'class' => 'js-wysiwyg',
+            ],
         ]);
     }
 

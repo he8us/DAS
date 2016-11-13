@@ -80,9 +80,9 @@ class LessonDatatable extends AbstractDatatableView
                 'title' => $this->translator->trans('course.lesson.room'),
             ])
             ->add('remarks', 'column', [
-                'title' => $this->translator->trans('course.lesson.remarks'),
-                'class' => 'remarks',
-                'render' => 'render_remarks_column'
+                'title'  => $this->translator->trans('course.lesson.remarks'),
+                'class'  => 'remarks',
+                'render' => 'render_remarks_column',
             ])
             ->add(null, 'action', [
                 'title'   => $this->translator->trans('course.datatable.actions.title'),

@@ -31,7 +31,7 @@ class StudentType extends AbstractType
                 'required' => false,
             ])
             ->add('profilePicture', ProfilePictureType::class, [
-                "label" => false,
+                "label"    => false,
                 'required' => false,
             ]);
 

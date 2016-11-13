@@ -10,15 +10,8 @@
 namespace TeacherBundle\Controller;
 
 
-use Carbon\Carbon;
 use CoreBundle\Controller\AbstractCalendarController;
-use CourseBundle\Entity\Lesson;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\User\UserInterface;
-use TeacherBundle\Service\TeacherService;
-use UserBundle\Entity\Teacher;
 
 class CalendarController extends AbstractCalendarController
 {

@@ -18,7 +18,6 @@ use Faker\Provider\Lorem;
  *
  * @author Cedric Michaux <cedric@he8us.be>
  */
-
 class LoremProvider
 {
     /**
@@ -33,7 +32,7 @@ class LoremProvider
     {
         $paragraphs = Lorem::paragraphs(rand($min, $max));
 
-        if(empty($paragraphs)){
+        if (empty($paragraphs)) {
             return '';
         }
 

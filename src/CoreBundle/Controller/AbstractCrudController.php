@@ -65,9 +65,9 @@ abstract class AbstractCrudController extends Controller
     {
         $query = $this->get('sg_datatables.query')->getQueryFrom($datatable);
 
-        $query->addWhereAll(function(QueryBuilder $qb){
+        $query->addWhereAll(function (QueryBuilder $qb) {
             $rootAliases = $qb->getRootAliases();
-            $qb->andWhere($rootAliases[0].'.deletedAt IS NULL');
+            $qb->andWhere($rootAliases[0] . '.deletedAt IS NULL');
         });
 
         return $query;
