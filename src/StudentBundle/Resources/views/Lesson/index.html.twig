@@ -1,8 +1,1 @@
 {% extends 'TeacherBundle:Lesson:index.html.twig' %}
-
-
-{% block box_footer %}
-    <a href="{{ path('student_lesson_register', {'id': lesson.id}) }}" class="pull-right btn btn-primary">
-        {{ 'student.lesson.register' | trans }}
-    </a>
-{% endblock %}

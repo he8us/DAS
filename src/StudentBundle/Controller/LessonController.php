@@ -32,6 +32,11 @@ class LessonController extends Controller
         ]);
     }
 
+    /**
+     * @param Lesson $lesson
+     *
+     * @return Response
+     */
     public function registerAction(Lesson $lesson)
     {
         return $this->render('@Student/Lesson/register.html.twig', [

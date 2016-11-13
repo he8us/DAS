@@ -40,6 +40,15 @@
                     </div>
 
 
+                    {% if is_granted('ROLE_STUDENT') %}
+                        <div class="box-footer">
+                            <a href="{{ path('student_lesson_register', {'id': lesson.id}) }}"
+                               class="pull-right btn btn-primary">
+                                {{ 'student.lesson.register' | trans }}
+                            </a>
+                        </div>
+                    {% endif %}
+
                     {% if editable and is_granted('ROLE_TEACHER') %}
                         <div class="box-footer">
                             <button class="btn btn-primary pull-right"
