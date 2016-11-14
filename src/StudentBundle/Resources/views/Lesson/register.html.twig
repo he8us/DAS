@@ -1,6 +1,22 @@
-{% extends '::base.html.twig' %}
+{% extends ':templates:box-with-footer.html.twig' %}
 
-{% block body %}
+{% block box_title %}{{ 'student.register.title' | trans }}{% endblock %}
+{% block title %}{{ 'student.register.title' | trans }}{% endblock %}
+
+
+{% block box_body_content %}
+
+    {{ 'student.register.confim' | trans }}
 
 {% endblock %}
 
+
+{% block box_footer %}
+    <a href="{{ path('student_lesson_register', {'id': lesson.id, 'confirm': 'yes'}) }}" class="btn btn-danger pull-right">
+        {{ 'student.register.confirm.yes' | trans }}
+    </a>
+
+    <a href="{{ path('student_lesson_details', {'id': lesson.id}) }}" class="btn btn-primary pull-right">
+        {{ 'student.register.confirm.no' | trans }}
+    </a>
+{% endblock %}
