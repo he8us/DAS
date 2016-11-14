@@ -69,6 +69,6 @@ class LessonController extends Controller
     public function unregisterAction($confirm = 'no')
     {
         //TODO: implement
-        
+
     }
 }

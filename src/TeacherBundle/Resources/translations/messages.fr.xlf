@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2016-11-13T18:56:19Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
+  <file date="2016-11-14T17:36:25Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -8,7 +8,7 @@
     <body>
       <trans-unit id="30b98242129bc5171bbada2b4385491392060117" resname="course.lesson.end_date">
         <source>course.lesson.end_date</source>
-        <target>Fin du cours</target>
+        <target>Fin de la leçon</target>
       </trans-unit>
       <trans-unit id="a266a9b80f43a8b26f0f04af1442e261949b2634" resname="course.lesson.grades">
         <source>course.lesson.grades</source>
@@ -20,11 +20,27 @@
       </trans-unit>
       <trans-unit id="071ec5a442b5e0d1d3b2ac526e0be6d0552c36e8" resname="course.lesson.start_date">
         <source>course.lesson.start_date</source>
-        <target>Début du cours</target>
+        <target>Début de la leçon</target>
+      </trans-unit>
+      <trans-unit id="a64fffed7ce77a694e5217cf0304764d7b4b58aa" resname="student.lesson.already_registered">
+        <source>student.lesson.already_registered</source>
+        <target>Déjà inscrit pour la leçon</target>
+      </trans-unit>
+      <trans-unit id="4616c0ec96a131681cb825ca428dcab4f5b4a6ae" resname="student.lesson.not_registered">
+        <source>student.lesson.not_registered</source>
+        <target>Tu n'est pas inscrit pour cette leçon</target>
       </trans-unit>
       <trans-unit id="8c457b595e8c01036b38ef9f471b97a975dde555" resname="student.lesson.register">
         <source>student.lesson.register</source>
-        <target>S'inscrire pour la lesson</target>
+        <target>S'inscrire pour la leçon</target>
+      </trans-unit>
+      <trans-unit id="92a8e0e39a7b2333b8e7367b746a1fe5a886976c" resname="student.lesson.registration_status">
+        <source>student.lesson.registration_status</source>
+        <target>Statut de ton inscription</target>
+      </trans-unit>
+      <trans-unit id="38eaaa9919fb007d8ce0505a9a1acb8e1b1978bc" resname="student.lesson.unregister">
+        <source>student.lesson.unregister</source>
+        <target>Me désinscrire</target>
       </trans-unit>
       <trans-unit id="0a313c642c7c4eab41abd262106a6a9c3bce8f0b" resname="teacher.lesson.informations">
         <source>teacher.lesson.informations</source>
