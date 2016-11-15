@@ -18,8 +18,8 @@
             <td>{{ lesson.id }}</td>
         </tr>
         <tr>
-            <th>{{ 'course.lesson.date' | trans }}</th>
-            <td>{% if lesson.date %}{{ lesson.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+            <th>{{ 'course.lesson.start_date' | trans }}</th>
+            <td>{% if lesson.startDate %}{{ lesson.startDate | date }}{% endif %}</td>
         </tr>
         <tr>
             <th>{{ 'course.lesson.room' | trans }}</th>

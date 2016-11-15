@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ app.request.locale|split('_')[0] }}">
 <head>
+    {% import ':macro:action_buttons.html.twig' as action %}
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <title>{% block title %}{{ "page_title" | trans }}{% endblock %}</title>
@@ -62,17 +63,14 @@
                 {% include ":partials/left-menu:super_admin.html.twig" %}
                 {% include ":partials/left-menu:coordinator.html.twig" %}
                 {% include ":partials/left-menu:teacher.html.twig" %}
+                {% include ":partials/left-menu:student.html.twig" %}
             </ul>
         </section>
     </aside>
 
     <div class="content-wrapper">
         <section class="content">
-            {% block body %}
-
-
-
-            {% endblock %}
+            {% block body %}{% endblock %}
         </section>
     </div>
 

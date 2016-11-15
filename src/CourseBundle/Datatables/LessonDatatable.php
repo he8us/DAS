@@ -70,14 +70,19 @@ class LessonDatatable extends AbstractDatatableView
             ->add('id', 'column', [
                 'title' => $this->translator->trans('course.lesson.id'),
             ])
-            ->add('date', 'datetime', [
-                'title' => $this->translator->trans('course.lesson.date'),
+            ->add('startDate', 'datetime', [
+                'title' => $this->translator->trans('course.lesson.start_date'),
+            ])
+            ->add('endDate', 'datetime', [
+                'title' => $this->translator->trans('course.lesson.end_date'),
             ])
             ->add('room', 'column', [
                 'title' => $this->translator->trans('course.lesson.room'),
             ])
             ->add('remarks', 'column', [
-                'title' => $this->translator->trans('course.lesson.remarks'),
+                'title'  => $this->translator->trans('course.lesson.remarks'),
+                'class'  => 'remarks',
+                'render' => 'render_remarks_column',
             ])
             ->add(null, 'action', [
                 'title'   => $this->translator->trans('course.datatable.actions.title'),

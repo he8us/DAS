@@ -10,7 +10,9 @@ use Gedmo\Timestampable\Traits\TimestampableEntity;
 /**
  * Grade
  *
- * @ORM\Table(name="grade")
+ * @ORM\Table(name="grade", uniqueConstraints={
+ *      @ORM\UniqueConstraint(name="UNIQ_GRADE", columns={"grade"})
+ * })
  * @ORM\Entity(repositoryClass="CourseBundle\Repository\GradeRepository")
  */
 class Grade
@@ -54,8 +56,8 @@ class Grade
     /**
      * @var ArrayCollection
      *
-     * @ORM\ManyToMany(targetEntity="CourseBundle\Entity\Lesson", inversedBy="grades")
-     * @ORM\JoinColumn(name="lessoné_id", referencedColumnName="id", onDelete="SET NULL")
+     * @ORM\ManyToMany(targetEntity="CourseBundle\Entity\Lesson", mappedBy="grades")
+     * @ORM\JoinColumn(name="lesson_id", referencedColumnName="id", onDelete="SET NULL")
      */
     private $lessons;
 

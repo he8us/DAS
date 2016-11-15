@@ -34,7 +34,6 @@ $('.js-calendar').each(function () {
             center: 'title',
             right: 'month,agendaWeek,agendaDay'
         },
-        //navLinks: true,
         timeFormat: 'H:mm',
         events: {
             url: $this.data('eventsAjaxEndpoint')
@@ -46,6 +45,9 @@ $('.js-calendar').each(function () {
             week: $this.data('transButtonWeek'),
             day: $this.data('transButtonDay')
         },
+        eventRender: function(event, element){
+            element.addClass('fc-event-'+event.type);
+        }
     });
 
 });
@@ -64,3 +66,7 @@ $('.js-wysiwyg').summernote({
         ['insert', ['table', 'link', 'hr']]
     ]
 });
+
+window.render_remarks_column = function(data){
+    return '<div>'+data+'</div>';
+}

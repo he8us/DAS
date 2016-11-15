@@ -9,11 +9,12 @@
 
 namespace UserBundle\EventListener;
 
+use CoreBundle\EventListener\AbstractEventListener;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use UserBundle\Entity\User;
 
-class PasswordEncoder
+class PasswordEncoder extends AbstractEventListener
 {
     /**
      * @var UserPasswordEncoderInterface
@@ -45,7 +46,7 @@ class PasswordEncoder
      *
      * @return null|User
      */
-    private function handleEvent(LifecycleEventArgs $args)
+    protected function handleEvent(LifecycleEventArgs $args)
     {
         $entity = $this->getEntity($args);
 
@@ -54,45 +55,6 @@ class PasswordEncoder
         }
 
         return $this->encodePassword($entity);
-    }
-
-    /**
-     * @param LifecycleEventArgs $args
-     *
-     * @return User|null
-     */
-    private function getEntity(LifecycleEventArgs $args)
-    {
-        $entity = $args->getEntity();
-
-        if (!$this->isEntityValid($entity)) {
-            return null;
-        }
-
-        return $entity;
-    }
-
-    /**
-     * @param $entity
-     *
-     * @return bool
-     */
-    private function isEntityValid($entity):bool
-    {
-        $package = 'UserBundle\Entity\\';
-        return
-            in_array(
-                get_class($entity),
-                [
-                    $package . 'User',
-                    $package . 'Coordinator',
-                    $package . 'Teacher',
-                    $package . 'Titular',
-                    $package . 'CourseTitular',
-                    $package . 'StudentParent',
-                    $package . 'SuperAdmin',
-                ]
-            );
     }
 
     /**
@@ -120,5 +82,28 @@ class PasswordEncoder
     public function preUpdate(LifecycleEventArgs $args)
     {
         return $this->handleEvent($args);
+    }
+
+    /**
+     * @param $entity
+     *
+     * @return bool
+     */
+    protected function isEntityValid($entity):bool
+    {
+        $package = 'UserBundle\Entity\\';
+        return
+            in_array(
+                get_class($entity),
+                [
+                    $package . 'User',
+                    $package . 'Coordinator',
+                    $package . 'Teacher',
+                    $package . 'Titular',
+                    $package . 'CourseTitular',
+                    $package . 'StudentParent',
+                    $package . 'SuperAdmin',
+                ]
+            );
     }
 }

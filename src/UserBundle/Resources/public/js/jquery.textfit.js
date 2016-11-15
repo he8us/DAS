@@ -1,3 +1,4 @@
+/* eslint-env jquery */
 /**
  * jQuery Text Fit v1.0
  * https://github.com/nbrunt/TextFit
@@ -10,7 +11,6 @@
  */
 
 (function ($) {
-
 
 
     $.fn.textfit = function () {

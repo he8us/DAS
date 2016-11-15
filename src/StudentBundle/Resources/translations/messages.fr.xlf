@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
+  <file date="2016-11-12T15:38:28Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
+    <header>
+      <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
+      <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
+    </header>
+    <body>
+      <trans-unit id="eaa9f32249ec1377ba4296d952715f4f35ed68c5" resname="calendar.day">
+        <source>calendar.day</source>
+        <target>Jour</target>
+      </trans-unit>
+      <trans-unit id="4ee3405c442d1f3bfe52e92a42870ec9ca8c207b" resname="calendar.month">
+        <source>calendar.month</source>
+        <target>Mois</target>
+      </trans-unit>
+      <trans-unit id="1baaad6df6901260d40b50efc0b024c41f504af5" resname="calendar.today">
+        <source>calendar.today</source>
+        <target>Aujourd'hui</target>
+      </trans-unit>
+      <trans-unit id="393951c6ffc096ab4fbaf6670813a7dc22f14125" resname="calendar.week">
+        <source>calendar.week</source>
+        <target>Semaine</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

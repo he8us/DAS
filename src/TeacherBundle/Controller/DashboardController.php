@@ -11,17 +11,19 @@ namespace TeacherBundle\Controller;
 
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
 
 class DashboardController extends Controller
 {
 
+    /**
+     * @return Response
+     */
     public function indexAction()
     {
-
-        $teacher = $this->get('security.token_storage')->getToken()->getUser();
-
         return $this->render('TeacherBundle:Dashboard:index.html.twig', [
-            "teacher" => $teacher,
+            'user'            => $this->getUser(),
+            'eventsEndpoints' => 'teacher_calendar_events',
         ]);
     }
 

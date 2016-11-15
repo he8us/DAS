@@ -3,8 +3,10 @@
 namespace CourseBundle\Form;
 
 use CourseBundle\Entity\CourseContent;
+use CourseBundle\Entity\Grade;
 use CourseBundle\Entity\Lesson;
 use CourseBundle\Repository\CourseContentRepository;
+use CourseBundle\Repository\GradeRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
@@ -23,9 +25,18 @@ class LessonType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('date', DateTimeType::class, [
+            ->add('startDate', DateTimeType::class, [
                 'html5'  => true,
-                'label'  => 'course.lesson.date',
+                'label'  => 'course.lesson.start_date',
+                'widget' => 'single_text',
+                'format' => 'dd-MM-yyyy HH:mm',
+                'attr'   => [
+                    'class' => 'datetimepicker',
+                ],
+            ])
+            ->add('endDate', DateTimeType::class, [
+                'html5'  => true,
+                'label'  => 'course.lesson.end_date',
                 'widget' => 'single_text',
                 'format' => 'dd-MM-yyyy HH:mm',
                 'attr'   => [
@@ -53,9 +64,24 @@ class LessonType extends AbstractType
                     return $repository->findAllNotDeletedQueryBuilder();
                 },
             ])
+            ->add('grades', EntityType::class, [
+                'multiple'      => true,
+                'expanded'      => true,
+                'label'         => 'course.lesson.grades',
+                'class'         => Grade::class,
+                'choice_label'  => function (Grade $grade) {
+                    return $grade->getGrade();
+                },
+                'query_builder' => function (GradeRepository $repository) {
+                    return $repository->findAllNotDeletedQueryBuilder();
+                },
+            ])
             ->add('remarks', TextareaType::class, [
                 'label'    => 'course.lesson.remarks',
                 'required' => false,
+                'attr'     => [
+                    'class' => 'js-wysiwyg',
+                ],
             ]);
     }
 

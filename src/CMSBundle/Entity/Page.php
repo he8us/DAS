@@ -3,6 +3,7 @@
 namespace CMSBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\UniqueConstraint;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 use UserBundle\Entity\Coordinator;
@@ -11,7 +12,9 @@ use UserBundle\Entity\User;
 /**
  * Page
  *
- * @ORM\Table(name="page")
+ * @ORM\Table(name="page", uniqueConstraints={
+ *     @UniqueConstraint(name="UNIQ_SLUG", columns={"slug"})
+ * })
  * @ORM\Entity(repositoryClass="CMSBundle\Repository\PageRepository")
  */
 class Page
@@ -51,7 +54,7 @@ class Page
     /**
      * @var User
      *
-     * @ORM\OneToMany(targetEntity="UserBundle\Entity\Coordinator", mappedBy="author_id")
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\Coordinator", inversedBy="pages")
      * @ORM\JoinColumn(name="author_id", referencedColumnName="id", onDelete="SET NULL")
      */
     private $author;

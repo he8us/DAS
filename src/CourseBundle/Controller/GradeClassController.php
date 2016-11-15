@@ -112,7 +112,7 @@ class GradeClassController extends AbstractCrudController
         }
 
         return $this->render('CourseBundle:GradeClass:edit.html.twig', [
-            'form'   => $form->createView(),
+            'form'        => $form->createView(),
             'delete_form' => $deleteForm->createView(),
         ]);
     }

@@ -7,13 +7,13 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
-use UserBundle\Entity\Student;
+use StudentBundle\Entity\StudentRegistration;
 use UserBundle\Entity\Teacher;
 
 /**
  * Lesson
  *
- * @ORM\Table(name="lesson", )
+ * @ORM\Table(name="lesson")
  * @ORM\Entity(repositoryClass="CourseBundle\Repository\LessonRepository")
  */
 class Lesson
@@ -33,9 +33,16 @@ class Lesson
     /**
      * @var DateTime
      *
-     * @ORM\Column(name="date", type="datetime")
+     * @ORM\Column(name="start_date", type="datetime")
      */
-    private $date;
+    private $startDate;
+
+    /**
+     * @var DateTime
+     *
+     * @ORM\Column(name="end_date", type="datetime")
+     */
+    private $endDate;
 
     /**
      * @var string
@@ -54,12 +61,10 @@ class Lesson
     /**
      * @var ArrayCollection
      *
-     * @ORM\ManyToMany(targetEntity="CourseBundle\Entity\Grade", mappedBy="lessons")
+     * @ORM\ManyToMany(targetEntity="CourseBundle\Entity\Grade", inversedBy="lessons")
      * @ORM\JoinColumn(name="grade_id", referencedColumnName="id", onDelete="SET NULL")
-    )
      */
     private $grades;
-
 
     /**
      * @var Teacher
@@ -78,16 +83,19 @@ class Lesson
 
     /**
      * @var ArrayCollection
-     * @ORM\ManyToMany(targetEntity="UserBundle\Entity\Student", inversedBy="lessons")
+     *
+     * @ORM\OneToMany(targetEntity="StudentBundle\Entity\StudentRegistration", mappedBy="lesson")
      */
-    private $students;
+    private $studentRegistrations;
 
-
+    /**
+     * Lesson constructor.
+     */
     public function __construct()
     {
         $this->grades = new ArrayCollection();
-        $this->date = new \DateTime();
-        $this->students = new ArrayCollection();
+        $this->startDate = new \DateTime();
+        $this->studentRegistrations = new ArrayCollection();
     }
 
     /**
@@ -105,21 +113,21 @@ class Lesson
      *
      * @return DateTime
      */
-    public function getDate()
+    public function getStartDate()
     {
-        return $this->date;
+        return $this->startDate;
     }
 
     /**
      * Set date
      *
-     * @param DateTime $date
+     * @param DateTime $startDate
      *
      * @return Lesson
      */
-    public function setDate(DateTime $date)
+    public function setStartDate(DateTime $startDate)
     {
-        $this->date = $date;
+        $this->startDate = $startDate;
 
         return $this;
     }
@@ -211,33 +219,82 @@ class Lesson
     }
 
     /**
-     * @param Student $student
+     * @param Grade $grade
      *
      * @return Lesson
      */
-    public function addStudent(Student $student)
+    public function addGrade(Grade $grade)
     {
-        $this->students->add($student);
+        $this->grades->add($grade);
         return $this;
     }
 
     /**
-     * @param Student $student
+     * @param Grade $grade
      *
      * @return $this
      */
-    public function removeStudent(Student $student)
+    public function deleteGrade(Grade $grade)
     {
-        $this->students->removeElement($student);
+        $this->grades->removeElement($grade);
         return $this;
     }
 
     /**
      * @return ArrayCollection
      */
-    public function getStudents()
+    public function getGrades()
     {
-        return $this->students;
+        return $this->grades;
+    }
+
+    /**
+     * @return DateTime
+     */
+    public function getEndDate()
+    {
+        return $this->endDate;
+    }
+
+    /**
+     * @param DateTime $endDate
+     *
+     * @return $this
+     */
+    public function setEndDate(DateTime $endDate)
+    {
+        $this->endDate = $endDate;
+        return $this;
+    }
+
+    /**
+     * @param StudentRegistration $studentRegistration
+     *
+     * @return $this
+     */
+    public function addStudentRegistration(StudentRegistration $studentRegistration)
+    {
+        $this->studentRegistrations->add($studentRegistration);
+        return $this;
+    }
+
+    /**
+     * @param StudentRegistration $studentRegistration
+     *
+     * @return $this
+     */
+    public function deleteStudentRegistration(StudentRegistration $studentRegistration)
+    {
+        $this->studentRegistrations->removeElement($studentRegistration);
+        return $this;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getStudentRegistrations()
+    {
+        return $this->studentRegistrations;
     }
 }
 

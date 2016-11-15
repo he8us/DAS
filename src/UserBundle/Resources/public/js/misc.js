@@ -1,9 +1,12 @@
-function render_role(data){
+/* global Translator */
+
+/* eslint-disable no-unused-vars */
+function render_role(data) {
     return translateRole(data[0]);
 }
+/* eslint-enable no-unused-vars */
 
-
-function translateRole(role){
+function translateRole(role) {
     switch (role) {
         case 'ROLE_STUDENT':
             return Translator.trans("user.role.student");
@@ -27,5 +30,5 @@ function translateRole(role){
             return Translator.trans("user.role.super_admin");
     }
 
-    return;
+
 }

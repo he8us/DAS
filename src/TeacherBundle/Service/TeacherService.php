@@ -9,9 +9,9 @@
 
 namespace TeacherBundle\Service;
 
-use CoreBundle\Service\AbstractEntityService;
+use CoreBundle\Service\AbstractLessonIntervalEntityService;
 use CourseBundle\Entity\Lesson;
-use CourseBundle\Repository\LessonRepository;
+use Symfony\Component\Security\Core\User\UserInterface;
 use UserBundle\Entity\Teacher;
 
 /**
@@ -21,38 +21,29 @@ use UserBundle\Entity\Teacher;
  *
  * @author Cedric Michaux <cedric@he8us.be>
  */
-class TeacherService extends AbstractEntityService
+class TeacherService extends AbstractLessonIntervalEntityService
 {
     protected $entityClass = Teacher::class;
 
     /**
      * @param Teacher $teacher
+     *
+     * @return Lesson[]
      */
     public function getNextLessonForTeacher(Teacher $teacher)
     {
-
-        $this->getLessonRepository()->getNextLessonsForTeacher($teacher);
-
+        return $this->getLessonRepository()->getNextLessonsForTeacher($teacher);
     }
 
     /**
-     * @return LessonRepository
-     */
-    private function getLessonRepository()
-    {
-         return $this->getManager(Lesson::class)->getRepository(Lesson::class);
-    }
-
-    /**
-     * @param Teacher   $teacher
-     * @param \DateTime $start
-     * @param \DateTime $end
+     * @param UserInterface $user
+     * @param \DateTime     $start
+     * @param \DateTime     $end
      *
      * @return array
      */
-    public function getCoursesForInterval(Teacher $teacher, \DateTime $start, \DateTime $end)
+    public function getCoursesForInterval(UserInterface $user, \DateTime $start, \DateTime $end)
     {
-        return $this->getLessonRepository()->getLessonForTeacherForInterval($teacher, $start, $end);
+        return $this->getLessonRepository()->getLessonForTeacherForInterval($user, $start, $end);
     }
-
 }

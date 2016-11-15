@@ -27,36 +27,36 @@ class CourseContentType extends AbstractType
             ])
             ->add('grades', EntityType::class,
                 [
-                    'label'        => 'course.content.grades',
-                    'class'        => Grade::class,
-                    'choice_label' => 'grade',
-                    'multiple'     => true,
-                    'expanded'     => true,
-                    'query_builder' => function(GradeRepository $repository){
+                    'label'         => 'course.content.grades',
+                    'class'         => Grade::class,
+                    'choice_label'  => 'grade',
+                    'multiple'      => true,
+                    'expanded'      => true,
+                    'query_builder' => function (GradeRepository $repository) {
                         return $repository->findAllNotDeletedQueryBuilder();
-                    }
+                    },
                 ]
             )
             ->add('parent', EntityType::class, [
-                'label'        => 'course.content.parent',
-                'class'        => CourseContent::class,
-                'choice_label' => 'name',
-                'required'     => false,
-                'query_builder' => function(CourseContentRepository $repository){
+                'label'         => 'course.content.parent',
+                'class'         => CourseContent::class,
+                'choice_label'  => 'name',
+                'required'      => false,
+                'query_builder' => function (CourseContentRepository $repository) {
                     return $repository->findAllNotDeletedQueryBuilder();
-                }
+                },
             ])
             ->add('teachers', EntityType::class, [
-                'label'        => 'course.content.teachers',
-                'class'        => Teacher::class,
-                'choice_label' => function (Teacher $teacher) {
+                'label'         => 'course.content.teachers',
+                'class'         => Teacher::class,
+                'choice_label'  => function (Teacher $teacher) {
                     return $teacher->getFirstName() . ' ' . $teacher->getLastName();
                 },
-                'multiple'     => true,
-                'expanded'     => true,
-                'query_builder' => function(UserRepository $repository){
+                'multiple'      => true,
+                'expanded'      => true,
+                'query_builder' => function (UserRepository $repository) {
                     return $repository->findAllNotDeletedQueryBuilder();
-                }
+                },
             ]);
     }
 

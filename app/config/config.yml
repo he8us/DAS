@@ -45,6 +45,14 @@ framework:
 
 # Twig Configuration
 twig:
+    date:
+        format: d.m.Y, H:i:s
+
+    number_format:
+        decimals: 2
+        decimal_point: ','
+        thousands_separator: '.'
+
     globals:
         admin_base_view: '::base.html.twig'
 
@@ -123,6 +131,11 @@ jms_translation:
         teacher:
             dirs: ["%kernel.root_dir%/../src/TeacherBundle"]
             output_dir: "%kernel.root_dir%/../src/TeacherBundle/Resources/translations"
+            excluded_dirs: [Features]
+
+        student:
+            dirs: ["%kernel.root_dir%/../src/StudentBundle"]
+            output_dir: "%kernel.root_dir%/../src/StudentBundle/Resources/translations"
             excluded_dirs: [Features]
 
 services:

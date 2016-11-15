@@ -114,8 +114,8 @@ class CourseContentController extends AbstractCrudController
         }
 
         return $this->render('CourseBundle:CourseContent:edit.html.twig', [
-            'form'     => $form->createView(),
-            'delete_form'   => $deleteForm->createView(),
+            'form'        => $form->createView(),
+            'delete_form' => $deleteForm->createView(),
         ]);
     }
 

@@ -1,6 +1,14 @@
 CourseBundle\Entity\Lesson:
-    lesson-{1..10}:
-        date: <dateTimeInInterval('- 1 week', '+ 1 month')>
+    lesson-1:
+        startDate: <dateTimeInInterval('- 1 hour', '+ 1 hour')>
+        room: 123
+        content: "@coursecontent-*"
+        teacher: "@teacher-1"
+        grades: "@grade-{1..3}"
+        remarks: <htmlParagraphs(0, 10)>
+
+    lesson-{2..10}:
+        startDate: <dateTimeInInterval('- 1 week', '+ 1 month')>
         room: 123
         content: "@coursecontent-*"
         teacher: "@teacher-1"
@@ -8,7 +16,7 @@ CourseBundle\Entity\Lesson:
         remarks: <htmlParagraphs(0, 10)>
 
     lesson-{11..50}:
-        date: <dateTimeInInterval('- 1 week', '+ 1 month')>
+        startDate: <dateTimeInInterval('- 1 week', '+ 1 month')>
         room: 123
         content: "@coursecontent-*"
         teacher: "@teacher-*"
