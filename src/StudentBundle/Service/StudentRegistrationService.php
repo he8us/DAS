@@ -29,6 +29,15 @@ class StudentRegistrationService extends AbstractEntityService
      */
     public function register(Lesson $lesson, Student $student)
     {
+
+        $registration = $this->findByStudentAndLesson($student, $lesson);
+
+        if($registration){
+            $registration->setDeletedAt();
+            $this->save($registration);
+            return $registration;
+        }
+
         $registration = new StudentRegistration();
 
         $registration
@@ -62,11 +71,28 @@ class StudentRegistrationService extends AbstractEntityService
     }
 
 
+    /**
+     * @param Student $student
+     * @param Lesson  $lesson
+     *
+     * @return bool
+     */
     public function isRegisteredForLesson(Student $student, Lesson $lesson)
     {
-        /** @var StudentRegistrationRepository $repo */
         $count = (int) $this->getRepository()->countByStudentAndLesson($student, $lesson);
 
         return $count > 0;
+    }
+
+
+    /**
+     * @param Student $student
+     * @param Lesson  $lesson
+     *
+     * @return array
+     */
+    public function deleteForStudentAndLesson(Student $student, Lesson $lesson)
+    {
+        return $this->getRepository()->deleteForStudentAndLesson($student, $lesson);
     }
 }

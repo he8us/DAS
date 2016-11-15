@@ -4,6 +4,7 @@ namespace StudentBundle\Entity;
 
 use CourseBundle\Entity\Lesson;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 use UserBundle\Entity\Student;
 
@@ -16,6 +17,7 @@ use UserBundle\Entity\Student;
 class StudentRegistration
 {
     use TimestampableEntity;
+    use SoftDeleteableEntity;
 
     /**
      * @var int

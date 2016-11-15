@@ -2,6 +2,7 @@
 
 namespace StudentBundle\Repository;
 
+use Carbon\Carbon;
 use CoreBundle\Repository\AbstractRepository;
 use CourseBundle\Entity\Lesson;
 use Doctrine\ORM\QueryBuilder;
@@ -41,7 +42,7 @@ class StudentRegistrationRepository extends AbstractRepository
     {
         return $this->getByStudentAndLessonQuery($student, $lesson)
             ->getQuery()
-            ->getResult();
+            ->getSingleResult();
     }
 
     /**
@@ -72,5 +73,25 @@ class StudentRegistrationRepository extends AbstractRepository
             ->select('count(sr.student)')
             ->getQuery()
             ->getSingleScalarResult();
+    }
+
+    /**
+     * @param $student
+     * @param $lesson
+     *
+     * @return mixed
+     */
+    public function deleteForStudentAndLesson($student, $lesson)
+    {
+        return $this->createQueryBuilder('sr')
+            ->update()
+            ->set('sr.deletedAt', ':now')
+            ->where('sr.student = :student')
+            ->andWhere('sr.lesson = :lesson')
+            ->setParameter('now', Carbon::now())
+            ->setParameter('student', $student)
+            ->setParameter('lesson', $lesson)
+            ->getQuery()
+            ->execute();
     }
 }
