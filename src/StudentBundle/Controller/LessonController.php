@@ -27,13 +27,13 @@ class LessonController extends Controller
     public function indexAction(Lesson $lesson)
     {
 
-        $registered = $this->getStudentRegistrationService()->isRegisteredForLesson($this->getUser(), $lesson);
+        $registration = $this->getStudentRegistrationService()->findByStudentAndLesson($this->getUser(), $lesson);
 
         return $this->render('@Student/Lesson/index.html.twig', [
-            'lesson'            => $lesson,
-            'editable'          => false,
-            'form'              => false,
-            'alreadyRegistered' => $registered,
+            'lesson'       => $lesson,
+            'editable'     => false,
+            'form'         => false,
+            'registration' => $registration,
         ]);
     }
 
@@ -65,10 +65,24 @@ class LessonController extends Controller
         ]);
     }
 
-
-    public function unregisterAction($confirm = 'no')
+    /**
+     * @param Lesson $lesson
+     * @param string $confirm
+     *
+     * @return RedirectResponse|Response
+     */
+    public function unregisterAction(Lesson $lesson, $confirm = 'no')
     {
-        //TODO: implement
+        if ($confirm == 'yes') {
+            $this->getStudentRegistrationService()->deleteForStudentAndLesson($this->getUser(), $lesson);
+            return $this->redirectToRoute('student_lesson_details', [
+                'id' => $lesson->getId(),
+            ]);
+        }
+
+        return $this->render('@Student/Lesson/unregister.html.twig', [
+            'lesson' => $lesson,
+        ]);
 
     }
 }
