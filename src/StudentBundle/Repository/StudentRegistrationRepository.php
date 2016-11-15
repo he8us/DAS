@@ -42,7 +42,7 @@ class StudentRegistrationRepository extends AbstractRepository
     {
         return $this->getByStudentAndLessonQuery($student, $lesson)
             ->getQuery()
-            ->getSingleResult();
+            ->getOneOrNullResult();
     }
 
     /**
