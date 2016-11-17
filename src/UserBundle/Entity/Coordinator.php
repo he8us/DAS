@@ -16,7 +16,7 @@ class Coordinator extends User
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="CMSBundle\Entity\Page", mappedBy="author")
+     * @ORM\OneToMany(targetEntity="CmsBundle\Entity\Page", mappedBy="author")
      */
     private $pages;
 
@@ -27,7 +27,5 @@ class Coordinator extends User
         $this->pages = new ArrayCollection();
         $this->roles = ['ROLE_COORDINATOR'];
     }
-
-
 }
 

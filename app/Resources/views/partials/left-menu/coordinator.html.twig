@@ -1,6 +1,12 @@
 {% if is_granted("ROLE_COORDINATOR") %}
     <li class="header">{{ "user.role.coordinator" | trans }}</li>
     <li>
+        <a href="{{ path('cms_page_index') }}">
+            <i class="fa fa-file-text"></i>
+            <span>{{ "cms.page.list.title" | trans }}</span>
+        </a>
+    </li>
+    <li>
         <a href="{{ path('user_user_index') }}">
             <i class="fa fa-users"></i>
             <span>{{ "user.list.title" | trans }}</span>

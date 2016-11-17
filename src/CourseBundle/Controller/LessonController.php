@@ -102,7 +102,7 @@ class LessonController extends AbstractCrudController
     public function editAction(Request $request, Lesson $lesson)
     {
         $deleteForm = $this->createDeleteForm($lesson);
-        $form = $this->createForm('CourseBundle\Form\LessonType', $lesson);
+        $form = $this->createForm(LessonType::class, $lesson);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

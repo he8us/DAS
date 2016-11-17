@@ -1,0 +1,5 @@
+CmsBundle\Entity\Page:
+    page-1:
+        title: 'Accueil'
+        slug: 'accueil'
+        body: '<h1>Bienvenue !</h1><p>Il faut changer le contenu de la page</p>'

@@ -87,3 +87,7 @@ label[for="fos_user_profile_form_profilePicture_profilePictureFile"] {
     -webkit-line-clamp: 5;
     display: -webkit-box;
 }
+
+.box-body table th{
+    vertical-align: top;
+}

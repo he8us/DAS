@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
+  <file date="2016-11-17T22:51:44Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
+    <header>
+      <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
+      <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
+    </header>
+    <body>
+      <trans-unit id="587766746f4901dcb014076d4380dc1f878145ca" resname="cms.page.add">
+        <source>cms.page.add</source>
+        <target>Ajouter une page</target>
+      </trans-unit>
+      <trans-unit id="0b3ce1ea1a053c5579c1b053c4c0499bfedf077a" resname="cms.page.back_to_list">
+        <source>cms.page.back_to_list</source>
+        <target>Retour à la liste</target>
+      </trans-unit>
+      <trans-unit id="2bccf0fdcec21c76d16fb804c02629ae4689f699" resname="cms.page.body">
+        <source>cms.page.body</source>
+        <target>Corps de la page</target>
+      </trans-unit>
+      <trans-unit id="7fc6e429da94c9fe8c41c9244cd458269078d4f1" resname="cms.page.create">
+        <source>cms.page.create</source>
+        <target>Créer</target>
+      </trans-unit>
+      <trans-unit id="4db59e5e448d268ffb6e0776e015acf250215c47" resname="cms.page.delete">
+        <source>cms.page.delete</source>
+        <target>Effacer la page</target>
+      </trans-unit>
+      <trans-unit id="46f1c79dd96a22215b624e9badc486d114034f75" resname="cms.page.edit">
+        <source>cms.page.edit</source>
+        <target>Editer la page</target>
+      </trans-unit>
+      <trans-unit id="29030f17714531698372c9b1112edacbf40db7cd" resname="cms.page.edit.title">
+        <source>cms.page.edit.title</source>
+        <target>Edition de la page</target>
+      </trans-unit>
+      <trans-unit id="d6d8d89e78d56835eed7a12c9a4bea64f2ff0272" resname="cms.page.id">
+        <source>cms.page.id</source>
+        <target>ID</target>
+      </trans-unit>
+      <trans-unit id="7d5a3782cfdfe81d632cf5c93c8220ef3e27c862" resname="cms.page.list.title">
+        <source>cms.page.list.title</source>
+        <target>Liste des pages</target>
+      </trans-unit>
+      <trans-unit id="2df83a808326494f34ef3922bbb4e523d7ecbac9" resname="cms.page.new.title">
+        <source>cms.page.new.title</source>
+        <target>Nouvelle page</target>
+      </trans-unit>
+      <trans-unit id="af79f187b817f42d96b2afa387042c0d20ff17d4" resname="cms.page.show.title">
+        <source>cms.page.show.title</source>
+        <target>Détail de la page</target>
+      </trans-unit>
+      <trans-unit id="a71a28b5e032baaea7190d9c71e9bee5fea3c40e" resname="cms.page.slug">
+        <source>cms.page.slug</source>
+        <target>Slug</target>
+      </trans-unit>
+      <trans-unit id="6d2423f05291915ddd77a70930dbf7bfb03a1eac" resname="cms.page.title">
+        <source>cms.page.title</source>
+        <target>Titre de la page</target>
+      </trans-unit>
+      <trans-unit id="2b818e6bcaa5cb2e5c9345727b0f606af33c6ff2" resname="datatables.actions.edit">
+        <source>datatables.actions.edit</source>
+        <target>Editer</target>
+      </trans-unit>
+      <trans-unit id="ac272d2c3d16a6fca44235ba2c5286960b4653ee" resname="datatables.actions.show">
+        <source>datatables.actions.show</source>
+        <target>Voir</target>
+      </trans-unit>
+      <trans-unit id="411c56bb14863c919c9faee1635a446c904baf9a" resname="datatables.actions.title">
+        <source>datatables.actions.title</source>
+        <target>Actions</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

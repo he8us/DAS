@@ -1,105 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2016-11-12T15:28:44Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
+  <file date="2016-11-17T22:52:11Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
     </header>
     <body>
+      <trans-unit id="7d5a3782cfdfe81d632cf5c93c8220ef3e27c862" resname="cms.page.list.title">
+        <source>cms.page.list.title</source>
+        <target>Liste des pages</target>
+      </trans-unit>
       <trans-unit id="d983a44d54dbe48ee22ec730ece568e378e1061e" resname="code_under_mit_license">
         <source>code_under_mit_license</source>
         <target>Code sous license MIT</target>
-        <jms:reference-file line="85">/Resources/views/base.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="521307ddb67a4abc14248801dae5e5989aca76c1" resname="copyright">
         <source>copyright</source>
         <target>%creator1% et %creator2%</target>
-        <jms:reference-file line="83">/Resources/views/base.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="fd89046d8089a1854b07c364fdd4a308dfe08357" resname="course.content.list.title">
         <source>course.content.list.title</source>
         <target>Contenus de cours</target>
-        <jms:reference-file line="18">/Resources/views/partials/left-menu/coordinator.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="4b0ee09887df8eb55b881ee6c2ee519d902979c0" resname="course.grade.list.title">
         <source>course.grade.list.title</source>
         <target>Années</target>
-        <jms:reference-file line="24">/Resources/views/partials/left-menu/coordinator.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="71982b5492f8e27c8cc0c8eac452c749bfd0028b" resname="course.gradeclass.list.title">
         <source>course.gradeclass.list.title</source>
         <target>Classes</target>
-        <jms:reference-file line="30">/Resources/views/partials/left-menu/coordinator.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="1942a61a976512f7512ab84f37400aac9aeb4be8" resname="course.lesson.list.title">
         <source>course.lesson.list.title</source>
         <target>Cours</target>
-        <jms:reference-file line="36">/Resources/views/partials/left-menu/coordinator.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="e909511eb641a925aa4e8e7b7e6f361ed6fa6320" resname="course.lesson.see">
         <source>course.lesson.see</source>
         <target>Voir vos prochains cours</target>
-        <jms:reference-file line="6">/Resources/views/partials/left-menu/teacher.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="c83dc793a3460b1161226b098ce9649f621316a5" resname="feedback.categories.list">
         <source>feedback.categories.list</source>
         <target>Catégories</target>
-        <jms:reference-file line="6">/Resources/views/partials/left-menu/super_admin.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="406e2e2938faa979771a16efbc7f8601c84c5351" resname="feedback.feedback.list">
         <source>feedback.feedback.list</source>
         <target>Feedbacks</target>
-        <jms:reference-file line="12">/Resources/views/partials/left-menu/super_admin.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="7b91db598a0fdb271701d00c7c79dc4db9a1566c" resname="feedback.menu_header">
         <source>feedback.menu_header</source>
         <target>Feedbacks</target>
-        <jms:reference-file line="2">/Resources/views/partials/left-menu/super_admin.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="6eb7269e2ff9f7d06893acebf169957f8fc79832" resname="page_title">
         <source>page_title</source>
         <target>Bienvenue !</target>
-        <jms:reference-file line="6">/Resources/views/base.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="e0a52af9e8479152d8b2555c0aef6d29156f34a5" resname="pages.homepage">
         <source>pages.homepage</source>
         <target>Page d'accueil</target>
-        <jms:reference-file line="60">/Resources/views/base.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="1041af26a994241504648b37585c695bfb3d43ae" resname="toggle_navigation">
         <source>toggle_navigation</source>
         <target>Basculer la navigation</target>
-        <jms:reference-file line="35">/Resources/views/base.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="10eb410ab2de028acaf6e9c86570e42741622248" resname="user.list.title">
         <source>user.list.title</source>
         <target>Utilisateurs</target>
-        <jms:reference-file line="6">/Resources/views/partials/left-menu/coordinator.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="d9682f1f9b8b03363021242d480813e3fdb10102" resname="user.login.title">
         <source>user.login.title</source>
         <target>Connection</target>
-        <jms:reference-file line="46">/Resources/views/base.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="306758f849f02a655017c93d84f5afd0c3547dd7" resname="user.register.title">
         <source>user.register.title</source>
         <target>Inscription</target>
-        <jms:reference-file line="44">/Resources/views/base.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="e7966eea57e6a444fbdd61be28c9ce377cada967" resname="user.role.coordinator">
         <source>user.role.coordinator</source>
         <target>Coordinateur</target>
-        <jms:reference-file line="2">/Resources/views/partials/left-menu/coordinator.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="7098edbf4278801f18215807a8a87834cf51a885" resname="user.role.student">
+        <source>user.role.student</source>
+        <target>Etudiant</target>
       </trans-unit>
       <trans-unit id="4dbb4a31ff39e54f748c3f43a9289a1b6c263866" resname="user.role.teacher">
         <source>user.role.teacher</source>
         <target>Professeur</target>
-        <jms:reference-file line="2">/Resources/views/partials/left-menu/teacher.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="04dd26a10391bb8528158b0e269f70bf33eb0ebd" resname="user.student.list.title">
         <source>user.student.list.title</source>
         <target>Etudiants</target>
-        <jms:reference-file line="12">/Resources/views/partials/left-menu/coordinator.html.twig</jms:reference-file>
       </trans-unit>
     </body>
   </file>

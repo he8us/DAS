@@ -1,0 +1,11 @@
+cms_page:
+    resource: "@CmsBundle/Resources/config/routing/page.yml"
+    prefix:   /manage/pages
+
+cms_page_see:
+    path: /page/{slug}
+    defaults: { _controller: CmsBundle:Default:page }
+
+homepage:
+    path:     /
+    defaults: { _controller: CmsBundle:Default:index }

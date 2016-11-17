@@ -15,7 +15,7 @@ user:
 
 
 cms:
-    resource: "@CMSBundle/Resources/config/routing.yml"
+    resource: "@CmsBundle/Resources/config/routing.yml"
 
 _liip_imagine:
     resource: "@LiipImagineBundle/Resources/config/routing.xml"

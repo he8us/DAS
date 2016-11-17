@@ -1,0 +1,12 @@
+{% extends 'CourseBundle:CourseContent:edit.html.twig' %}
+
+{% block title %}{{ "cms.page.new.title" | trans }}{% endblock %}
+{% block box_title %}{{ "cms.page.new.title" | trans }}{% endblock %}
+
+{% block box_actions %}
+    {{ action.back('cms.page.back_to_list' | trans, 'cms_page_index') }}
+{% endblock %}
+
+{% block box_footer %}
+    {{ action.save('cms.page.create' | trans) }}
+{% endblock %}

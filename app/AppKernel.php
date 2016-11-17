@@ -39,7 +39,7 @@ class AppKernel extends Kernel
 
             new CoreBundle\CoreBundle(),
             new UserBundle\UserBundle(),
-            new CMSBundle\CMSBundle(),
+            new CmsBundle\CmsBundle(),
             new CourseBundle\CourseBundle(),
             new StudentBundle\StudentBundle(),
             new FeedbackBundle\FeedbackBundle(),

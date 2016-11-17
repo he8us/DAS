@@ -1,7 +1,0 @@
-cms_page:
-    resource: "@CMSBundle/Resources/config/routing/page.yml"
-    prefix:   /page
-
-homepage:
-    path:     /
-    defaults: { _controller: CMSBundle:Default:index }
