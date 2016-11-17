@@ -13,8 +13,14 @@ namespace UserBundle\Controller;
 use CoreBundle\Controller\AbstractCrudController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use UserBundle\Entity\Coordinator;
+use UserBundle\Entity\CourseTitular;
+use UserBundle\Entity\StudentParent;
+use UserBundle\Entity\Teacher;
+use UserBundle\Entity\Titular;
 use UserBundle\Entity\User;
 use UserBundle\Form\UserCreateType;
+use UserBundle\Form\UserRoleType;
 use UserBundle\Form\UserType;
 use UserBundle\Services\UserService;
 
@@ -34,11 +40,28 @@ class UserController extends AbstractCrudController
     /**
      * @param Request $request
      *
+     * @param string  $type
+     *
      * @return Response
      */
-    public function newAction(Request $request)
+    public function newAction(Request $request, $type = 'any')
     {
-        $user = new User();
+
+        if ($type === 'any') {
+            $form = $this->createForm(UserRoleType::class);
+
+            $form->handleRequest($request);
+            if ($form->isSubmitted() && $form->isValid()) {
+                $role = $form->get('role');
+                return $this->redirectToRoute('user_user_new', ['type' => $role->getData()]);
+            }
+
+            return $this->render('UserBundle:User:choose-role.html.twig', [
+                'form' => $form->createView(),
+            ]);
+        }
+
+        $user = $this->getUserTypeForRole($type);
 
         $form = $this->createForm(UserCreateType::class, $user);
 
@@ -52,6 +75,39 @@ class UserController extends AbstractCrudController
         return $this->render('UserBundle:User:new.html.twig', [
             'form' => $form->createView(),
         ]);
+    }
+
+    /**
+     * @param $role
+     *
+     * @return Coordinator|CourseTitular|StudentParent|Teacher|Titular
+     */
+    private function getUserTypeForRole($role)
+    {
+        $className = $this->getClassFromString($role);
+
+        if (!class_exists($className)) {
+            return null;
+        }
+
+        return new $className();
+    }
+
+    /**
+     * @param $role
+     *
+     * @return string
+     */
+    private function getClassFromString($role):string
+    {
+        $userType = str_replace(' ', '', ucwords(str_replace('_', ' ', strtolower($role))));
+
+        if ('Parent' === $userType) {
+            $userType = 'StudentParent';
+        }
+
+        $className = 'UserBundle\\Entity\\' . $userType;
+        return $className;
     }
 
     /**

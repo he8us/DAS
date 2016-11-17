@@ -1,0 +1,25 @@
+{% extends ':templates:box-with-footer.html.twig' %}
+
+{% block title %}{{ 'user.new.role.choose.title' | trans }}{% endblock %}
+{% block box_title %}{{ 'user.new.role.choose.title' | trans }}{% endblock %}
+
+{% block box_actions %}
+    {{ action.back('user.user.back_to_list' | trans, 'user_user_index') }}
+{% endblock %}
+
+{% block box_form_start %}
+    {{ form_start(form) }}
+{% endblock %}
+
+{% block box_body_content %}
+    {{ form_widget(form) }}
+{% endblock %}
+
+{% block box_footer %}
+    {{ action.save('user.user.new.role.chose.save' | trans) }}
+{% endblock %}
+
+{% block box_form_end %}
+    {{ form_end(form) }}
+{% endblock %}
+

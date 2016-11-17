@@ -4,9 +4,13 @@ user_user_index:
       _controller: UserBundle:User:index
 
 user_user_new:
-    path: /new
+    path: /new/{type}
     defaults:
-      _controller: UserBundle:User:new
+        _controller: UserBundle:User:new
+        type: any
+    requirements:
+        type: coordinator|titular|teacher|parent|course_titular
+
 
 user_user_edit:
     path: /{id}/edit
