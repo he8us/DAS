@@ -3,6 +3,7 @@
 namespace CourseBundle\Repository;
 
 use CoreBundle\Repository\AbstractRepository;
+use CourseBundle\Entity\Grade;
 
 /**
  * GradeRepository
@@ -13,4 +14,19 @@ use CoreBundle\Repository\AbstractRepository;
 class GradeRepository extends AbstractRepository
 {
     protected $alias = 'g';
+
+    /**
+     * @param int $grade
+     *
+     * @return Grade|null
+     */
+    public function findByGradeName(int $grade)
+    {
+        return $this->createQueryBuilder('g')
+            ->where('g.grade = :grade')
+            ->setParameter('grade', $grade)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+
 }

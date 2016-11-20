@@ -11,9 +11,15 @@ namespace UserBundle\Controller;
 
 
 use CoreBundle\Controller\AbstractCrudController;
+use League\Flysystem\Filesystem;
+use Liuggio\ExcelBundle\Factory;
+use PHPExcel_Worksheet;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use UserBundle\Entity\ImportFile;
 use UserBundle\Entity\Student;
 use UserBundle\Form\ImportStudentsType;
 use UserBundle\Form\StudentType;
@@ -75,21 +81,30 @@ class StudentController extends AbstractCrudController
     }
 
     /**
+     * @param Request $request
+     *
      * @return Response
      */
-    public function importAction()
+    public function importAction(Request $request)
     {
-        $form = $this->createForm(ImportStudentsType::class);
+        $file = new ImportFile();
+        $form = $this->createForm(ImportStudentsType::class, $file);
 
+        $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            //TODO: implement
+
+            $uploadedFile = $file->getFile();
+            $this->handleExcelFile($uploadedFile);
+
+            return $this->redirectToRoute('user_student_index');
         }
 
         return $this->render('UserBundle:Student:import.html.twig', [
             "form" => $form->createView(),
         ]);
     }
+    
 
     /**
      * @param Student $student
@@ -179,5 +194,56 @@ class StudentController extends AbstractCrudController
         return $this->render('UserBundle:Student:cards.html.twig', [
             'students' => $this->getStudentService()->findAll(),
         ]);
+    }
+
+    /**
+     * @return Factory
+     */
+    private function getPhpExcel()
+    {
+        return $this->get('phpexcel');
+    }
+
+
+    private function saveExcelFile(UploadedFile $uploadedFile){
+        $stream = fopen($uploadedFile->getRealPath(), 'r+');
+        $filesystem = $this->get('oneup_flysystem.uploaded_files_filesystem');
+        $filesystem->writeStream('data_students.xlsx', $stream);
+        fclose($stream);
+
+        $this->handleExcelFile($uploadedFile);
+    }
+
+    /**
+     * @param $uploadedFile
+     */
+    private function handleExcelFile(UploadedFile $uploadedFile = null)
+    {
+        ini_set('max_execution_time', 300);
+        $path = $this->get('kernel')->getRootDir().'/../web/files/data_students.xlsx';
+        //$path = $uploadedFile->getRealPath();
+
+        $excelFile = $this->getPhpExcel()->createPHPExcelObject($path);
+        $sheets = $excelFile->getAllSheets();
+
+        foreach ($sheets as $sheet){
+            $this->handleSheet($sheet);
+        }
+
+    }
+
+    /**
+     * @param PHPExcel_Worksheet $sheet
+     */
+    private function handleSheet(PHPExcel_Worksheet $sheet)
+    {
+
+        $studentService = $this->getStudentService();
+        $iterator = $sheet->getRowIterator(2);
+
+        while ($iterator->valid()) {
+            $studentService->createStudentFromRow($iterator->current());
+            $iterator->next();
+        }
     }
 }

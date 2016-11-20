@@ -21,7 +21,7 @@ services:
 
     user.service.student:
       class: UserBundle\Services\StudentService
-      arguments: ["@doctrine"]
+      arguments: ["@doctrine", '@course.services.gradeclass', '@course.services.grade', '@core.service.random_string_service']
 
     user.form.type.profile_picture:
       class: UserBundle\Form\ProfilePictureType

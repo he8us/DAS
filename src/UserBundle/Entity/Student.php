@@ -94,6 +94,12 @@ class Student implements AdvancedUserInterface, \Serializable
     private $username;
 
     /**
+     * @var int
+     * @ORM\Column(type="integer", unique=true)
+     */
+    private $number;
+
+    /**
      * @var GradeClass
      * @ORM\ManyToOne(targetEntity="CourseBundle\Entity\GradeClass", inversedBy="students")
      * @ORM\JoinColumn(name="grade_class_id", referencedColumnName="id", onDelete="SET NULL")
@@ -520,6 +526,25 @@ class Student implements AdvancedUserInterface, \Serializable
     public function deleteRegisteredLesson(StudentRegistration $studentRegistration)
     {
         $this->registeredLessons->removeElement($studentRegistration);
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getNumber()
+    {
+        return $this->number;
+    }
+
+    /**
+     * @param int $number
+     *
+     * @return $this
+     */
+    public function setNumber(int $number)
+    {
+        $this->number = $number;
         return $this;
     }
 

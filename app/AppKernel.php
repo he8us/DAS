@@ -36,6 +36,7 @@ class AppKernel extends Kernel
             new He8us\FeedbackBundle\He8usFeedbackBundle(),
             new Bazinga\Bundle\JsTranslationBundle\BazingaJsTranslationBundle(),
             new Endroid\Bundle\QrCodeBundle\EndroidQrCodeBundle(),
+            new Liuggio\ExcelBundle\LiuggioExcelBundle(),
 
             new CoreBundle\CoreBundle(),
             new UserBundle\UserBundle(),

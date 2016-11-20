@@ -170,10 +170,17 @@ oneup_flysystem:
             local:
                 directory: "%kernel.root_dir%/../web/images/profile"
 
+        uploaded_files_adapter:
+            local:
+                directory: "%kernel.root_dir%/../web/files"
+
     filesystems:
         profile_picture:
             adapter:    profile_picture_adapter
             mount:      profile_picture
+        uploaded_files:
+            adapter:    uploaded_files_adapter
+            mount:      uploaded_files
 
 liip_imagine:
     loaders:

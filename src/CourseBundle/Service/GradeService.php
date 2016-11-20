@@ -27,4 +27,28 @@ class GradeService extends AbstractEntityService
      * @var string
      */
     protected $entityClass = Grade::class;
+
+    /**
+     * @param $grade
+     *
+     * @return Grade|null
+     */
+    public function findByGradeName(int $grade)
+    {
+        return $this->getRepository()->findByGradeName($grade);
+    }
+
+    /**
+     * @param int $gradeName
+     *
+     * @return Grade
+     */
+    public function createGradeByName(int $gradeName)
+    {
+        $grade = new Grade();
+        $grade->setGrade($gradeName);
+
+        $this->save($grade);
+        return $grade;
+    }
 }

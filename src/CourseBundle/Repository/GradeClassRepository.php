@@ -3,6 +3,7 @@
 namespace CourseBundle\Repository;
 
 use CoreBundle\Repository\AbstractRepository;
+use CourseBundle\Entity\GradeClass;
 
 /**
  * ClassRepository
@@ -13,4 +14,23 @@ use CoreBundle\Repository\AbstractRepository;
 class GradeClassRepository extends AbstractRepository
 {
     protected $alias = 'gc';
+
+
+    /**
+     * @param int    $gradeName
+     * @param string $sectionName
+     *
+     * @return GradeClass|null
+     */
+    public function findOneByGradeNameAndSectionName(int $gradeName, string $sectionName)
+    {
+        return $this->createQueryBuilder('gc')
+            ->join('gc.grade', 'g')
+            ->Where('g.grade = :gradeName')
+            ->andWhere('gc.section = :sectionName')
+            ->setParameter('sectionName', $sectionName)
+            ->setParameter('gradeName', $gradeName)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
 }

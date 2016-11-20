@@ -4,6 +4,7 @@ namespace UserBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Security\Core\User\UserInterface;
+use UserBundle\Entity\Student;
 
 /**
  * StudentRepository
@@ -43,5 +44,37 @@ class StudentRepository extends AbstractUserRepository
     protected function getRepository()
     {
         return $this->_em->getRepository("UserBundle:Student");
+    }
+
+    /**
+     * @param int $number
+     *
+     * @return Student|null
+     */
+    public function findByNumber(int $number)
+    {
+        return $this->createQueryBuilder('s')
+            ->where('s.number = :number')
+            ->setParameter('number', $number)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+
+    /**
+     *
+     * @param string $firstName
+     * @param string $lastName
+     *
+     * @return null|Student
+     */
+    public function findByName(string $firstName, string $lastName)
+    {
+        return $this->createQueryBuilder('s')
+            ->where('s.firstName = :firstName')
+            ->andWhere('s.lastName = :lastName')
+            ->setParameter('firstName', $firstName)
+            ->setParameter('lastName', $lastName)
+            ->getQuery()
+            ->getOneOrNullResult();
     }
 }

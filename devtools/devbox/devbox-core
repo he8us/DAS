@@ -4,6 +4,7 @@ source "$(dirname "$0")/_helpers.sh"
 source "$(dirname "$0")/_load-env.sh"
 
 source "$(dirname "$0")/commands/assets.sh"
+source "$(dirname "$0")/commands/build.sh"
 source "$(dirname "$0")/commands/composer.sh"
 source "$(dirname "$0")/commands/console.sh"
 source "$(dirname "$0")/commands/db-reset.sh"
@@ -14,6 +15,7 @@ source "$(dirname "$0")/commands/ls.sh"
 source "$(dirname "$0")/commands/npm.sh"
 source "$(dirname "$0")/commands/ps.sh"
 source "$(dirname "$0")/commands/php-cli.sh"
+source "$(dirname "$0")/commands/pull.sh"
 source "$(dirname "$0")/commands/run.sh"
 source "$(dirname "$0")/commands/show_help.sh"
 source "$(dirname "$0")/commands/start.sh"
@@ -81,6 +83,16 @@ case ${command} in
 
     stop)
         stop
+        ;;
+
+    build)
+        build $*
+        success "Builded $environment environment"
+        ;;
+
+    pull)
+        pull $*
+        success "Pulled images for $environment environment"
         ;;
 
     down)

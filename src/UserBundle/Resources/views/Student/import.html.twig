@@ -1,5 +1,7 @@
 {% extends ':templates:box-with-footer.html.twig' %}
 
+{% form_theme form "bootstrap_3_layout.html.twig" %}
+
 {% block title %}{{ 'user.student.import.title' | trans }}{% endblock %}
 {% block box_title %}{{ 'user.student.import.title' | trans }}{% endblock %}
 
@@ -8,7 +10,7 @@
 {% endblock %}
 
 {% block box_body_content %}
-    {{ form_rest(form) }}
+    {{ form_widget(form) }}
 {% endblock %}
 
 {% block box_footer %}

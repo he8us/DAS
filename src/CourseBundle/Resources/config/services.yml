@@ -15,16 +15,16 @@ services:
         class: CourseBundle\Datatables\LessonDatatable
         parent: sg_datatables.datatable.abstract
 
+    course.services.grade:
+        class: CourseBundle\Service\GradeService
+        arguments: ['@doctrine']
+
     course.services.gradeclass:
         class: CourseBundle\Service\GradeClassService
-        arguments: ['@doctrine']
+        arguments: ['@doctrine', '@course.services.grade']
 
     course.services.coursecontent:
         class: CourseBundle\Service\CourseContentService
-        arguments: ['@doctrine']
-
-    course.services.grade:
-        class: CourseBundle\Service\GradeService
         arguments: ['@doctrine']
 
     course.services.lesson:
