@@ -8,7 +8,6 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * CourseTitular
  *
- * @ORM\Table(name="course_titular")
  * @ORM\Entity(repositoryClass="UserBundle\Repository\UserRepository")
  */
 class CourseTitular extends User
@@ -21,15 +20,6 @@ class CourseTitular extends User
      * @ORM\JoinColumn(name="course_id", referencedColumnName="id", onDelete="SET NULL")
      */
     private $courses;
-
-    /**
-     * @var ArrayCollection
-     *
-     * @ORM\ManyToMany(targetEntity="CourseBundle\Entity\Grade", mappedBy="courseTitulars")
-     * @ORM\JoinColumn(name="grade_id", referencedColumnName="id", onDelete="SET NULL")
-     */
-    private $grades;
-
 
     /**
      * CourseTitular constructor.

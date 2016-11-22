@@ -8,7 +8,6 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Coordinator
  *
- * @ORM\Table(name="coordinator")
  * @ORM\Entity(repositoryClass="UserBundle\Repository\UserRepository")
  */
 class Coordinator extends User
@@ -16,6 +15,8 @@ class Coordinator extends User
 
     /**
      * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="CmsBundle\Entity\Page", mappedBy="author")
      */
     private $pages;
 
@@ -26,7 +27,5 @@ class Coordinator extends User
         $this->pages = new ArrayCollection();
         $this->roles = ['ROLE_COORDINATOR'];
     }
-
-
 }
 

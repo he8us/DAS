@@ -1,10 +1,10 @@
-import webpack from 'webpack'
-import ExtractTextPlugin from 'extract-text-webpack-plugin'
-import postcssImport from 'postcss-import'
-import autoprefixer from 'autoprefixer'
-import postcssNested from 'postcss-nested'
-import postcssSimpleVars from 'postcss-simple-vars'
-import cssnano from 'cssnano'
+import webpack from "webpack";
+import ExtractTextPlugin from "extract-text-webpack-plugin";
+import postcssImport from "postcss-import";
+import autoprefixer from "autoprefixer";
+import postcssNested from "postcss-nested";
+import postcssSimpleVars from "postcss-simple-vars";
+import cssnano from "cssnano";
 
 export const lintJS = function (path) {
     return {
@@ -48,22 +48,22 @@ export const loadIsparta = function (include) {
 
 export const enableReactPerformanceTools = function () {
     /*
-    return {
-        module: {
-            loaders: [
-                {
-                    test: require.resolve('react'),
-                    loader: 'expose?React'
-                },
-                {
-                    test: /\.jsx?$/,
-                    exclude: /node_modules/,
-                    loader: 'react-hot'
-                }
-            ]
-        }
-    };
-    */
+     return {
+     module: {
+     loaders: [
+     {
+     test: require.resolve('react'),
+     loader: 'expose?React'
+     },
+     {
+     test: /\.jsx?$/,
+     exclude: /node_modules/,
+     loader: 'react-hot'
+     }
+     ]
+     }
+     };
+     */
 }
 
 export const devServer = function (options) {
@@ -118,7 +118,7 @@ export const setupCSS = function () {
         module: {
             loaders: [
                 {
-                    test:    /\.less$/,
+                    test: /\.less$/,
                     loaders: ['style', 'css', 'postcss', 'less']
                 },
                 {
@@ -127,7 +127,7 @@ export const setupCSS = function () {
                 }
             ]
         },
-        postcss: function(webpack){
+        postcss: function (webpack) {
             return [
                 postcssImport({
                     addDependencyTo: webpack
@@ -179,7 +179,7 @@ export const extractCSS = function () {
             loaders: [
                 // Extract CSS during build
                 {
-                    test:    /\.less$/,
+                    test: /\.less$/,
                     loader: ExtractTextPlugin.extract('style', ['css', 'postcss', 'less'])
                 },
                 {
@@ -192,7 +192,7 @@ export const extractCSS = function () {
             // Output extracted CSS to a file
             new ExtractTextPlugin('[name]/bundle.css')
         ],
-        postcss: function(webpack) {
+        postcss: function (webpack) {
             return [
                 postcssImport({
                     addDependencyTo: webpack

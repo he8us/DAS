@@ -28,20 +28,20 @@ class ProfileType extends AbstractType
                 'lastName',
                 TextType::class,
                 [
-                    'label' => 'form.last_name',
+                    'label' => 'user.last_name',
                 ]
             )
             ->add(
                 'firstName',
                 TextType::class,
                 [
-                    'label' => "form.first_name",
+                    'label' => "user.first_name",
                 ]
             )
             ->add('profilePicture',
                 ProfilePictureType::class,
                 [
-                    'label'    => 'form.profile.picture',
+                    'label'    => 'user.profile.picture',
                     'required' => false,
                 ]
             );

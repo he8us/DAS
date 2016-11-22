@@ -15,6 +15,14 @@ services:
       class: UserBundle\Services\RoleService
       arguments: ['@security.role_hierarchy', '@translator']
 
+    user.service.user:
+      class: UserBundle\Services\UserService
+      arguments: ["@doctrine"]
+
+    user.service.student:
+      class: UserBundle\Services\StudentService
+      arguments: ["@doctrine", '@course.services.gradeclass', '@course.services.grade', '@core.service.random_string_service']
+
     user.form.type.profile_picture:
       class: UserBundle\Form\ProfilePictureType
       arguments:
@@ -69,8 +77,14 @@ services:
         parent: sg_datatables.datatable.abstract
 
 
-    user.event_listener.password_encoder:
+    user.event_listener.password_encoder.pre_persist:
         class: UserBundle\EventListener\PasswordEncoder
         arguments: ["@security.password_encoder"]
         tags:
             - {name: doctrine.event_listener, event: prePersist}
+
+    user.event_listener.password_encoder.pre_update:
+        class: UserBundle\EventListener\PasswordEncoder
+        arguments: ["@security.password_encoder"]
+        tags:
+            - {name: doctrine.event_listener, event: preUpdate}

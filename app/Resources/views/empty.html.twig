@@ -1,15 +1,16 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="{{ app.request.locale|split('_')[0] }}">
 <head>
+    {% import ':macro:action_buttons.html.twig' as action %}
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <title>{% block title %}Welcome!{% endblock %}</title>
+    <title>{% block title %}{{ "page_title" | trans }}{% endblock %}</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
     {# TODO: compress assets / use webpack #}
     <link rel="stylesheet" href="{{ asset("apps/theme/bundle.css") }}"/>
-    <link rel="stylesheet" href="{{ asset("apps/core/bundle.css") }}"/>
     <link rel="stylesheet" href="{{ asset("apps/datatables/bundle.css") }}"/>
+    <link rel="stylesheet" href="{{ asset("bundles/he8usfeedback/css/feedback.css") }}"/>
 
     {% block stylesheets %}{% endblock %}
 
@@ -27,14 +28,20 @@
 {% block body %}{% endblock %}
 
 
-<script src="{{ asset('http://build.das.dev/webpack-dev-server.js') }}"></script>
-<script src="{{ asset('http://build.das.dev/apps/shared.js') }}"></script>
-<script src="{{ asset('http://build.das.dev/apps/theme/bundle.js') }}"></script>
-<script src="{{ asset('http://build.das.dev/apps/core/bundle.js') }}"></script>
-<script src="{{ asset('http://build.das.dev/apps/datatables/bundle.js') }}"></script>
 <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+<script src="{{ asset('bundles/bazingajstranslation/js/translator.min.js') }}"></script>
+<script src="{{ asset('apps/shared.js') }}"></script>
+<script src="{{ asset('apps/core/bundle.js') }}"></script>
+<script src="{{ asset('apps/theme/bundle.js') }}"></script>
+<script src="{{ asset('apps/datatables/bundle.js') }}"></script>
+<script src="{{ asset('bundles/user/js/misc.js') }}"></script>
+<script src="{{ asset('apps/user/bundle.js') }}"></script>
 <script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
+<script src="{{ url('bazinga_jstranslation_js') }}"></script>
 
 {% block javascripts %}{% endblock %}
+{{ feedback_widget()|raw }}
+
 </body>
 </html>
+

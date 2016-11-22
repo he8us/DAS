@@ -1,0 +1,22 @@
+{% extends ':templates:box-with-footer.html.twig' %}
+
+
+{% block title %}{{ 'course.gradeclass.edit.title' | trans }}{% endblock %}
+{% block box_title %}{{ 'course.gradeclass.edit.title' | trans }}{% endblock %}
+
+{% block box_actions %}
+    {{ action.back('course.gradeclass.back_to_list' | trans, 'course_content_index') }}
+    {{ action.delete('course.gradeclass.delete' | trans, delete_form) }}
+{% endblock %}
+
+{% block box_form_start %}{{ form_start(form) }}{% endblock %}
+
+{% block box_body_content %}
+    {{ form_widget(form) }}
+{% endblock %}
+{% block box_footer %}
+    {{ action.save('course.gradeclass.edit' | trans) }}
+{% endblock %}
+{% block box_form_end %}
+    {{ form_end(form) }}
+{% endblock %}

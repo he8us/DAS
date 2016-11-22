@@ -1,0 +1,21 @@
+{% extends ":templates:box.html.twig" %}
+
+{% block title %}{{ "user.student.list.title" | trans }}{% endblock %}
+{% block box_title %}{{ "user.student.list.title" | trans }}{% endblock %}
+
+{% block box_actions %}
+    {{ action.new("user.student.action.add" | trans, 'user_student_new') }}
+    {{ action.getCards("user.student.action.getcards" | trans, 'user_student_generateCards') }}
+    {{ action.import("user.student.action.import" | trans, 'user_student_import') }}
+{% endblock %}
+
+{% block box_body_content %}
+    {{ datatable_render_html(datatable) }}
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $ = jQuery;
+    </script>
+    {{ datatable_render_js(datatable) }}
+{% endblock %}

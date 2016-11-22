@@ -42,7 +42,7 @@ class ProfilePictureType extends AbstractType
         $builder->add(
             'profilePictureFile', FileType::class, [
             'required' => false,
-            'label'    => 'form.user.profile.picture',
+            'label'    => 'user.profile.picture',
         ]);
     }
 

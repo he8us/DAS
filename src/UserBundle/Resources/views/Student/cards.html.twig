@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="{{ app.request.locale|split('_')[0] }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="{{ asset("apps/theme/bundle.css") }}"/>
+    <link rel="stylesheet" href="{{ asset('bundles/user/css/cards.css') }}">
+
+    <title>Students Cards</title>
+</head>
+<body>
+
+<div class="description well">
+    <h1>{{ 'user.student.card.print.page.title' | trans }}</h1>
+    <p>{{ 'user.student.card.print.page.description' | trans | raw }}</p>
+    <p>{{ 'user.student.card.print.page.load_status' | trans }}: <span
+                class="not-loaded js-not-loaded">{{ 'user.student.card.print.page.load_status.nok' | trans }}</span>
+        <span class="loaded js-loaded">{{ 'user.student.card.print.page.load_status.ok' | trans }}</span></p>
+</div>
+
+<ul class="card_list student_list">
+    {% for student in students %}
+        <li class="card student_card">
+            <header>
+                <div class="name">{{ student.firstName }} {{ student.lastName }}</div>
+            </header>
+            <div class="row">
+                <div class="col col-xs-5 barcode">
+                    <img src="{{ qrcode_url('user='~student.username~'&code='~student.barcode) }}"
+                         alt="{{ student.barcode }}"/>
+                </div>
+                <div class="col col-xs-7 details">
+                    <dl>
+                        <dt>
+                            {{ 'user.student.username' | trans }}
+                        </dt>
+                        <dd>
+                            {{ student.username }}
+                        </dd>
+
+                        <dt>
+                            {{ 'user.student.barcode' | trans }}
+                        </dt>
+                        <dd>{{ student.barcode }}</dd>
+                    </dl>
+                </div>
+            </div>
+        </li>
+    {% endfor %}
+</ul>
+
+<script src="{{ asset('/apps/shared.js') }}"></script>
+<script src="{{ asset('/apps/user/bundle.js') }}"></script>
+<script>
+    (function ($) {
+        $(window).on('load', function () {
+            $('body').addClass('loaded');
+        })
+    })(jQuery)
+</script>
+
+</body>
+</html>

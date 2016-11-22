@@ -1,0 +1,19 @@
+{% extends ":templates:box.html.twig" %}
+
+{% block title %}{{ "user.list.title" | trans }}{% endblock %}
+{% block box_title %}{{ "user.list.title" | trans }}{% endblock %}
+
+{% block box_actions %}
+    {{ action.new("user.action.add" | trans, 'user_user_new') }}
+{% endblock %}
+
+{% block box_body_content %}
+    {{ datatable_render_html(datatable) }}
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $ = jQuery;
+    </script>
+    {{ datatable_render_js(datatable) }}
+{% endblock %}

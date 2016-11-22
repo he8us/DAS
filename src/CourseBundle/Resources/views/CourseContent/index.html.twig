@@ -1,0 +1,21 @@
+{% extends ':templates:box.html.twig' %}
+
+
+{% block title %}{{ "course.content.list.title" | trans }}{% endblock %}
+{% block box_title %}{{ "course.content.list.title" | trans }}{% endblock %}
+
+{% block box_actions %}
+    {{ action.new("course.content.add" | trans, 'course_content_new') }}
+{% endblock %}
+
+{% block box_body_content %}
+    {{ datatable_render_html(datatable) }}
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $ = jQuery;
+    </script>
+    {{ datatable_render_js(datatable) }}
+{% endblock %}
+

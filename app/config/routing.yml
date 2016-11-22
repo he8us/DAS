@@ -1,3 +1,7 @@
+teacher:
+    resource: "@TeacherBundle/Resources/config/routing.yml"
+    prefix:   /teacher
+
 student:
     resource: "@StudentBundle/Resources/config/routing.yml"
     prefix:   /student
@@ -11,12 +15,13 @@ user:
 
 
 cms:
-    resource: "@CMSBundle/Resources/config/routing.yml"
-
-
+    resource: "@CmsBundle/Resources/config/routing.yml"
 
 _liip_imagine:
     resource: "@LiipImagineBundle/Resources/config/routing.xml"
+
+_bazinga_jstranslation:
+    resource: "@BazingaJsTranslationBundle/Resources/config/routing/routing.yml"
 
 
 fos_js_routing:
@@ -26,7 +31,18 @@ sg_datatables_bundle:
     resource: "@SgDatatablesBundle/Controller/"
     type:     annotation
 
+feedback:
+    resource: "@He8usFeedbackBundle/Resources/config/routing.yml"
+    prefix:   /
 
+captcha:
+    resource: "@GregwarCaptchaBundle/Resources/config/routing/routing.yml"
+    prefix: /
+
+EndroidQrCodeBundle:
+    resource: "@EndroidQrCodeBundle/Controller/"
+    type:     annotation
+    prefix:   /qrcode
 
 #Be sure that core routing stays at the very end
 core_bundle:

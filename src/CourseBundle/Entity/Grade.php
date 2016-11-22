@@ -4,18 +4,21 @@ namespace CourseBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 
 /**
  * Grade
  *
- * @ORM\Table(name="grade")
+ * @ORM\Table(name="grade", uniqueConstraints={
+ *      @ORM\UniqueConstraint(name="UNIQ_GRADE", columns={"grade"})
+ * })
  * @ORM\Entity(repositoryClass="CourseBundle\Repository\GradeRepository")
  */
 class Grade
 {
-
     use TimestampableEntity;
+    use SoftDeleteableEntity;
 
     /**
      * @var int
@@ -39,7 +42,7 @@ class Grade
      *
      * @ORM\OneToMany(targetEntity="CourseBundle\Entity\GradeClass", mappedBy="grade")
      */
-    private $sections;
+    private $gradeClasses;
 
 
     /**
@@ -53,19 +56,19 @@ class Grade
     /**
      * @var ArrayCollection
      *
-     * @ORM\ManyToMany(targetEntity="UserBundle\Entity\CourseTitular", inversedBy="grades")
-     * @ORM\JoinColumn(name="course_titular_id", referencedColumnName="id", onDelete="SET NULL")
+     * @ORM\ManyToMany(targetEntity="CourseBundle\Entity\Lesson", mappedBy="grades")
+     * @ORM\JoinColumn(name="lesson_id", referencedColumnName="id", onDelete="SET NULL")
      */
-    private $courseTitulars;
+    private $lessons;
 
     /**
      * Grade constructor.
      */
     public function __construct()
     {
-        $this->sections = new ArrayCollection();
+        $this->gradeClasses = new ArrayCollection();
         $this->courses = new ArrayCollection();
-        $this->courseTitulars = new ArrayCollection();
+        $this->lessons = new ArrayCollection();
     }
 
     /**
@@ -73,7 +76,7 @@ class Grade
      *
      * @return int
      */
-    public function getId(): int
+    public function getId()
     {
         return $this->id;
     }
@@ -83,7 +86,7 @@ class Grade
      *
      * @return int
      */
-    public function getGrade() : int
+    public function getGrade()
     {
         return $this->grade;
     }
@@ -95,7 +98,7 @@ class Grade
      *
      * @return Grade
      */
-    public function setGrade($grade) : Grade
+    public function setGrade($grade)
     {
         $this->grade = $grade;
 
@@ -103,21 +106,21 @@ class Grade
     }
 
     /**
-     * @return GradeClass
+     * @return ArrayCollection
      */
-    public function getSections(): GradeClass
+    public function getGradeClasses()
     {
-        return $this->sections;
+        return $this->gradeClasses;
     }
 
     /**
-     * @param GradeClass $class
+     * @param ArrayCollection $gradeClasses
      *
      * @return Grade
      */
-    public function addSection(GradeClass $class): Grade
+    public function setGradeClasses(ArrayCollection $gradeClasses): Grade
     {
-        $this->sections->add($class);
+        $this->gradeClasses = $gradeClasses;
         return $this;
     }
 
@@ -126,16 +129,27 @@ class Grade
      *
      * @return Grade
      */
-    public function removeSection(GradeClass $class): Grade
+    public function addSection(GradeClass $class)
     {
-        $this->sections->removeElement($class);
+        $this->gradeClasses->add($class);
         return $this;
     }
 
     /**
-     * @return CourseContent
+     * @param GradeClass $class
+     *
+     * @return Grade
      */
-    public function getCourses(): CourseContent
+    public function removeSection(GradeClass $class)
+    {
+        $this->gradeClasses->removeElement($class);
+        return $this;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getCourses()
     {
         return $this->courses;
     }
@@ -145,9 +159,9 @@ class Grade
      *
      * @return Grade
      */
-    public function addCourse(CourseContent $class): Grade
+    public function addCourse(CourseContent $class)
     {
-        $this->sections->add($class);
+        $this->gradeClasses->add($class);
         return $this;
     }
 
@@ -156,9 +170,9 @@ class Grade
      *
      * @return Grade
      */
-    public function removeCourse(CourseContent $class): Grade
+    public function removeCourse(CourseContent $class)
     {
-        $this->sections->removeElement($class);
+        $this->gradeClasses->removeElement($class);
         return $this;
     }
 }

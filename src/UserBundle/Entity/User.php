@@ -4,6 +4,7 @@ namespace UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\UniqueConstraint;
+use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\AdvancedUserInterface;
@@ -28,21 +29,25 @@ use Symfony\Component\Validator\Constraints as Assert;
  *     "course_titular" = "UserBundle\Entity\CourseTitular",
  *     "teacher" = "UserBundle\Entity\Teacher",
  *     "coordinator" = "UserBundle\Entity\Coordinator",
+ *     "super_admin" = "UserBundle\Entity\SuperAdmin",
  * });
  * @UniqueEntity(
  *     fields={"username"},
- *     message="form.security.username.error.duplicate",
- *     repositoryMethod="findByUniqueCriteria"
+ *     message="user.username.error.duplicate",
+ *     repositoryMethod="findByUniqueCriteria",
+ *     groups={"edition", "creation", "registration"}
  * )
  * @UniqueEntity(
  *     fields={"email"},
- *     message="form.security.email.error.duplicate",
- *     repositoryMethod="findByUniqueCriteria"
+ *     message="user.email.error.duplicate",
+ *     repositoryMethod="findByUniqueCriteria",
+ *     groups={"edition", "creation", "registration"}
  * )
  */
 class User implements AdvancedUserInterface, \Serializable
 {
     use TimestampableEntity;
+    use SoftDeleteableEntity;
 
     const ROLE_STUDENT_PARENT = 'ROLE_STUDENT_PARENT';
     const ROLE_TEACHER = 'ROLE_TEACHER';
@@ -64,7 +69,7 @@ class User implements AdvancedUserInterface, \Serializable
      * @var string
      *
      * @ORM\Column(type="string", length=100)
-     * @Assert\NotNull(message="form.security.first_name.error.missing")
+     * @Assert\NotNull(message="user.first_name.error.missing", groups={"edition", "creation", "registration"})
      */
     protected $firstName;
 
@@ -72,7 +77,7 @@ class User implements AdvancedUserInterface, \Serializable
      * @var string
      *
      * @ORM\Column(type="string", length=100)
-     * @Assert\NotNull(message="form.security.last_name.error.missing")
+     * @Assert\NotNull(message="user.last_name.error.missing", groups={"edition", "creation", "registration"})
      */
     protected $lastName;
 
@@ -81,7 +86,7 @@ class User implements AdvancedUserInterface, \Serializable
      * @var string
      *
      * @ORM\Column(type="string", length=25, unique=true)
-     * @Assert\NotNull(message="form.security.username.error.missing")
+     * @Assert\NotNull(message="user.username.error.missing", groups={"edition", "creation", "registration"})
      */
     protected $username;
 
@@ -100,7 +105,7 @@ class User implements AdvancedUserInterface, \Serializable
      *
      * @ORM\Column(type="string", length=60, unique=true)
      * @Assert\Email()
-     * @Assert\NotNull(message="form.security.email.error.missing")
+     * @Assert\NotNull(message="user.email.error.missing", groups={"edition", "creation", "registration"})
      */
     protected $email;
     /**
@@ -113,12 +118,14 @@ class User implements AdvancedUserInterface, \Serializable
      * @ORM\Column(type="boolean")
      */
     protected $isActive;
+
     /**
      * @var ProfilePicture
      * @ORM\OneToOne(targetEntity="UserBundle\Entity\ProfilePicture", cascade={"persist"})
      * @ORM\JoinColumn(name="profile_picture_id", referencedColumnName="id", onDelete="CASCADE")
      */
     protected $profilePicture;
+
     /**
      * @var string
      *
@@ -127,8 +134,8 @@ class User implements AdvancedUserInterface, \Serializable
     protected $phone;
     /**
      * @var string
-     * @Assert\NotBlank(message="form.security.password.error.missing")
-     * @Assert\Length(max=4096)
+     * @Assert\NotBlank(message="user.password.error.missing", groups={"creation", "registration"})
+     * @Assert\Length(min=5, max=100, groups={"creation", "registration"})
      */
     private $plainPassword;
 
@@ -136,6 +143,7 @@ class User implements AdvancedUserInterface, \Serializable
     {
         $this->roles = ['ROLE_USER'];
         $this->salt = md5(uniqid(null, true));
+        $this->isActive = true;
     }
 
     /**

@@ -64,25 +64,25 @@ class RoleService
     {
         switch ($role) {
             case Student::ROLE_STUDENT:
-                return $this->translator->trans("layout.user.role.student");
+                return $this->translator->trans("user.role.student");
 
             case User::ROLE_STUDENT_PARENT:
-                return $this->translator->trans("layout.user.role.parent");
+                return $this->translator->trans("user.role.parent");
 
             case User::ROLE_TEACHER:
-                return $this->translator->trans("layout.user.role.teacher");
+                return $this->translator->trans("user.role.teacher");
 
             case User::ROLE_TITULAR:
-                return $this->translator->trans("layout.user.role.titular");
+                return $this->translator->trans("user.role.titular");
 
             case User::ROLE_COURSE_TITULAR:
-                return $this->translator->trans("layout.user.role.course_titular");
+                return $this->translator->trans("user.role.course_titular");
 
             case User::ROLE_COORDINATOR:
-                return $this->translator->trans("layout.user.role.coordinator");
+                return $this->translator->trans("user.role.coordinator");
 
             case User::ROLE_SUPER_ADMIN:
-                return $this->translator->trans("layout.user.role.super_admin");
+                return $this->translator->trans("user.role.super_admin");
         }
 
         return;

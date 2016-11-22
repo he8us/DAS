@@ -1,0 +1,11 @@
+teacher_dashboard:
+  prefix: /dashboard
+  resource: "@TeacherBundle/Resources/config/routing/dashboard.yml"
+
+teacher_calendar:
+  prefix: /calendar
+  resource: "@TeacherBundle/Resources/config/routing/calendar.yml"
+
+teacher_lesson:
+  prefix: /lesson
+  resource: "@TeacherBundle/Resources/config/routing/lesson.yml"

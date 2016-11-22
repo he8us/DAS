@@ -1,4 +1,42 @@
 services:
-#    course.example:
-#        class: CourseBundle\Example
-#        arguments: ["@service_id", "plain_value", %parameter%]
+    courses.datatable.content:
+        class: CourseBundle\Datatables\CourseContentDatatable
+        parent: sg_datatables.datatable.abstract
+
+    courses.datatable.grade:
+        class: CourseBundle\Datatables\GradeDatatable
+        parent: sg_datatables.datatable.abstract
+
+    courses.datatable.grade_class:
+        class: CourseBundle\Datatables\GradeClassDatatable
+        parent: sg_datatables.datatable.abstract
+
+    courses.datatable.lesson:
+        class: CourseBundle\Datatables\LessonDatatable
+        parent: sg_datatables.datatable.abstract
+
+    course.services.grade:
+        class: CourseBundle\Service\GradeService
+        arguments: ['@doctrine']
+
+    course.services.gradeclass:
+        class: CourseBundle\Service\GradeClassService
+        arguments: ['@doctrine', '@course.services.grade']
+
+    course.services.coursecontent:
+        class: CourseBundle\Service\CourseContentService
+        arguments: ['@doctrine']
+
+    course.services.lesson:
+        class: CourseBundle\Service\LessonService
+        arguments: ['@doctrine']
+
+    course.event_listener.lesson_end_date.pre_persist:
+        class: CourseBundle\EventListener\LessonEndDate
+        tags:
+            - {name: doctrine.event_listener, event: prePersist}
+
+    course.event_listener.lesson_end_date.pre_update:
+        class: CourseBundle\EventListener\LessonEndDate
+        tags:
+            - {name: doctrine.event_listener, event: preUpdate}

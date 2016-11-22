@@ -1,0 +1,27 @@
+services:
+    cms.twig_extension:
+        class: CmsBundle\Twig\CMSExtension
+        public: false
+        tags:
+          - { name: twig.extension }
+
+    cms.menu_chain:
+        class: CmsBundle\Menu\MenuChain
+
+    cms.menu.pages:
+        class: CmsBundle\Menu\MenuItem
+        arguments:
+        tags:
+          - {name: cms.menu.item, position: left_menu}
+
+    cms.service.page:
+        class: CmsBundle\Service\PageService
+        arguments: ["@doctrine"]
+
+    cms.datatable.page:
+        class: CmsBundle\Datatables\PageDatatable
+        parent: sg_datatables.datatable.abstract
+
+#    cms.example:
+#        class: CmsBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]

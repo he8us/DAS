@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
+  <file date="2016-11-15T12:52:44Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
+    <header>
+      <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
+      <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
+    </header>
+    <body>
+      <trans-unit id="30b98242129bc5171bbada2b4385491392060117" resname="course.lesson.end_date">
+        <source>course.lesson.end_date</source>
+        <target>Fin de la leçon</target>
+        <jms:reference-file line="63">/../src/TeacherBundle/Resources/views/Lesson/index.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="a266a9b80f43a8b26f0f04af1442e261949b2634" resname="course.lesson.grades">
+        <source>course.lesson.grades</source>
+        <target>Années</target>
+        <jms:reference-file line="67">/../src/TeacherBundle/Resources/views/Lesson/index.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="8a856ed39b6f4b48eb0a526b5eb7eadf97d0faee" resname="course.lesson.room">
+        <source>course.lesson.room</source>
+        <target>Local</target>
+        <jms:reference-file line="65">/../src/TeacherBundle/Resources/views/Lesson/index.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="071ec5a442b5e0d1d3b2ac526e0be6d0552c36e8" resname="course.lesson.start_date">
+        <source>course.lesson.start_date</source>
+        <target>Début de la leçon</target>
+        <jms:reference-file line="61">/../src/TeacherBundle/Resources/views/Lesson/index.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="a64fffed7ce77a694e5217cf0304764d7b4b58aa" resname="student.lesson.already_registered">
+        <source>student.lesson.already_registered</source>
+        <target>Déjà inscrit pour la leçon</target>
+        <jms:reference-file line="89">/../src/TeacherBundle/Resources/views/Lesson/index.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="4616c0ec96a131681cb825ca428dcab4f5b4a6ae" resname="student.lesson.not_registered">
+        <source>student.lesson.not_registered</source>
+        <target>Tu n'es pas inscrit pour cette leçon</target>
+        <jms:reference-file line="113">/../src/TeacherBundle/Resources/views/Lesson/index.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="8c457b595e8c01036b38ef9f471b97a975dde555" resname="student.lesson.register">
+        <source>student.lesson.register</source>
+        <target>S'inscrire pour la leçon</target>
+        <jms:reference-file line="109">/../src/TeacherBundle/Resources/views/Lesson/index.html.twig</jms:reference-file>
+        <jms:reference-file line="116">/../src/TeacherBundle/Resources/views/Lesson/index.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="c1e27866c4b5f0dc33fc97c938d9c00a5614bbf5" resname="student.lesson.registered_at">
+        <source>student.lesson.registered_at</source>
+        <target>Date d'inscription</target>
+        <jms:reference-file line="94">/../src/TeacherBundle/Resources/views/Lesson/index.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="92a8e0e39a7b2333b8e7367b746a1fe5a886976c" resname="student.lesson.registration_status">
+        <source>student.lesson.registration_status</source>
+        <target>Statut de ton inscription</target>
+        <jms:reference-file line="82">/../src/TeacherBundle/Resources/views/Lesson/index.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="38eaaa9919fb007d8ce0505a9a1acb8e1b1978bc" resname="student.lesson.unregister">
+        <source>student.lesson.unregister</source>
+        <target>Me désinscrire</target>
+        <jms:reference-file line="104">/../src/TeacherBundle/Resources/views/Lesson/index.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="d436d89782306c8226a6126f1c3ec203a84ba386" resname="student.lesson.unregistered">
+        <source>student.lesson.unregistered</source>
+        <target>Inscription annulée</target>
+        <jms:reference-file line="91">/../src/TeacherBundle/Resources/views/Lesson/index.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="120adea9b41513abd6d5e26bcc2082cec8659a8d" resname="student.lesson.unregistered_at">
+        <source>student.lesson.unregistered_at</source>
+        <target>Date d'annulation</target>
+        <jms:reference-file line="97">/../src/TeacherBundle/Resources/views/Lesson/index.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="0a313c642c7c4eab41abd262106a6a9c3bce8f0b" resname="teacher.lesson.informations">
+        <source>teacher.lesson.informations</source>
+        <target>Information sur le cours</target>
+        <jms:reference-file line="55">/../src/TeacherBundle/Resources/views/Lesson/index.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="2f6bca4782d7840dcd53a28b4139ba983ee8aeab" resname="teacher.lesson.no_students">
+        <source>teacher.lesson.no_students</source>
+        <target>Pas d'étudiants inscrits</target>
+        <jms:reference-file line="139">/../src/TeacherBundle/Resources/views/Lesson/index.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="4198e4c0af53aebfbb67d50aa07978bfd83bc375" resname="teacher.lesson.registered_students">
+        <source>teacher.lesson.registered_students</source>
+        <target>Etudiants inscrits</target>
+        <jms:reference-file line="127">/../src/TeacherBundle/Resources/views/Lesson/index.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="c905a9b492987753b981ed0c961a8ce8b361ecb3" resname="teacher.lesson.remarks">
+        <source>teacher.lesson.remarks</source>
+        <target>Remarques</target>
+        <jms:reference-file line="22">/../src/TeacherBundle/Resources/views/Lesson/index.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="4caaf2b4902226edef851f06b65fec6b52c1b228" resname="teacher.lesson.remarks.save">
+        <source>teacher.lesson.remarks.save</source>
+        <target>Enregistrer</target>
+        <jms:reference-file line="45">/../src/TeacherBundle/Resources/views/Lesson/index.html.twig</jms:reference-file>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

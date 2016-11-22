@@ -1,10 +1,10 @@
 {% extends ":templates:box-with-footer.html.twig" %}
 
-{% block title %}{{ "layout.lost_password" | trans }}{% endblock %}
-{% block box_title %}{{ "layout.lost_password" | trans }}{% endblock %}
+{% block title %}{{ "user.profile.lost_password.title" | trans }}{% endblock %}
+{% block box_title %}{{ "user.profile.lost_password.title" | trans }}{% endblock %}
 {% block box_body_content %}
     <p>
-        {{ 'resetting.check_email'|trans({'%email%': email}) }}
+        {{ 'user.resetpassword.check_email'|trans({'%email%': email}) }}
     </p>
 {% endblock %}
 

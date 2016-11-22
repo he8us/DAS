@@ -1,3 +1,5 @@
+
+# This route should be the last one defined
 remove_trailing_slash:
     path: /{url}
     defaults:

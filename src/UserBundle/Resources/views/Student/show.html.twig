@@ -1,0 +1,45 @@
+{% extends "UserBundle:User:show.html.twig" %}
+
+{% block title %}
+    {{ "user.student.show.title" | trans }}
+{% endblock %}
+
+{% block box_title %}
+    {{ "user.student.show.title" | trans }}
+{% endblock %}
+
+{% block box_actions %}
+    {{ action.back('user.student.back_to_list' | trans, 'user_student_index') }}
+    {{ action.edit('user.student.edit' | trans, 'user_student_edit', student.id) }}
+    {{ action.delete('user.student.delete' | trans, delete_form) }}
+{% endblock %}
+
+{% block box_body_content %}
+    <div class="row">
+        <div class="col-md-4 profile-picture">
+            <div class="picture">
+                {{ profile_picture(student) }}
+            </div>
+        </div>
+
+
+        <div class="col-md-8">
+            <dl class="dl-horizontal">
+                <dt>{{ 'user.student.last_name' | trans }}</dt>
+                <dd>{{ student.lastName }}</dd>
+
+                <dt>{{ 'user.student.first_name' | trans }}</dt>
+                <dd>{{ student.firstName }}</dd>
+
+                <dt>{{ 'user.student.username' | trans }}</dt>
+                <dd>{{ student.username }}</dd>
+
+                <dt>{{ 'user.student.email' | trans }}</dt>
+                <dd>{{ student.email }}</dd>
+
+                <dt>{{ 'user.student.barcode' | trans }}</dt>
+                <dd>{{ student.barcode }}</dd>
+            </dl>
+        </div>
+    </div>
+{% endblock %}

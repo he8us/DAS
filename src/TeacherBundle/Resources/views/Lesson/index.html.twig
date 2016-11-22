@@ -1,0 +1,147 @@
+{% extends '::base.html.twig' %}
+
+{% if form %}
+    {% form_theme form "bootstrap_3_layout.html.twig" %}
+{% endif %}
+
+{% block body %}
+    <section class="content-header">
+        <h1>{{ lesson.content.name }}</h1>
+    </section>
+    <div class="content">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="box box-primary">
+
+                    {% if editable and is_granted('ROLE_TEACHER') %}
+                        {{ form_start(form) }}
+                    {% endif %}
+
+                    <div class="box-header with-border">
+                        <div class="box-title">
+                            {{ "teacher.lesson.remarks" | trans }}
+                        </div>
+
+                        <div class="box-tools pull-right">
+                            {% if is_granted('ROLE_TEACHER') %}
+                                {{ action.back('teacher.lesson.back_to_list', 'teacher_dashboard_index') }}
+                            {% elseif is_granted('ROLE_STUDENTS') %}
+                                {{ action.back('student.lesson.back_to_list', 'student_dashboard_home') }}
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="box-body">
+                        {% if editable and is_granted('ROLE_TEACHER') %}
+                            {{ form_widget(form) }}
+                        {% else %}
+                            {{ lesson.remarks | raw }}
+                        {% endif %}
+                    </div>
+
+                    {% if editable and is_granted('ROLE_TEACHER') %}
+                        <div class="box-footer">
+                            <button class="btn btn-primary pull-right"
+                                    type="submit">{{ "teacher.lesson.remarks.save" | trans }}</button>
+                        </div>
+                        {{ form_end(form) }}
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box box-default">
+                    <div class="box-header">
+                        <div class="box-title">
+                            {{ "teacher.lesson.informations" | trans }}
+                        </div>
+                    </div>
+
+                    <div class="box-body">
+                        <dl>
+                            <dt>{{ 'course.lesson.start_date' | trans }}</dt>
+                            <dd>{{ lesson.startDate | date }}</dd>
+                            <dt>{{ 'course.lesson.end_date' | trans }}</dt>
+                            <dd>{{ lesson.endDate | date }}</dd>
+                            <dt>{{ 'course.lesson.room' | trans }}</dt>
+                            <dd>{{ lesson.room }}</dd>
+                            <dt>{{ 'course.lesson.grades' | trans }}</dt>
+                            <dd>
+                                {% for grade in lesson.grades %}
+                                    {{ grade.grade }}
+                                {% endfor %}
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+
+                {% if is_granted('ROLE_STUDENT') %}
+                    <div class="box box-default">
+                        <div class="box-header">
+                            <div class="box-title">
+
+                                {{ "student.lesson.registration_status" | trans }}
+                            </div>
+                        </div>
+
+                        <div class="box-body">
+                            {% if registration %}
+                                {% if not registration.isDeleted %}
+                                    <p>{{ 'student.lesson.already_registered' | trans }}</p>
+                                {% else %}
+                                    <p>{{ 'student.lesson.unregistered' | trans }}</p>
+                                {% endif %}
+                                <dl>
+                                    <dt>{{ 'student.lesson.registered_at' | trans }}</dt>
+                                    <dd>{{ registration.createdAt | date }}</dd>
+                                    {% if registration.isDeleted %}
+                                        <dt>{{ 'student.lesson.unregistered_at' | trans }}</dt>
+                                        <dd>{{ registration.deletedAt | date }}</dd>
+                                    {% endif %}
+                                </dl>
+                                {% if not registration.isDeleted %}
+                                    <a href="{{ path("student_lesson_unregister", {"id": lesson.id}) }}"
+                                       class="pull-right btn btn-danger">
+                                        {{ 'student.lesson.unregister' | trans }}
+                                    </a>
+                                {% else %}
+                                    <a href="{{ path("student_lesson_register", {"id": lesson.id}) }}"
+                                       class="pull-right btn btn-primary">
+                                        {{ 'student.lesson.register' | trans }}
+                                    </a>
+                                {% endif %}
+                            {% else %}
+                                <p>{{ 'student.lesson.not_registered' | trans }}</p>
+                                <a href="{{ path("student_lesson_register", {"id": lesson.id}) }}"
+                                   class="pull-right btn btn-primary">
+                                    {{ 'student.lesson.register' | trans }}
+                                </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endif %}
+
+                {% if is_granted('ROLE_TEACHER') %}
+                    <div class="box box-default">
+                        <div class="box-header">
+                            <div class="box-title">
+                                {{ "teacher.lesson.registered_students" | trans }}
+                            </div>
+                        </div>
+
+                        <div class="box-body">
+                            {% if lesson.studentRegistrations is not empty %}
+                                <ol class="student_list list">
+                                    {% for registration in lesson.studentRegistrations %}
+                                        <li>{{ registration.student.firstName }} {{ registration.student.lastName }}</li>
+                                    {% endfor %}
+                                </ol>
+                            {% else %}
+                                {{ "teacher.lesson.no_students" | trans }}
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

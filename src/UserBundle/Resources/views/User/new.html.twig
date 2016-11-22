@@ -1,5 +1,8 @@
-{% extends ":templates:box-with-footer.html.twig" %}
+{% extends "UserBundle:User:edit.html.twig" %}
 
-{% block box_body_content %}
-    TODO: Implement this action
+{% block title %}{{ 'user.user.new.title' | trans }}{% endblock %}
+{% block box_title %}{{ 'user.user.new.title' | trans }}{% endblock %}
+
+{% block box_footer %}
+    {{ action.save('user.users.create' | trans) }}
 {% endblock %}

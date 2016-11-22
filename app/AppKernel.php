@@ -32,11 +32,19 @@ class AppKernel extends Kernel
 
             new DZunke\FeatureFlagsBundle\DZunkeFeatureFlagsBundle(),
 
+            new Gregwar\CaptchaBundle\GregwarCaptchaBundle(),
+            new He8us\FeedbackBundle\He8usFeedbackBundle(),
+            new Bazinga\Bundle\JsTranslationBundle\BazingaJsTranslationBundle(),
+            new Endroid\Bundle\QrCodeBundle\EndroidQrCodeBundle(),
+            new Liuggio\ExcelBundle\LiuggioExcelBundle(),
+
             new CoreBundle\CoreBundle(),
             new UserBundle\UserBundle(),
-            new CMSBundle\CMSBundle(),
+            new CmsBundle\CmsBundle(),
             new CourseBundle\CourseBundle(),
             new StudentBundle\StudentBundle(),
+            new FeedbackBundle\FeedbackBundle(),
+            new TeacherBundle\TeacherBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test', 'acceptance'], true)) {

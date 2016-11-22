@@ -2,9 +2,9 @@ include:
   - User.yml
 
 UserBundle\Entity\Titular:
-  titular_1 (extends user):
+  titular-1 (extends user):
     username: titular
     password: 12345
 
-  titular_{2..10} (extends user):
+  titular-{2..10} (extends user):
 

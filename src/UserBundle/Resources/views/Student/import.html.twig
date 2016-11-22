@@ -1,20 +1,22 @@
 {% extends ':templates:box-with-footer.html.twig' %}
 
-{% block title %}{{ 'layout.student.import' | trans }}{% endblock %}
-{% block box_title %}{{ 'layout.student.import' | trans }}{% endblock %}
+{% form_theme form "bootstrap_3_layout.html.twig" %}
 
-{% block box_start %}
+{% block title %}{{ 'user.student.import.title' | trans }}{% endblock %}
+{% block box_title %}{{ 'user.student.import.title' | trans }}{% endblock %}
+
+{% block box_form_start %}
     {{ form_start(form) }}
 {% endblock %}
 
 {% block box_body_content %}
-    {{ form_rest(form) }}
+    {{ form_widget(form) }}
 {% endblock %}
 
 {% block box_footer %}
-    <input type="submit" class="btn btn-primary pull-right" value="{{ "form.user.import.student.submit" | trans }}"/>
+    {{ action.import_save("user.student.import.submit" | trans) }}
 {% endblock %}
 
-{% block box_end %}
+{% block box_form_end %}
     {{ form_end(form) }}
 {% endblock %}

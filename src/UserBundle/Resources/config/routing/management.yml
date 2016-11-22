@@ -1,0 +1,7 @@
+user_management:
+  resource: "@UserBundle/Resources/config/routing/management/user.yml"
+  prefix: /users
+
+student_management:
+  resource: "@UserBundle/Resources/config/routing/management/student.yml"
+  prefix: /students

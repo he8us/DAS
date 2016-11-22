@@ -27,7 +27,7 @@ default:
 
         cms_suite:
             type: symfony_bundle
-            bundle: CMSBundle
+            bundle: CmsBundle
             contexts:
-                - CMSBundle\Features\Context\CMSContext
+                - CmsBundle\Features\Context\CMSContext
                 - Fidry\AliceBundleExtension\Context\Doctrine\AliceORMContext

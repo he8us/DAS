@@ -1,0 +1,37 @@
+{% extends ':templates:box.html.twig' %}
+
+
+{% block title %}{{ "cms.page.show.title" | trans }}{% endblock %}
+{% block box_title %}{{ "cms.page.show.title" | trans }}{% endblock %}
+
+{% block box_actions %}
+    {{ action.back('cms.page.back_to_list' | trans, 'cms_page_index') }}
+    {{ action.edit('cms.page.edit', 'cms_page_edit', page.id) }}
+    {{ action.delete('cms.page.delete' | trans, delete_form) }}
+{% endblock %}
+
+
+{% block box_body_content %}
+
+    <table>
+        <tbody>
+        <tr>
+            <th>{{ 'cms.page.id' | trans }}</th>
+            <td>{{ page.id }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'cms.page.title' | trans }}</th>
+            <td>{{ page.title }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'cms.page.slug' | trans }}</th>
+            <td><a href="{{ path('cms_page_see', {'slug' : page.slug}) }}">{{ path('cms_page_see', {'slug' : page.slug}) }}</a></td>
+        </tr>
+        <tr>
+            <th>{{ 'cms.page.body' | trans }}</th>
+            <td>{{ page.body | raw }}</td>
+        </tr>
+
+        </tbody>
+    </table>
+{% endblock %}

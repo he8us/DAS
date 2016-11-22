@@ -1,4 +1,4 @@
-{% block profile_picture_row -%}
+{% block profile_picture_row %}
     <div class="profile-picture">
         {{ form_label(form) }}
         {{ form_widget(form) }}
@@ -19,17 +19,14 @@
 {% block profile_picture_widget %}
     {% spaceless %}
         <div>
+            {{ form_widget(form) }}
 
             {% if fileUrl is defined and fileUrl %}
                 <div class="picture">
                     <img src="{{ fileUrl | imagine_filter('profile_picture') }}" class="img-circle"
-                         alt="{{ 'layout.user.profile.picture' | trans }}">
+                         alt="{{ 'user.profile.picture' | trans }}">
                 </div>
             {% endif %}
-
-
-            {{ form_widget(form) }}
-
         </div>
     {% endspaceless %}
 {% endblock %}

@@ -1,0 +1,24 @@
+{% extends ":templates:box-with-footer.html.twig" %}
+
+{% block title %}{{ 'user.student.edit.title' | trans }}{% endblock %}
+{% block box_title %}{{ 'user.student.edit.title' | trans }}{% endblock %}
+
+{% block box_actions %}
+    {{ action.back('user.student.back_to_list' | trans, 'user_student_index') }}
+    {% if delete_form is defined %}
+        {{ action.delete('user.student.delete' | trans, delete_form) }}
+    {% endif %}
+{% endblock %}
+
+{% block box_form_start %} {{ form_start(form) }}{% endblock %}
+
+{% block box_body_content %}
+    {{ form_widget(form) }}
+{% endblock %}
+
+{% block box_footer %}
+    {{ action.save('user.student.edit' | trans) }}
+{% endblock %}
+{% block box_form_end %}
+    {{ form_end(form) }}
+{% endblock %}

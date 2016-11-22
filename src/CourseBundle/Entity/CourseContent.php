@@ -4,7 +4,7 @@ namespace CourseBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\ORM\Mapping\UniqueConstraint;
+use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 use UserBundle\Entity\Teacher;
 use UserBundle\Entity\Titular;
@@ -13,15 +13,15 @@ use UserBundle\Entity\Titular;
 /**
  * CourseContent
  *
- * @ORM\Table(name="course_content",uniqueConstraints={
- *          @UniqueConstraint(name="IDX_PARENT", columns={"parent_id"})
- *     }
- * )
+ * @ORM\Table(name="course_content", indexes={
+ *       @ORM\Index(name="IDX_PARENT", columns={"parent_id"})
+ * })
  * @ORM\Entity(repositoryClass="CourseBundle\Repository\CourseContentRepository")
  */
 class CourseContent
 {
     use TimestampableEntity;
+    use SoftDeleteableEntity;
 
 
     /**
@@ -39,7 +39,7 @@ class CourseContent
      *
      * @ORM\Column(name="name", type="string", length=100)
      */
-    private $section;
+    private $name;
 
 
     /**
@@ -54,7 +54,7 @@ class CourseContent
     /**
      * @var ArrayCollection
      *
-     * @ORM\ManyToMany(targetEntity="UserBundle\Entity\Teacher", mappedBy="courses")
+     * @ORM\ManyToMany(targetEntity="UserBundle\Entity\Teacher", inversedBy="courses")
      * @ORM\JoinColumn(name="teacher_id", referencedColumnName="id", onDelete="SET NULL")
      */
     private $teachers;
@@ -79,6 +79,12 @@ class CourseContent
 
 
     /**
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="CourseBundle\Entity\Lesson", mappedBy="content")
+     */
+    private $lessons;
+
+    /**
      * CourseContent constructor.
      */
     public function __construct()
@@ -86,6 +92,7 @@ class CourseContent
         $this->teachers = new ArrayCollection();
         $this->grades = new ArrayCollection();
         $this->titulars = new ArrayCollection();
+        $this->lessons = new ArrayCollection();
     }
 
     /**
@@ -93,7 +100,7 @@ class CourseContent
      *
      * @return int
      */
-    public function getId() : int
+    public function getId()
     {
         return $this->id;
     }
@@ -103,21 +110,21 @@ class CourseContent
      *
      * @return string
      */
-    public function getSection()
+    public function getName()
     {
-        return $this->section;
+        return $this->name;
     }
 
     /**
      * Set name
      *
-     * @param string $section
+     * @param string $name
      *
      * @return CourseContent
      */
-    public function setSection(string $section): CourseContent
+    public function setName(string $name)
     {
-        $this->section = $section;
+        $this->name = $name;
 
         return $this;
     }
@@ -135,7 +142,7 @@ class CourseContent
      *
      * @return CourseContent
      */
-    public function setParent(CourseContent $parent): CourseContent
+    public function setParent(CourseContent $parent)
     {
         $this->parent = $parent;
         return $this;
@@ -144,7 +151,7 @@ class CourseContent
     /**
      * @return ArrayCollection
      */
-    public function getTeachers(): ArrayCollection
+    public function getTeachers()
     {
         return $this->teachers;
     }
@@ -154,7 +161,7 @@ class CourseContent
      *
      * @return CourseContent
      */
-    public function addTeacher(Teacher $teacher): CourseContent
+    public function addTeacher(Teacher $teacher)
     {
         $this->teachers->add($teacher);
         return $this;
@@ -175,7 +182,7 @@ class CourseContent
     /**
      * @return ArrayCollection
      */
-    public function getTitulars(): ArrayCollection
+    public function getTitulars()
     {
         return $this->titulars;
     }
@@ -185,7 +192,7 @@ class CourseContent
      *
      * @return CourseContent
      */
-    public function addTitular(Titular $teacher): CourseContent
+    public function addTitular(Titular $teacher)
     {
         $this->titulars->add($teacher);
         return $this;
@@ -207,7 +214,7 @@ class CourseContent
     /**
      * @return ArrayCollection
      */
-    public function getGrades(): ArrayCollection
+    public function getGrades()
     {
         return $this->grades;
     }
@@ -218,7 +225,7 @@ class CourseContent
      *
      * @return CourseContent
      */
-    public function addGrade(Grade $grade): CourseContent
+    public function addGrade(Grade $grade)
     {
         $this->grades->add($grade);
         return $this;
@@ -230,7 +237,7 @@ class CourseContent
      *
      * @return CourseContent
      */
-    public function removeGrade(Grade $grade): CourseContent
+    public function removeGrade(Grade $grade)
     {
         $this->grades->removeElement($grade);
         return $this;

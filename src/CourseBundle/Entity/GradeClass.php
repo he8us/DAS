@@ -2,20 +2,25 @@
 
 namespace CourseBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
+use UserBundle\Entity\Student;
 use UserBundle\Entity\Titular;
 
 /**
  * Class
  *
- * @ORM\Table(name="grade_class", uniqueConstraints={@ORM\UniqueConstraint(name="grade_class_unique",
- *                                columns={"grade_id", "section"})})
+ * @ORM\Table(name="grade_class", uniqueConstraints={
+ *     @ORM\UniqueConstraint(name="UNIQ_GRADE_CLASS", columns={"grade_id", "section"})
+ * })
  * @ORM\Entity(repositoryClass="CourseBundle\Repository\GradeClassRepository")
  */
 class GradeClass
 {
     use TimestampableEntity;
+    use SoftDeleteableEntity;
 
     /**
      * @var int
@@ -29,7 +34,7 @@ class GradeClass
     /**
      * @var Grade
      *
-     * @ORM\ManyToOne(targetEntity="CourseBundle\Entity\Grade", inversedBy="sections")
+     * @ORM\ManyToOne(targetEntity="CourseBundle\Entity\Grade", inversedBy="gradeClasses")
      * @ORM\JoinColumn(name="grade_id", referencedColumnName="id", nullable=false, onDelete="CASCADE")
      */
     private $grade;
@@ -51,11 +56,23 @@ class GradeClass
     private $titular;
 
     /**
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="UserBundle\Entity\Student", mappedBy="gradeClass")
+     */
+    private $students;
+
+    public function __construct()
+    {
+        $this->students = new ArrayCollection();
+    }
+
+    /**
      * Get id
      *
      * @return int
      */
-    public function getId() : int
+    public function getId()
     {
         return $this->id;
     }
@@ -65,7 +82,7 @@ class GradeClass
      *
      * @return Grade
      */
-    public function getGrade() : Grade
+    public function getGrade()
     {
         return $this->grade;
     }
@@ -75,9 +92,9 @@ class GradeClass
      *
      * @param Grade $grade
      *
-     * @return GradeClass
+     * @return $this
      */
-    public function setGrade(Grade $grade) : GradeClass
+    public function setGrade(Grade $grade)
     {
         $this->grade = $grade;
 
@@ -87,7 +104,7 @@ class GradeClass
     /**
      * @return string
      */
-    public function getSection(): string
+    public function getSection()
     {
         return $this->section;
     }
@@ -95,9 +112,9 @@ class GradeClass
     /**
      * @param string $section
      *
-     * @return GradeClass
+     * @return $this
      */
-    public function setSection(string $section) : GradeClass
+    public function setSection(string $section)
     {
         $this->section = $section;
         return $this;
@@ -106,7 +123,7 @@ class GradeClass
     /**
      * @return Titular
      */
-    public function getTitular(): Titular
+    public function getTitular()
     {
         return $this->titular;
     }
@@ -114,12 +131,43 @@ class GradeClass
     /**
      * @param Titular $titular
      *
-     * @return GradeClass
+     * @return $this
      */
-    public function setTitular(Titular $titular): GradeClass
+    public function setTitular(Titular $titular)
     {
         $this->titular = $titular;
         return $this;
+    }
+
+    /**
+     * @param Student $student
+     *
+     * @return $this
+     *
+     */
+    public function addStudents(Student $student)
+    {
+        $this->students->add($student);
+        return $this;
+    }
+
+    /**
+     * @param Student $student
+     *
+     * @return $this
+     */
+    public function deleteStudent(Student $student)
+    {
+        $this->students->removeElement($student);
+        return $this;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getStudents()
+    {
+        return $this->students;
     }
 }
 

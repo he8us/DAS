@@ -11,12 +11,18 @@ namespace UserBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
-use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use UserBundle\Entity\User;
 
+/**
+ * Class UserType
+ *
+ * @package UserBundle\Form
+ *
+ * @author Cedric Michaux <cedric@he8us.be>
+ */
 class UserType extends AbstractType
 {
     /**
@@ -30,49 +36,43 @@ class UserType extends AbstractType
                 'lastName',
                 TextType::class,
                 [
-                    "label" => "form.user.last_name",
+                    "label" => "user.last_name",
                 ]
             )
             ->add(
                 'firstName',
                 TextType::class,
                 [
-                    "label" => "form.user.first_name",
+                    "label" => "user.first_name",
                 ]
             )
             ->add(
                 'username',
                 TextType::class,
                 [
-                    'label' => "form.user.username",
+                    'label' => "user.username",
                 ]
             )
             ->add(
                 'plainPassword',
-                RepeatedType::class,
+                PasswordType::class,
                 [
-                    'type'            => PasswordType::class,
-                    'invalid_message' => 'form.user.password.should_match',
-                    'first_options'   => ['label' => 'form.user.password'],
-                    'second_options'  => ['label' => 'form.user.password.repeat'],
+                    'label'    => 'user.password',
+                    'required' => false,
                 ]
             )
             ->add(
                 'email',
-                RepeatedType::class,
+                EmailType::class,
                 [
-                    'type'            => EmailType::class,
-                    'invalid_message' => 'form.user.email.should_match',
-                    'first_options'   => ['label' => 'form.user.email'],
-                    'second_options'  => ['label' => 'form.user.email.repeat'],
-
+                    'label' => 'user.email',
                 ]
             )
             ->add(
                 'phone',
                 TextType::class,
                 [
-                    'label' => 'form.user.phone',
+                    'label' => 'user.phone',
                 ]
             )
             ->add(
@@ -93,6 +93,16 @@ class UserType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => User::class,
+        ]);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults([
+            'validation_groups' => ['edition'],
         ]);
     }
 }

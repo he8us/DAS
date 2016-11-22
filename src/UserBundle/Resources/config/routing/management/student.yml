@@ -1,0 +1,45 @@
+user_student_index:
+    path:     /
+    defaults:
+      _controller: UserBundle:Student:index
+
+user_student_new:
+    path: /new
+    defaults:
+      _controller: UserBundle:Student:new
+
+user_student_import:
+    path: /import
+    defaults:
+      _controller: UserBundle:Student:import
+
+
+user_student_results:
+    path: /result
+    defaults:
+      _controller: UserBundle:Student:results
+
+user_student_show:
+    path: /{id}/show
+    defaults:
+      _controller: UserBundle:Student:show
+    options:
+      expose: true
+
+user_student_edit:
+    path: /{id}/edit
+    defaults:
+      _controller: UserBundle:Student:edit
+    options:
+        expose: true
+
+user_student_delete:
+    path:     /{id}/delete
+    defaults:
+        _controller: UserBundle:Student:delete
+    methods:  DELETE
+
+user_student_generateCards:
+    path: /cards
+    defaults:
+      _controller: UserBundle:Student:generateCard

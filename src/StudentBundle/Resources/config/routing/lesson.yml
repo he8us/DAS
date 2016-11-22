@@ -1,0 +1,23 @@
+student_lesson_details:
+    path:     /{id}/show
+    defaults: { _controller: StudentBundle:Lesson:index }
+    requirements:
+        id: \d+
+
+student_lesson_register:
+    path: /{id}/register/{confirm}
+    defaults:
+        _controller: StudentBundle:Lesson:register
+        confirm: no
+    requirements:
+        id: \d+
+        confirm: yes|no
+
+student_lesson_unregister:
+    path: /{id}/unregister/{confirm}
+    defaults:
+        _controller: StudentBundle:Lesson:unregister
+        confirm: no
+    requirements:
+        id: \d+
+        confirm: yes|no

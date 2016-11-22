@@ -1,0 +1,93 @@
+label.required:after {
+    content: " *";
+}
+
+label[for="fos_user_registration_form_profilePicture_profilePictureFile"],
+label[for="fos_user_profile_form_profilePicture_profilePictureFile"] {
+    display: none;
+}
+
+.profile-picture {
+}
+
+.profile-picture .picture {
+    text-align: center;
+    padding: 10px 0;
+}
+
+.form-horizontal .form-group {
+    margin-right: 0;
+    margin-left: 0;
+}
+
+.wrapper {
+    z-index: 1;
+}
+
+#feedback_wrapper_div.left {
+    bottom: 45px;
+    z-index: 7;
+}
+
+.dataTable .btn {
+    margin-left: 10px;
+}
+
+.dataTable .btn:first-child {
+    margin-left: 0;
+}
+
+.form-group {
+    clear: both;
+}
+
+.box-actions form {
+    display: inline-block;
+}
+
+.form-group .checkbox {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.fc .fc-toolbar,
+.fc .fc-day-header {
+    text-transform: capitalize;
+}
+
+.fc-event-past {
+    background-color: crimson;
+    border-color: crimson;
+}
+
+.fc-event-today {
+    background-color: yellowgreen;
+    border-color: yellowgreen;
+}
+
+.fc-event-present {
+    background-color: orange;
+    border-color: orange;
+}
+
+.fc-event-future {
+    background-color: green;
+    border-color: green;
+}
+
+.fc-event-registered {
+    background-color: #3a87ad;
+}
+
+.dataTable .remarks div{
+    max-height: 90px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+    display: -webkit-box;
+}
+
+.box-body table th{
+    vertical-align: top;
+}

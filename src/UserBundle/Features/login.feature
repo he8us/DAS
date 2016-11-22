@@ -25,3 +25,4 @@ Feature: A user is able to log in the application
       | Titular        | User      | he8us    | 12345    |
       | Course Titular | User      | he8us    | 12345    |
       | Parent         | User      | he8us    | 12345    |
+      | Super Admin    | User      | he8us    | 12345    |

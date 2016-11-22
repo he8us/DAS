@@ -10,3 +10,8 @@ services:
                 - { name: doctrine.event_subscriber, connection: default }
             calls:
                 - [ setAnnotationReader, [ "@annotation_reader" ] ]
+
+    core.faker.provider.lorem:
+        class: CoreBundle\DataFixtures\Faker\Provider\LoremProvider
+        tags:
+          - { name: hautelook_alice.faker.provider }

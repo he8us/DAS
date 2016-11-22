@@ -5,17 +5,41 @@ namespace UserBundle\Entity;
 use CourseBundle\Entity\GradeClass;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\UniqueConstraint;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
+use Gedmo\Timestampable\Traits\TimestampableEntity;
+use StudentBundle\Entity\StudentRegistration;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 use UserBundle\Repository\StudentRepository;
 
 /**
  * Student
- *
+ * @ORM\Table(name="student", uniqueConstraints={
+ *     @UniqueConstraint(name="UNIQ_USERNAME", columns={"username"}),
+ *     @UniqueConstraint(name="UNIQ_EMAIL", columns={"email"}),
+ *     @UniqueConstraint(name="UNIQ_PROFILEPICTURE", columns={"profile_picture_id"})
+ * })
  * @ORM\Entity(repositoryClass="UserBundle\Repository\StudentRepository")
+ * @UniqueEntity(
+ *     fields={"username"},
+ *     message="user.student.username.error.duplicate",
+ *     repositoryMethod="findByUniqueCriteria",
+ *     groups={"edition", "creation"}
+ * )
+ * @UniqueEntity(
+ *     fields={"email"},
+ *     message="user.student.email.error.duplicate",
+ *     repositoryMethod="findByUniqueCriteria",
+ *     groups={"edition", "creation"}
+ * )
  */
 class Student implements AdvancedUserInterface, \Serializable
 {
+    use TimestampableEntity;
+    use SoftDeleteableEntity;
+
     const ROLE_STUDENT = 'ROLE_STUDENT';
 
     /**
@@ -70,8 +94,14 @@ class Student implements AdvancedUserInterface, \Serializable
     private $username;
 
     /**
+     * @var int
+     * @ORM\Column(type="integer", unique=true)
+     */
+    private $number;
+
+    /**
      * @var GradeClass
-     * @ORM\ManyToOne(targetEntity="CourseBundle\Entity\GradeClass")
+     * @ORM\ManyToOne(targetEntity="CourseBundle\Entity\GradeClass", inversedBy="students")
      * @ORM\JoinColumn(name="grade_class_id", referencedColumnName="id", onDelete="SET NULL")
      */
     private $gradeClass;
@@ -96,18 +126,26 @@ class Student implements AdvancedUserInterface, \Serializable
     private $roles;
 
     /**
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="StudentBundle\Entity\StudentRegistration", mappedBy="student")
+     */
+    private $registeredLessons;
+
+    /**
      * Student constructor.
      */
     public function __construct()
     {
         $this->parents = new ArrayCollection();
         $this->roles = ['ROLE_STUDENT'];
+        $this->isActive = true;
+        $this->registeredLessons = new ArrayCollection();
     }
 
     /**
      * @return int
      */
-    public function getId(): int
+    public function getId()
     {
         return $this->id;
     }
@@ -147,7 +185,7 @@ class Student implements AdvancedUserInterface, \Serializable
      *
      * @return string The username
      */
-    public function getUsername(): string
+    public function getUsername()
     {
         return $this->username;
     }
@@ -167,7 +205,7 @@ class Student implements AdvancedUserInterface, \Serializable
     /**
      * @return GradeClass
      */
-    public function getGradeClass(): GradeClass
+    public function getGradeClass()
     {
         return $this->gradeClass;
     }
@@ -186,7 +224,7 @@ class Student implements AdvancedUserInterface, \Serializable
     /**
      * @return string
      */
-    public function getBarcode(): string
+    public function getBarcode()
     {
         return $this->barcode;
     }
@@ -205,7 +243,7 @@ class Student implements AdvancedUserInterface, \Serializable
     /**
      * @return ArrayCollection
      */
-    public function getParents(): ArrayCollection
+    public function getParents()
     {
         return $this->parents;
     }
@@ -236,7 +274,7 @@ class Student implements AdvancedUserInterface, \Serializable
     /**
      * @return string
      */
-    public function getFirstName(): string
+    public function getFirstName()
     {
         return $this->firstName;
     }
@@ -255,7 +293,7 @@ class Student implements AdvancedUserInterface, \Serializable
     /**
      * @return string
      */
-    public function getLastName(): string
+    public function getLastName()
     {
         return $this->lastName;
     }
@@ -274,7 +312,7 @@ class Student implements AdvancedUserInterface, \Serializable
     /**
      * @return string
      */
-    public function getEmail(): string
+    public function getEmail()
     {
         return $this->email;
     }
@@ -293,7 +331,7 @@ class Student implements AdvancedUserInterface, \Serializable
     /**
      * @return boolean
      */
-    public function isActive(): bool
+    public function isActive()
     {
         return $this->isActive;
     }
@@ -418,20 +456,7 @@ class Student implements AdvancedUserInterface, \Serializable
     }
 
     /**
-     * Returns the roles granted to the user.
-     *
-     * <code>
-     * public function getRoles()
-     * {
-     *     return array('ROLE_USER');
-     * }
-     * </code>
-     *
-     * Alternatively, the roles might be stored on a ``roles`` property,
-     * and populated in any number of different ways when the user object
-     * is created.
-     *
-     * @return (Role|string)[] The user roles
+     * @return array
      */
     public function getRoles()
     {
@@ -473,5 +498,56 @@ class Student implements AdvancedUserInterface, \Serializable
     {
         return null;
     }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getRegisteredLessons()
+    {
+        return $this->registeredLessons;
+    }
+
+    /**
+     * @param StudentRegistration $studentRegistration
+     *
+     * @return $this
+     */
+    public function addRegisteredLesson(StudentRegistration $studentRegistration)
+    {
+        $this->registeredLessons->add($studentRegistration);
+        return $this;
+    }
+
+    /**
+     * @param StudentRegistration $studentRegistration
+     *
+     * @return $this
+     */
+    public function deleteRegisteredLesson(StudentRegistration $studentRegistration)
+    {
+        $this->registeredLessons->removeElement($studentRegistration);
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getNumber()
+    {
+        return $this->number;
+    }
+
+    /**
+     * @param int $number
+     *
+     * @return $this
+     */
+    public function setNumber(int $number)
+    {
+        $this->number = $number;
+        return $this;
+    }
+
+
 }
 

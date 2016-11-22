@@ -9,11 +9,12 @@
 
 namespace UserBundle\EventListener;
 
+use CoreBundle\EventListener\AbstractEventListener;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-use Symfony\Component\Security\Core\User\UserInterface;
+use UserBundle\Entity\User;
 
-class PasswordEncoder
+class PasswordEncoder extends AbstractEventListener
 {
     /**
      * @var UserPasswordEncoderInterface
@@ -33,7 +34,7 @@ class PasswordEncoder
     /**
      * @param LifecycleEventArgs $args
      *
-     * @return object|void
+     * @return null|User
      */
     public function prePersist(LifecycleEventArgs $args)
     {
@@ -43,9 +44,9 @@ class PasswordEncoder
     /**
      * @param LifecycleEventArgs $args
      *
-     * @return object|void
+     * @return null|User
      */
-    private function handleEvent(LifecycleEventArgs $args)
+    protected function handleEvent(LifecycleEventArgs $args)
     {
         $entity = $this->getEntity($args);
 
@@ -57,49 +58,11 @@ class PasswordEncoder
     }
 
     /**
-     * @param LifecycleEventArgs $args
+     * @param User $entity
      *
-     * @return UserInterface|null
+     * @return null|User
      */
-    private function getEntity(LifecycleEventArgs $args)
-    {
-        $entity = $args->getEntity();
-
-        if (!$this->isEntityValid($entity)) {
-            return;
-        }
-
-        return $entity;
-    }
-
-    /**
-     * @param $entity
-     *
-     * @return bool
-     */
-    private function isEntityValid($entity):bool
-    {
-        $package = 'UserBundle\Entity\\';
-        return
-            in_array(
-                get_class($entity),
-                [
-                    $package . 'User',
-                    $package . 'Coordinator',
-                    $package . 'Teacher',
-                    $package . 'Titular',
-                    $package . 'CourseTitular',
-                    $package . 'StudentParent',
-                ]
-            );
-    }
-
-    /**
-     * @param UserInterface $entity
-     *
-     * @return UserInterface|null
-     */
-    private function encodePassword(UserInterface $entity)
+    private function encodePassword(User $entity)
     {
         if (!$entity->getPlainPassword()) {
             return null;
@@ -114,10 +77,33 @@ class PasswordEncoder
     /**
      * @param LifecycleEventArgs $args
      *
-     * @return object|void
+     * @return null|User
      */
     public function preUpdate(LifecycleEventArgs $args)
     {
         return $this->handleEvent($args);
+    }
+
+    /**
+     * @param $entity
+     *
+     * @return bool
+     */
+    protected function isEntityValid($entity):bool
+    {
+        $package = 'UserBundle\Entity\\';
+        return
+            in_array(
+                get_class($entity),
+                [
+                    $package . 'User',
+                    $package . 'Coordinator',
+                    $package . 'Teacher',
+                    $package . 'Titular',
+                    $package . 'CourseTitular',
+                    $package . 'StudentParent',
+                    $package . 'SuperAdmin',
+                ]
+            );
     }
 }

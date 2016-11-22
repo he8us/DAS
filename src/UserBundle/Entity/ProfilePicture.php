@@ -11,7 +11,6 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 /**
  * Avatar
  *
- * @ORM\Table(name="profile_picture")
  * @ORM\Entity(repositoryClass="UserBundle\Repository\ProfilePictureRepository")
  * @Vich\Uploadable()
  */

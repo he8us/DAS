@@ -1,0 +1,9 @@
+{% if is_granted("ROLE_TEACHER") %}
+    <li class="header">{{ "user.role.teacher" | trans }}</li>
+    <li>
+        <a href="{{ path('teacher_dashboard_index') }}">
+            <i class="fa fa-calendar"></i>
+            <span>{{ "course.lesson.see" | trans }}</span>
+        </a>
+    </li>
+{% endif %}
