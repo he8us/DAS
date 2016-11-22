@@ -56,6 +56,9 @@ class Version20161120114707 extends AbstractMigration
         $this->addSql('ALTER TABLE lesson_grade ADD CONSTRAINT FK_13BC7AB3FE19A1A8 FOREIGN KEY (grade_id) REFERENCES grade (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE student_registration ADD CONSTRAINT FK_FB761610CB944F1A FOREIGN KEY (student_id) REFERENCES student (id)');
         $this->addSql('ALTER TABLE student_registration ADD CONSTRAINT FK_FB761610CDF80196 FOREIGN KEY (lesson_id) REFERENCES lesson (id)');
+
+        $this->addSql('INSERT INTO `page` (`id`, `author_id`, `title`, `slug`, `body`, `created_at`, `updated_at`, `deleted_at`) VALUES (\'0\', NULL, \'Accueil\', \'accueil\', \'<h1>Bienvenue !</h1><p>Il faut changer le contenu de la page</p>\', \'2016-11-20 20:51:41\', \'2016-11-20 20:51:41\', NULL)');
+        $this->addSql('INSERT INTO `user` (`id`, `profile_picture_id`, `first_name`, `last_name`, `username`, `password`, `salt`, `email`, `roles`, `is_active`, `phone`, `created_at`, `updated_at`, `deleted_at`, `type`) VALUES (\'0\', NULL, \'Cedric\', \'Michaux\', \'superadmin\', \'$2y$13$PCeJTszQd4X0yR3eNU8eruyEBUvh6gwS3eYqkL6xX.KLhCpfDVSfa\', \'2ccae6061d27971118f82a0f0460b767\', \'cedric@arg-das.be\', \'a:1:{i:0;s:16:"ROLE_SUPER_ADMIN";}\', \'1\', \'123456\', \'2016-11-20 20:51:30\', \'2016-11-20 20:51:30\', NULL, \'super_admin\')');
     }
 
     /**

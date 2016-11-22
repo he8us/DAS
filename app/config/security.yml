@@ -71,6 +71,7 @@ security:
 
     access_control:
         - { path: ^/_trans, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/translations, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/pages, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }

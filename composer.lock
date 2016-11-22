@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "93ccd0eb8fe761fd09780cbd1fe3f0df",
-    "content-hash": "51822e8c323dda8f9fdf8fb2c65bc319",
+    "hash": "1710c3b68f11bf1baecfafdf041f4b78",
+    "content-hash": "82fd979ec1c52dec324a0619dacd6f28",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -46,6 +46,47 @@
                 "transliterator"
             ],
             "time": "2015-09-28 16:26:35"
+        },
+        {
+            "name": "bravesheep/database-url-bundle",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bravesheep/database-url-bundle.git",
+                "reference": "c2884d56e25b3b3933676262a8546f85a79c45a0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bravesheep/database-url-bundle/zipball/c2884d56e25b3b3933676262a8546f85a79c45a0",
+                "reference": "c2884d56e25b3b3933676262a8546f85a79c45a0",
+                "shasum": ""
+            },
+            "require": {
+                "symfony/config": "~2.3|~3.0",
+                "symfony/dependency-injection": "~2.3|~3.0",
+                "symfony/http-kernel": "~2.3|~3.0"
+            },
+            "require-dev": {
+                "phpspec/phpspec": "2.0.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Bravesheep\\DatabaseUrlBundle\\": "src/Bravesheep/DatabaseUrlBundle/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ruben Nijveld",
+                    "email": "ruben@gewooniets.nl"
+                }
+            ],
+            "description": "Determine Symfony2 database settings from a single URL-based parameter",
+            "time": "2016-01-15 13:10:38"
         },
         {
             "name": "doctrine/annotations",
@@ -1599,11 +1640,17 @@
         },
         {
             "name": "he8us/feedback-bundle",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/he8us/FeedbackBundle.git",
-                "reference": "9c84c8968574cdc53f65041fdee8eddad1ef91aa"
+                "reference": "a72ece5ce0fc4b28a582b79e15ccfc564db51a1b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/he8us/FeedbackBundle/zipball/a72ece5ce0fc4b28a582b79e15ccfc564db51a1b",
+                "reference": "a72ece5ce0fc4b28a582b79e15ccfc564db51a1b",
+                "shasum": ""
             },
             "require": {
                 "doctrine/orm": "~2.5",
@@ -1625,18 +1672,16 @@
                     ]
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
-            "description": "Symfony bundle for user feedback",
+            "description": "Symfony 3 bundle for user feedback",
             "keywords": [
                 "feedback",
                 "symfony"
             ],
-            "support": {
-                "email": "cedric+github@he8us.be"
-            },
-            "time": "2016-10-23 20:57:44"
+            "time": "2016-10-23 22:07:09"
         },
         {
             "name": "imagine/imagine",
@@ -6216,7 +6261,8 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "jms/translation-bundle": 20
+        "jms/translation-bundle": 20,
+        "bravesheep/database-url-bundle": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
@@ -6224,6 +6270,7 @@
         "php": ">=7.0.0",
         "ext-mbstring": "*",
         "ext-gd": "*",
+        "ext-imagick": "*",
         "ext-mcrypt": "*",
         "ext-bcmath": "*",
         "ext-intl": "*",

@@ -10,3 +10,7 @@ filter:
         - 'app/AppKernel.php'
         - 'web/config.php'
         - 'web/app.php'
+        - '**/bundle.*.js'
+        - '**/shared.*.js'
+        - '**/bundle.js'
+        - '**/shared.js'

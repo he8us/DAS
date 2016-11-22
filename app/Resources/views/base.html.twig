@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="{{ app.request.locale|split('_')[0] }}">
 <head>
     {% import ':macro:action_buttons.html.twig' as action %}
@@ -87,13 +87,12 @@
 
 <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
 <script src="{{ asset('bundles/bazingajstranslation/js/translator.min.js') }}"></script>
-<script src="{{ asset('http://build.das.dev/webpack-dev-server.js') }}"></script>
-<script src="{{ asset('http://build.das.dev/apps/shared.js') }}"></script>
-<script src="{{ asset('http://build.das.dev/apps/core/bundle.js') }}"></script>
-<script src="{{ asset('http://build.das.dev/apps/theme/bundle.js') }}"></script>
-<script src="{{ asset('http://build.das.dev/apps/datatables/bundle.js') }}"></script>
+<script src="{{ asset('apps/shared.js') }}"></script>
+<script src="{{ asset('apps/core/bundle.js') }}"></script>
+<script src="{{ asset('apps/theme/bundle.js') }}"></script>
+<script src="{{ asset('apps/datatables/bundle.js') }}"></script>
 <script src="{{ asset('bundles/user/js/misc.js') }}"></script>
-<script src="{{ asset('http://build.das.dev/apps/user/bundle.js') }}"></script>
+<script src="{{ asset('apps/user/bundle.js') }}"></script>
 <script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
 <script src="{{ url('bazinga_jstranslation_js') }}"></script>
 
