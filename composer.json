@@ -1,7 +1,7 @@
 {
     "name": "he8us/das",
     "description": "Gestion des remédiations et donne la possibilité aux jeunes d'êtres proactifs dans leurs études",
-    "version": "0.1.0",
+    "version": "0.1.2",
     "keywords": [
         "docker",
         "symfony",
