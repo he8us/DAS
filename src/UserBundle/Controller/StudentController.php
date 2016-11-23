@@ -190,7 +190,9 @@ class StudentController extends AbstractCrudController
      */
     public function generateCardAction()
     {
-        $this->container->get('profiler')->disable();
+        if($this->has('profiler')){
+            $this->get('profiler')->disable();
+        }
         return $this->render('UserBundle:Student:cards.html.twig', [
             'students' => $this->getStudentService()->findAll(),
         ]);
