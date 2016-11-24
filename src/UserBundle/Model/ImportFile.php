@@ -5,7 +5,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace UserBundle\Entity;
+namespace UserBundle\Model;
 
 
 use Symfony\Component\HttpFoundation\File\File;

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2016-11-12T15:28:32Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
+  <file date="2016-11-24T22:26:29Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -9,392 +9,270 @@
       <trans-unit id="285c49eeaf3caaa89381b8ea36a9b33b56a17284" resname="user.action.add">
         <source>user.action.add</source>
         <target>Ajouter un utilisateur</target>
-        <jms:reference-file line="7">/../src/UserBundle/Resources/views/User/index.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="f96691c2a72d7f60442a75e840f68cb9a273617c" resname="user.action.edit">
         <source>user.action.edit</source>
         <target>Editer</target>
-        <jms:reference-file line="101">/../src/UserBundle/Datatables/StudentDatatable.php</jms:reference-file>
-        <jms:reference-file line="105">/../src/UserBundle/Datatables/StudentDatatable.php</jms:reference-file>
-        <jms:reference-file line="106">/../src/UserBundle/Datatables/UserDatatable.php</jms:reference-file>
-        <jms:reference-file line="110">/../src/UserBundle/Datatables/UserDatatable.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="5044ee441d4156ae15842be16cbe577d7d99fc71" resname="user.action.show">
         <source>user.action.show</source>
         <target>Voir</target>
-        <jms:reference-file line="87">/../src/UserBundle/Datatables/StudentDatatable.php</jms:reference-file>
-        <jms:reference-file line="91">/../src/UserBundle/Datatables/StudentDatatable.php</jms:reference-file>
-        <jms:reference-file line="92">/../src/UserBundle/Datatables/UserDatatable.php</jms:reference-file>
-        <jms:reference-file line="96">/../src/UserBundle/Datatables/UserDatatable.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="c1d18cb099aadb544b3f1cb62a8e5148f55f4ff2" resname="user.action.title">
         <source>user.action.title</source>
         <target>Actions</target>
-        <jms:reference-file line="80">/../src/UserBundle/Datatables/StudentDatatable.php</jms:reference-file>
-        <jms:reference-file line="85">/../src/UserBundle/Datatables/UserDatatable.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="20afd5b376ab9ffb3cfe083496345d7e9d11d9f5" resname="user.email">
         <source>user.email</source>
         <target>Email</target>
-        <jms:reference-file line="52">/../src/UserBundle/Form/UserRegisterType.php</jms:reference-file>
-        <jms:reference-file line="68">/../src/UserBundle/Form/UserType.php</jms:reference-file>
-        <jms:reference-file line="32">/../src/UserBundle/Resources/views/Profile/show.html.twig</jms:reference-file>
-        <jms:reference-file line="37">/../src/UserBundle/Resources/views/User/show.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="ca11f33831e6f1ef8264456ae0600b9c0cbf9c2d" resname="user.email.repeat">
         <source>user.email.repeat</source>
         <target>Répétez l'email</target>
-        <jms:reference-file line="53">/../src/UserBundle/Form/UserRegisterType.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="50b7fe16ef6ff016cc0e46b7325fa8c2e463dd1b" resname="user.first_name">
         <source>user.first_name</source>
         <target>Prénom</target>
-        <jms:reference-file line="74">/../src/UserBundle/Datatables/StudentDatatable.php</jms:reference-file>
-        <jms:reference-file line="76">/../src/UserBundle/Datatables/UserDatatable.php</jms:reference-file>
-        <jms:reference-file line="38">/../src/UserBundle/Form/ProfileType.php</jms:reference-file>
-        <jms:reference-file line="46">/../src/UserBundle/Form/UserType.php</jms:reference-file>
-        <jms:reference-file line="26">/../src/UserBundle/Resources/views/Profile/show.html.twig</jms:reference-file>
-        <jms:reference-file line="31">/../src/UserBundle/Resources/views/User/show.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="073af3fc8f7938438b98314933517c95a37055eb" resname="user.hello">
         <source>user.hello</source>
         <target>Bonjour, %name% !</target>
-        <jms:reference-file line="14">/../src/UserBundle/Resources/views/Partials/user-menu.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="73e2d9a1f5f05b7cd80b8cf9666a946473adf3c2" resname="user.i_already_have_an_account">
         <source>user.i_already_have_an_account</source>
         <target>J'ai déjà un compte</target>
-        <jms:reference-file line="36">/../src/UserBundle/Resources/views/Registration/register.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="50a3872dc80975542986b7cd61fbe4c73844709a" resname="user.iam_a_student">
         <source>user.iam_a_student</source>
         <target>Je suis un étudiant</target>
-        <jms:reference-file line="60">/../src/UserBundle/Resources/views/Security/login.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="6d3e344c1f32d286f0185a644d37454cb845397b" resname="user.iam_not_a_student">
         <source>user.iam_not_a_student</source>
         <target>Je ne suis pas un étudiant</target>
-        <jms:reference-file line="70">/../src/UserBundle/Resources/views/Security/student-login.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="d995e52e405ed89bbcb3b2ba783827922685e7ba" resname="user.id">
         <source>user.id</source>
         <target>ID</target>
-        <jms:reference-file line="71">/../src/UserBundle/Datatables/StudentDatatable.php</jms:reference-file>
-        <jms:reference-file line="73">/../src/UserBundle/Datatables/UserDatatable.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="2eefe0d58d92fb2ac71105a65c489e15ab430285" resname="user.import.student.file">
         <source>user.import.student.file</source>
         <target>Importer des étudiants</target>
-        <jms:reference-file line="26">/../src/UserBundle/Form/ImportStudentsType.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="c1b185e76d74dc02b45f4cc18d1299591d834d93" resname="user.last_name">
         <source>user.last_name</source>
         <target>Nom</target>
-        <jms:reference-file line="77">/../src/UserBundle/Datatables/StudentDatatable.php</jms:reference-file>
-        <jms:reference-file line="79">/../src/UserBundle/Datatables/UserDatatable.php</jms:reference-file>
-        <jms:reference-file line="31">/../src/UserBundle/Form/ProfileType.php</jms:reference-file>
-        <jms:reference-file line="39">/../src/UserBundle/Form/UserType.php</jms:reference-file>
-        <jms:reference-file line="23">/../src/UserBundle/Resources/views/Profile/show.html.twig</jms:reference-file>
-        <jms:reference-file line="28">/../src/UserBundle/Resources/views/User/show.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="10eb410ab2de028acaf6e9c86570e42741622248" resname="user.list.title">
         <source>user.list.title</source>
         <target>Liste des utilisateurs</target>
-        <jms:reference-file line="3">/../src/UserBundle/Resources/views/User/index.html.twig</jms:reference-file>
-        <jms:reference-file line="4">/../src/UserBundle/Resources/views/User/index.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="922de5b949755f89db92122eb5b8beb068139464" resname="user.login.barcode">
         <source>user.login.barcode</source>
         <target>Code barre</target>
-        <jms:reference-file line="37">/../src/UserBundle/Resources/views/Security/student-login.html.twig</jms:reference-file>
-        <jms:reference-file line="42">/../src/UserBundle/Resources/views/Security/student-login.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="b25f30d71bfa16486eb2ae7200fbd102f4a1274e" resname="user.login.password">
         <source>user.login.password</source>
         <target>Mot de passe</target>
-        <jms:reference-file line="33">/../src/UserBundle/Resources/views/Security/login.html.twig</jms:reference-file>
-        <jms:reference-file line="36">/../src/UserBundle/Resources/views/Security/login.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="1aaaaad910ed80afb6dd566305b7618afafb0394" resname="user.login.remember_me">
         <source>user.login.remember_me</source>
         <target>Se souvenir de moi</target>
-        <jms:reference-file line="41">/../src/UserBundle/Resources/views/Security/login.html.twig</jms:reference-file>
-        <jms:reference-file line="50">/../src/UserBundle/Resources/views/Security/student-login.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="14bb052c2161181883644847309e76fa287a5fb0" resname="user.login.student.title">
         <source>user.login.student.title</source>
         <target>Connection des étudiants</target>
-        <jms:reference-file line="14">/../src/UserBundle/Resources/views/Security/student-login.html.twig</jms:reference-file>
-        <jms:reference-file line="5">/../src/UserBundle/Resources/views/Security/student-login.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="1c071f50ed5b51710dbde298771b59c4306715ac" resname="user.login.submit">
         <source>user.login.submit</source>
         <target>Se connecter</target>
-        <jms:reference-file line="47">/../src/UserBundle/Resources/views/Security/login.html.twig</jms:reference-file>
-        <jms:reference-file line="63">/../src/UserBundle/Resources/views/Security/student-login.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="d9682f1f9b8b03363021242d480813e3fdb10102" resname="user.login.title">
         <source>user.login.title</source>
         <target>Connection</target>
-        <jms:reference-file line="12">/../src/UserBundle/Resources/views/Security/login.html.twig</jms:reference-file>
-        <jms:reference-file line="5">/../src/UserBundle/Resources/views/Security/login.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="ff5d6a678286a111f27d198f70134b1d76bc5fc1" resname="user.login.username">
         <source>user.login.username</source>
         <target>Nom d'utilisateur</target>
-        <jms:reference-file line="25">/../src/UserBundle/Resources/views/Security/login.html.twig</jms:reference-file>
-        <jms:reference-file line="28">/../src/UserBundle/Resources/views/Security/login.html.twig</jms:reference-file>
-        <jms:reference-file line="27">/../src/UserBundle/Resources/views/Security/student-login.html.twig</jms:reference-file>
-        <jms:reference-file line="32">/../src/UserBundle/Resources/views/Security/student-login.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="80637ef391de8f80d897fd0fe313db9c348ca73a" resname="user.logout">
         <source>user.logout</source>
         <target>Se déconnecter</target>
-        <jms:reference-file line="26">/../src/UserBundle/Resources/views/Partials/user-menu.html.twig</jms:reference-file>
-        <jms:reference-file line="29">/../src/UserBundle/Resources/views/Partials/user-menu.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="c781943703139fad3656b8b1eeb25d642ac67c3a" resname="user.lost_password">
         <source>user.lost_password</source>
         <target>Mot de passe perdu</target>
-        <jms:reference-file line="54">/../src/UserBundle/Resources/views/Security/login.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="45d29e613dcaa1c2e4f74d73be04340c1ca4fede" resname="user.new.role.choose.title">
+        <source>user.new.role.choose.title</source>
+        <target>Choisir un type</target>
+      </trans-unit>
+      <trans-unit id="e13f8694595347bfc4bdf59b96d1fbbd869cf7e9" resname="user.old_password">
+        <source>user.old_password</source>
+        <target>Ancien mot de passe</target>
       </trans-unit>
       <trans-unit id="e4d06be519f5ddd5206349fb39cf7522dd947a3a" resname="user.password">
         <source>user.password</source>
         <target>Mot de passe</target>
-        <jms:reference-file line="43">/../src/UserBundle/Form/UserCreateType.php</jms:reference-file>
-        <jms:reference-file line="42">/../src/UserBundle/Form/UserRegisterType.php</jms:reference-file>
-        <jms:reference-file line="60">/../src/UserBundle/Form/UserType.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="1ad83e001fa4b3e3ed4de7410594e2e8ce40e147" resname="user.password.repeat">
         <source>user.password.repeat</source>
         <target>Répéter le mot de passe</target>
-        <jms:reference-file line="43">/../src/UserBundle/Form/UserRegisterType.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="b9fd88f2d205a06e62597b225978d20a603b9375" resname="user.phone">
         <source>user.phone</source>
         <target>Téléphone</target>
-        <jms:reference-file line="75">/../src/UserBundle/Form/UserType.php</jms:reference-file>
-        <jms:reference-file line="40">/../src/UserBundle/Resources/views/User/show.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="58c20f46e6d0080bd0d077eaa505e6028b894018" resname="user.profile.change_password">
         <source>user.profile.change_password</source>
         <target>Changer de mot de passe</target>
-        <jms:reference-file line="47">/../src/UserBundle/Resources/views/Profile/show.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="7557f62df3803fe5421a3597efea58f1af9553de" resname="user.profile.change_password.submit">
         <source>user.profile.change_password.submit</source>
         <target>Changer le mot de passe</target>
-        <jms:reference-file line="21">/../src/UserBundle/Resources/views/Security/changePassword.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="5c22d496a43e89cd77d5f7a08ab2f4062311a2d3" resname="user.profile.change_password.title">
         <source>user.profile.change_password.title</source>
         <target>Changer votre mot de passe</target>
-        <jms:reference-file line="12">/../src/UserBundle/Resources/views/Security/changePassword.html.twig</jms:reference-file>
-        <jms:reference-file line="4">/../src/UserBundle/Resources/views/Security/changePassword.html.twig</jms:reference-file>
-      </trans-unit>
-      <trans-unit id="04a1a8a35a853facb1795fca48c5e96b830b6d33" resname="user.profile.delete.button">
-        <source>user.profile.delete.button</source>
-        <target>Effacer votre profil</target>
-        <jms:reference-file line="34">/../src/UserBundle/Resources/views/Profile/edit.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="aebd070579f7043ef3948b1d9da817b5d5cb7444" resname="user.profile.delete.confirm_warning">
         <source>user.profile.delete.confirm_warning</source>
         <target>Etes vous sûr de vouloir supprimer votre compte? Toutes ses information et ses données liées seront supprimées et irrécupérables.</target>
-        <jms:reference-file line="7">/../src/UserBundle/Resources/views/Profile/delete.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="c9e3d15ff0f437dccf4fe5f87c392cef715b7b5e" resname="user.profile.delete.no_take_me_safe_place">
         <source>user.profile.delete.no_take_me_safe_place</source>
         <target>Non, emmenez moi vers un endroit sûr</target>
-        <jms:reference-file line="14">/../src/UserBundle/Resources/views/Profile/delete.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="6f9741e649ac42623300b6bf5d9c44ace2fd94df" resname="user.profile.delete.title">
         <source>user.profile.delete.title</source>
         <target>Effacer vote profil</target>
-        <jms:reference-file line="3">/../src/UserBundle/Resources/views/Profile/delete.html.twig</jms:reference-file>
-        <jms:reference-file line="4">/../src/UserBundle/Resources/views/Profile/delete.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="58e78ff6a51b2e68d7735716b2deb532bf4bfc5f" resname="user.profile.delete.yes_sure">
         <source>user.profile.delete.yes_sure</source>
         <target>Oui je suis sûr</target>
-        <jms:reference-file line="12">/../src/UserBundle/Resources/views/Profile/delete.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="b763ce8b22ff648d9cb5055766140b2469d33267" resname="user.profile.edit">
         <source>user.profile.edit</source>
         <target>Editer votre profil</target>
-        <jms:reference-file line="51">/../src/UserBundle/Resources/views/Profile/show.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="31ea11105752ee14a84aff7f0a728d0250e24b44" resname="user.profile.edit.submit">
         <source>user.profile.edit.submit</source>
         <target>Editer mon profil</target>
-        <jms:reference-file line="37">/../src/UserBundle/Resources/views/Profile/edit.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="207b62580677e8bda90960ae297a1f181c7e07ea" resname="user.profile.edit.title">
         <source>user.profile.edit.title</source>
         <target>Editer votre profil</target>
-        <jms:reference-file line="3">/../src/UserBundle/Resources/views/Profile/edit.html.twig</jms:reference-file>
-        <jms:reference-file line="4">/../src/UserBundle/Resources/views/Profile/edit.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="4e2a8cd0c861384d5099ad0fd3383a339a1f878b" resname="user.profile.lost_card">
         <source>user.profile.lost_card</source>
         <target>J'ai perdu ma carte</target>
-        <jms:reference-file line="57">/../src/UserBundle/Resources/views/Security/student-login.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="904c0d008778f733a4fde45d8d75f44cc14721ff" resname="user.profile.lost_password.title">
         <source>user.profile.lost_password.title</source>
         <target>Perte de mot de passe</target>
-        <jms:reference-file line="3">/../src/UserBundle/Resources/views/Resetting/checkEmail.html.twig</jms:reference-file>
-        <jms:reference-file line="4">/../src/UserBundle/Resources/views/Resetting/checkEmail.html.twig</jms:reference-file>
-        <jms:reference-file line="3">/../src/UserBundle/Resources/views/Resetting/passwordAlreadyRequested.html.twig</jms:reference-file>
-        <jms:reference-file line="4">/../src/UserBundle/Resources/views/Resetting/passwordAlreadyRequested.html.twig</jms:reference-file>
-        <jms:reference-file line="3">/../src/UserBundle/Resources/views/Resetting/request.html.twig</jms:reference-file>
-        <jms:reference-file line="4">/../src/UserBundle/Resources/views/Resetting/request.html.twig</jms:reference-file>
-        <jms:reference-file line="2">/../src/UserBundle/Resources/views/Resetting/reset.html.twig</jms:reference-file>
-        <jms:reference-file line="3">/../src/UserBundle/Resources/views/Resetting/reset.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="2a8f04ba2516577c0c558f1daf6f65bd97987c23" resname="user.profile.picture">
         <source>user.profile.picture</source>
         <target>Photo de profil</target>
-        <jms:reference-file line="45">/../src/UserBundle/Form/ProfilePictureType.php</jms:reference-file>
-        <jms:reference-file line="44">/../src/UserBundle/Form/ProfileType.php</jms:reference-file>
-        <jms:reference-file line="27">/../src/UserBundle/Resources/views/Form/profile_picture.html.twig</jms:reference-file>
-        <jms:reference-file line="3">/../src/UserBundle/Resources/views/Twig/profile_picture.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="b6f6e5539d9e438c54f08a50b73c0f6b8afa0cb2" resname="user.profile.request_card">
         <source>user.profile.request_card</source>
         <target>Demander une carte</target>
-        <jms:reference-file line="42">/../src/UserBundle/Resources/views/Profile/show.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="7f0687caaee4c41dff9f18f5e8cb28fcd13616ee" resname="user.profile.your_profile">
         <source>user.profile.your_profile</source>
         <target>Votre profil</target>
-        <jms:reference-file line="21">/../src/UserBundle/Resources/views/Partials/user-menu.html.twig</jms:reference-file>
-        <jms:reference-file line="4">/../src/UserBundle/Resources/views/Profile/show.html.twig</jms:reference-file>
-        <jms:reference-file line="8">/../src/UserBundle/Resources/views/Profile/show.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="1f7ff1de1332c39486d0913dab5a4296ef9035bb" resname="user.register.choose_role.title">
         <source>user.register.choose_role.title</source>
         <target>Type de compte</target>
-        <jms:reference-file line="4">/../src/UserBundle/Resources/views/Registration/choose-role.html.twig</jms:reference-file>
-        <jms:reference-file line="9">/../src/UserBundle/Resources/views/Registration/choose-role.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="f8520ce4bdccc6bee1a63e05d5f8d9722130f5c4" resname="user.register.create_account">
         <source>user.register.create_account</source>
         <target>Créer un compte</target>
-        <jms:reference-file line="66">/../src/UserBundle/Resources/views/Security/login.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="efaf44370f56f3d3e3cdd98969deee87778aa76f" resname="user.register.please_choose_an_account_type">
         <source>user.register.please_choose_an_account_type</source>
         <target>Veuillez choisir un type de compte</target>
-        <jms:reference-file line="11">/../src/UserBundle/Resources/views/Registration/choose-role.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="70d470ddd6dff5343f7ac95a7d311243c5c05be5" resname="user.register.submit">
         <source>user.register.submit</source>
         <target>Inscription</target>
-        <jms:reference-file line="41">/../src/UserBundle/Resources/views/Registration/register.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="306758f849f02a655017c93d84f5afd0c3547dd7" resname="user.register.title">
         <source>user.register.title</source>
         <target>Inscription</target>
-        <jms:reference-file line="4">/../src/UserBundle/Resources/views/Registration/register.html.twig</jms:reference-file>
-        <jms:reference-file line="9">/../src/UserBundle/Resources/views/Registration/register.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="043460dc9ea45e80168b16ff6e2430310fd41b2b" resname="user.resetpassword.already_requested">
         <source>user.resetpassword.already_requested</source>
         <target>Vous avez déjà demandé un nouveau mot de passe</target>
-        <jms:reference-file line="6">/../src/UserBundle/Resources/views/Resetting/passwordAlreadyRequested.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="ab7976c32db62fde89fab1f808e4f30b65987229" resname="user.resetpassword.check_email">
         <source>user.resetpassword.check_email</source>
         <target>Veuillez vérifier vos email</target>
-        <jms:reference-file line="7">/../src/UserBundle/Resources/views/Resetting/checkEmail.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="140fe19ab9ae59cdd88a82f0634da81fefe78651" resname="user.resetpassword.request.invalid_username">
         <source>user.resetpassword.request.invalid_username</source>
         <target>Le nom d'utilisateur n'est pas connu</target>
-        <jms:reference-file line="14">/../src/UserBundle/Resources/views/Resetting/request.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="d02fef44f3f2e8103faf959c45bca2ef74e3dd67" resname="user.resetpassword.request.submit">
         <source>user.resetpassword.request.submit</source>
         <target>Demander un nouveau mot de passe</target>
-        <jms:reference-file line="28">/../src/UserBundle/Resources/views/Resetting/request.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="045ed3f1e5202dcdde291f34f3e190f6294f245f" resname="user.resetpassword.reset.submit">
         <source>user.resetpassword.reset.submit</source>
         <target>Envoyer la demande</target>
-        <jms:reference-file line="6">/../src/UserBundle/Resources/views/Resetting/reset_content.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="a1f62f12edb66638d884415f5685cdf2a2cc75b9" resname="user.role">
         <source>user.role</source>
         <target>Rôle</target>
-        <jms:reference-file line="82">/../src/UserBundle/Datatables/UserDatatable.php</jms:reference-file>
-        <jms:reference-file line="43">/../src/UserBundle/Resources/views/User/show.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="e7966eea57e6a444fbdd61be28c9ce377cada967" resname="user.role.coordinator">
         <source>user.role.coordinator</source>
         <target>Coordinateur</target>
-        <jms:reference-file line="17">/../src/UserBundle/Resources/views/Registration/choose-role.html.twig</jms:reference-file>
-        <jms:reference-file line="82">/../src/UserBundle/Services/RoleService.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="ed91b79823a85e465f83d09130876661e30f6311" resname="user.role.course_titular">
         <source>user.role.course_titular</source>
         <target>Titulaire de cours</target>
-        <jms:reference-file line="33">/../src/UserBundle/Resources/views/Registration/choose-role.html.twig</jms:reference-file>
-        <jms:reference-file line="79">/../src/UserBundle/Services/RoleService.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="652f23d9c5893696e8ad11d32e081797ad05b180" resname="user.role.parent">
         <source>user.role.parent</source>
         <target>Parent</target>
-        <jms:reference-file line="38">/../src/UserBundle/Resources/views/Registration/choose-role.html.twig</jms:reference-file>
-        <jms:reference-file line="70">/../src/UserBundle/Services/RoleService.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="7098edbf4278801f18215807a8a87834cf51a885" resname="user.role.student">
         <source>user.role.student</source>
         <target>Etudiant</target>
-        <jms:reference-file line="67">/../src/UserBundle/Services/RoleService.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="0dd2c2e3e7e27ba81c1a102cd10f9ee089ef24ba" resname="user.role.super_admin">
         <source>user.role.super_admin</source>
         <target>Super Administrateur</target>
-        <jms:reference-file line="85">/../src/UserBundle/Services/RoleService.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="4dbb4a31ff39e54f748c3f43a9289a1b6c263866" resname="user.role.teacher">
         <source>user.role.teacher</source>
         <target>Professeur </target>
-        <jms:reference-file line="22">/../src/UserBundle/Resources/views/Registration/choose-role.html.twig</jms:reference-file>
-        <jms:reference-file line="73">/../src/UserBundle/Services/RoleService.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="dcc3f957e369fc54373c99647c7263d93d7eca95" resname="user.role.titular">
         <source>user.role.titular</source>
         <target>Titulaire de classe</target>
-        <jms:reference-file line="27">/../src/UserBundle/Resources/views/Registration/choose-role.html.twig</jms:reference-file>
-        <jms:reference-file line="76">/../src/UserBundle/Services/RoleService.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="f94bb5a9b6c029a483662709fcbb7741415bf10d" resname="user.student.action.add">
         <source>user.student.action.add</source>
         <target>Ajouter un étudiant</target>
-        <jms:reference-file line="7">/../src/UserBundle/Resources/views/Student/index.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="15c9e1b220d80bd41783b24d26c96febc81a924c" resname="user.student.action.getcards">
         <source>user.student.action.getcards</source>
         <target>Générer les cartes</target>
-        <jms:reference-file line="8">/../src/UserBundle/Resources/views/Student/index.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="13c3bcf8737f8c5a69bddcb05a94318fd0deb30f" resname="user.student.action.import">
         <source>user.student.action.import</source>
         <target>Importer des étudiants</target>
-        <jms:reference-file line="9">/../src/UserBundle/Resources/views/Student/index.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="2bfbfc67f18ed819c65c78640196a8723605257f" resname="user.student.back_to_list">
         <source>user.student.back_to_list</source>
         <target>Retour à la liste des étudiants</target>
-        <jms:reference-file line="7">/../src/UserBundle/Resources/views/Student/edit.html.twig</jms:reference-file>
-        <jms:reference-file line="12">/../src/UserBundle/Resources/views/Student/show.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="32fb0f0ed410364049a716f480445e8f5b7c3fc3" resname="user.student.barcode">
         <source>user.student.barcode</source>
         <target>Code Barre</target>
-        <jms:reference-file line="45">/../src/UserBundle/Resources/views/Student/cards.html.twig</jms:reference-file>
-        <jms:reference-file line="40">/../src/UserBundle/Resources/views/Student/show.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="d93d1a6e381c56feaa803a9ee87bf6c2339db7b2" resname="user.student.card.print.page.description">
         <source>user.student.card.print.page.description</source>
@@ -402,153 +280,110 @@
 Imprimez cette page, vous aurez des cartes d'étudiants en format "carte de visite" prêtes à être découpées. Utilisez des feuilles A4 lors de l'impression.<br />
 
 <strong>Veuillez attendre que le statut de chargement soit terminé avant d'imprimer, sans quoi tous les QR codes ne seront pas disponibles</strong>]]></target>
-        <jms:reference-file line="18">/../src/UserBundle/Resources/views/Student/cards.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="dabebf409562e69382871818f9c270d72178fa71" resname="user.student.card.print.page.load_status">
         <source>user.student.card.print.page.load_status</source>
         <target>Statut du chargement</target>
-        <jms:reference-file line="19">/../src/UserBundle/Resources/views/Student/cards.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="da2cc4c0390f807f9af6646880a0f4faee32faa3" resname="user.student.card.print.page.load_status.nok">
         <source>user.student.card.print.page.load_status.nok</source>
         <target>Pas encore chargé</target>
-        <jms:reference-file line="20">/../src/UserBundle/Resources/views/Student/cards.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="8562382ffa749b31ee760f465a395e1cf05c7aed" resname="user.student.card.print.page.load_status.ok">
         <source>user.student.card.print.page.load_status.ok</source>
         <target>Chargement terminé</target>
-        <jms:reference-file line="21">/../src/UserBundle/Resources/views/Student/cards.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="4b513b1b6ec2a67fd50407a336f22eb76d223df9" resname="user.student.card.print.page.title">
         <source>user.student.card.print.page.title</source>
         <target>Impression des cartes étudiants</target>
-        <jms:reference-file line="17">/../src/UserBundle/Resources/views/Student/cards.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="9e9be5f73154217c7f77763365702458cf5c8ed0" resname="user.student.create">
         <source>user.student.create</source>
         <target>Créer</target>
-        <jms:reference-file line="8">/../src/UserBundle/Resources/views/Student/new.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="e6923c64cd95b1af278dbb1259e7c201ecdba8ab" resname="user.student.delete">
         <source>user.student.delete</source>
         <target>Effacer l'étudiant</target>
-        <jms:reference-file line="9">/../src/UserBundle/Resources/views/Student/edit.html.twig</jms:reference-file>
-        <jms:reference-file line="14">/../src/UserBundle/Resources/views/Student/show.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="80efff69849bb1c6dbbacd21ea38ed12ea8df342" resname="user.student.edit">
         <source>user.student.edit</source>
         <target>Editer</target>
-        <jms:reference-file line="20">/../src/UserBundle/Resources/views/Student/edit.html.twig</jms:reference-file>
-        <jms:reference-file line="13">/../src/UserBundle/Resources/views/Student/show.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="1883178d2c5a3dabfb031846c5792ab5470b81d1" resname="user.student.edit.title">
         <source>user.student.edit.title</source>
         <target>Edition de l'étudiant</target>
-        <jms:reference-file line="3">/../src/UserBundle/Resources/views/Student/edit.html.twig</jms:reference-file>
-        <jms:reference-file line="4">/../src/UserBundle/Resources/views/Student/edit.html.twig</jms:reference-file>
-        <jms:reference-file line="4">/../src/UserBundle/Resources/views/Student/new.html.twig</jms:reference-file>
-        <jms:reference-file line="5">/../src/UserBundle/Resources/views/Student/new.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="1c459c24f175bcba0225c31b72b0cd3ed265be8d" resname="user.student.email">
         <source>user.student.email</source>
         <target>Email</target>
-        <jms:reference-file line="30">/../src/UserBundle/Form/StudentType.php</jms:reference-file>
-        <jms:reference-file line="37">/../src/UserBundle/Resources/views/Student/show.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="4c1f0bebe6953337ac7ae89065c9dbadf84bb732" resname="user.student.first_name">
         <source>user.student.first_name</source>
         <target>Prénom</target>
-        <jms:reference-file line="21">/../src/UserBundle/Form/StudentType.php</jms:reference-file>
-        <jms:reference-file line="31">/../src/UserBundle/Resources/views/Student/show.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="683ae6acf072ace75d3941587e2fea72b07f759c" resname="user.student.import.submit">
         <source>user.student.import.submit</source>
         <target>Importer</target>
-        <jms:reference-file line="15">/../src/UserBundle/Resources/views/Student/import.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="7a4f4f66a0878689c7536a66cfb18d4a5b9dc8f8" resname="user.student.import.title">
         <source>user.student.import.title</source>
         <target>Importer des étudiants</target>
-        <jms:reference-file line="3">/../src/UserBundle/Resources/views/Student/import.html.twig</jms:reference-file>
-        <jms:reference-file line="4">/../src/UserBundle/Resources/views/Student/import.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="95e3d8367baabc5751a91f8657e3bc73415f2dd8" resname="user.student.last_name">
         <source>user.student.last_name</source>
         <target>Nom</target>
-        <jms:reference-file line="24">/../src/UserBundle/Form/StudentType.php</jms:reference-file>
-        <jms:reference-file line="28">/../src/UserBundle/Resources/views/Student/show.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="04dd26a10391bb8528158b0e269f70bf33eb0ebd" resname="user.student.list.title">
         <source>user.student.list.title</source>
         <target>Liste des étudiants</target>
-        <jms:reference-file line="3">/../src/UserBundle/Resources/views/Student/index.html.twig</jms:reference-file>
-        <jms:reference-file line="4">/../src/UserBundle/Resources/views/Student/index.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="bd0646ed996e97e7c38222a8e1dd991183113cf6" resname="user.student.show.title">
         <source>user.student.show.title</source>
         <target>Détail de l'étudiant</target>
-        <jms:reference-file line="4">/../src/UserBundle/Resources/views/Student/show.html.twig</jms:reference-file>
-        <jms:reference-file line="8">/../src/UserBundle/Resources/views/Student/show.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="a135be92acd042abf970aa685266bd54744379e7" resname="user.student.username">
         <source>user.student.username</source>
         <target>Nom d'utilisateur</target>
-        <jms:reference-file line="27">/../src/UserBundle/Form/StudentType.php</jms:reference-file>
-        <jms:reference-file line="38">/../src/UserBundle/Resources/views/Student/cards.html.twig</jms:reference-file>
-        <jms:reference-file line="34">/../src/UserBundle/Resources/views/Student/show.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="61fad5d0bffc6775d64da26c56e7b27fd622db75" resname="user.user.back_to_list">
         <source>user.user.back_to_list</source>
         <target>Retour à la liste</target>
-        <jms:reference-file line="7">/../src/UserBundle/Resources/views/User/edit.html.twig</jms:reference-file>
-        <jms:reference-file line="12">/../src/UserBundle/Resources/views/User/show.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="961e9355fc5958aef45f7e26486c2c9a66ea554c" resname="user.user.delete">
         <source>user.user.delete</source>
         <target>Supprimer l'utilisateur</target>
-        <jms:reference-file line="9">/../src/UserBundle/Resources/views/User/edit.html.twig</jms:reference-file>
-        <jms:reference-file line="14">/../src/UserBundle/Resources/views/User/show.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="c23fc447a9e543d0d333d55124edbfbdd9a2de36" resname="user.user.edit">
         <source>user.user.edit</source>
         <target>Editer</target>
-        <jms:reference-file line="13">/../src/UserBundle/Resources/views/User/show.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="7a871e9ab8c5ada2bcd46d6749239f0ee2478237" resname="user.user.edit.title">
         <source>user.user.edit.title</source>
         <target>Editer l'utilisateur</target>
-        <jms:reference-file line="3">/../src/UserBundle/Resources/views/User/edit.html.twig</jms:reference-file>
-        <jms:reference-file line="4">/../src/UserBundle/Resources/views/User/edit.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="bb3a38da7e28fcbc42b26322240240ff6140cf4e" resname="user.user.new.role.chose.save">
+        <source>user.user.new.role.chose.save</source>
+        <target>Créer un utilisateur pour ce rôle</target>
       </trans-unit>
       <trans-unit id="7c9bd807665e30aacdf397ae2264aa33bcfbbb0b" resname="user.user.new.title">
         <source>user.user.new.title</source>
         <target>Créer un utilisateur</target>
-        <jms:reference-file line="3">/../src/UserBundle/Resources/views/User/new.html.twig</jms:reference-file>
-        <jms:reference-file line="4">/../src/UserBundle/Resources/views/User/new.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="e89ba225d8d197e93413b6aaab9dba0691519c46" resname="user.user.show.title">
         <source>user.user.show.title</source>
         <target>Détail de l'utilisateur</target>
-        <jms:reference-file line="4">/../src/UserBundle/Resources/views/User/show.html.twig</jms:reference-file>
-        <jms:reference-file line="8">/../src/UserBundle/Resources/views/User/show.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="9b9b24bd6df7ab902863c3560dab082512bceee1" resname="user.username">
         <source>user.username</source>
         <target>Nom d'utilisateur</target>
-        <jms:reference-file line="53">/../src/UserBundle/Form/UserType.php</jms:reference-file>
-        <jms:reference-file line="29">/../src/UserBundle/Resources/views/Profile/show.html.twig</jms:reference-file>
-        <jms:reference-file line="19">/../src/UserBundle/Resources/views/Resetting/request.html.twig</jms:reference-file>
-        <jms:reference-file line="34">/../src/UserBundle/Resources/views/User/show.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="c92ceb43cd06a230451e7e490ef45512aa410fba" resname="user.users.create">
         <source>user.users.create</source>
         <target>Créer</target>
-        <jms:reference-file line="7">/../src/UserBundle/Resources/views/User/new.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="836ee4a407dab8761fe53a32b02487aa41bed03f" resname="user.users.edit">
         <source>user.users.edit</source>
         <target>Editer</target>
-        <jms:reference-file line="20">/../src/UserBundle/Resources/views/User/edit.html.twig</jms:reference-file>
       </trans-unit>
     </body>
   </file>

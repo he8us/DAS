@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2016-11-13T16:51:01Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
+  <file date="2016-11-24T22:21:18Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -9,36 +9,36 @@
       <trans-unit id="bb01d4152618d86e61fec28fdc94664df57c5028" resname="course.content.add">
         <source>course.content.add</source>
         <target>Ajouter un contenu de cours</target>
-        <jms:reference-file line="8">/../src/CourseBundle/Resources/views/CourseContent/index.html.twig</jms:reference-file>
+        <jms:reference-file line="8">/../src/CourseBundle/Resources/views/coursecontent/index.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="81b0894a0a6b188e97dd617fb1caed99c59dd21d" resname="course.content.back_to_list">
         <source>course.content.back_to_list</source>
         <target>Retour à la liste</target>
-        <jms:reference-file line="7">/../src/CourseBundle/Resources/views/CourseContent/edit.html.twig</jms:reference-file>
-        <jms:reference-file line="7">/../src/CourseBundle/Resources/views/CourseContent/new.html.twig</jms:reference-file>
-        <jms:reference-file line="8">/../src/CourseBundle/Resources/views/CourseContent/show.html.twig</jms:reference-file>
+        <jms:reference-file line="7">/../src/CourseBundle/Resources/views/coursecontent/edit.html.twig</jms:reference-file>
+        <jms:reference-file line="7">/../src/CourseBundle/Resources/views/coursecontent/new.html.twig</jms:reference-file>
+        <jms:reference-file line="8">/../src/CourseBundle/Resources/views/coursecontent/show.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="5728b715b6bf805087aa4ce9547e134a165c1ad3" resname="course.content.create">
         <source>course.content.create</source>
         <target>Créer un contenu</target>
-        <jms:reference-file line="11">/../src/CourseBundle/Resources/views/CourseContent/new.html.twig</jms:reference-file>
+        <jms:reference-file line="11">/../src/CourseBundle/Resources/views/coursecontent/new.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="86e45a22029f6e672717926fcfbb7fe01afa830e" resname="course.content.delete">
         <source>course.content.delete</source>
         <target>Effacer le contenu de cours</target>
-        <jms:reference-file line="8">/../src/CourseBundle/Resources/views/CourseContent/edit.html.twig</jms:reference-file>
-        <jms:reference-file line="10">/../src/CourseBundle/Resources/views/CourseContent/show.html.twig</jms:reference-file>
+        <jms:reference-file line="8">/../src/CourseBundle/Resources/views/coursecontent/edit.html.twig</jms:reference-file>
+        <jms:reference-file line="10">/../src/CourseBundle/Resources/views/coursecontent/show.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="991242d9a866dac905ab9c3edeb42f33e9911b57" resname="course.content.edit">
         <source>course.content.edit</source>
         <target>Editer</target>
-        <jms:reference-file line="17">/../src/CourseBundle/Resources/views/CourseContent/edit.html.twig</jms:reference-file>
+        <jms:reference-file line="17">/../src/CourseBundle/Resources/views/coursecontent/edit.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="60eac833ca33a26e24ba149c19ba6f17d71395e3" resname="course.content.edit.title">
         <source>course.content.edit.title</source>
         <target>Edition du contenu de cours</target>
-        <jms:reference-file line="3">/../src/CourseBundle/Resources/views/CourseContent/edit.html.twig</jms:reference-file>
-        <jms:reference-file line="4">/../src/CourseBundle/Resources/views/CourseContent/edit.html.twig</jms:reference-file>
+        <jms:reference-file line="3">/../src/CourseBundle/Resources/views/coursecontent/edit.html.twig</jms:reference-file>
+        <jms:reference-file line="4">/../src/CourseBundle/Resources/views/coursecontent/edit.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="7a2fdf6d94643aa8e172ac49a3adbca87469fede" resname="course.content.grades">
         <source>course.content.grades</source>
@@ -49,26 +49,26 @@
         <source>course.content.id</source>
         <target>ID</target>
         <jms:reference-file line="72">/../src/CourseBundle/Datatables/CourseContentDatatable.php</jms:reference-file>
-        <jms:reference-file line="19">/../src/CourseBundle/Resources/views/CourseContent/show.html.twig</jms:reference-file>
+        <jms:reference-file line="19">/../src/CourseBundle/Resources/views/coursecontent/show.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="fd89046d8089a1854b07c364fdd4a308dfe08357" resname="course.content.list.title">
         <source>course.content.list.title</source>
         <target>Liste des contenus de cours</target>
-        <jms:reference-file line="4">/../src/CourseBundle/Resources/views/CourseContent/index.html.twig</jms:reference-file>
-        <jms:reference-file line="5">/../src/CourseBundle/Resources/views/CourseContent/index.html.twig</jms:reference-file>
+        <jms:reference-file line="4">/../src/CourseBundle/Resources/views/coursecontent/index.html.twig</jms:reference-file>
+        <jms:reference-file line="5">/../src/CourseBundle/Resources/views/coursecontent/index.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="7dd9002c4bb0121b9491c2c8f8aafabbb9012a32" resname="course.content.name">
         <source>course.content.name</source>
         <target>Nom</target>
         <jms:reference-file line="75">/../src/CourseBundle/Datatables/CourseContentDatatable.php</jms:reference-file>
         <jms:reference-file line="26">/../src/CourseBundle/Form/CourseContentType.php</jms:reference-file>
-        <jms:reference-file line="23">/../src/CourseBundle/Resources/views/CourseContent/show.html.twig</jms:reference-file>
+        <jms:reference-file line="23">/../src/CourseBundle/Resources/views/coursecontent/show.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="4368c77c2d44e4d9141f6caf0da6cafa6a877a81" resname="course.content.new.title">
         <source>course.content.new.title</source>
         <target>Nouveau contenu</target>
-        <jms:reference-file line="3">/../src/CourseBundle/Resources/views/CourseContent/new.html.twig</jms:reference-file>
-        <jms:reference-file line="4">/../src/CourseBundle/Resources/views/CourseContent/new.html.twig</jms:reference-file>
+        <jms:reference-file line="3">/../src/CourseBundle/Resources/views/coursecontent/new.html.twig</jms:reference-file>
+        <jms:reference-file line="4">/../src/CourseBundle/Resources/views/coursecontent/new.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="872a3e9c2805c2c28bc9f150dc22ff9703d8ffeb" resname="course.content.parent">
         <source>course.content.parent</source>
@@ -78,8 +78,8 @@
       <trans-unit id="fe2b6ff66701dc1a8b232aabf799e2859ad1cd30" resname="course.content.show.title">
         <source>course.content.show.title</source>
         <target>Détail du contenu</target>
-        <jms:reference-file line="4">/../src/CourseBundle/Resources/views/CourseContent/show.html.twig</jms:reference-file>
-        <jms:reference-file line="5">/../src/CourseBundle/Resources/views/CourseContent/show.html.twig</jms:reference-file>
+        <jms:reference-file line="4">/../src/CourseBundle/Resources/views/coursecontent/show.html.twig</jms:reference-file>
+        <jms:reference-file line="5">/../src/CourseBundle/Resources/views/coursecontent/show.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="8a1721c27cf22c89a0b0831d317f624927b30e7b" resname="course.content.teachers">
         <source>course.content.teachers</source>
@@ -244,7 +244,7 @@
         <source>course.gradeclass.section</source>
         <target>Classe</target>
         <jms:reference-file line="77">/../src/CourseBundle/Datatables/GradeClassDatatable.php</jms:reference-file>
-        <jms:reference-file line="26">/../src/CourseBundle/Form/GradeClassType.php</jms:reference-file>
+        <jms:reference-file line="25">/../src/CourseBundle/Form/GradeClassType.php</jms:reference-file>
         <jms:reference-file line="25">/../src/CourseBundle/Resources/views/GradeClass/show.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="822b951847717700a250f83c6933e2322964e75d" resname="course.gradeclass.show.title">
@@ -274,11 +274,6 @@
         <source>course.lesson.create</source>
         <target>Créer un cours</target>
         <jms:reference-file line="11">/../src/CourseBundle/Resources/views/Lesson/new.html.twig</jms:reference-file>
-      </trans-unit>
-      <trans-unit id="4a001dc0cf90c17643b426a2a494dbc060938696" resname="course.lesson.date">
-        <source>course.lesson.date</source>
-        <target>Date</target>
-        <jms:reference-file line="21">/../src/CourseBundle/Resources/views/Lesson/show.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="f805380a4a9b900ba4ffc79b1dd9e394f0e9fb31" resname="course.lesson.delete">
         <source>course.lesson.delete</source>
@@ -351,6 +346,7 @@
         <target>Début du cours</target>
         <jms:reference-file line="74">/../src/CourseBundle/Datatables/LessonDatatable.php</jms:reference-file>
         <jms:reference-file line="30">/../src/CourseBundle/Form/LessonType.php</jms:reference-file>
+        <jms:reference-file line="21">/../src/CourseBundle/Resources/views/Lesson/show.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="d948915f4523b740ee94a72357b9dfa62f4dddbc" resname="course.lesson.teacher">
         <source>course.lesson.teacher</source>
