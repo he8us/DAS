@@ -2,3 +2,18 @@ user_profile_view:
   path: /
   defaults:
     _controller: "UserBundle:Profile:view"
+
+user_profile_edit:
+  path: /edit
+  defaults:
+    _controller: "UserBundle:Profile:edit"
+
+user_profile_change_password:
+  path: /change-password
+  defaults:
+    _controller: "UserBundle:Profile:changePassword"
+
+user_profile_delete:
+  path: /delete
+  defaults:
+    _controller: "UserBundle:Profile:delete"

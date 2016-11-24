@@ -8,6 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use UserBundle\Entity\Student;
 
 class StudentType extends AbstractType
 {
@@ -43,7 +44,7 @@ class StudentType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => 'UserBundle\Entity\Student',
+            'data_class' => Student::class,
         ]);
     }
 

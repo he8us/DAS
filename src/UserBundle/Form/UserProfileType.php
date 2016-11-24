@@ -10,10 +10,11 @@ namespace UserBundle\Form;
 
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 
-class ProfileType extends AbstractType
+class UserProfileType extends AbstractType
 {
 
     /**
@@ -28,33 +29,42 @@ class ProfileType extends AbstractType
                 'lastName',
                 TextType::class,
                 [
-                    'label' => 'user.last_name',
+                    "label" => "user.last_name",
                 ]
             )
             ->add(
                 'firstName',
                 TextType::class,
                 [
-                    'label' => "user.first_name",
+                    "label" => "user.first_name",
                 ]
             )
             ->add('profilePicture',
                 ProfilePictureType::class,
                 [
-                    'label'    => 'user.profile.picture',
+                    'label'    => false,
                     'required' => false,
+                ]
+            )
+            ->add(
+                'email',
+                EmailType::class,
+                [
+                    'label' => 'user.email',
+                ]
+            )
+            ->add(
+                'phone',
+                TextType::class,
+                [
+                    'label' => 'user.phone',
                 ]
             );
 
+
     }
 
-    /**
-     * @return ProfileFormType
-     */
-    public function getParent()
-    {
-        return ProfileFormType::class;
-    }
+
 
     /**
      * @return string
