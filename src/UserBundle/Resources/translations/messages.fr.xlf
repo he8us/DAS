@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2016-11-24T22:26:29Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
+  <file date="2016-11-24T23:29:32Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -344,6 +344,10 @@ Imprimez cette page, vous aurez des cartes d'étudiants en format "carte de visi
       <trans-unit id="a135be92acd042abf970aa685266bd54744379e7" resname="user.student.username">
         <source>user.student.username</source>
         <target>Nom d'utilisateur</target>
+      </trans-unit>
+      <trans-unit id="7a2e8cfad5d0ea2ddccd52847fc65b30833125b1" resname="user.updated_at">
+        <source>user.updated_at</source>
+        <target>Date de mise a jour</target>
       </trans-unit>
       <trans-unit id="61fad5d0bffc6775d64da26c56e7b27fd622db75" resname="user.user.back_to_list">
         <source>user.user.back_to_list</source>
