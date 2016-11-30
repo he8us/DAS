@@ -9,7 +9,7 @@
     <form action="{{ path("user_security_login") }}" class="form-horizontal" method="post">
 
         <p class="login-box-msg">
-            {{ "user.login.title" | trans }}
+            <strong>{{ "user.login.title" | trans }}</strong>
         </p>
 
         {% if error %}
@@ -24,28 +24,32 @@
             <label class="sr-only" for="username">
                 {{ 'user.login.username' | trans }}
             </label>
-            <input type="text" class="form-control" id="username" name="_username" value="{{ last_username }}"
-                   required="required" placeholder="{{ 'user.login.username' | trans }}"/>
+            <div class="input-group">
+                <div class="input-group-addon">
+                    <i class="fa fa-user"></i>
+                </div>
+                <input type="text" class="form-control" id="username" name="_username" value="{{ last_username }}"
+                       required="required" placeholder="{{ 'user.login.username' | trans }}"/>
+            </div>
         </div>
 
         <div class="form-group">
             <label class="sr-only" for="password">
                 {{ 'user.login.password' | trans }}
             </label>
-            <input type="password" class="form-control" id="password" name="_password" required="required"
-                   placeholder="{{ 'user.login.password' | trans }}"/>
+            <div class="input-group">
+                <div class="input-group-addon">
+                    <i class="fa fa-key"></i>
+                </div>
+
+                <input type="password" class="form-control" id="password" name="_password" required="required"
+                       placeholder="{{ 'user.login.password' | trans }}"/>
+            </div>
         </div>
 
         <div class="form-group">
             <input type="checkbox" id="remember_me" name="_remember_me" value="on"/>
             <label for="remember_me">{{ 'user.login.remember_me' | trans }}</label>
-        </div>
-
-        <div class="form-group">
-            <div class="col-xs-6 col-xs-offset-6">
-                <input type="submit" class="btn btn-info pull-right" id="_submit" name="_submit"
-                       value="{{ 'user.login.submit' | trans }}"/>
-            </div>
         </div>
 
         <div class="form-group">
@@ -56,15 +60,23 @@
             </div>
 
             <div class="col-xs-6">
-                <a href="{{ path('student_security_login') }}" class="btn btn-default pull-right">
+                <input type="submit" class="btn btn-info pull-right" id="_submit" name="_submit"
+                       value="{{ 'user.login.submit' | trans }}"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-xs-6">
+                <a href="{{ path('user_security_register') }}">{{ "user.register.create_account" | trans }}</a>
+            </div>
+
+            <div class="col-xs-6">
+                <a href="{{ path('student_security_login') }}" class="pull-right">
                     {{ 'user.iam_a_student' | trans }}
                 </a>
             </div>
         </div>
 
-        <div class="form-group">
-            <a href="{{ path('user_security_register') }}">{{ "user.register.create_account" | trans }}</a>
-        </div>
 
     </form>
 {% endblock %}

@@ -28,7 +28,7 @@
                 <div class="name">{{ student.firstName }} {{ student.lastName }}</div>
             </header>
             <div class="row">
-                <div class="col col-xs-5 barcode">
+                <div class="col col-xs-5 qrcode">
                     <img src="{{ qrcode_url('user='~student.username~'&code='~student.barcode) }}"
                          alt="{{ student.barcode }}"/>
                 </div>
