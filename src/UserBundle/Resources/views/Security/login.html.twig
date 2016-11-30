@@ -9,7 +9,7 @@
     <form action="{{ path("user_security_login") }}" class="form-horizontal" method="post">
 
         <p class="login-box-msg">
-            {{ "user.login.title" | trans }}
+            <strong>{{ "user.login.title" | trans }}</strong>
         </p>
 
         {% if error %}
@@ -42,13 +42,6 @@
         </div>
 
         <div class="form-group">
-            <div class="col-xs-6 col-xs-offset-6">
-                <input type="submit" class="btn btn-info pull-right" id="_submit" name="_submit"
-                       value="{{ 'user.login.submit' | trans }}"/>
-            </div>
-        </div>
-
-        <div class="form-group">
             <div class="col-xs-6">
                 <a href="{{ path('user_security_resetting_request') }}" class="btn btn-default">
                     {{ 'user.lost_password' | trans }}
@@ -56,15 +49,24 @@
             </div>
 
             <div class="col-xs-6">
-                <a href="{{ path('student_security_login') }}" class="btn btn-default pull-right">
+                <input type="submit" class="btn btn-info pull-right" id="_submit" name="_submit"
+                       value="{{ 'user.login.submit' | trans }}"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-xs-6">
+                <a href="{{ path('user_security_register') }}">{{ "user.register.create_account" | trans }}</a>
+            </div>
+
+            <div class="col-xs-6">
+                <a href="{{ path('student_security_login') }}" class="pull-right">
                     {{ 'user.iam_a_student' | trans }}
                 </a>
             </div>
         </div>
 
-        <div class="form-group">
-            <a href="{{ path('user_security_register') }}">{{ "user.register.create_account" | trans }}</a>
-        </div>
+
 
     </form>
 {% endblock %}

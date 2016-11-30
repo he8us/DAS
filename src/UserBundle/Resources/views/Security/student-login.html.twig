@@ -11,7 +11,7 @@
     <form action="{{ path("student_security_login") }}" class="form-horizontal" method="post">
 
         <p class="login-box-msg">
-            {{ "user.login.student.title" | trans }}
+            <strong>{{ "user.login.student.title" | trans }}</strong>
         </p>
 
         {% if error %}
@@ -44,16 +44,13 @@
         </div>
 
         <div class="form-group">
-
-
             <input type="checkbox" id="remember_me" name="_remember_me" value="on"/>
             <label for="remember_me">{{ 'user.login.remember_me' | trans }}</label>
-
         </div>
 
         <div class="form-group">
             <div class="col-xs-6">
-                <a href="{{ path('user_security_request_card') }}">
+                <a href="{{ path('user_security_request_card') }}" class="btn btn-default">
                     {{ 'user.profile.lost_card' | trans }}
                 </a>
             </div>
@@ -65,13 +62,11 @@
         </div>
 
         <div class="form-group">
-            <div class="col-xs-8">
-                <a href="{{ path('user_security_login') }}" id="_i_am_not_a_student" class="">
+            <div class="col-xs-offset-4 col-xs-8">
+                <a href="{{ path('user_security_login') }}" id="_i_am_not_a_student" class="pull-right">
                     {{ 'user.iam_not_a_student' | trans }}
                 </a>
             </div>
         </div>
-
-
     </form>
 {% endblock %}
