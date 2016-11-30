@@ -74,11 +74,11 @@ body {
     text-overflow: ellipsis;
 }
 
-.barcode {
+.qrcode {
     text-align: center;
 }
 
-.barcode img {
+.qrcode img {
 
     width: 96%;
 }
